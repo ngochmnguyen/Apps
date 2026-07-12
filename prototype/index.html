@@ -1,0 +1,898 @@
+<title>Wayfarer — Paid Travel Opportunities</title>
+<style>
+  :root {
+    --bg: #eef1f5;
+    --bg-raised: #ffffff;
+    --bg-sunken: #e2e7ee;
+    --ink: #161c26;
+    --ink-soft: #4c5768;
+    --ink-faint: #7c8798;
+    --border: #d3dae3;
+    --accent: #b9791f;
+    --accent-ink: #6b4310;
+    --accent-tint: #f4e2c4;
+    --accent-on-tint: #6b4310;
+    --focus: #2f6fb3;
+
+    --state-open: #21815c;
+    --state-open-tint: #d9efe6;
+    --state-soon: #b5501a;
+    --state-soon-tint: #f7e2d3;
+    --state-closed: #9a3b39;
+    --state-closed-tint: #f1dcdb;
+    --state-unverified: #5c6a80;
+    --state-unverified-tint: #e3e7ee;
+
+    --font-display: "Bahnschrift", "SF Compact Condensed", "Roboto Condensed", "Arial Narrow", sans-serif;
+    --font-body: -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    --font-mono: ui-monospace, "SF Mono", "Cascadia Code", "Roboto Mono", Menlo, Consolas, monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #10151d;
+      --bg-raised: #1a212c;
+      --bg-sunken: #0a0e14;
+      --ink: #e9edf3;
+      --ink-soft: #aab4c4;
+      --ink-faint: #717d90;
+      --border: #2b3644;
+      --accent: #e0a44e;
+      --accent-ink: #2a1c0a;
+      --accent-tint: #3a2c15;
+      --accent-on-tint: #e0a44e;
+      --focus: #6ba6e8;
+
+      --state-open: #4bbd8a;
+      --state-open-tint: #163326;
+      --state-soon: #e8874a;
+      --state-soon-tint: #3a2415;
+      --state-closed: #d97469;
+      --state-closed-tint: #3a1e1c;
+      --state-unverified: #93a1b3;
+      --state-unverified-tint: #232b36;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #10151d; --bg-raised: #1a212c; --bg-sunken: #0a0e14;
+    --ink: #e9edf3; --ink-soft: #aab4c4; --ink-faint: #717d90; --border: #2b3644;
+    --accent: #e0a44e; --accent-ink: #2a1c0a; --accent-tint: #3a2c15; --accent-on-tint: #e0a44e; --focus: #6ba6e8;
+    --state-open: #4bbd8a; --state-open-tint: #163326;
+    --state-soon: #e8874a; --state-soon-tint: #3a2415;
+    --state-closed: #d97469; --state-closed-tint: #3a1e1c;
+    --state-unverified: #93a1b3; --state-unverified-tint: #232b36;
+  }
+  :root[data-theme="light"] {
+    --bg: #eef1f5; --bg-raised: #ffffff; --bg-sunken: #e2e7ee;
+    --ink: #161c26; --ink-soft: #4c5768; --ink-faint: #7c8798; --border: #d3dae3;
+    --accent: #b9791f; --accent-ink: #6b4310; --accent-tint: #f4e2c4; --accent-on-tint: #6b4310; --focus: #2f6fb3;
+    --state-open: #21815c; --state-open-tint: #d9efe6;
+    --state-soon: #b5501a; --state-soon-tint: #f7e2d3;
+    --state-closed: #9a3b39; --state-closed-tint: #f1dcdb;
+    --state-unverified: #5c6a80; --state-unverified-tint: #e3e7ee;
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg); color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 15px; line-height: 1.5;
+  }
+  body { min-height: 100vh; }
+  ::selection { background: var(--accent-tint); }
+  a { color: var(--focus); }
+  :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+  .tabular { font-variant-numeric: tabular-nums; font-family: var(--font-mono); }
+
+  .masthead {
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-raised);
+    padding: 20px 28px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .masthead h1 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 26px;
+    letter-spacing: 0.01em;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .masthead .tagline {
+    font-size: 13px;
+    color: var(--ink-faint);
+    margin-top: 2px;
+  }
+  .masthead-stats {
+    display: flex;
+    gap: 22px;
+    font-family: var(--font-mono);
+  }
+  .stat { text-align: right; }
+  .stat b { display: block; font-size: 20px; color: var(--ink); }
+  .stat span { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-faint); }
+
+  .layout {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 0;
+    align-items: start;
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+  @media (max-width: 860px) {
+    .layout { grid-template-columns: 1fr; }
+  }
+
+  .filters {
+    border-right: 1px solid var(--border);
+    padding: 20px;
+    position: sticky;
+    top: 0;
+    max-height: 100vh;
+    overflow-y: auto;
+  }
+  @media (max-width: 860px) {
+    .filters { position: static; max-height: none; border-right: none; border-bottom: 1px solid var(--border); }
+  }
+  .filter-group { margin-bottom: 22px; }
+  .filter-group h2 {
+    font-family: var(--font-display);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-faint);
+    margin: 0 0 10px;
+    font-weight: 700;
+  }
+  .field { margin-bottom: 10px; }
+  .field label {
+    display: block;
+    font-size: 12px;
+    color: var(--ink-soft);
+    margin-bottom: 3px;
+  }
+  select, input[type="number"], input[type="text"] {
+    width: 100%;
+    background: var(--bg-raised);
+    border: 1px solid var(--border);
+    color: var(--ink);
+    padding: 7px 8px;
+    border-radius: 3px;
+    font-size: 13.5px;
+    font-family: inherit;
+  }
+  .checkline {
+    display: flex; align-items: center; gap: 7px;
+    font-size: 13px; color: var(--ink-soft);
+    margin-bottom: 8px;
+  }
+  .checkline input { accent-color: var(--accent); }
+
+  .chip-row { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip {
+    border: 1px solid var(--border);
+    background: var(--bg-raised);
+    color: var(--ink-soft);
+    font-size: 12px;
+    padding: 5px 9px;
+    border-radius: 3px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .chip:hover { border-color: var(--accent); }
+  .chip.active {
+    background: var(--accent-tint);
+    border-color: var(--accent);
+    color: var(--accent-on-tint);
+    font-weight: 600;
+  }
+
+  .results { padding: 20px 24px 60px; min-width: 0; }
+  .results-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .results-count { font-size: 13px; color: var(--ink-soft); }
+  .results-count b { color: var(--ink); }
+  .sortline { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ink-soft); }
+  .sortline select { width: auto; }
+
+  .list { display: flex; flex-direction: column; gap: 10px; }
+
+  .card {
+    background: var(--bg-raised);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--state-unverified);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .card.state-open { border-left-color: var(--state-open); }
+  .card.state-soon { border-left-color: var(--state-soon); }
+  .card.state-closed { border-left-color: var(--state-closed); opacity: 0.6; }
+  .card.ineligible { opacity: 0.55; }
+
+  .card-head {
+    padding: 14px 16px;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+    align-items: start;
+  }
+  .card-head:hover { background: var(--bg-sunken); }
+
+  .route-line {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    letter-spacing: 0.03em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+    margin-bottom: 5px;
+  }
+  .route-code {
+    background: var(--bg-sunken);
+    padding: 2px 6px;
+    border-radius: 2px;
+    color: var(--ink-soft);
+  }
+  .card h3 {
+    font-family: var(--font-display);
+    font-size: 18px;
+    margin: 0 0 2px;
+    font-weight: 700;
+    text-wrap: balance;
+  }
+  .org { font-size: 12.5px; color: var(--ink-faint); }
+
+  .data-block { text-align: right; white-space: nowrap; }
+  .deadline-pill {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 2px;
+    font-weight: 600;
+  }
+  .deadline-pill.state-open { background: var(--state-open-tint); color: var(--state-open); }
+  .deadline-pill.state-soon { background: var(--state-soon-tint); color: var(--state-soon); }
+  .deadline-pill.state-closed { background: var(--state-closed-tint); color: var(--state-closed); }
+  .comp-line { font-size: 13px; margin-top: 6px; font-family: var(--font-mono); }
+
+  .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .badge {
+    font-size: 11px;
+    padding: 3px 7px;
+    border-radius: 2px;
+    border: 1px solid var(--border);
+    color: var(--ink-soft);
+    background: var(--bg-sunken);
+  }
+  .badge.eligible { background: var(--state-open-tint); color: var(--state-open); border-color: transparent; }
+  .badge.not-eligible { background: var(--state-closed-tint); color: var(--state-closed); border-color: transparent; }
+  .badge.unverified { background: var(--state-unverified-tint); color: var(--state-unverified); border-color: transparent; }
+  .badge.priority { background: var(--accent-tint); color: var(--accent-on-tint); border-color: transparent; }
+
+  .detail {
+    border-top: 1px dashed var(--border);
+    padding: 16px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 20px;
+  }
+  @media (max-width: 640px) { .detail { grid-template-columns: 1fr; } }
+  .detail p { margin: 0 0 10px; }
+  .detail dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 5px 12px; font-size: 12.5px; }
+  .detail dt { color: var(--ink-faint); }
+  .detail dd { margin: 0; color: var(--ink); }
+  .detail .note {
+    background: var(--bg-sunken);
+    padding: 8px 10px;
+    border-radius: 3px;
+    font-size: 12.5px;
+    margin-top: 10px;
+  }
+  .apply-btn {
+    display: inline-block;
+    margin-top: 12px;
+    background: var(--accent);
+    color: var(--accent-ink);
+    border: none;
+    padding: 8px 14px;
+    border-radius: 3px;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .empty-state {
+    padding: 60px 20px;
+    text-align: center;
+    color: var(--ink-faint);
+    font-size: 14px;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .card { transition: opacity 120ms ease; }
+  }
+</style>
+
+<div class="masthead">
+  <div>
+    <h1>Wayfarer</h1>
+    <div class="tagline">Paid travel for the post-university career — conferences, fellowships, work stays and contests, weighted toward the routes other boards skip.</div>
+  </div>
+  <div class="masthead-stats">
+    <div class="stat"><b id="stat-total" class="tabular">—</b><span>Listed</span></div>
+    <div class="stat"><b id="stat-eligible" class="tabular">—</b><span>You qualify</span></div>
+    <div class="stat"><b id="stat-soon" class="tabular">—</b><span>Closing ≤7d</span></div>
+  </div>
+</div>
+
+<div class="layout">
+  <aside class="filters">
+    <div class="filter-group">
+      <h2>Your profile</h2>
+      <div class="field">
+        <label for="f-nationality">Nationality</label>
+        <select id="f-nationality"></select>
+      </div>
+      <div class="field">
+        <label for="f-residence">Current residence</label>
+        <select id="f-residence"></select>
+      </div>
+      <div class="field">
+        <label for="f-age">Age</label>
+        <input type="number" id="f-age" min="18" max="90" value="27" />
+      </div>
+      <div class="field">
+        <label for="f-education">Education level</label>
+        <select id="f-education"></select>
+      </div>
+      <div class="field">
+        <label for="f-career">Career stage</label>
+        <select id="f-career"></select>
+      </div>
+      <div class="field">
+        <label for="f-employment">Employment status</label>
+        <select id="f-employment"></select>
+      </div>
+      <div class="field">
+        <label for="f-english">English proficiency</label>
+        <select id="f-english"></select>
+      </div>
+      <label class="checkline"><input type="checkbox" id="f-disability" /> I have an accessibility need</label>
+      <label class="checkline"><input type="checkbox" id="f-eligible-only" checked /> Show only what I qualify for</label>
+    </div>
+
+    <div class="filter-group">
+      <h2>Search</h2>
+      <div class="field">
+        <input type="text" id="f-search" placeholder="Search title, org, country…" />
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <h2>Opportunity type</h2>
+      <div class="chip-row" id="f-types"></div>
+    </div>
+
+    <div class="filter-group">
+      <h2>Destination</h2>
+      <div class="chip-row" id="f-region"></div>
+    </div>
+
+    <div class="filter-group">
+      <h2>Compensation</h2>
+      <div class="field">
+        <select id="f-compensation"></select>
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <h2>Deadline</h2>
+      <div class="field">
+        <select id="f-urgency">
+          <option value="all">All open listings</option>
+          <option value="soon">Closing within 7 days</option>
+          <option value="month">Closing within 30 days</option>
+          <option value="later">Open longer than 30 days</option>
+        </select>
+      </div>
+      <label class="checkline"><input type="checkbox" id="f-show-closed" /> Include closed listings</label>
+    </div>
+  </aside>
+
+  <main class="results">
+    <div class="results-toolbar">
+      <div class="results-count"><b id="visible-count" class="tabular">0</b> opportunities match</div>
+      <div class="sortline">
+        <label for="f-sort">Sort</label>
+        <select id="f-sort">
+          <option value="deadline">Deadline — soonest first</option>
+          <option value="stipend">Stipend — highest first</option>
+          <option value="newest">Recently added</option>
+        </select>
+      </div>
+    </div>
+    <div class="list" id="list"></div>
+  </main>
+</div>
+
+<script>
+(function () {
+  const COUNTRIES = {
+    KZ: { name: "Kazakhstan", nonConventional: true },
+    GH: { name: "Ghana", nonConventional: true },
+    AE: { name: "United Arab Emirates", nonConventional: false, gulf: true },
+    MN: { name: "Mongolia", nonConventional: true },
+    FJ: { name: "Fiji", nonConventional: true },
+    DE: { name: "Germany", nonConventional: false },
+    UZ: { name: "Uzbekistan", nonConventional: true },
+    KE: { name: "Kenya", nonConventional: true },
+    AR: { name: "Argentina", nonConventional: true },
+    KR: { name: "South Korea", nonConventional: false },
+    RW: { name: "Rwanda", nonConventional: true },
+    KG: { name: "Kyrgyzstan", nonConventional: true },
+    CL: { name: "Chile", nonConventional: true },
+    GB: { name: "United Kingdom", nonConventional: false },
+    BO: { name: "Bolivia", nonConventional: true },
+    US: { name: "United States", nonConventional: false },
+    FR: { name: "France", nonConventional: false },
+    CA: { name: "Canada", nonConventional: false },
+    AU: { name: "Australia", nonConventional: false },
+    IN: { name: "India", nonConventional: false },
+    NG: { name: "Nigeria", nonConventional: true },
+    BR: { name: "Brazil", nonConventional: false },
+    MX: { name: "Mexico", nonConventional: false },
+    PH: { name: "Philippines", nonConventional: true },
+    PK: { name: "Pakistan", nonConventional: true },
+    EG: { name: "Egypt", nonConventional: true },
+    VN: { name: "Vietnam", nonConventional: true },
+  };
+
+  const EDUCATION_LEVELS = [
+    ["bachelors_completed", "Bachelor's completed"],
+    ["masters_in_progress", "Master's in progress"],
+    ["masters_completed", "Master's completed"],
+    ["phd_in_progress", "PhD in progress"],
+    ["phd_completed", "PhD completed"],
+    ["professional_degree", "Professional degree"],
+    ["no_formal_degree", "No formal degree"],
+  ];
+  const CAREER_STAGES = [
+    ["grad_student", "Grad student"],
+    ["recent_grad", "Recent graduate"],
+    ["early_career", "Early career"],
+    ["mid_career", "Mid career"],
+    ["senior_career", "Senior career"],
+    ["career_changer", "Career changer"],
+  ];
+  const EMPLOYMENT = [
+    ["unemployed", "Unemployed"],
+    ["employed_full_time", "Employed full-time"],
+    ["employed_part_time", "Employed part-time"],
+    ["self_employed", "Self-employed"],
+    ["between_jobs", "Between jobs"],
+    ["student", "Student"],
+  ];
+  const ENGLISH = [["b1", "B1"], ["b2", "B2"], ["c1", "C1"], ["c2", "C2"], ["native_or_fluent", "Native / fluent"]];
+  const TYPES = [
+    ["conference", "Conference"],
+    ["contest_competition", "Contest"],
+    ["scholarship_fellowship", "Scholarship"],
+    ["internship", "Internship"],
+    ["work_study_exchange", "Work-study"],
+    ["research_residency", "Research residency"],
+    ["volunteer_travel_stipend", "Volunteer travel"],
+    ["work_stay", "Work stay"],
+  ];
+  const CAREER_RANK = { grad_student: 0, recent_grad: 1, early_career: 2, career_changer: 2, mid_career: 3, senior_career: 4 };
+  const ENGLISH_RANK = { b1: 0, b2: 1, c1: 2, c2: 3, native_or_fluent: 4 };
+
+  // deadlines are anchored around "today" in-session so urgency states demo correctly
+  const OPPS = [
+    {
+      id: "kz-climate", title: "Central Asia Youth Climate Fellowship", org: "Steppe Climate Alliance",
+      type: "scholarship_fellowship", dest: "KZ", deadline: "2026-07-16",
+      compType: "cash_and_in_kind", flight: true, lodging: true, meals: false, stipendMin: 1200, stipendMax: 1800, currency: "USD",
+      minAge: 21, maxAge: 35, education: ["masters_in_progress", "masters_completed"], career: ["grad_student", "recent_grad"],
+      employment: [], english: "b2", gradOnly: false, nationality: { type: null, list: [] },
+      softTags: ["Non-conventional destination"], effortMin: 120, effortLabel: "High — essay + 2 references",
+      verification: "official_source", duration: "one_to_two_weeks",
+      desc: "Two-week policy fellowship pairing early-career climate researchers with Central Asian ministries on adaptation planning.",
+    },
+    {
+      id: "gh-energy", title: "West Africa Renewable Energy Conference", org: "Accra Energy Forum",
+      type: "conference", dest: "GH", deadline: "2026-08-10",
+      compType: "in_kind_only", flight: true, lodging: true, meals: true, stipendMin: null, stipendMax: null, currency: null,
+      minAge: 18, maxAge: null, education: [], career: ["early_career", "mid_career"],
+      employment: [], english: "b2", gradOnly: false, nationality: { type: null, list: [] },
+      softTags: ["Non-conventional destination"], effortMin: 45, effortLabel: "Moderate — form + CV",
+      verification: "official_source", duration: "weekend",
+      desc: "Three-day delegate pass to West Africa's largest renewable energy and grid policy conference.",
+    },
+    {
+      id: "ae-gulf", title: "Gulf Innovation Summit — Speaker Track", org: "Abu Dhabi Future Council",
+      type: "conference", dest: "AE", deadline: "2026-07-20",
+      compType: "cash_and_in_kind", flight: true, lodging: true, meals: true, stipendMin: 5000, stipendMax: 8000, currency: "AED",
+      minAge: 25, maxAge: null, education: [], career: ["mid_career", "senior_career"],
+      employment: [], english: "c1", gradOnly: false, nationality: { type: null, list: [] },
+      softTags: ["Gulf-funded"], effortMin: 90, effortLabel: "High — speaking proposal",
+      verification: "official_source", duration: "single_day",
+      desc: "Paid speaking slot at a state-backed innovation summit; honorarium disbursed in AED.",
+    },
+    {
+      id: "mn-steppe", title: "Mongolia Steppe Research Residency", org: "Ulaanbaatar Institute of Ecology",
+      type: "research_residency", dest: "MN", deadline: "2026-09-01",
+      compType: "cash_and_in_kind", flight: true, lodging: true, meals: true, stipendMin: 2000, stipendMax: 2000, currency: "USD",
+      minAge: 22, maxAge: null, education: ["phd_in_progress", "phd_completed"], career: ["grad_student", "early_career"],
+      employment: [], english: "b2", gradOnly: true, nationality: { type: "include", list: ["KZ", "UZ", "KG", "MN", "IN"] },
+      softTags: ["Non-conventional destination", "Disability-friendly"], effortMin: 180, effortLabel: "Extensive — multi-stage review",
+      verification: "official_source", duration: "one_to_three_months",
+      desc: "Monthly stipend for grassland ecology fieldwork; regional priority given to nearby nationalities.",
+    },
+    {
+      id: "fj-ocean", title: "Pacific Islands Ocean Policy Internship", org: "Suva Marine Policy Unit",
+      type: "internship", dest: "FJ", deadline: "2026-07-18",
+      compType: "cash", flight: false, lodging: false, meals: false, stipendMin: 800, stipendMax: 800, currency: "USD",
+      minAge: 21, maxAge: 30, education: ["bachelors_completed"], career: ["recent_grad", "early_career"],
+      employment: [], english: "b2", gradOnly: false, nationality: { type: "exclude", list: ["US", "GB", "DE", "FR", "CA", "AU"] },
+      softTags: ["Non-conventional destination", "Women in tech priority"], effortMin: 45, effortLabel: "Moderate — form + CV",
+      verification: "aggregator_verified", duration: "one_to_three_months",
+      desc: "Monthly stipend internship on fisheries and ocean-policy research; priority for regional applicants.",
+    },
+    {
+      id: "de-fintech", title: "Berlin Fintech Hackathon", org: "Berlin Builders Guild",
+      type: "contest_competition", dest: "DE", deadline: "2026-07-25",
+      compType: "cash_and_in_kind", flight: true, lodging: true, meals: false, stipendMin: 1000, stipendMax: 3000, currency: "EUR",
+      minAge: 18, maxAge: null, education: [], career: ["early_career", "mid_career"],
+      employment: [], english: "b2", gradOnly: false, nationality: { type: null, list: [] },
+      softTags: [], effortMin: 15, effortLabel: "Quick — sign-up only",
+      verification: "official_source", duration: "weekend",
+      desc: "48-hour hackathon with cash prizes; flight and lodging covered for finalist teams.",
+    },
+    {
+      id: "uz-heritage", title: "Uzbekistan Silk Road Heritage Fellowship", org: "Samarkand Heritage Trust",
+      type: "scholarship_fellowship", dest: "UZ", deadline: "2026-10-05",
+      compType: "in_kind_only", flight: true, lodging: true, meals: false, stipendMin: null, stipendMax: null, currency: null,
+      minAge: 18, maxAge: null, education: [], career: [], employment: [], english: "b1", gradOnly: false,
+      nationality: { type: null, list: [] }, softTags: ["Non-conventional destination"], effortMin: 45, effortLabel: "Moderate — form + CV",
+      verification: "official_source", duration: "one_to_two_weeks",
+      desc: "Documentation fellowship on Silk Road heritage sites; open to all backgrounds and disciplines.",
+    },
+    {
+      id: "ke-impact", title: "Nairobi Impact Work-Study Exchange", org: "East Africa Impact Collective",
+      type: "work_study_exchange", dest: "KE", deadline: "2026-08-15",
+      compType: "cash_and_in_kind", flight: false, lodging: true, meals: false, stipendMin: 600, stipendMax: 900, currency: "USD",
+      minAge: 22, maxAge: null, education: ["masters_in_progress", "masters_completed", "phd_in_progress"], career: ["grad_student"],
+      employment: [], english: "b2", gradOnly: true, nationality: { type: null, list: [] },
+      softTags: ["Non-conventional destination"], effortMin: 90, effortLabel: "High — essay + 2 references",
+      verification: "official_source", duration: "one_to_three_months",
+      desc: "Graduate-only exchange placing researchers inside Nairobi social-impact startups for a semester.",
+    },
+    {
+      id: "ar-patagonia", title: "Patagonia Trail Work Stay", org: "El Chaltén Trail Cooperative",
+      type: "work_stay", dest: "AR", deadline: "2026-12-01",
+      compType: "in_kind_only", flight: false, lodging: true, meals: true, stipendMin: null, stipendMax: null, currency: null,
+      minAge: 18, maxAge: null, education: [], career: [], employment: [], english: "b1", gradOnly: false,
+      nationality: { type: null, list: [] }, softTags: ["Non-conventional destination"], effortMin: 10, effortLabel: "Quick — sign-up only",
+      verification: "user_submitted_unverified", duration: "one_to_three_months",
+      desc: "Trail maintenance in exchange for lodging and meals; rolling admission, no cash stipend.",
+    },
+    {
+      id: "kr-brand", title: "Seoul Semiconductor Brand Ambassador Contest", org: "Hanview Electronics",
+      type: "contest_competition", dest: "KR", deadline: "2026-07-14",
+      compType: "cash_and_in_kind", flight: true, lodging: false, meals: false, stipendMin: 2500, stipendMax: 2500, currency: "USD",
+      minAge: 18, maxAge: 34, education: [], career: ["early_career"], employment: [], english: "b2", gradOnly: false,
+      nationality: { type: null, list: [] }, softTags: [], effortMin: 20, effortLabel: "Quick — sign-up only",
+      verification: "official_source", duration: "single_day",
+      desc: "Social-content contest with a flown-in finale event and cash prize for the winning ambassador.",
+    },
+    {
+      id: "ae-fellows", title: "UAE Government Fellows Program", org: "Ministry of Future Talent, UAE",
+      type: "scholarship_fellowship", dest: "AE", deadline: "2026-07-13",
+      compType: "cash_and_in_kind", flight: true, lodging: true, meals: false, stipendMin: 10000, stipendMax: 10000, currency: "AED",
+      minAge: 28, maxAge: null, education: ["masters_completed", "phd_completed", "professional_degree"], career: ["mid_career", "senior_career"],
+      employment: [], english: "c1", gradOnly: false, nationality: { type: null, list: [] },
+      softTags: ["Gulf-funded"], effortMin: 240, effortLabel: "Extensive — multi-stage review",
+      verification: "official_source", duration: "semester_or_longer",
+      requiresWorkVisa: true,
+      visaNote: "Stipend disbursement requires a UAE work permit sponsored by the ministry; processing adds 4–6 weeks before start date.",
+      desc: "One-year government fellowship placing senior professionals inside UAE ministries on strategic projects.",
+    },
+    {
+      id: "rw-women", title: "Global South Women in Tech Conference", org: "Kigali Tech Women Network",
+      type: "conference", dest: "RW", deadline: "2026-08-20",
+      compType: "cash_and_in_kind", flight: true, lodging: true, meals: true, stipendMin: 300, stipendMax: 300, currency: "USD",
+      minAge: 18, maxAge: null, education: [], career: ["recent_grad", "early_career"], employment: [], english: "b2", gradOnly: false,
+      nationality: { type: "exclude", list: ["US", "GB", "DE", "FR", "CA", "AU"] },
+      softTags: ["Non-conventional destination", "Women in tech priority"], effortMin: 30, effortLabel: "Quick — sign-up only",
+      verification: "official_source", duration: "weekend",
+      desc: "Delegate conference for women technologists across the Global South, with a small incidentals stipend.",
+    },
+    {
+      id: "kg-nomad", title: "Bishkek Digital Nomad Work-Study", org: "Kyrgyz Tech Hub",
+      type: "work_study_exchange", dest: "KG", deadline: "2026-07-22",
+      compType: "cash_and_in_kind", flight: false, lodging: true, meals: false, stipendMin: 400, stipendMax: 400, currency: "USD",
+      minAge: 22, maxAge: null, education: [], career: ["career_changer", "mid_career"], employment: [], english: "b1", gradOnly: false,
+      nationality: { type: null, list: [] }, softTags: ["Non-conventional destination"], effortMin: 45, effortLabel: "Moderate — form + CV",
+      verification: "user_submitted_unverified", duration: "one_to_three_months",
+      desc: "Remote-work coliving stipend for career changers relocating to Bishkek's tech hub for a season.",
+    },
+    {
+      id: "cl-antarctica", title: "Antarctica Gateway Research Support Program", org: "Punta Arenas Polar Institute",
+      type: "research_residency", dest: "CL", deadline: "2026-11-15",
+      compType: "cash_and_in_kind", flight: true, lodging: true, meals: true, stipendMin: 3000, stipendMax: 3000, currency: "USD",
+      minAge: 23, maxAge: null, education: ["phd_in_progress", "phd_completed"], career: ["grad_student", "early_career"],
+      employment: [], english: "b2", gradOnly: true, nationality: { type: null, list: [] },
+      softTags: ["Non-conventional destination"], effortMin: 240, effortLabel: "Extensive — multi-stage review",
+      verification: "official_source", duration: "one_to_three_months",
+      desc: "Logistics-support residency for polar researchers staging through the Antarctic gateway city.",
+    },
+    {
+      id: "gb-policy", title: "London Global Policy Fellowship", org: "Westminster Policy Institute",
+      type: "scholarship_fellowship", dest: "GB", deadline: "2026-07-13",
+      compType: "cash_and_in_kind", flight: true, lodging: true, meals: false, stipendMin: 2500, stipendMax: 2500, currency: "EUR",
+      minAge: 30, maxAge: null, education: ["masters_completed", "phd_completed"], career: ["mid_career", "senior_career"],
+      employment: [], english: "c2", gradOnly: false, nationality: { type: null, list: [] },
+      softTags: [], effortMin: 150, effortLabel: "High — essay + 2 references",
+      verification: "official_source", duration: "one_to_two_weeks",
+      desc: "Fully funded policy fellowship for senior professionals transitioning into public affairs.",
+    },
+    {
+      id: "bo-teaching", title: "Andean Highlands Teaching Fellowship", org: "La Paz Education Partners",
+      type: "scholarship_fellowship", dest: "BO", deadline: "2026-06-20",
+      compType: "cash_and_in_kind", flight: true, lodging: true, meals: false, stipendMin: 500, stipendMax: 500, currency: "USD",
+      minAge: 21, maxAge: null, education: ["bachelors_completed"], career: ["recent_grad"], employment: [], english: "b2", gradOnly: false,
+      nationality: { type: null, list: [] }, softTags: ["Non-conventional destination"], effortMin: 60, effortLabel: "Moderate — form + CV",
+      verification: "aggregator_verified", duration: "semester_or_longer",
+      desc: "One-semester teaching placement in Andean highland schools; this round has closed.",
+    },
+  ];
+
+  function fill(select, pairs, withAll) {
+    const opts = withAll ? [["all", "All"]].concat(pairs) : pairs;
+    select.innerHTML = opts.map(([v, l]) => `<option value="${v}">${l}</option>`).join("");
+  }
+
+  const countryPairs = Object.keys(COUNTRIES).sort((a, b) => COUNTRIES[a].name.localeCompare(COUNTRIES[b].name))
+    .map((c) => [c, `${COUNTRIES[c].name} (${c})`]);
+
+  fill(document.getElementById("f-nationality"), countryPairs, true);
+  fill(document.getElementById("f-residence"), countryPairs, true);
+  // profile identity fields describe who the user is, so unlike browse filters
+  // they get a real default rather than an "All" placeholder
+  fill(document.getElementById("f-education"), EDUCATION_LEVELS, false);
+  fill(document.getElementById("f-career"), CAREER_STAGES, false);
+  fill(document.getElementById("f-employment"), EMPLOYMENT, false);
+  fill(document.getElementById("f-english"), ENGLISH, false);
+  document.getElementById("f-education").value = "masters_completed";
+  document.getElementById("f-career").value = "recent_grad";
+  document.getElementById("f-employment").value = "unemployed";
+  document.getElementById("f-english").value = "c1";
+  fill(document.getElementById("f-compensation"), [
+    ["cash", "Cash included"], ["in_kind_only", "In-kind only (no cash)"], ["cash_and_in_kind", "Cash + in-kind"],
+  ], true);
+
+  const typeBox = document.getElementById("f-types");
+  TYPES.forEach(([v, l]) => {
+    const chip = document.createElement("div");
+    chip.className = "chip"; chip.dataset.value = v; chip.textContent = l;
+    chip.addEventListener("click", () => { chip.classList.toggle("active"); render(); });
+    typeBox.appendChild(chip);
+  });
+
+  const regionBox = document.getElementById("f-region");
+  [["all", "All destinations"], ["nonconventional", "Non-conventional only"], ["conventional", "Conventional only"]].forEach(([v, l], i) => {
+    const chip = document.createElement("div");
+    chip.className = "chip" + (i === 0 ? " active" : ""); chip.dataset.value = v; chip.textContent = l;
+    chip.addEventListener("click", () => {
+      [...regionBox.children].forEach((c) => c.classList.remove("active"));
+      chip.classList.add("active"); render();
+    });
+    regionBox.appendChild(chip);
+  });
+
+  function urgency(deadline) {
+    const days = (new Date(deadline) - new Date(new Date().toDateString())) / 86400000;
+    if (days < 0) return "closed";
+    if (days <= 7) return "soon";
+    if (days <= 30) return "month";
+    return "open";
+  }
+  function urgencyClass(u) { return u === "closed" ? "state-closed" : u === "soon" ? "state-soon" : "state-open"; }
+  function urgencyLabel(deadline, u) {
+    const d = new Date(deadline);
+    const nice = d.toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" });
+    if (u === "closed") return `Closed ${nice}`;
+    if (u === "soon") return `Closes ${nice} · soon`;
+    return `Closes ${nice}`;
+  }
+
+  function eligibility(o, profile) {
+    const reasons = [];
+    if (profile.age < o.minAge || (o.maxAge && profile.age > o.maxAge)) reasons.push("age");
+    if (o.gradOnly && profile.career !== "grad_student" && !["masters_in_progress", "phd_in_progress"].includes(profile.education)) {
+      reasons.push("grad-student only");
+    }
+    if (o.education.length && !o.education.includes(profile.education)) reasons.push("education level");
+    if (o.career.length && !o.career.includes(profile.career)) reasons.push("career stage");
+    if (o.employment.length && !o.employment.includes(profile.employment)) reasons.push("employment status");
+    if (ENGLISH_RANK[profile.english] < ENGLISH_RANK[o.english]) reasons.push("English level");
+    // include list = whitelist; exclude list always subtracts, regardless of include rows
+    if (o.nationality.type === "include" && !o.nationality.list.includes(profile.nationality)) reasons.push("nationality restricted");
+    if (o.nationality.type === "exclude" && o.nationality.list.includes(profile.nationality)) reasons.push("nationality restricted");
+    return { eligible: reasons.length === 0, reasons };
+  }
+
+  function compLine(o) {
+    const parts = [];
+    if (o.stipendMin) {
+      parts.push(o.stipendMin === o.stipendMax ? `${o.currency} ${o.stipendMin.toLocaleString()}` : `${o.currency} ${o.stipendMin.toLocaleString()}–${o.stipendMax.toLocaleString()}`);
+    }
+    const covered = [o.flight && "flight", o.lodging && "lodging", o.meals && "meals"].filter(Boolean);
+    if (covered.length) parts.push(covered.join(" + ") + " covered");
+    return parts.join(" · ") || "In-kind only";
+  }
+
+  function readProfile() {
+    return {
+      nationality: document.getElementById("f-nationality").value,
+      residence: document.getElementById("f-residence").value,
+      age: parseInt(document.getElementById("f-age").value, 10) || 0,
+      education: document.getElementById("f-education").value,
+      career: document.getElementById("f-career").value,
+      employment: document.getElementById("f-employment").value,
+      english: document.getElementById("f-english").value,
+      disability: document.getElementById("f-disability").checked,
+    };
+  }
+
+  const list = document.getElementById("list");
+  const openIds = new Set();
+
+  function render() {
+    const profile = readProfile();
+    const eligibleOnly = document.getElementById("f-eligible-only").checked;
+    const showClosed = document.getElementById("f-show-closed").checked;
+    const search = document.getElementById("f-search").value.trim().toLowerCase();
+    const urgencyFilter = document.getElementById("f-urgency").value;
+    const compFilter = document.getElementById("f-compensation").value;
+    const regionFilter = regionBox.querySelector(".chip.active").dataset.value;
+    const activeTypes = [...typeBox.querySelectorAll(".chip.active")].map((c) => c.dataset.value);
+    const sort = document.getElementById("f-sort").value;
+
+    let rows = OPPS.map((o) => {
+      const u = urgency(o.deadline);
+      const elig = eligibility(o, profile);
+      return { o, u, elig };
+    });
+
+    rows = rows.filter(({ o, u, elig }) => {
+      if (u === "closed" && !showClosed) return false;
+      if (urgencyFilter !== "all") {
+        const matchesUrgency = urgencyFilter === "later" ? u === "open" : u === urgencyFilter;
+        if (!matchesUrgency) return false;
+      }
+      if (activeTypes.length && !activeTypes.includes(o.type)) return false;
+      if (regionFilter === "nonconventional" && !COUNTRIES[o.dest].nonConventional) return false;
+      if (regionFilter === "conventional" && COUNTRIES[o.dest].nonConventional) return false;
+      if (compFilter !== "all" && o.compType !== compFilter) return false;
+      if (eligibleOnly && !elig.eligible) return false;
+      if (search) {
+        const hay = `${o.title} ${o.org} ${COUNTRIES[o.dest].name}`.toLowerCase();
+        if (!hay.includes(search)) return false;
+      }
+      return true;
+    });
+
+    rows.sort((a, b) => {
+      if (sort === "stipend") return (b.o.stipendMax || 0) - (a.o.stipendMax || 0);
+      if (sort === "newest") return OPPS.indexOf(b.o) - OPPS.indexOf(a.o);
+      return new Date(a.o.deadline) - new Date(b.o.deadline);
+    });
+
+    document.getElementById("visible-count").textContent = rows.length;
+    document.getElementById("stat-total").textContent = OPPS.length;
+    document.getElementById("stat-eligible").textContent = OPPS.filter((o) => eligibility(o, profile).eligible).length;
+    document.getElementById("stat-soon").textContent = OPPS.filter((o) => urgency(o.deadline) === "soon").length;
+
+    if (!rows.length) {
+      list.innerHTML = `<div class="empty-state">No opportunities match these filters yet. Try widening age, career stage, or destination.</div>`;
+      return;
+    }
+
+    list.innerHTML = rows.map(({ o, u, elig }) => {
+      const isOpen = openIds.has(o.id);
+      const country = COUNTRIES[o.dest];
+      const tags = o.softTags.map((t) => `<span class="badge priority">${t}</span>`).join("");
+      const eligBadge = elig.eligible
+        ? `<span class="badge eligible">Eligible</span>`
+        : `<span class="badge not-eligible">Not eligible: ${elig.reasons.join(", ")}</span>`;
+      const verifBadge = o.verification === "user_submitted_unverified"
+        ? `<span class="badge unverified">Unverified — user submitted</span>`
+        : o.verification === "aggregator_verified"
+        ? `<span class="badge">Aggregator verified</span>`
+        : `<span class="badge">Official source</span>`;
+
+      const detail = isOpen ? `
+        <div class="detail">
+          <div>
+            <p>${o.desc}</p>
+            ${o.visaNote ? `<div class="note"><strong>Payment/visa note:</strong> ${o.visaNote}</div>` : ""}
+            <a class="apply-btn" href="#" onclick="return false;">View source (demo)</a>
+          </div>
+          <dl>
+            <dt>Destination</dt><dd>${country.name} (${o.dest})${country.nonConventional ? " · non-conventional" : ""}</dd>
+            <dt>Duration</dt><dd>${o.duration.replaceAll("_", " ")}</dd>
+            <dt>Minimum age</dt><dd>${o.minAge}${o.maxAge ? ` – ${o.maxAge}` : "+"}</dd>
+            <dt>Education</dt><dd>${o.education.length ? o.education.map((e) => e.replaceAll("_", " ")).join(", ") : "Open to all levels"}</dd>
+            <dt>Career stage</dt><dd>${o.career.length ? o.career.map((c) => c.replaceAll("_", " ")).join(", ") : "Open to all stages"}</dd>
+            <dt>English required</dt><dd>${o.english.toUpperCase()}</dd>
+            <dt>Nationality</dt><dd>${o.nationality.type ? `${o.nationality.type === "include" ? "Priority" : "Excludes"}: ${o.nationality.list.join(", ")}` : "Open to all nationalities"}</dd>
+            <dt>Application effort</dt><dd>${o.effortLabel} (~${o.effortMin} min)</dd>
+          </dl>
+        </div>` : "";
+
+      return `
+        <article class="card ${urgencyClass(u)} ${eligibleOnly ? "" : elig.eligible ? "" : "ineligible"}" data-id="${o.id}">
+          <div class="card-head" role="button" tabindex="0">
+            <div>
+              <div class="route-line">
+                <span class="route-code">${o.dest}</span>
+                <span>${country.name}</span>
+                <span>·</span>
+                <span>${TYPES.find((t) => t[0] === o.type)[1]}</span>
+              </div>
+              <h3>${o.title}</h3>
+              <div class="org">${o.org}</div>
+              <div class="badge-row">${eligBadge}${verifBadge}${tags}<span class="badge">~${o.effortMin} min application</span></div>
+            </div>
+            <div class="data-block">
+              <span class="deadline-pill ${urgencyClass(u)}">${urgencyLabel(o.deadline, u)}</span>
+              <div class="comp-line tabular">${compLine(o)}</div>
+            </div>
+          </div>
+          ${detail}
+        </article>`;
+    }).join("");
+
+    list.querySelectorAll(".card-head").forEach((head) => {
+      head.addEventListener("click", () => {
+        const id = head.parentElement.dataset.id;
+        if (openIds.has(id)) openIds.delete(id); else openIds.add(id);
+        render();
+      });
+      head.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); head.click(); }
+      });
+    });
+  }
+
+  ["f-nationality", "f-residence", "f-age", "f-education", "f-career", "f-employment", "f-english",
+   "f-disability", "f-eligible-only", "f-search", "f-compensation", "f-urgency", "f-show-closed", "f-sort"
+  ].forEach((id) => {
+    const el = document.getElementById(id);
+    el.addEventListener("input", render);
+    el.addEventListener("change", render);
+  });
+
+  render();
+})();
+</script>
