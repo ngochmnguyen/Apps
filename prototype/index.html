@@ -217,6 +217,60 @@
   }
   .feature-card p { margin: 0; font-size: 14.5px; color: var(--ink-soft); }
 
+  .hot-section { margin-top: 56px; }
+  .hot-section-head {
+    display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 16px; flex-wrap: wrap;
+  }
+  .hot-section-head h2 { font-size: 22px; }
+  .hot-section-head p { margin: 0; font-size: 13.5px; color: var(--ink-faint); }
+  .hot-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  @media (max-width: 760px) { .hot-row { grid-template-columns: 1fr; } }
+  .hot-card {
+    background: var(--bg-raised);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 16px 18px;
+    text-align: left;
+    cursor: pointer;
+    font-family: inherit;
+    color: inherit;
+    display: block;
+    width: 100%;
+  }
+  .hot-card:hover { border-color: var(--papaya); }
+  .hot-card .hot-tag {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 11px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase;
+    color: var(--papaya-ink); background: var(--papaya-tint);
+    padding: 3px 9px; border-radius: var(--radius-pill); margin-bottom: 10px;
+  }
+  .hot-card h3 { font-size: 16.5px; margin-bottom: 4px; }
+  .hot-card .hot-place { font-size: 12.5px; color: var(--ink-faint); margin-bottom: 8px; }
+  .hot-card .hot-comp { font-family: var(--font-mono); font-size: 13px; color: var(--ink-soft); }
+  .hot-card .hot-deadline {
+    display: inline-block; margin-top: 8px; font-family: var(--font-mono); font-size: 11px;
+    padding: 3px 9px; border-radius: var(--radius-pill); font-weight: 700;
+  }
+
+  /* ---------- Map view ---------- */
+  .view-toggle-row { display: flex; gap: 6px; }
+  .map-card {
+    background: var(--bg-raised);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 18px;
+  }
+  #map-canvas { width: 100%; height: 420px; display: block; cursor: pointer; }
+  .map-legend {
+    display: flex; gap: 18px; flex-wrap: wrap; font-size: 12px; color: var(--ink-faint);
+    margin-top: 10px; align-items: center;
+  }
+  .map-legend .legend-item { display: flex; align-items: center; gap: 6px; }
+  .map-legend .dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+  #map-detail { margin-top: 14px; }
+  #map-detail .empty-state { padding: 30px 10px; }
+  .distance-hint { font-size: 12px; color: var(--ink-faint); margin: -4px 0 10px; }
+
   /* ---------- Wizard ---------- */
   .wizard-wrap {
     min-height: 100vh;
@@ -366,6 +420,7 @@
   .sortline select { width: auto; }
 
   .list { display: flex; flex-direction: column; gap: 12px; }
+  .list[hidden] { display: none; }
 
   .card {
     background: var(--bg-raised);
@@ -485,6 +540,14 @@
         <div class="fc-mark">✈ Bishkek</div>
         <p>Kazakhstan, Fiji, Rwanda, Mongolia — not just Berlin and London. The routes other boards don't bother listing.</p>
       </div>
+    </div>
+
+    <div class="hot-section">
+      <div class="hot-section-head">
+        <h2>🔥 Hottest right now</h2>
+        <p>Ranked by closing soonest, then by payout</p>
+      </div>
+      <div class="hot-row" id="hot-picks-list"></div>
     </div>
   </div>
 </section>
@@ -623,55 +686,87 @@
         </div>
         <label class="checkline"><input type="checkbox" id="f-show-closed" /> Include closed listings</label>
       </div>
+
+      <div class="filter-group">
+        <h2>Distance from home</h2>
+        <div class="field">
+          <select id="f-distance">
+            <option value="any">Any distance</option>
+            <option value="3000">Within 3,000 km</option>
+            <option value="6000">Within 6,000 km</option>
+            <option value="10000">Within 10,000 km</option>
+          </select>
+        </div>
+        <p class="distance-hint" id="distance-hint" hidden>Set your residence in step 1 to filter or sort by distance.</p>
+      </div>
     </aside>
 
     <main class="results">
       <div class="results-toolbar">
         <div class="results-count"><b id="visible-count" class="tabular">0</b> opportunities match</div>
         <div class="sortline">
+          <div class="chip-row view-toggle-row" id="view-toggle">
+            <div class="chip active" data-value="list">List view</div>
+            <div class="chip" data-value="map">Map view</div>
+          </div>
           <label for="f-sort">Sort</label>
           <select id="f-sort">
             <option value="deadline">Deadline — soonest first</option>
             <option value="stipend">Stipend — highest first</option>
+            <option value="distance">Distance — closest to home</option>
             <option value="newest">Recently added</option>
           </select>
         </div>
       </div>
       <div class="list" id="list"></div>
+      <div id="map-wrap" hidden>
+        <div class="map-card">
+          <canvas id="map-canvas" width="900" height="420"></canvas>
+        </div>
+        <div class="map-legend">
+          <span class="legend-item"><span class="dot" style="background:var(--state-open)"></span> Open</span>
+          <span class="legend-item"><span class="dot" style="background:var(--state-soon)"></span> Closing ≤7d</span>
+          <span class="legend-item"><span class="dot" style="background:var(--papaya)"></span>★ Your residence</span>
+          <span>Dot size = matching opportunities at that destination</span>
+        </div>
+        <div id="map-detail"></div>
+      </div>
     </main>
   </div>
 </section>
 
 <script>
 (function () {
+  // lat/lon are country-level approximations (capital or geographic centroid) —
+  // precise enough for a "how far is this from home" gut check, not for navigation
   const COUNTRIES = {
-    KZ: { name: "Kazakhstan", nonConventional: true },
-    GH: { name: "Ghana", nonConventional: true },
-    AE: { name: "United Arab Emirates", nonConventional: false, gulf: true },
-    MN: { name: "Mongolia", nonConventional: true },
-    FJ: { name: "Fiji", nonConventional: true },
-    DE: { name: "Germany", nonConventional: false },
-    UZ: { name: "Uzbekistan", nonConventional: true },
-    KE: { name: "Kenya", nonConventional: true },
-    AR: { name: "Argentina", nonConventional: true },
-    KR: { name: "South Korea", nonConventional: false },
-    RW: { name: "Rwanda", nonConventional: true },
-    KG: { name: "Kyrgyzstan", nonConventional: true },
-    CL: { name: "Chile", nonConventional: true },
-    GB: { name: "United Kingdom", nonConventional: false },
-    BO: { name: "Bolivia", nonConventional: true },
-    US: { name: "United States", nonConventional: false },
-    FR: { name: "France", nonConventional: false },
-    CA: { name: "Canada", nonConventional: false },
-    AU: { name: "Australia", nonConventional: false },
-    IN: { name: "India", nonConventional: false },
-    NG: { name: "Nigeria", nonConventional: true },
-    BR: { name: "Brazil", nonConventional: false },
-    MX: { name: "Mexico", nonConventional: false },
-    PH: { name: "Philippines", nonConventional: true },
-    PK: { name: "Pakistan", nonConventional: true },
-    EG: { name: "Egypt", nonConventional: true },
-    VN: { name: "Vietnam", nonConventional: true },
+    KZ: { name: "Kazakhstan", nonConventional: true, lat: 51.18, lon: 71.45 },
+    GH: { name: "Ghana", nonConventional: true, lat: 5.60, lon: -0.19 },
+    AE: { name: "United Arab Emirates", nonConventional: false, gulf: true, lat: 24.45, lon: 54.38 },
+    MN: { name: "Mongolia", nonConventional: true, lat: 47.89, lon: 106.91 },
+    FJ: { name: "Fiji", nonConventional: true, lat: -18.14, lon: 178.44 },
+    DE: { name: "Germany", nonConventional: false, lat: 52.52, lon: 13.40 },
+    UZ: { name: "Uzbekistan", nonConventional: true, lat: 41.30, lon: 69.24 },
+    KE: { name: "Kenya", nonConventional: true, lat: -1.29, lon: 36.82 },
+    AR: { name: "Argentina", nonConventional: true, lat: -34.60, lon: -58.38 },
+    KR: { name: "South Korea", nonConventional: false, lat: 37.57, lon: 126.98 },
+    RW: { name: "Rwanda", nonConventional: true, lat: -1.94, lon: 30.06 },
+    KG: { name: "Kyrgyzstan", nonConventional: true, lat: 42.87, lon: 74.57 },
+    CL: { name: "Chile", nonConventional: true, lat: -33.45, lon: -70.67 },
+    GB: { name: "United Kingdom", nonConventional: false, lat: 51.51, lon: -0.13 },
+    BO: { name: "Bolivia", nonConventional: true, lat: -16.50, lon: -68.15 },
+    US: { name: "United States", nonConventional: false, lat: 39.80, lon: -98.58 },
+    FR: { name: "France", nonConventional: false, lat: 48.86, lon: 2.35 },
+    CA: { name: "Canada", nonConventional: false, lat: 56.13, lon: -106.35 },
+    AU: { name: "Australia", nonConventional: false, lat: -25.27, lon: 133.78 },
+    IN: { name: "India", nonConventional: false, lat: 22.35, lon: 78.60 },
+    NG: { name: "Nigeria", nonConventional: true, lat: 9.08, lon: 7.40 },
+    BR: { name: "Brazil", nonConventional: false, lat: -14.24, lon: -51.93 },
+    MX: { name: "Mexico", nonConventional: false, lat: 23.63, lon: -102.55 },
+    PH: { name: "Philippines", nonConventional: true, lat: 12.88, lon: 121.77 },
+    PK: { name: "Pakistan", nonConventional: true, lat: 30.38, lon: 69.35 },
+    EG: { name: "Egypt", nonConventional: true, lat: 30.04, lon: 31.24 },
+    VN: { name: "Vietnam", nonConventional: true, lat: 14.06, lon: 108.28 },
   };
 
   const EDUCATION_LEVELS = [
@@ -1012,6 +1107,25 @@
     return parts.join(" · ") || "In-kind only";
   }
 
+  function haversineKm(lat1, lon1, lat2, lon2) {
+    const R = 6371;
+    const toRad = (d) => (d * Math.PI) / 180;
+    const dLat = toRad(lat2 - lat1);
+    const dLon = toRad(lon2 - lon1);
+    const a = Math.sin(dLat / 2) ** 2 + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon / 2) ** 2;
+    return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  }
+  // null when residence is unset — distance filtering/sorting can't work without a home point
+  function distanceFromHome(o, profile) {
+    if (!profile.residence || profile.residence === "all") return null;
+    const home = COUNTRIES[profile.residence];
+    const dest = COUNTRIES[o.dest];
+    return Math.round(haversineKm(home.lat, home.lon, dest.lat, dest.lon));
+  }
+  function formatDistance(km) {
+    return km === null ? "Set your residence to see this" : `${km.toLocaleString()} km from home`;
+  }
+
   function readProfile() {
     return {
       nationality: document.getElementById("f-nationality").value,
@@ -1027,6 +1141,7 @@
 
   const list = document.getElementById("list");
   const openIds = new Set();
+  let currentResultsView = "list";
 
   function render() {
     const profile = readProfile();
@@ -1038,14 +1153,18 @@
     const regionFilter = filterState.region;
     const activeTypes = [...filterState.types];
     const sort = document.getElementById("f-sort").value;
+    const distanceFilter = document.getElementById("f-distance").value;
+    const hasHome = profile.residence !== "all";
+    document.getElementById("distance-hint").hidden = hasHome;
 
     let rows = OPPS.map((o) => {
       const u = urgency(o.deadline);
       const elig = eligibility(o, profile);
-      return { o, u, elig };
+      const distance = distanceFromHome(o, profile);
+      return { o, u, elig, distance };
     });
 
-    rows = rows.filter(({ o, u, elig }) => {
+    rows = rows.filter(({ o, u, elig, distance }) => {
       if (u === "closed" && !showClosed) return false;
       if (urgencyFilter !== "all") {
         const matchesUrgency = urgencyFilter === "later" ? u === "open" : u === urgencyFilter;
@@ -1056,6 +1175,7 @@
       if (regionFilter === "conventional" && COUNTRIES[o.dest].nonConventional) return false;
       if (compFilter !== "all" && o.compType !== compFilter) return false;
       if (eligibleOnly && !elig.eligible) return false;
+      if (distanceFilter !== "any" && hasHome && distance > parseInt(distanceFilter, 10)) return false;
       if (search) {
         const hay = `${o.title} ${o.org} ${COUNTRIES[o.dest].name}`.toLowerCase();
         if (!hay.includes(search)) return false;
@@ -1066,6 +1186,7 @@
     rows.sort((a, b) => {
       if (sort === "stipend") return (b.o.stipendMax || 0) - (a.o.stipendMax || 0);
       if (sort === "newest") return OPPS.indexOf(b.o) - OPPS.indexOf(a.o);
+      if (sort === "distance" && hasHome) return a.distance - b.distance;
       return new Date(a.o.deadline) - new Date(b.o.deadline);
     });
 
@@ -1074,12 +1195,25 @@
     document.getElementById("stat-eligible").textContent = OPPS.filter((o) => eligibility(o, profile).eligible).length;
     document.getElementById("stat-soon").textContent = OPPS.filter((o) => urgency(o.deadline) === "soon").length;
 
+    if (currentResultsView === "map") {
+      list.hidden = true;
+      document.getElementById("map-wrap").hidden = false;
+      renderMap(rows, profile);
+    } else {
+      list.hidden = false;
+      document.getElementById("map-wrap").hidden = true;
+      renderList(rows);
+    }
+  }
+
+  function renderList(rows) {
+    const eligibleOnly = document.getElementById("f-eligible-only").checked;
     if (!rows.length) {
       list.innerHTML = `<div class="empty-state">No opportunities match these filters yet. Try widening age, career stage, or destination.</div>`;
       return;
     }
 
-    list.innerHTML = rows.map(({ o, u, elig }) => {
+    list.innerHTML = rows.map(({ o, u, elig, distance }) => {
       const isOpen = openIds.has(o.id);
       const country = COUNTRIES[o.dest];
       const tags = o.softTags.map((t) => `<span class="badge priority">${t}</span>`).join("");
@@ -1108,6 +1242,7 @@
             <dt>English required</dt><dd>${o.english.toUpperCase()}</dd>
             <dt>Nationality</dt><dd>${o.nationality.type ? `${o.nationality.type === "include" ? "Priority" : "Excludes"}: ${o.nationality.list.join(", ")}` : "Open to all nationalities"}</dd>
             <dt>Application effort</dt><dd>${o.effortLabel} (~${o.effortMin} min)</dd>
+            <dt>Distance</dt><dd>${formatDistance(distance)}</dd>
           </dl>
         </div>` : "";
 
@@ -1146,12 +1281,185 @@
     });
   }
 
+  // ---------- map view ----------
+  // Rough illustrative continent silhouettes (not real coastlines) drawn as soft
+  // blobs behind the pins, purely to give the dot-plot spatial context.
+  const CONTINENT_BLOBS = [
+    { lat: 45, lon: -100, rx: 150, ry: 95 },  // North America
+    { lat: -15, lon: -60, rx: 85, ry: 130 },  // South America
+    { lat: 50, lon: 15, rx: 95, ry: 65 },     // Europe
+    { lat: 5, lon: 20, rx: 110, ry: 145 },    // Africa
+    { lat: 35, lon: 90, rx: 200, ry: 110 },   // Asia
+    { lat: -25, lon: 135, rx: 90, ry: 65 },   // Australia / Oceania
+  ];
+  const mapCanvas = document.getElementById("map-canvas");
+  const mapCtx = mapCanvas.getContext("2d");
+  let mapPins = [];
+  let mapHomePin = null;
+
+  function project(lat, lon, w, h) {
+    return { x: ((lon + 180) / 360) * w, y: ((90 - lat) / 180) * h };
+  }
+
+  function renderMap(rows, profile) {
+    const dpr = window.devicePixelRatio || 1;
+    const w = mapCanvas.clientWidth || 900, h = 420;
+    mapCanvas.width = w * dpr; mapCanvas.height = h * dpr;
+    mapCtx.setTransform(1, 0, 0, 1, 0, 0);
+    mapCtx.scale(dpr, dpr);
+
+    const styles = getComputedStyle(document.documentElement);
+    const bgSunken = styles.getPropertyValue("--bg-sunken").trim();
+    const border = styles.getPropertyValue("--border").trim();
+    const inkFaint = styles.getPropertyValue("--ink-faint").trim();
+    const ink = styles.getPropertyValue("--ink").trim();
+    const papaya = styles.getPropertyValue("--papaya").trim();
+    const stateOpen = styles.getPropertyValue("--state-open").trim();
+    const stateSoon = styles.getPropertyValue("--state-soon").trim();
+    const stateClosed = styles.getPropertyValue("--state-closed").trim();
+
+    mapCtx.clearRect(0, 0, w, h);
+
+    // graticule
+    mapCtx.strokeStyle = border;
+    mapCtx.lineWidth = 1;
+    for (let lon = -180; lon <= 180; lon += 30) {
+      const p1 = project(90, lon, w, h), p2 = project(-90, lon, w, h);
+      mapCtx.beginPath(); mapCtx.moveTo(p1.x, p1.y); mapCtx.lineTo(p2.x, p2.y); mapCtx.stroke();
+    }
+    for (let lat = -90; lat <= 90; lat += 30) {
+      const p1 = project(lat, -180, w, h), p2 = project(lat, 180, w, h);
+      mapCtx.beginPath(); mapCtx.moveTo(p1.x, p1.y); mapCtx.lineTo(p2.x, p2.y); mapCtx.stroke();
+    }
+
+    // illustrative continent blobs
+    mapCtx.fillStyle = bgSunken;
+    CONTINENT_BLOBS.forEach((c) => {
+      const p = project(c.lat, c.lon, w, h);
+      mapCtx.beginPath();
+      mapCtx.ellipse(p.x, p.y, c.rx * (w / 900), c.ry * (h / 420), 0, 0, Math.PI * 2);
+      mapCtx.fill();
+    });
+
+    // group matching rows by destination for pin sizing/coloring
+    const byDest = {};
+    rows.forEach(({ o, u }) => {
+      if (!byDest[o.dest]) byDest[o.dest] = { items: [], worst: "open" };
+      byDest[o.dest].items.push({ o, u });
+      if (u === "soon") byDest[o.dest].worst = "soon";
+      else if (u === "closed" && byDest[o.dest].worst !== "soon") byDest[o.dest].worst = "closed";
+    });
+
+    mapPins = [];
+    Object.entries(byDest).forEach(([code, group]) => {
+      const country = COUNTRIES[code];
+      const p = project(country.lat, country.lon, w, h);
+      const radius = 6 + Math.sqrt(group.items.length) * 4;
+      const color = group.worst === "soon" ? stateSoon : group.worst === "closed" ? stateClosed : stateOpen;
+      mapCtx.beginPath();
+      mapCtx.arc(p.x, p.y, radius, 0, Math.PI * 2);
+      mapCtx.fillStyle = color;
+      mapCtx.globalAlpha = 0.85;
+      mapCtx.fill();
+      mapCtx.globalAlpha = 1;
+      mapCtx.fillStyle = ink;
+      mapCtx.font = "600 11px " + getComputedStyle(document.body).fontFamily;
+      mapCtx.textAlign = "center";
+      mapCtx.fillText(code, p.x, p.y - radius - 6);
+      mapPins.push({ x: p.x, y: p.y, radius: Math.max(radius, 10), code, group });
+    });
+
+    // home marker
+    mapHomePin = null;
+    if (profile.residence !== "all") {
+      const home = COUNTRIES[profile.residence];
+      const p = project(home.lat, home.lon, w, h);
+      mapCtx.beginPath();
+      mapCtx.arc(p.x, p.y, 8, 0, Math.PI * 2);
+      mapCtx.fillStyle = papaya;
+      mapCtx.fill();
+      mapCtx.fillStyle = "#fffaf3";
+      mapCtx.font = "700 10px " + getComputedStyle(document.body).fontFamily;
+      mapCtx.textAlign = "center";
+      mapCtx.textBaseline = "middle";
+      mapCtx.fillText("★", p.x, p.y + 0.5);
+      mapCtx.textBaseline = "alphabetic";
+      mapCtx.fillStyle = inkFaint;
+      mapCtx.font = "600 11px " + getComputedStyle(document.body).fontFamily;
+      mapCtx.fillText("You", p.x, p.y - 14);
+      mapHomePin = { x: p.x, y: p.y };
+    }
+
+    renderMapDetail(null, profile);
+  }
+
+  function renderMapDetail(selectedCode, profile) {
+    const panel = document.getElementById("map-detail");
+    if (!selectedCode) {
+      panel.innerHTML = `<div class="empty-state">Click a dot on the map to see what's there.</div>`;
+      return;
+    }
+    const pin = mapPins.find((p) => p.code === selectedCode);
+    if (!pin) { panel.innerHTML = ""; return; }
+    const country = COUNTRIES[selectedCode];
+    panel.innerHTML = `
+      <div class="filter-group">
+        <h2>${country.name} (${selectedCode}) — ${pin.group.items.length} match${pin.group.items.length === 1 ? "" : "es"}</h2>
+        <div class="list">
+          ${pin.group.items.map(({ o, u }) => {
+            const distance = distanceFromHome(o, profile);
+            return `
+            <article class="card ${urgencyClass(u)}" data-id="${o.id}">
+              <div class="card-head map-jump" role="button" tabindex="0" data-id="${o.id}">
+                <div>
+                  <h3>${o.title}</h3>
+                  <div class="org">${o.org}</div>
+                  <div class="badge-row"><span class="badge">${formatDistance(distance)}</span></div>
+                </div>
+                <div class="data-block">
+                  <span class="deadline-pill ${urgencyClass(u)}">${urgencyLabel(o.deadline, u)}</span>
+                  <div class="comp-line tabular">${compLine(o)}</div>
+                </div>
+              </div>
+            </article>`;
+          }).join("")}
+        </div>
+      </div>`;
+    panel.querySelectorAll(".map-jump").forEach((head) => {
+      head.addEventListener("click", () => {
+        openIds.add(head.dataset.id);
+        currentResultsView = "list";
+        [...viewToggle.children].forEach((c) => c.classList.toggle("active", c.dataset.value === "list"));
+        render();
+        requestAnimationFrame(() => {
+          document.querySelector(`.card[data-id="${head.dataset.id}"]`)?.scrollIntoView({ block: "center" });
+        });
+      });
+    });
+  }
+
+  mapCanvas.addEventListener("click", (e) => {
+    const rect = mapCanvas.getBoundingClientRect();
+    const x = e.clientX - rect.left, y = e.clientY - rect.top;
+    const hit = mapPins.find((p) => Math.hypot(p.x - x, p.y - y) <= p.radius + 4);
+    renderMapDetail(hit ? hit.code : null, readProfile());
+  });
+
   ["f-nationality", "f-residence", "f-age", "f-education", "f-career", "f-employment", "f-english",
-   "f-disability", "f-eligible-only", "f-search", "f-urgency", "f-show-closed", "f-sort"
+   "f-disability", "f-eligible-only", "f-search", "f-urgency", "f-show-closed", "f-sort", "f-distance"
   ].forEach((id) => {
     const el = document.getElementById(id);
     el.addEventListener("input", render);
     el.addEventListener("change", render);
+  });
+
+  const viewToggle = document.getElementById("view-toggle");
+  viewToggle.addEventListener("click", (e) => {
+    const chip = e.target.closest(".chip");
+    if (!chip) return;
+    currentResultsView = chip.dataset.value;
+    [...viewToggle.children].forEach((c) => c.classList.toggle("active", c === chip));
+    render();
   });
 
   // ---------- view + wizard navigation ----------
@@ -1182,6 +1490,57 @@
     else { showView("results"); render(); }
   });
   document.getElementById("btn-edit-answers").addEventListener("click", () => { showView("wizard"); showStep(1); });
+
+  // ---------- hot picks (landing page) ----------
+  function jumpToOpportunity(id) {
+    filterState.types.clear();
+    filterState.region = "all";
+    filterState.compensation = "all";
+    renderAllTypeChips();
+    renderAllRegionChips();
+    document.getElementById("f-compensation").value = "all";
+    document.getElementById("f-compensation-results").value = "all";
+    document.getElementById("f-eligible-only").checked = false;
+    document.getElementById("f-search").value = "";
+    document.getElementById("f-urgency").value = "all";
+    currentResultsView = "list";
+    [...viewToggle.children].forEach((c) => c.classList.toggle("active", c.dataset.value === "list"));
+    openIds.add(id);
+    showView("results");
+    render();
+    requestAnimationFrame(() => {
+      document.querySelector(`.card[data-id="${id}"]`)?.scrollIntoView({ block: "center" });
+    });
+  }
+
+  function computeHotPicks() {
+    const urgencyRank = { soon: 0, month: 1, open: 2, closed: 3 };
+    return OPPS
+      .map((o) => ({ o, rank: urgencyRank[urgency(o.deadline)] }))
+      .filter((x) => x.rank < 3)
+      .sort((a, b) => a.rank - b.rank || (b.o.stipendMax || 0) - (a.o.stipendMax || 0))
+      .slice(0, 3);
+  }
+
+  function renderHotPicks() {
+    const picks = computeHotPicks();
+    const container = document.getElementById("hot-picks-list");
+    container.innerHTML = picks.map(({ o }) => {
+      const u = urgency(o.deadline);
+      const country = COUNTRIES[o.dest];
+      return `
+        <button class="hot-card" data-id="${o.id}">
+          <span class="hot-tag">🔥 ${TYPES.find((t) => t[0] === o.type)[1]}</span>
+          <h3>${o.title}</h3>
+          <div class="hot-place">${country.name} (${o.dest})</div>
+          <div class="hot-comp tabular">${compLine(o)}</div>
+          <span class="deadline-pill hot-deadline ${urgencyClass(u)}">${urgencyLabel(o.deadline, u)}</span>
+        </button>`;
+    }).join("");
+    container.querySelectorAll(".hot-card").forEach((btn) => {
+      btn.addEventListener("click", () => jumpToOpportunity(btn.dataset.id));
+    });
+  }
 
   // ---------- hero canvas: a small looping route across a few waypoints ----------
   (function heroCanvas() {
@@ -1259,6 +1618,7 @@
   })();
 
   showStep(1);
+  renderHotPicks();
   render();
 })();
 </script>
