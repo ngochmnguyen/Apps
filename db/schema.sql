@@ -88,7 +88,11 @@ CREATE TABLE countries (
   region                      TEXT NOT NULL,
   subregion                   TEXT,
   is_non_conventional_dest    BOOLEAN NOT NULL DEFAULT FALSE,
-  is_gulf                     BOOLEAN NOT NULL DEFAULT FALSE
+  is_gulf                     BOOLEAN NOT NULL DEFAULT FALSE,
+  -- capital-or-centroid approximation; good enough for "how far is this from
+  -- home" distance sorting, not for navigation
+  latitude                    NUMERIC(7,4),
+  longitude                   NUMERIC(7,4)
 );
 
 CREATE TABLE fields_of_study (
