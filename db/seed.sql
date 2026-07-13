@@ -262,3 +262,20 @@ INSERT INTO opportunity_soft_tags (opportunity_id, tag_key) VALUES
   ('dc9aedb4-f291-4948-b207-21634af221af', 'non_conventional_destination'),
   ('7af1cb7c-677b-4434-acc0-bf1bd94bc0a9', 'non_conventional_destination'),
   ('70e6f30f-244b-42bf-9ba1-083d850f9635', 'non_conventional_destination');
+
+-- =========================================================
+-- ADDITIONS FOR REAL SOURCED DATA (see server/ingest_batch_*.json)
+-- Countries/currencies needed by opportunities found through web research,
+-- beyond the 27-country/3-currency baseline above. Add to this list — never
+-- remove entries, since existing rows may already reference them.
+-- =========================================================
+
+INSERT INTO countries (code, name, region, is_non_conventional_dest, is_gulf, latitude, longitude) VALUES
+  ('ZA', 'South Africa', 'Southern Africa', TRUE, FALSE, -25.7479, 28.2293),
+  ('CH', 'Switzerland', 'Western Europe', FALSE, FALSE, 46.9480, 7.4474)
+ON CONFLICT (code) DO NOTHING;
+
+INSERT INTO currencies (code, name) VALUES
+  ('GBP', 'British Pound'),
+  ('CAD', 'Canadian Dollar')
+ON CONFLICT (code) DO NOTHING;
