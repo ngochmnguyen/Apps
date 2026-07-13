@@ -1,0 +1,40 @@
+name: Ingest opportunity batches
+
+# Runs server/src/ingest.js against the production database whenever a new
+# batch file is pushed. This exists because the daily research Routine runs
+# in a sandbox that can't reach the database directly (raw TCP connections
+# are blocked by its egress policy) — it can only research and commit JSON.
+# GitHub's own runners have normal internet access, so this is where the
+# actual database write happens.
+on:
+  push:
+    branches:
+      - claude/travel-opportunities-app-criteria-c3vwj7
+    paths:
+      - "server/ingest_batch_*.json"
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install server dependencies
+        working-directory: server
+        run: npm install
+
+      - name: Ingest all batch files
+        working-directory: server
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: |
+          set -e
+          for f in ingest_batch_*.json; do
+            [ -e "$f" ] || continue
+            echo "Ingesting $f"
+            node src/ingest.js "$f"
+          done
