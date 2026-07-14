@@ -31,5 +31,6 @@ SELECT
 FROM opportunities o;
 
 INSERT INTO countries (code, name, region, is_non_conventional_dest, is_gulf, latitude, longitude) VALUES
-  ('SA', 'Saudi Arabia', 'Middle East', FALSE, TRUE, 24.7136, 46.6753)
+  ('SA', 'Saudi Arabia', 'Middle East', FALSE, TRUE, 24.7136, 46.6753),
+  ('CN', 'China', 'East Asia', FALSE, FALSE, 39.9042, 116.4074)
 ON CONFLICT (code) DO NOTHING;
