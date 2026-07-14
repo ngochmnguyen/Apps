@@ -1,6 +1,13 @@
--- Seed data mirroring the mock data in prototype/index.html, so the schema
--- can be checked against the same 16 listings the prototype demonstrates.
--- Run after schema.sql:
+-- FICTIONAL DEMO DATA — none of these 16 opportunities or organizations are
+-- real. They exist only to exercise the schema and UI (filters, map,
+-- eligibility engine) with realistic-looking values before any real content
+-- existed. DO NOT load this file into a production/public-facing database —
+-- local dev and automated testing only. Real, web-verified opportunities are
+-- loaded separately via server/src/ingest.js (see server/README.md); those
+-- carry a genuine source_url and source_verification_status that reflects
+-- actual research, unlike everything below.
+--
+-- Run after schema.sql, in a local/dev database only:
 --   psql -d wayfarer_dev -f db/schema.sql
 --   psql -d wayfarer_dev -f db/seed.sql
 
