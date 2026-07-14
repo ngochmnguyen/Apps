@@ -19,7 +19,7 @@
 //   "english": "b1|b2|c1|c2|native_or_fluent",
 //   "nationality": { "type": "include"|"exclude"|null, "list": ["XX", ...] },
 //   "softTags": ["non_conventional_destination", ...],
-//   "deadline": "YYYY-MM-DD",
+//   "deadline": "YYYY-MM-DD" | null,          // null = rolling admission, no fixed deadline
 //   "duration": "single_day|weekend|one_to_two_weeks|three_to_four_weeks|one_to_three_months|semester_or_longer",
 //   "isRecurring": bool,
 //   "effortLabel": "quick|moderate|high|extensive", "effortMin": number,
@@ -45,7 +45,7 @@ async function ingestOne(client, o) {
     o.stipendMin ?? null, o.stipendMax ?? null, o.currency ?? null,
     !!o.requiresWorkVisa, o.visaNote ?? null,
     o.minAge, o.maxAge ?? null, !!o.gradOnly, o.english,
-    o.deadline, o.duration, !!o.isRecurring, o.effortLabel, o.effortMin,
+    o.deadline ?? null, o.duration, !!o.isRecurring, o.effortLabel, o.effortMin,
     o.verification, o.sourceUrl,
   ];
 

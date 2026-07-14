@@ -183,7 +183,7 @@ CREATE TABLE opportunities (
   english_level_required       english_level,
 
   -- timing / logistics
-  application_deadline         DATE NOT NULL,
+  application_deadline         DATE, -- NULL means rolling admission / apply by contacting the org directly
   program_start_date            DATE,
   program_end_date              DATE,
   duration_category              duration_category NOT NULL,
@@ -320,6 +320,7 @@ CREATE VIEW opportunities_with_urgency AS
 SELECT
   o.*,
   CASE
+    WHEN o.application_deadline IS NULL THEN 'rolling'
     WHEN o.application_deadline < CURRENT_DATE THEN 'closed'
     WHEN o.application_deadline <= CURRENT_DATE + INTERVAL '7 days' THEN 'closing_soon'
     WHEN o.application_deadline <= CURRENT_DATE + INTERVAL '30 days' THEN 'this_month'

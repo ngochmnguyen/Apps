@@ -34,6 +34,7 @@ const BASE_QUERY = `
 `;
 
 function urgencyOf(deadline) {
+  if (!deadline) return "rolling"; // no fixed deadline — contact the org directly
   const days = (new Date(deadline) - new Date(new Date().toDateString())) / 86400000;
   if (days < 0) return "closed";
   if (days <= 7) return "soon";
@@ -77,7 +78,7 @@ function readProfile(query) {
   };
 }
 
-const URGENCY_RANK = { soon: 0, month: 1, open: 2, closed: 3 };
+const URGENCY_RANK = { soon: 0, month: 1, open: 2, rolling: 3, closed: 4 };
 
 opportunitiesRouter.get("/hot", async (_req, res) => {
   const { rows } = await pool.query(BASE_QUERY);
@@ -125,7 +126,7 @@ opportunitiesRouter.get("/", async (req, res) => {
   let results = enriched.filter((o) => {
     if (o.urgency === "closed" && !showClosed) return false;
     if (urgencyFilter !== "all") {
-      const matches = urgencyFilter === "later" ? o.urgency === "open" : o.urgency === urgencyFilter;
+      const matches = urgencyFilter === "later" ? (o.urgency === "open" || o.urgency === "rolling") : o.urgency === urgencyFilter;
       if (!matches) return false;
     }
     if (activeTypes.length && !activeTypes.includes(o.type)) return false;
@@ -141,11 +142,12 @@ opportunitiesRouter.get("/", async (req, res) => {
     return true;
   });
 
+  const deadlineMs = (d) => (d ? new Date(d).getTime() : Number.MAX_SAFE_INTEGER); // rolling sorts after dated listings
   results.sort((a, b) => {
     if (sort === "stipend") return (b.stipend_max || 0) - (a.stipend_max || 0);
     if (sort === "newest") return 0; // insertion order from the DB is our "newest" proxy
     if (sort === "distance" && residenceCountry) return a.distanceKm - b.distanceKm;
-    return new Date(a.deadline) - new Date(b.deadline);
+    return deadlineMs(a.deadline) - deadlineMs(b.deadline);
   });
 
   res.json({ stats, results });

@@ -279,7 +279,8 @@ INSERT INTO opportunity_soft_tags (opportunity_id, tag_key) VALUES
 
 INSERT INTO countries (code, name, region, is_non_conventional_dest, is_gulf, latitude, longitude) VALUES
   ('ZA', 'South Africa', 'Southern Africa', TRUE, FALSE, -25.7479, 28.2293),
-  ('CH', 'Switzerland', 'Western Europe', FALSE, FALSE, 46.9480, 7.4474)
+  ('CH', 'Switzerland', 'Western Europe', FALSE, FALSE, 46.9480, 7.4474),
+  ('SA', 'Saudi Arabia', 'Middle East', FALSE, TRUE, 24.7136, 46.6753)
 ON CONFLICT (code) DO NOTHING;
 
 INSERT INTO currencies (code, name) VALUES

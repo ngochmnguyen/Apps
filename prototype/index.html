@@ -1014,6 +1014,7 @@
   // against the real Postgres data — these are display-only formatters.
   function urgencyClass(u) { return u === "closed" ? "state-closed" : u === "soon" ? "state-soon" : "state-open"; }
   function urgencyLabel(deadline, u) {
+    if (u === "rolling" || !deadline) return "Rolling — contact to apply";
     const d = new Date(deadline);
     const nice = d.toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" });
     if (u === "closed") return `Closed ${nice}`;
