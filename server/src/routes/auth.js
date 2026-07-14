@@ -2,6 +2,7 @@ import { Router } from "express";
 import rateLimit from "express-rate-limit";
 import { pool } from "../db.js";
 import { hashPassword, verifyPassword, issueSessionCookie, clearSessionCookie, requireAuth } from "../auth.js";
+import { sendWelcomeEmail } from "../email.js";
 
 export const authRouter = Router();
 
@@ -74,6 +75,7 @@ authRouter.post("/signup", authAttemptLimiter, async (req, res) => {
     await client.query("COMMIT");
 
     issueSessionCookie(res, userId);
+    sendWelcomeEmail(email); // fire-and-forget -- must never delay or fail signup
     res.status(201).json({ user: { id: userId, email }, profile: await fetchProfile(client, userId) });
   } catch (err) {
     await client.query("ROLLBACK");

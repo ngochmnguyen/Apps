@@ -310,14 +310,27 @@ CREATE TABLE saved_opportunities (
 -- opportunity_id is nullable: a task can be a general to-do or tied to a
 -- specific saved trip. ON DELETE SET NULL mirrors opportunity_reports.user_id's
 -- existing precedent -- the task survives even if its linked opportunity doesn't.
+-- status is validated in application code (todos.js), not a DB CHECK constraint,
+-- so the live-Neon migration path (which can't add a constraint idempotently)
+-- and this fresh-install schema stay in lockstep.
 CREATE TABLE todo_items (
   id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id         UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   opportunity_id  UUID REFERENCES opportunities(id) ON DELETE SET NULL,
   title           TEXT NOT NULL,
   due_date        DATE,
-  is_done         BOOLEAN NOT NULL DEFAULT FALSE,
+  status          TEXT NOT NULL DEFAULT 'not_started',
   created_at      TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+-- Dedups deadline-reminder emails: (user, opportunity, reminder_type) can only
+-- ever be sent once, even if the reminder cron re-runs the same day.
+CREATE TABLE sent_reminders (
+  user_id         UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  opportunity_id  UUID NOT NULL REFERENCES opportunities(id) ON DELETE CASCADE,
+  reminder_type   TEXT NOT NULL,
+  sent_at         TIMESTAMPTZ NOT NULL DEFAULT now(),
+  PRIMARY KEY (user_id, opportunity_id, reminder_type)
 );
 
 -- =========================================================

@@ -612,6 +612,12 @@
   .detail-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
   .report-btn { font-size: 12.5px; }
   .report-btn:disabled { opacity: 0.6; cursor: default; text-decoration: none; }
+  .add-todo-btn { font-size: 12.5px; }
+  .add-todo-btn:disabled { opacity: 0.6; cursor: default; text-decoration: none; }
+  .checklist { margin: 0 0 12px; padding-left: 18px; font-size: 12.5px; color: var(--ink-soft); }
+  .checklist li { margin-bottom: 4px; }
+  .checklist-heading { font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-faint); margin: 0 0 6px; }
+  .checklist-hint { font-size: 11.5px; color: var(--ink-faint); margin: 0 0 12px; }
 
   .empty-state { padding: 60px 20px; text-align: center; color: var(--ink-faint); font-size: 14px; }
 
@@ -635,13 +641,20 @@
   .todo-group { margin-bottom: 22px; }
   .todo-group h3 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-faint); margin-bottom: 8px; }
   .todo-item {
-    display: flex; align-items: center; gap: 10px;
+    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
     background: var(--bg-raised); border: 1px solid var(--border); border-radius: var(--radius-sm);
     padding: 10px 14px; margin-bottom: 6px;
   }
-  .todo-check { display: flex; align-items: center; gap: 10px; flex: 1; cursor: pointer; }
-  .todo-check input { accent-color: var(--magenta); width: 16px; height: 16px; flex-shrink: 0; }
-  .todo-item.is-done .todo-title { text-decoration: line-through; color: var(--ink-faint); }
+  .todo-title { flex: 1 1 180px; min-width: 0; }
+  .todo-status {
+    flex: 0 0 auto; width: 130px;
+    padding: 5px 8px; border-radius: var(--radius-sm); border: 1px solid var(--border);
+    background: var(--bg); color: var(--ink); font-family: inherit; font-size: 12.5px;
+  }
+  .todo-item.status-started .todo-title { color: var(--gold); }
+  .todo-item.status-submitted .todo-title { color: var(--magenta); }
+  .todo-item.status-accepted .todo-title { color: var(--state-open); font-weight: 700; }
+  .todo-item.status-rejected .todo-title { text-decoration: line-through; color: var(--state-closed); }
   .todo-due { font-size: 11.5px; color: var(--ink-soft); white-space: nowrap; }
   .todo-delete {
     background: none; border: none; cursor: pointer; font-size: 18px; line-height: 1;
@@ -1049,6 +1062,68 @@
     ["work_stay", "Work stay"],
   ];
 
+  // Generic, type-based prep steps -- never fabricated specifics about any one
+  // listing, same principle as the "View source" link: point people to the
+  // official source for exact requirements.
+  const CHECKLIST_TEMPLATES = {
+    conference: [
+      "Prepare a short bio or CV",
+      "Draft your motivation for attending",
+      "Confirm your passport is valid for the travel dates",
+      "Check visa requirements for the destination",
+      "Submit via the official source",
+    ],
+    contest_competition: [
+      "Prepare your submission or entry material",
+      "Review the official rules and eligibility criteria",
+      "Gather any required references or portfolio pieces",
+      "Confirm the submission deadline and format",
+      "Submit via the official source",
+    ],
+    scholarship_fellowship: [
+      "Request academic transcripts",
+      "Draft a personal statement or research proposal",
+      "Gather 2-3 letters of recommendation",
+      "Confirm your passport is valid 6+ months out",
+      "Submit via the official source",
+    ],
+    internship: [
+      "Update your resume/CV",
+      "Draft a cover letter",
+      "Gather academic or employment references",
+      "Check work-visa requirements for the destination",
+      "Submit via the official source",
+    ],
+    work_study_exchange: [
+      "Confirm program eligibility and language requirements",
+      "Gather transcripts and ID/passport copies",
+      "Draft a statement of purpose",
+      "Check visa or work-permit requirements",
+      "Submit via the official source",
+    ],
+    research_residency: [
+      "Prepare a research proposal or portfolio",
+      "Gather letters of support or recommendation",
+      "Confirm your CV is current",
+      "Check visa requirements for the destination",
+      "Submit via the official source",
+    ],
+    volunteer_travel_stipend: [
+      "Confirm background or reference requirements",
+      "Draft a short statement of interest",
+      "Check vaccination/health requirements for the destination",
+      "Confirm visa requirements",
+      "Submit via the official source",
+    ],
+    work_stay: [
+      "Update your resume/CV",
+      "Confirm work-visa or work-permit requirements",
+      "Gather references",
+      "Draft a short application message",
+      "Submit via the official source",
+    ],
+  };
+
 
   function fill(select, pairs, withAll) {
     const opts = withAll ? [["all", "All"]].concat(pairs) : pairs;
@@ -1315,14 +1390,22 @@
       ? `<span class="badge">Aggregator verified</span>`
       : `<span class="badge">Official source</span>`;
 
+    const checklist = CHECKLIST_TEMPLATES[o.type] || [];
+
     const detail = isOpen ? `
       <div class="detail">
         <div>
           <p>${o.description}</p>
           ${o.visa_note ? `<div class="note"><strong>Payment/visa note:</strong> ${o.visa_note}</div>` : ""}
+          ${checklist.length ? `
+            <p class="checklist-heading">What to prepare</p>
+            <ul class="checklist">${checklist.map((item) => `<li>${item}</li>`).join("")}</ul>
+            <p class="checklist-hint">General guidance for this type of opportunity — confirm exact requirements on the official page.</p>
+          ` : ""}
           <div class="detail-actions">
             <a class="apply-btn" href="${o.source_url}" target="_blank" rel="noopener">View source</a>
             <button class="link-btn report-btn" data-id="${o.id}" type="button">Report a problem</button>
+            <button class="link-btn add-todo-btn" data-id="${o.id}" data-type="${o.type}" type="button">+ Add to my to-do list</button>
           </div>
         </div>
         <dl>
@@ -1394,6 +1477,27 @@
           btn.textContent = res.ok ? "Reported — thank you" : "Couldn't submit, try again";
         } catch {
           btn.textContent = "Couldn't submit, try again";
+          btn.disabled = false;
+        }
+      });
+    });
+    container.querySelectorAll(".add-todo-btn").forEach((btn) => {
+      btn.addEventListener("click", async (e) => {
+        e.stopPropagation();
+        if (!currentUser) { openAuthModal("login"); return; }
+        const items = CHECKLIST_TEMPLATES[btn.dataset.type] || [];
+        btn.disabled = true;
+        try {
+          await fetch(`/api/saved/${btn.dataset.id}`, { method: "POST" });
+          await fetch("/api/todos/bulk", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ opportunityId: btn.dataset.id, items }),
+          });
+          btn.textContent = "Added ✓";
+          if (rerender) rerender();
+        } catch {
+          btn.textContent = "Couldn't add, try again";
           btn.disabled = false;
         }
       });
@@ -1856,7 +1960,8 @@
     populateTodoOpportunityPicker(saved);
     document.getElementById("mytrips-stat-saved").textContent = saved.length;
     document.getElementById("mytrips-stat-soon").textContent = saved.filter((o) => o.urgency === "soon").length;
-    document.getElementById("mytrips-stat-open-tasks").textContent = todos.filter((t) => !t.is_done).length;
+    document.getElementById("mytrips-stat-open-tasks").textContent =
+      todos.filter((t) => t.status === "not_started" || t.status === "started").length;
   }
 
   function renderSavedList(saved) {
@@ -1872,6 +1977,14 @@
   function formatDueDate(d) {
     return new Date(d).toLocaleDateString(undefined, { month: "short", day: "numeric" });
   }
+
+  const TODO_STATUSES = [
+    ["not_started", "Not started"],
+    ["started", "Started"],
+    ["submitted", "Submitted"],
+    ["accepted", "Accepted"],
+    ["rejected", "Rejected"],
+  ];
 
   function renderTodoGroups(todos) {
     const container = document.getElementById("todo-groups");
@@ -1889,22 +2002,22 @@
       <div class="todo-group">
         <h3>${g.label}</h3>
         ${g.items.map((t) => `
-          <div class="todo-item ${t.is_done ? "is-done" : ""}">
-            <label class="todo-check">
-              <input type="checkbox" class="todo-toggle" data-id="${t.id}" ${t.is_done ? "checked" : ""} />
-              <span class="todo-title">${t.title}</span>
-            </label>
+          <div class="todo-item status-${t.status}">
+            <span class="todo-title">${t.title}</span>
+            <select class="todo-status" data-id="${t.id}">
+              ${TODO_STATUSES.map(([v, l]) => `<option value="${v}" ${t.status === v ? "selected" : ""}>${l}</option>`).join("")}
+            </select>
             ${t.due_date ? `<span class="todo-due tabular">Due ${formatDueDate(t.due_date)}</span>` : ""}
             <button class="todo-delete" data-id="${t.id}" type="button" aria-label="Delete task">×</button>
           </div>`).join("")}
       </div>`).join("");
 
-    container.querySelectorAll(".todo-toggle").forEach((cb) => {
-      cb.addEventListener("change", async () => {
-        await fetch(`/api/todos/${cb.dataset.id}`, {
+    container.querySelectorAll(".todo-status").forEach((select) => {
+      select.addEventListener("change", async () => {
+        await fetch(`/api/todos/${select.dataset.id}`, {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ isDone: cb.checked }),
+          body: JSON.stringify({ status: select.value }),
         });
         renderMyTrips();
       });
