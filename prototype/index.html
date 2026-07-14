@@ -199,6 +199,17 @@
     font-size: inherit; font-weight: 700; cursor: pointer; padding: 0; text-decoration: underline;
   }
 
+  .landing-header {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; flex-wrap: wrap; margin-bottom: 44px;
+  }
+  .brand-mark { display: flex; align-items: center; gap: 8px; }
+  .brand-icon { font-size: 22px; line-height: 1; }
+  .brand-name {
+    font-family: var(--font-display); font-weight: 700; font-size: 20px;
+    color: var(--ink); letter-spacing: 0.2px;
+  }
+
   .account-bar {
     display: flex; justify-content: flex-end; align-items: center; gap: 8px;
     font-size: 13px; color: var(--ink-faint); margin-bottom: 18px;
@@ -274,6 +285,17 @@
   .hot-section-head p { margin: 0; font-size: 13.5px; color: var(--ink-faint); }
   .hot-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
   @media (max-width: 760px) { .hot-row { grid-template-columns: 1fr; } }
+
+  .landing-footer {
+    margin-top: 64px; padding-top: 28px; border-top: 1px solid var(--border);
+    text-align: center;
+  }
+  .footer-brand {
+    font-family: var(--font-display); font-weight: 700; font-size: 16px;
+    color: var(--ink-soft); margin-bottom: 10px;
+  }
+  .footer-tagline { font-size: 13px; color: var(--ink-faint); max-width: 54ch; margin: 0 auto 6px; }
+  .footer-meta { font-size: 12px; color: var(--ink-faint); margin: 0; }
   .hot-card {
     background: var(--bg-raised);
     border: 1px solid var(--border);
@@ -568,17 +590,23 @@
 <!-- ================= LANDING ================= -->
 <section id="view-landing" class="view">
   <div class="landing">
-    <div class="account-bar">
-      <div class="account-anon">
-        <button class="link-btn" data-action="open-login">Log in</button>
-        <span>·</span>
-        <button class="link-btn" data-action="open-signup">Save my profile</button>
+    <header class="landing-header">
+      <div class="brand-mark">
+        <span class="brand-icon" aria-hidden="true">🧭</span>
+        <span class="brand-name">Wayfarer</span>
       </div>
-      <div class="account-user" hidden>
-        Signed in as <b class="account-email"></b>
-        <button class="link-btn" data-action="logout">Log out</button>
+      <div class="account-bar" style="margin-bottom: 0;">
+        <div class="account-anon">
+          <button class="link-btn" data-action="open-login">Log in</button>
+          <span>·</span>
+          <button class="link-btn" data-action="open-signup">Save my profile</button>
+        </div>
+        <div class="account-user" hidden>
+          Signed in as <b class="account-email"></b>
+          <button class="link-btn" data-action="logout">Log out</button>
+        </div>
       </div>
-    </div>
+    </header>
     <div class="welcome-banner" id="welcome-banner" hidden>
       <span>Welcome back — your saved profile is ready.</span>
       <button class="cta-btn cta-btn-small" id="btn-see-matches">See my matches <span aria-hidden="true">→</span></button>
@@ -617,6 +645,12 @@
       </div>
       <div class="hot-row" id="hot-picks-list"></div>
     </div>
+
+    <footer class="landing-footer">
+      <div class="footer-brand"><span aria-hidden="true">🧭</span> Wayfarer</div>
+      <p class="footer-tagline">Every listing is checked by hand against its official source — no invented deadlines, no fabricated stipends. See something off? Tell us and we'll dig in.</p>
+      <p class="footer-meta">Built for the routes the big job boards skip.</p>
+    </footer>
   </div>
 </section>
 
