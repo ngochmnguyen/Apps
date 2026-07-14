@@ -150,3 +150,21 @@ opportunitiesRouter.get("/", async (req, res) => {
 
   res.json({ stats, results });
 });
+
+// Anonymous reports are allowed (req.userId may be undefined) — the point is
+// to lower the bar for flagging something that looks wrong, like a listing
+// that turns out to be fabricated or asks for a payment.
+opportunitiesRouter.post("/:id/report", async (req, res) => {
+  const { reason } = req.body;
+  if (!reason || !reason.trim()) return res.status(400).json({ error: "Please describe what's wrong." });
+  if (reason.length > 2000) return res.status(400).json({ error: "That's a bit long — 2000 characters max." });
+
+  const { rows } = await pool.query("SELECT id FROM opportunities WHERE id = $1", [req.params.id]);
+  if (!rows.length) return res.status(404).json({ error: "Opportunity not found." });
+
+  await pool.query(
+    "INSERT INTO opportunity_reports (opportunity_id, user_id, reason) VALUES ($1, $2, $3)",
+    [req.params.id, req.userId || null, reason.trim()]
+  );
+  res.status(201).json({ ok: true });
+});

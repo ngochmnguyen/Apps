@@ -1,0 +1,31 @@
+name: Check opportunity source links
+
+# Weekly fact-check pass: confirms every opportunity's source_url still
+# resolves, and records last_verified_at either way. Fails loudly (and
+# GitHub emails/notifies watchers on failed runs by default) if anything's
+# broken, since a dead or redirected link is a strong signal something
+# about that listing has gone stale.
+on:
+  schedule:
+    - cron: "0 6 * * 1" # Monday 06:00 UTC
+  workflow_dispatch: {} # allow manual runs from the Actions tab too
+
+jobs:
+  check-links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install server dependencies
+        working-directory: server
+        run: npm install
+
+      - name: Check all source links
+        working-directory: server
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: node src/check-links.js

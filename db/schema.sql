@@ -194,6 +194,14 @@ CREATE TABLE opportunities (
   -- trust / verification
   source_verification_status     source_verification_status NOT NULL DEFAULT 'user_submitted_unverified',
   source_url                     TEXT NOT NULL,
+  -- how it was verified (e.g. which independent sources were cross-referenced),
+  -- for audit purposes — distinct from source_verification_status, which is
+  -- just the resulting confidence tier
+  verification_notes              TEXT,
+  -- last time source_url was automatically confirmed to still resolve;
+  -- NULL means never checked. See .github/workflows/link-check.yml
+  last_verified_at                TIMESTAMPTZ,
+  link_broken                     BOOLEAN NOT NULL DEFAULT FALSE,
 
   created_at                     TIMESTAMPTZ NOT NULL DEFAULT now(),
   updated_at                     TIMESTAMPTZ NOT NULL DEFAULT now(),
@@ -277,6 +285,19 @@ CREATE TABLE reviews (
   UNIQUE (opportunity_id, user_id)
 );
 
+-- User-flagged concerns ("this looks fake," "deadline is wrong," "this
+-- requires a payment," etc.) — the strongest signal for catching problems
+-- automated checks can't, like a listing that's fabricated or has gone stale
+-- in a way that doesn't show up as a broken link.
+CREATE TABLE opportunity_reports (
+  id                UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  opportunity_id     UUID NOT NULL REFERENCES opportunities(id) ON DELETE CASCADE,
+  user_id             UUID REFERENCES users(id) ON DELETE SET NULL, -- nullable: anonymous reports allowed
+  reason              TEXT NOT NULL,
+  status              TEXT NOT NULL DEFAULT 'open' CHECK (status IN ('open', 'reviewed', 'dismissed')),
+  created_at           TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
 -- =========================================================
 -- INDEXES
 -- =========================================================
@@ -288,6 +309,8 @@ CREATE INDEX idx_opportunities_compensation ON opportunities (compensation_type)
 CREATE INDEX idx_nationality_rules_country ON opportunity_nationality_rules (country_code);
 CREATE INDEX idx_residence_rules_country ON opportunity_residence_rules (country_code);
 CREATE INDEX idx_passport_visa_dest ON passport_visa_requirements (destination_country_code);
+CREATE INDEX idx_opportunity_reports_opportunity ON opportunity_reports (opportunity_id);
+CREATE INDEX idx_opportunity_reports_status ON opportunity_reports (status);
 
 -- =========================================================
 -- DEADLINE URGENCY (derived, not stored — recompute on read so it never goes stale)

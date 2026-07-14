@@ -547,6 +547,9 @@
     padding: 9px 16px; border-radius: var(--radius-sm); font-weight: 700; font-family: var(--font-display);
     font-size: 13.5px; cursor: pointer; text-decoration: none;
   }
+  .detail-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .report-btn { font-size: 12.5px; }
+  .report-btn:disabled { opacity: 0.6; cursor: default; text-decoration: none; }
 
   .empty-state { padding: 60px 20px; text-align: center; color: var(--ink-faint); font-size: 14px; }
 
@@ -1127,7 +1130,10 @@
           <div>
             <p>${o.description}</p>
             ${o.visa_note ? `<div class="note"><strong>Payment/visa note:</strong> ${o.visa_note}</div>` : ""}
-            <a class="apply-btn" href="${o.source_url}" target="_blank" rel="noopener">View source</a>
+            <div class="detail-actions">
+              <a class="apply-btn" href="${o.source_url}" target="_blank" rel="noopener">View source</a>
+              <button class="link-btn report-btn" data-id="${o.id}" type="button">Report a problem</button>
+            </div>
           </div>
           <dl>
             <dt>Destination</dt><dd>${o.dest_name} (${o.dest})${o.dest_non_conventional ? " · non-conventional" : ""}</dd>
@@ -1173,6 +1179,26 @@
       });
       head.addEventListener("keydown", (e) => {
         if (e.key === "Enter" || e.key === " ") { e.preventDefault(); head.click(); }
+      });
+    });
+
+    list.querySelectorAll(".report-btn").forEach((btn) => {
+      btn.addEventListener("click", async (e) => {
+        e.stopPropagation();
+        const reason = prompt("What's wrong with this listing? (e.g. \"this organization doesn't seem to exist\", \"the deadline is wrong\", \"this asks for payment\")");
+        if (!reason || !reason.trim()) return;
+        btn.disabled = true;
+        try {
+          const res = await fetch(`/api/opportunities/${btn.dataset.id}/report`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ reason: reason.trim() }),
+          });
+          btn.textContent = res.ok ? "Reported — thank you" : "Couldn't submit, try again";
+        } catch {
+          btn.textContent = "Couldn't submit, try again";
+          btn.disabled = false;
+        }
       });
     });
   }

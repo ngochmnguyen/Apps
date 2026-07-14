@@ -1,8 +1,19 @@
 import { Router } from "express";
+import rateLimit from "express-rate-limit";
 import { pool } from "../db.js";
 import { hashPassword, verifyPassword, issueSessionCookie, clearSessionCookie, requireAuth } from "../auth.js";
 
 export const authRouter = Router();
+
+// Credential-guessing protection: signup/login are the two endpoints where a
+// brute-force or account-enumeration attempt would actually pay off.
+const authAttemptLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  limit: 10,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: "Too many attempts. Please wait a few minutes and try again." },
+});
 
 const PROFILE_FIELDS = ["nationality", "residence", "age", "education", "career", "employment", "english", "disability"];
 
@@ -28,7 +39,7 @@ async function fetchProfile(client, userId) {
   return rows[0] || null;
 }
 
-authRouter.post("/signup", async (req, res) => {
+authRouter.post("/signup", authAttemptLimiter, async (req, res) => {
   const { email, password, ...profile } = req.body;
   if (!email || !password) return res.status(400).json({ error: "Email and password are required." });
   if (password.length < 8) return res.status(400).json({ error: "Password must be at least 8 characters." });
@@ -73,7 +84,7 @@ authRouter.post("/signup", async (req, res) => {
   }
 });
 
-authRouter.post("/login", async (req, res) => {
+authRouter.post("/login", authAttemptLimiter, async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) return res.status(400).json({ error: "Email and password are required." });
 
