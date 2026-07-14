@@ -298,6 +298,28 @@ CREATE TABLE opportunity_reports (
   created_at           TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
+-- Pure toggle, so a composite PK is the right shape (unlike opportunity_reports,
+-- which needs a surrogate key for its review workflow).
+CREATE TABLE saved_opportunities (
+  user_id         UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  opportunity_id  UUID NOT NULL REFERENCES opportunities(id) ON DELETE CASCADE,
+  saved_at        TIMESTAMPTZ NOT NULL DEFAULT now(),
+  PRIMARY KEY (user_id, opportunity_id)
+);
+
+-- opportunity_id is nullable: a task can be a general to-do or tied to a
+-- specific saved trip. ON DELETE SET NULL mirrors opportunity_reports.user_id's
+-- existing precedent -- the task survives even if its linked opportunity doesn't.
+CREATE TABLE todo_items (
+  id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id         UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  opportunity_id  UUID REFERENCES opportunities(id) ON DELETE SET NULL,
+  title           TEXT NOT NULL,
+  due_date        DATE,
+  is_done         BOOLEAN NOT NULL DEFAULT FALSE,
+  created_at      TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
 -- =========================================================
 -- INDEXES
 -- =========================================================
@@ -311,6 +333,9 @@ CREATE INDEX idx_residence_rules_country ON opportunity_residence_rules (country
 CREATE INDEX idx_passport_visa_dest ON passport_visa_requirements (destination_country_code);
 CREATE INDEX idx_opportunity_reports_opportunity ON opportunity_reports (opportunity_id);
 CREATE INDEX idx_opportunity_reports_status ON opportunity_reports (status);
+CREATE INDEX idx_saved_opportunities_opportunity ON saved_opportunities (opportunity_id);
+CREATE INDEX idx_todo_items_user ON todo_items (user_id);
+CREATE INDEX idx_todo_items_opportunity ON todo_items (opportunity_id);
 
 -- =========================================================
 -- DEADLINE URGENCY (derived, not stored — recompute on read so it never goes stale)

@@ -5,7 +5,7 @@ export const opportunitiesRouter = Router();
 
 const ENGLISH_RANK = { b1: 0, b2: 1, c1: 2, c2: 3, native_or_fluent: 4 };
 
-const BASE_QUERY = `
+export const BASE_QUERY = `
   SELECT
     o.id, o.title, o.description, o.organization_name AS org, o.opportunity_type AS type,
     o.primary_destination_code AS dest, o.application_deadline AS deadline,
@@ -33,7 +33,7 @@ const BASE_QUERY = `
   LEFT JOIN (SELECT opportunity_id, array_agg(tag_key) keys FROM opportunity_soft_tags GROUP BY opportunity_id) tags ON tags.opportunity_id = o.id
 `;
 
-function urgencyOf(deadline) {
+export function urgencyOf(deadline) {
   if (!deadline) return "rolling"; // no fixed deadline — contact the org directly
   const days = (new Date(deadline) - new Date(new Date().toDateString())) / 86400000;
   if (days < 0) return "closed";
@@ -42,7 +42,7 @@ function urgencyOf(deadline) {
   return "open";
 }
 
-function eligibilityOf(o, profile) {
+export function eligibilityOf(o, profile) {
   const reasons = [];
   if (profile.age < o.min_age || (o.max_age != null && profile.age > o.max_age)) reasons.push("age");
   if (o.grad_only && profile.career !== "grad_student" && !["masters_in_progress", "phd_in_progress"].includes(profile.education)) {
@@ -78,11 +78,25 @@ function readProfile(query) {
   };
 }
 
-const URGENCY_RANK = { soon: 0, month: 1, open: 2, rolling: 3, closed: 4 };
+export const URGENCY_RANK = { soon: 0, month: 1, open: 2, rolling: 3, closed: 4 };
 
-opportunitiesRouter.get("/hot", async (_req, res) => {
-  const { rows } = await pool.query(BASE_QUERY);
-  const withUrgency = rows.map((o) => ({ ...o, urgency: urgencyOf(o.deadline) }));
+// Missing/broken saved_opportunities table (e.g. mid-deploy, before the Neon
+// migration lands) shouldn't take down the whole opportunities listing — it
+// just means nothing shows as saved yet.
+async function fetchSavedIds(userId) {
+  if (!userId) return new Set();
+  try {
+    const { rows } = await pool.query("SELECT opportunity_id FROM saved_opportunities WHERE user_id = $1", [userId]);
+    return new Set(rows.map((r) => r.opportunity_id));
+  } catch (err) {
+    console.error(err);
+    return new Set();
+  }
+}
+
+opportunitiesRouter.get("/hot", async (req, res) => {
+  const [{ rows }, savedIds] = await Promise.all([pool.query(BASE_QUERY), fetchSavedIds(req.userId)]);
+  const withUrgency = rows.map((o) => ({ ...o, urgency: urgencyOf(o.deadline), saved: savedIds.has(o.id) }));
   const hot = withUrgency
     .filter((o) => o.urgency !== "closed")
     .sort((a, b) => URGENCY_RANK[a.urgency] - URGENCY_RANK[b.urgency] || (b.stipend_max || 0) - (a.stipend_max || 0))
@@ -91,7 +105,7 @@ opportunitiesRouter.get("/hot", async (_req, res) => {
 });
 
 opportunitiesRouter.get("/", async (req, res) => {
-  const { rows } = await pool.query(BASE_QUERY);
+  const [{ rows }, savedIds] = await Promise.all([pool.query(BASE_QUERY), fetchSavedIds(req.userId)]);
   const profile = readProfile(req.query);
 
   let residenceCountry = null;
@@ -104,7 +118,7 @@ opportunitiesRouter.get("/", async (req, res) => {
     const urgency = urgencyOf(o.deadline);
     const elig = eligibilityOf(o, profile);
     const distanceKm = residenceCountry ? haversineKm(residenceCountry.latitude, residenceCountry.longitude, o.dest_lat, o.dest_lon) : null;
-    return { ...o, urgency, eligible: elig.eligible, ineligibleReasons: elig.reasons, distanceKm };
+    return { ...o, urgency, eligible: elig.eligible, ineligibleReasons: elig.reasons, distanceKm, saved: savedIds.has(o.id) };
   });
 
   const stats = {

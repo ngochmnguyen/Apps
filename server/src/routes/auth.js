@@ -27,7 +27,7 @@ function validateProfile(body) {
   return null;
 }
 
-async function fetchProfile(client, userId) {
+export async function fetchProfile(client, userId) {
   const { rows } = await client.query(
     `SELECT nationality_country_code AS nationality, residence_country_code AS residence,
             EXTRACT(YEAR FROM age(date_of_birth))::int AS age,

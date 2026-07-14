@@ -335,12 +335,20 @@
     width: 100%;
   }
   .hot-card:hover { border-color: var(--magenta); }
+  .hot-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
   .hot-card .hot-tag {
     display: inline-flex; align-items: center; gap: 5px;
     font-size: 11px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase;
     color: var(--chartreuse-ink); background: var(--chartreuse-tint);
     padding: 3px 9px; border-radius: var(--radius-pill); margin-bottom: 10px;
   }
+  .save-btn {
+    background: none; border: none; cursor: pointer; font-size: 19px; line-height: 1;
+    color: var(--ink-faint); padding: 0 2px; flex-shrink: 0;
+  }
+  .save-btn.is-saved { color: var(--gold); }
+  .save-btn:hover { color: var(--gold); }
+  .data-block .save-btn { display: block; margin: 0 0 6px auto; }
   .hot-card h3 { font-size: 16.5px; margin-bottom: 4px; }
   .hot-card .hot-place { font-size: 12.5px; color: var(--ink-faint); margin-bottom: 8px; }
   .hot-card .hot-comp { font-family: var(--font-mono); font-size: 13px; color: var(--ink-soft); }
@@ -607,6 +615,40 @@
 
   .empty-state { padding: 60px 20px; text-align: center; color: var(--ink-faint); font-size: 14px; }
 
+  /* ---------- My Trips ---------- */
+  .mytrips-main { max-width: 780px; margin: 0 auto; padding: 28px 22px 60px; }
+  .mytrips-main h2 { font-size: 19px; margin-bottom: 14px; }
+  .mytrips-main .todo-heading { margin-top: 40px; }
+  .todo-form {
+    display: flex; gap: 8px; flex-wrap: wrap; align-items: center;
+    background: var(--bg-raised); border: 1px solid var(--border); border-radius: var(--radius-md);
+    padding: 14px; margin-bottom: 18px;
+  }
+  .todo-form input[type="text"] {
+    flex: 1 1 220px; padding: 9px 12px; border-radius: var(--radius-sm); border: 1px solid var(--border);
+    background: var(--bg); color: var(--ink); font-family: inherit; font-size: 14px;
+  }
+  .todo-form input[type="date"], .todo-form select {
+    padding: 9px 10px; border-radius: var(--radius-sm); border: 1px solid var(--border);
+    background: var(--bg); color: var(--ink); font-family: inherit; font-size: 13px;
+  }
+  .todo-group { margin-bottom: 22px; }
+  .todo-group h3 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-faint); margin-bottom: 8px; }
+  .todo-item {
+    display: flex; align-items: center; gap: 10px;
+    background: var(--bg-raised); border: 1px solid var(--border); border-radius: var(--radius-sm);
+    padding: 10px 14px; margin-bottom: 6px;
+  }
+  .todo-check { display: flex; align-items: center; gap: 10px; flex: 1; cursor: pointer; }
+  .todo-check input { accent-color: var(--magenta); width: 16px; height: 16px; flex-shrink: 0; }
+  .todo-item.is-done .todo-title { text-decoration: line-through; color: var(--ink-faint); }
+  .todo-due { font-size: 11.5px; color: var(--ink-soft); white-space: nowrap; }
+  .todo-delete {
+    background: none; border: none; cursor: pointer; font-size: 18px; line-height: 1;
+    color: var(--ink-faint); padding: 0 2px;
+  }
+  .todo-delete:hover { color: var(--state-closed); }
+
   @media (prefers-reduced-motion: no-preference) {
     .card { transition: opacity 120ms ease; }
     .cta-btn { transition: transform 100ms ease, box-shadow 100ms ease; }
@@ -629,6 +671,8 @@
         </div>
         <div class="account-user" hidden>
           Signed in as <b class="account-email"></b>
+          <button class="link-btn" data-action="open-mytrips">My Trips</button>
+          <span>·</span>
           <button class="link-btn" data-action="logout">Log out</button>
         </div>
       </div>
@@ -801,6 +845,8 @@
         </div>
         <div class="account-user" hidden>
           Signed in as <b class="account-email"></b>
+          <button class="link-btn" data-action="open-mytrips">My Trips</button>
+          <span>·</span>
           <button class="link-btn" data-action="logout">Log out</button>
         </div>
       </div>
@@ -896,6 +942,51 @@
         <div id="map-detail"></div>
       </div>
     </main>
+  </div>
+</section>
+
+<!-- ================= MY TRIPS ================= -->
+<section id="view-mytrips" class="view" hidden>
+  <div class="masthead">
+    <div>
+      <h1>Voya</h1>
+      <div class="tagline">Saved trips and application tasks.</div>
+    </div>
+    <div class="masthead-right">
+      <div class="account-bar" style="margin-bottom: 0;">
+        <div class="account-anon">
+          <button class="link-btn" data-action="open-login">Log in</button>
+          <span>·</span>
+          <button class="link-btn" data-action="open-signup">Save my profile</button>
+        </div>
+        <div class="account-user" hidden>
+          Signed in as <b class="account-email"></b>
+          <button class="link-btn" data-action="logout">Log out</button>
+        </div>
+      </div>
+      <button class="edit-link" id="btn-mytrips-back">← Back to matches</button>
+      <div class="masthead-stats">
+        <div class="stat"><b id="mytrips-stat-saved" class="tabular">—</b><span>Saved</span></div>
+        <div class="stat"><b id="mytrips-stat-soon" class="tabular">—</b><span>Closing ≤7d</span></div>
+        <div class="stat"><b id="mytrips-stat-open-tasks" class="tabular">—</b><span>Open tasks</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mytrips-main">
+      <h2>Saved opportunities</h2>
+      <div class="list" id="mytrips-list"></div>
+
+      <h2 class="todo-heading">To-do list</h2>
+      <form id="todo-form" class="todo-form">
+        <input type="text" id="todo-title" placeholder="Add a task, e.g. Write personal statement" maxlength="300" required />
+        <input type="date" id="todo-due-date" aria-label="Due date (optional)" />
+        <select id="todo-opportunity" aria-label="Link to a saved trip (optional)">
+          <option value="">General (no specific trip)</option>
+        </select>
+        <button type="submit" class="btn btn-primary">Add task</button>
+      </form>
+      <div id="todo-groups"></div>
   </div>
 </section>
 
@@ -1095,7 +1186,7 @@
   }
 
   function formatDistance(km) {
-    return km === null ? "Set your residence to see this" : `${km.toLocaleString()} km from home`;
+    return km == null ? "Set your residence to see this" : `${km.toLocaleString()} km from home`;
   }
 
   function readProfile() {
@@ -1180,77 +1271,115 @@
       list.innerHTML = `<div class="empty-state">No opportunities match these filters yet. Try widening age, career stage, or destination.</div>`;
       return;
     }
+    list.innerHTML = rows.map((o) => cardHTML(o, { eligibleOnly })).join("");
+    wireCardEvents(list, render);
+  }
 
-    list.innerHTML = rows.map((o) => {
-      const isOpen = openIds.has(o.id);
-      const tags = o.soft_tags.map((t) => `<span class="badge priority">${SOFT_TAG_LABELS[t] || t}</span>`).join("");
-      const eligBadge = o.eligible
-        ? `<span class="badge eligible">Eligible</span>`
-        : `<span class="badge not-eligible">Not eligible: ${o.ineligibleReasons.join(", ")}</span>`;
-      const verifBadge = o.verification === "user_submitted_unverified"
-        ? `<span class="badge unverified">Unverified — user submitted</span>`
-        : o.verification === "aggregator_verified"
-        ? `<span class="badge">Aggregator verified</span>`
-        : `<span class="badge">Official source</span>`;
+  // Anonymous users get sent to the login modal instead of a failed request.
+  // Toggles the button's own state in place — the next real render() always
+  // re-syncs `saved` from the server, so there's no drift risk.
+  function wireSaveButtons(container, rerender) {
+    container.querySelectorAll(".save-btn").forEach((btn) => {
+      btn.addEventListener("click", async (e) => {
+        e.stopPropagation();
+        if (!currentUser) { openAuthModal("login"); return; }
+        const nowSaved = btn.classList.contains("is-saved");
+        btn.disabled = true;
+        try {
+          const res = await fetch(`/api/saved/${btn.dataset.id}`, { method: nowSaved ? "DELETE" : "POST" });
+          if (res.ok) {
+            btn.classList.toggle("is-saved", !nowSaved);
+            btn.textContent = nowSaved ? "☆" : "★";
+            btn.setAttribute("aria-label", nowSaved ? "Save this opportunity" : "Remove from saved");
+            btn.setAttribute("aria-pressed", String(!nowSaved));
+            if (rerender && nowSaved) rerender(); // e.g. My Trips: unsaving should drop the card entirely
+          }
+        } finally {
+          btn.disabled = false;
+        }
+      });
+    });
+  }
 
-      const detail = isOpen ? `
-        <div class="detail">
+  // Shared by the main results list and the My Trips saved-opportunities list,
+  // so a 3rd copy-pasted card template doesn't creep in alongside the hot-cards.
+  function cardHTML(o, { eligibleOnly = false } = {}) {
+    const isOpen = openIds.has(o.id);
+    const tags = o.soft_tags.map((t) => `<span class="badge priority">${SOFT_TAG_LABELS[t] || t}</span>`).join("");
+    const eligBadge = o.eligible
+      ? `<span class="badge eligible">Eligible</span>`
+      : `<span class="badge not-eligible">Not eligible: ${o.ineligibleReasons.join(", ")}</span>`;
+    const verifBadge = o.verification === "user_submitted_unverified"
+      ? `<span class="badge unverified">Unverified — user submitted</span>`
+      : o.verification === "aggregator_verified"
+      ? `<span class="badge">Aggregator verified</span>`
+      : `<span class="badge">Official source</span>`;
+
+    const detail = isOpen ? `
+      <div class="detail">
+        <div>
+          <p>${o.description}</p>
+          ${o.visa_note ? `<div class="note"><strong>Payment/visa note:</strong> ${o.visa_note}</div>` : ""}
+          <div class="detail-actions">
+            <a class="apply-btn" href="${o.source_url}" target="_blank" rel="noopener">View source</a>
+            <button class="link-btn report-btn" data-id="${o.id}" type="button">Report a problem</button>
+          </div>
+        </div>
+        <dl>
+          <dt>Destination</dt><dd>${o.dest_name} (${o.dest})${o.dest_non_conventional ? " · non-conventional" : ""}</dd>
+          <dt>Duration</dt><dd>${o.duration.replaceAll("_", " ")}</dd>
+          <dt>Minimum age</dt><dd>${o.min_age}${o.max_age ? ` – ${o.max_age}` : "+"}</dd>
+          <dt>Education</dt><dd>${o.education.length ? o.education.map((e) => e.replaceAll("_", " ")).join(", ") : "Open to all levels"}</dd>
+          <dt>Career stage</dt><dd>${o.career.length ? o.career.map((c) => c.replaceAll("_", " ")).join(", ") : "Open to all stages"}</dd>
+          <dt>English required</dt><dd>${o.english.toUpperCase()}</dd>
+          <dt>Nationality</dt><dd>${nationalitySummary(o)}</dd>
+          <dt>Application effort</dt><dd>${EFFORT_LABELS[o.effort_label]} (~${o.effort_min} min)</dd>
+          <dt>Distance</dt><dd>${formatDistance(o.distanceKm)}</dd>
+        </dl>
+      </div>` : "";
+
+    return `
+      <article class="card ${urgencyClass(o.urgency)} ${eligibleOnly ? "" : o.eligible ? "" : "ineligible"}" data-id="${o.id}">
+        <div class="card-head" role="button" tabindex="0">
           <div>
-            <p>${o.description}</p>
-            ${o.visa_note ? `<div class="note"><strong>Payment/visa note:</strong> ${o.visa_note}</div>` : ""}
-            <div class="detail-actions">
-              <a class="apply-btn" href="${o.source_url}" target="_blank" rel="noopener">View source</a>
-              <button class="link-btn report-btn" data-id="${o.id}" type="button">Report a problem</button>
+            <div class="route-line">
+              <span class="route-code">${o.dest}</span>
+              <span>${o.dest_name}</span>
+              <span>·</span>
+              <span>${TYPES.find((t) => t[0] === o.type)[1]}</span>
             </div>
+            <h3>${o.title}</h3>
+            <div class="org">${o.org}</div>
+            <div class="badge-row">${eligBadge}${verifBadge}${tags}<span class="badge">~${o.effort_min} min application</span></div>
           </div>
-          <dl>
-            <dt>Destination</dt><dd>${o.dest_name} (${o.dest})${o.dest_non_conventional ? " · non-conventional" : ""}</dd>
-            <dt>Duration</dt><dd>${o.duration.replaceAll("_", " ")}</dd>
-            <dt>Minimum age</dt><dd>${o.min_age}${o.max_age ? ` – ${o.max_age}` : "+"}</dd>
-            <dt>Education</dt><dd>${o.education.length ? o.education.map((e) => e.replaceAll("_", " ")).join(", ") : "Open to all levels"}</dd>
-            <dt>Career stage</dt><dd>${o.career.length ? o.career.map((c) => c.replaceAll("_", " ")).join(", ") : "Open to all stages"}</dd>
-            <dt>English required</dt><dd>${o.english.toUpperCase()}</dd>
-            <dt>Nationality</dt><dd>${nationalitySummary(o)}</dd>
-            <dt>Application effort</dt><dd>${EFFORT_LABELS[o.effort_label]} (~${o.effort_min} min)</dd>
-            <dt>Distance</dt><dd>${formatDistance(o.distanceKm)}</dd>
-          </dl>
-        </div>` : "";
-
-      return `
-        <article class="card ${urgencyClass(o.urgency)} ${eligibleOnly ? "" : o.eligible ? "" : "ineligible"}" data-id="${o.id}">
-          <div class="card-head" role="button" tabindex="0">
-            <div>
-              <div class="route-line">
-                <span class="route-code">${o.dest}</span>
-                <span>${o.dest_name}</span>
-                <span>·</span>
-                <span>${TYPES.find((t) => t[0] === o.type)[1]}</span>
-              </div>
-              <h3>${o.title}</h3>
-              <div class="org">${o.org}</div>
-              <div class="badge-row">${eligBadge}${verifBadge}${tags}<span class="badge">~${o.effort_min} min application</span></div>
-            </div>
-            <div class="data-block">
-              <span class="deadline-pill ${urgencyClass(o.urgency)}">${urgencyLabel(o.deadline, o.urgency)}</span>
-              <div class="comp-line tabular">${compLine(o)}</div>
-            </div>
+          <div class="data-block">
+            <button class="save-btn ${o.saved ? "is-saved" : ""}" data-id="${o.id}" type="button"
+              aria-label="${o.saved ? "Remove from saved" : "Save this opportunity"}" aria-pressed="${o.saved}">${o.saved ? "★" : "☆"}</button>
+            <span class="deadline-pill ${urgencyClass(o.urgency)}">${urgencyLabel(o.deadline, o.urgency)}</span>
+            <div class="comp-line tabular">${compLine(o)}</div>
           </div>
-          ${detail}
-        </article>`;
-    }).join("");
+        </div>
+        ${detail}
+      </article>`;
+  }
 
-    list.querySelectorAll(".card-head").forEach((head) => {
+  // Wires expand/collapse, report, and save behavior for any container of
+  // `.card` elements built from cardHTML(). `rerender` is called after an
+  // expand/collapse toggle so the caller's own render function re-runs
+  // (results vs. My Trips have different render entry points).
+  function wireCardEvents(container, rerender) {
+    container.querySelectorAll(".card-head").forEach((head) => {
       head.addEventListener("click", () => {
         const id = head.parentElement.dataset.id;
         if (openIds.has(id)) openIds.delete(id); else openIds.add(id);
-        render();
+        rerender();
       });
       head.addEventListener("keydown", (e) => {
         if (e.key === "Enter" || e.key === " ") { e.preventDefault(); head.click(); }
       });
     });
-
-    list.querySelectorAll(".report-btn").forEach((btn) => {
+    wireSaveButtons(container, rerender);
+    container.querySelectorAll(".report-btn").forEach((btn) => {
       btn.addEventListener("click", async (e) => {
         e.stopPropagation();
         const reason = prompt("What's wrong with this listing? (e.g. \"this organization doesn't seem to exist\", \"the deadline is wrong\", \"this asks for payment\")");
@@ -1450,7 +1579,7 @@
   });
 
   // ---------- view + wizard navigation ----------
-  const views = { landing: document.getElementById("view-landing"), wizard: document.getElementById("view-wizard"), results: document.getElementById("view-results") };
+  const views = { landing: document.getElementById("view-landing"), wizard: document.getElementById("view-wizard"), results: document.getElementById("view-results"), mytrips: document.getElementById("view-mytrips") };
   function showView(name) {
     Object.entries(views).forEach(([k, el]) => { el.hidden = k !== name; });
     window.scrollTo({ top: 0 });
@@ -1505,16 +1634,24 @@
     const { results } = await res.json();
     const container = document.getElementById("hot-picks-list");
     container.innerHTML = results.map((o) => `
-        <button class="hot-card" data-id="${o.id}">
-          <span class="hot-tag">🔥 ${TYPES.find((t) => t[0] === o.type)[1]}</span>
+        <div class="hot-card" role="button" tabindex="0" data-id="${o.id}">
+          <div class="hot-card-top">
+            <span class="hot-tag">🔥 ${TYPES.find((t) => t[0] === o.type)[1]}</span>
+            <button class="save-btn ${o.saved ? "is-saved" : ""}" data-id="${o.id}" type="button"
+              aria-label="${o.saved ? "Remove from saved" : "Save this opportunity"}" aria-pressed="${o.saved}">${o.saved ? "★" : "☆"}</button>
+          </div>
           <h3>${o.title}</h3>
           <div class="hot-place">${o.dest_name} (${o.dest})</div>
           <div class="hot-comp tabular">${compLine(o)}</div>
           <span class="deadline-pill hot-deadline ${urgencyClass(o.urgency)}">${urgencyLabel(o.deadline, o.urgency)}</span>
-        </button>`).join("");
-    container.querySelectorAll(".hot-card").forEach((btn) => {
-      btn.addEventListener("click", () => jumpToOpportunity(btn.dataset.id));
+        </div>`).join("");
+    container.querySelectorAll(".hot-card").forEach((card) => {
+      card.addEventListener("click", () => jumpToOpportunity(card.dataset.id));
+      card.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); card.click(); }
+      });
     });
+    wireSaveButtons(container);
   }
 
   // ---------- hero canvas: a small looping route across a few waypoints ----------
@@ -1664,6 +1801,7 @@
     if (el.dataset.action === "open-login") openAuthModal("login");
     else if (el.dataset.action === "open-signup") openAuthModal("signup");
     else if (el.dataset.action === "logout") logout();
+    else if (el.dataset.action === "open-mytrips") { showView("mytrips"); renderMyTrips(); }
   });
 
   document.getElementById("btn-see-matches").addEventListener("click", async () => {
@@ -1707,6 +1845,103 @@
     closeAuthModal();
     render();
   });
+
+  // ---------- My Trips: saved opportunities + to-do list ----------
+  async function renderMyTrips() {
+    const [savedRes, todosRes] = await Promise.all([fetch("/api/saved"), fetch("/api/todos")]);
+    const { results: saved } = await savedRes.json();
+    const { results: todos } = await todosRes.json();
+    renderSavedList(saved);
+    renderTodoGroups(todos);
+    populateTodoOpportunityPicker(saved);
+    document.getElementById("mytrips-stat-saved").textContent = saved.length;
+    document.getElementById("mytrips-stat-soon").textContent = saved.filter((o) => o.urgency === "soon").length;
+    document.getElementById("mytrips-stat-open-tasks").textContent = todos.filter((t) => !t.is_done).length;
+  }
+
+  function renderSavedList(saved) {
+    const container = document.getElementById("mytrips-list");
+    if (!saved.length) {
+      container.innerHTML = `<div class="empty-state">Nothing saved yet — tap the ☆ on any opportunity to bookmark it here.</div>`;
+      return;
+    }
+    container.innerHTML = saved.map((o) => cardHTML(o)).join("");
+    wireCardEvents(container, renderMyTrips);
+  }
+
+  function formatDueDate(d) {
+    return new Date(d).toLocaleDateString(undefined, { month: "short", day: "numeric" });
+  }
+
+  function renderTodoGroups(todos) {
+    const container = document.getElementById("todo-groups");
+    if (!todos.length) {
+      container.innerHTML = `<div class="empty-state">No tasks yet — add one above.</div>`;
+      return;
+    }
+    const groups = new Map();
+    for (const t of todos) {
+      const key = t.opportunity_id || "general";
+      if (!groups.has(key)) groups.set(key, { label: t.opportunity_title || "General tasks", items: [] });
+      groups.get(key).items.push(t);
+    }
+    container.innerHTML = [...groups.values()].map((g) => `
+      <div class="todo-group">
+        <h3>${g.label}</h3>
+        ${g.items.map((t) => `
+          <div class="todo-item ${t.is_done ? "is-done" : ""}">
+            <label class="todo-check">
+              <input type="checkbox" class="todo-toggle" data-id="${t.id}" ${t.is_done ? "checked" : ""} />
+              <span class="todo-title">${t.title}</span>
+            </label>
+            ${t.due_date ? `<span class="todo-due tabular">Due ${formatDueDate(t.due_date)}</span>` : ""}
+            <button class="todo-delete" data-id="${t.id}" type="button" aria-label="Delete task">×</button>
+          </div>`).join("")}
+      </div>`).join("");
+
+    container.querySelectorAll(".todo-toggle").forEach((cb) => {
+      cb.addEventListener("change", async () => {
+        await fetch(`/api/todos/${cb.dataset.id}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ isDone: cb.checked }),
+        });
+        renderMyTrips();
+      });
+    });
+    container.querySelectorAll(".todo-delete").forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        await fetch(`/api/todos/${btn.dataset.id}`, { method: "DELETE" });
+        renderMyTrips();
+      });
+    });
+  }
+
+  function populateTodoOpportunityPicker(saved) {
+    const select = document.getElementById("todo-opportunity");
+    const current = select.value;
+    select.innerHTML = `<option value="">General (no specific trip)</option>` +
+      saved.map((o) => `<option value="${o.id}">${o.title}</option>`).join("");
+    if ([...select.options].some((opt) => opt.value === current)) select.value = current;
+  }
+
+  document.getElementById("todo-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const titleInput = document.getElementById("todo-title");
+    const dueDate = document.getElementById("todo-due-date").value;
+    const opportunityId = document.getElementById("todo-opportunity").value;
+    if (!titleInput.value.trim()) return;
+    await fetch("/api/todos", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ title: titleInput.value, dueDate: dueDate || null, opportunityId: opportunityId || null }),
+    });
+    titleInput.value = "";
+    document.getElementById("todo-due-date").value = "";
+    renderMyTrips();
+  });
+
+  document.getElementById("btn-mytrips-back").addEventListener("click", () => showView("results"));
 
   async function init() {
     showStep(1);
