@@ -1,4 +1,4 @@
-# Wayfarer server
+# Voya server
 
 Small Express API backing `prototype/index.html` with real Postgres data and
 cookie-based auth, replacing the hardcoded mock array the frontend used before.
@@ -40,7 +40,7 @@ cookie-based auth, replacing the hardcoded mock array the frontend used before.
   add it with a plain SQL INSERT first (see `db/seed.sql`'s "ADDITIONS FOR
   REAL SOURCED DATA" section for the pattern).
 
-  There's a daily scheduled Routine (`Wayfarer daily opportunity sourcing`)
+  There's a daily scheduled Routine (`Voya daily opportunity sourcing`)
   that runs this workflow automatically — see the caveats below.
 
 ## Note on the daily sourcing Routine

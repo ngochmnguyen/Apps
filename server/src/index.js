@@ -37,4 +37,4 @@ app.use("/api/opportunities", opportunitiesRouter);
 app.use(express.static(path.join(__dirname, "../../prototype")));
 
 const port = process.env.PORT || 3001;
-app.listen(port, () => console.log(`Wayfarer server listening on http://localhost:${port}`));
+app.listen(port, () => console.log(`Voya server listening on http://localhost:${port}`));
