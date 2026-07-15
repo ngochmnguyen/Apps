@@ -1143,6 +1143,15 @@
     select.innerHTML = opts.map(([v, l]) => `<option value="${v}">${l}</option>`).join("");
   }
 
+  // Nationality/residence describe who the user actually is -- there's no
+  // real-world "All" nationality, unlike the browse-time destination/type
+  // filters where "All" is a legitimate choice. A disabled placeholder forces
+  // an explicit pick instead.
+  function fillCountrySelect(select, pairs, placeholder) {
+    select.innerHTML = `<option value="" disabled selected>${placeholder}</option>` +
+      pairs.map(([v, l]) => `<option value="${v}">${l}</option>`).join("");
+  }
+
   async function loadCountries() {
     const res = await fetch("/api/countries");
     const { countries } = await res.json();
@@ -1157,8 +1166,8 @@
     const countryPairs = countries
       .map((c) => [c.code, `${c.name} (${c.code})`])
       .sort((a, b) => a[1].localeCompare(b[1]));
-    fill(document.getElementById("f-nationality"), countryPairs, true);
-    fill(document.getElementById("f-residence"), countryPairs, true);
+    fillCountrySelect(document.getElementById("f-nationality"), countryPairs, "Select your nationality");
+    fillCountrySelect(document.getElementById("f-residence"), countryPairs, "Select your current residence");
   }
 
   // profile identity fields describe who the user is, so unlike browse filters
@@ -1347,8 +1356,8 @@
       types: [...filterState.types].join(","),
       fields: [...filterState.fields].join(","),
     });
-    if (profile.nationality !== "all") params.set("nationality", profile.nationality);
-    if (profile.residence !== "all") params.set("residence", profile.residence);
+    if (profile.nationality) params.set("nationality", profile.nationality);
+    if (profile.residence) params.set("residence", profile.residence);
     return params;
   }
 
@@ -1358,7 +1367,7 @@
 
   async function render() {
     const profile = readProfile();
-    const hasHome = profile.residence !== "all";
+    const hasHome = !!profile.residence;
     document.getElementById("distance-hint").hidden = hasHome;
 
     const token = ++renderToken;
@@ -1644,7 +1653,7 @@
 
     // home marker
     mapHomePin = null;
-    if (profile.residence !== "all") {
+    if (profile.residence) {
       const home = COUNTRIES[profile.residence];
       const p = project(home.lat, home.lon, w, h);
       mapCtx.beginPath();
@@ -1891,8 +1900,8 @@
 
   function applyProfileToForm(profile) {
     if (!profile) return;
-    document.getElementById("f-nationality").value = profile.nationality || "all";
-    document.getElementById("f-residence").value = profile.residence || "all";
+    document.getElementById("f-nationality").value = profile.nationality || "";
+    document.getElementById("f-residence").value = profile.residence || "";
     document.getElementById("f-age").value = profile.age;
     document.getElementById("f-education").value = profile.education;
     document.getElementById("f-career").value = profile.career;
@@ -1975,7 +1984,7 @@
     const body = { email, password };
     if (authMode === "signup") {
       const profile = readProfile();
-      if (profile.nationality === "all" || profile.residence === "all") {
+      if (!profile.nationality || !profile.residence) {
         errorEl.textContent = "Pick your nationality and residence in step 1 before saving your profile.";
         errorEl.hidden = false;
         return;
