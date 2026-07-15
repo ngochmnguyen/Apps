@@ -21,8 +21,13 @@
     "career": [],
     "employment": [],
     "english": "b2",
-    "nationality": { "type": null, "list": [] },
-    "softTags": ["non_conventional_destination"],
+    "nationality": {
+      "type": null,
+      "list": []
+    },
+    "softTags": [
+      "non_conventional_destination"
+    ],
     "deadline": "2026-07-17",
     "duration": "one_to_three_months",
     "isRecurring": true,
@@ -50,10 +55,22 @@
     "maxAge": 35,
     "gradOnly": false,
     "education": [],
-    "career": ["early_career", "mid_career"],
+    "career": [
+      "early_career",
+      "mid_career"
+    ],
     "employment": [],
     "english": "native_or_fluent",
-    "nationality": { "type": "include", "list": ["GH", "KE", "NG", "RW", "ZA"] },
+    "nationality": {
+      "type": "include",
+      "list": [
+        "GH",
+        "KE",
+        "NG",
+        "RW",
+        "ZA"
+      ]
+    },
     "softTags": [],
     "deadline": null,
     "duration": "one_to_three_months",
@@ -81,11 +98,16 @@
     "minAge": 18,
     "maxAge": 28,
     "gradOnly": false,
-    "education": ["bachelors_completed"],
+    "education": [
+      "bachelors_completed"
+    ],
     "career": [],
     "employment": [],
     "english": "b2",
-    "nationality": { "type": null, "list": [] },
+    "nationality": {
+      "type": null,
+      "list": []
+    },
     "softTags": [],
     "deadline": "2026-09-09",
     "duration": "semester_or_longer",
@@ -113,19 +135,26 @@
     "minAge": 18,
     "maxAge": null,
     "gradOnly": true,
-    "education": ["bachelors_completed"],
+    "education": [
+      "bachelors_completed"
+    ],
     "career": [],
     "employment": [],
     "english": "c1",
-    "nationality": { "type": "exclude", "list": ["GB"] },
+    "nationality": {
+      "type": "exclude",
+      "list": [
+        "GB"
+      ]
+    },
     "softTags": [],
     "deadline": "2026-12-03",
     "duration": "semester_or_longer",
     "isRecurring": true,
     "effortLabel": "extensive",
     "effortMin": 300,
-    "verification": "aggregator_verified",
-    "sourceUrl": "https://ugresearch.ucsd.edu/prestigious-scholarships/scholarship-pages/gates-cambridge.html"
+    "verification": "official_source",
+    "sourceUrl": "https://www.gatescambridge.org/apply/how-to-apply/"
   },
   {
     "title": "Audley Travel Photography Competition 2026",
@@ -149,7 +178,10 @@
     "career": [],
     "employment": [],
     "english": "b2",
-    "nationality": { "type": null, "list": [] },
+    "nationality": {
+      "type": null,
+      "list": []
+    },
     "softTags": [],
     "deadline": "2026-07-29",
     "duration": "one_to_two_weeks",
@@ -179,10 +211,21 @@
     "gradOnly": false,
     "education": [],
     "career": [],
-    "employment": ["student"],
+    "employment": [
+      "student"
+    ],
     "english": "b2",
-    "nationality": { "type": "include", "list": ["KZ", "MN", "UZ"] },
-    "softTags": ["non_conventional_destination"],
+    "nationality": {
+      "type": "include",
+      "list": [
+        "KZ",
+        "MN",
+        "UZ"
+      ]
+    },
+    "softTags": [
+      "non_conventional_destination"
+    ],
     "deadline": null,
     "duration": "semester_or_longer",
     "isRecurring": true,
@@ -210,10 +253,19 @@
     "maxAge": 35,
     "gradOnly": false,
     "education": [],
-    "career": ["early_career", "mid_career"],
+    "career": [
+      "early_career",
+      "mid_career"
+    ],
     "employment": [],
     "english": "b2",
-    "nationality": { "type": "include", "list": ["PH", "VN"] },
+    "nationality": {
+      "type": "include",
+      "list": [
+        "PH",
+        "VN"
+      ]
+    },
     "softTags": [],
     "deadline": null,
     "duration": "one_to_three_months",
@@ -245,15 +297,18 @@
     "career": [],
     "employment": [],
     "english": "b2",
-    "nationality": { "type": null, "list": [] },
+    "nationality": {
+      "type": null,
+      "list": []
+    },
     "softTags": [],
     "deadline": null,
     "duration": "semester_or_longer",
     "isRecurring": true,
     "effortLabel": "extensive",
     "effortMin": 240,
-    "verification": "aggregator_verified",
-    "sourceUrl": "https://www.studyabroad.pk/news-event/gks-scholarship-2026-fully-funded-global-korea-scholarship-25127"
+    "verification": "official_source",
+    "sourceUrl": "https://www.niied.go.kr/web/niied/contents/niiedEng/eng_gksDegree"
   },
   {
     "title": "Australia Awards Fellowships",
@@ -274,10 +329,15 @@
     "maxAge": null,
     "gradOnly": false,
     "education": [],
-    "career": ["mid_career"],
+    "career": [
+      "mid_career"
+    ],
     "employment": [],
     "english": "b2",
-    "nationality": { "type": null, "list": [] },
+    "nationality": {
+      "type": null,
+      "list": []
+    },
     "softTags": [],
     "deadline": null,
     "duration": "one_to_three_months",

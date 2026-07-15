@@ -68,8 +68,8 @@
     "isRecurring": true,
     "effortLabel": "high",
     "effortMin": 180,
-    "verification": "aggregator_verified",
-    "sourceUrl": "https://contemporaryperformance.com/2026/06/26/k3-choreography-residency-27-28/"
+    "verification": "official_source",
+    "sourceUrl": "https://k3-hamburg.de/en/professionals/residencyapplicationform"
   },
   {
     "title": "Kota Residency Programme for Indonesia-Based Artists",
@@ -138,8 +138,8 @@
     "isRecurring": true,
     "effortLabel": "high",
     "effortMin": 180,
-    "verification": "aggregator_verified",
-    "sourceUrl": "https://ilikenetworking.substack.com/p/fellowship-and-residencies-to-apply"
+    "verification": "official_source",
+    "sourceUrl": "https://camargofoundation.org/current-calls/camargo-fellowship/"
   },
   {
     "title": "VCCA Fellowships (October Cycle)",

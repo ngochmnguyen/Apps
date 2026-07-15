@@ -17,19 +17,33 @@
     "minAge": 18,
     "maxAge": null,
     "gradOnly": true,
-    "education": ["bachelors_completed"],
+    "education": [
+      "bachelors_completed"
+    ],
     "career": [],
     "employment": [],
     "english": "b2",
-    "nationality": { "type": "include", "list": ["PK", "IN", "NG", "GH", "KE", "ZA", "RW", "FJ"] },
+    "nationality": {
+      "type": "include",
+      "list": [
+        "PK",
+        "IN",
+        "NG",
+        "GH",
+        "KE",
+        "ZA",
+        "RW",
+        "FJ"
+      ]
+    },
     "softTags": [],
     "deadline": null,
     "duration": "semester_or_longer",
     "isRecurring": true,
     "effortLabel": "extensive",
     "effortMin": 240,
-    "verification": "aggregator_verified",
-    "sourceUrl": "https://universityadmissioninfo.com/commonwealth-shared-scholarship/"
+    "verification": "official_source",
+    "sourceUrl": "https://cscuk.fcdo.gov.uk/scholarships/commonwealth-shared-scholarships-applications/"
   },
   {
     "title": "TechWomen",
@@ -50,10 +64,30 @@
     "maxAge": null,
     "gradOnly": false,
     "education": [],
-    "career": ["early_career", "mid_career"],
+    "career": [
+      "early_career",
+      "mid_career"
+    ],
     "employment": [],
     "english": "b2",
-    "nationality": { "type": "include", "list": ["EG", "GH", "KE", "NG", "RW", "ZA", "PK", "IN", "KZ", "KG", "UZ", "AE", "SA"] },
+    "nationality": {
+      "type": "include",
+      "list": [
+        "EG",
+        "GH",
+        "KE",
+        "NG",
+        "RW",
+        "ZA",
+        "PK",
+        "IN",
+        "KZ",
+        "KG",
+        "UZ",
+        "AE",
+        "SA"
+      ]
+    },
     "softTags": [],
     "deadline": null,
     "duration": "one_to_three_months",
