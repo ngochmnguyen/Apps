@@ -21,8 +21,13 @@
     "career": [],
     "employment": [],
     "english": "b2",
-    "nationality": { "type": null, "list": [] },
-    "softTags": ["non_conventional_destination"],
+    "nationality": {
+      "type": null,
+      "list": []
+    },
+    "softTags": [
+      "non_conventional_destination"
+    ],
     "deadline": "2026-11-28",
     "duration": "one_to_three_months",
     "isRecurring": true,
@@ -53,7 +58,10 @@
     "career": [],
     "employment": [],
     "english": "b2",
-    "nationality": { "type": null, "list": [] },
+    "nationality": {
+      "type": null,
+      "list": []
+    },
     "softTags": [],
     "deadline": "2026-08-12",
     "duration": "semester_or_longer",
@@ -85,15 +93,18 @@
     "career": [],
     "employment": [],
     "english": "b2",
-    "nationality": { "type": null, "list": [] },
+    "nationality": {
+      "type": null,
+      "list": []
+    },
     "softTags": [],
     "deadline": "2026-08-30",
     "duration": "one_to_three_months",
     "isRecurring": true,
     "effortLabel": "moderate",
     "effortMin": 120,
-    "verification": "aggregator_verified",
-    "sourceUrl": "https://www2.fundsforngos.org/individuals/open-call-kota-residency-programme-for-artists-indonesia/"
+    "verification": "official_source",
+    "sourceUrl": "https://www.citeinternationaledesarts.fr/en/programme-de-residence/kota/"
   },
   {
     "title": "Camargo Fellowship 2027-28",
@@ -117,7 +128,10 @@
     "career": [],
     "employment": [],
     "english": "b2",
-    "nationality": { "type": null, "list": [] },
+    "nationality": {
+      "type": null,
+      "list": []
+    },
     "softTags": [],
     "deadline": "2026-10-01",
     "duration": "one_to_three_months",
@@ -149,7 +163,10 @@
     "career": [],
     "employment": [],
     "english": "b2",
-    "nationality": { "type": null, "list": [] },
+    "nationality": {
+      "type": null,
+      "list": []
+    },
     "softTags": [],
     "deadline": "2026-10-15",
     "duration": "three_to_four_weeks",
