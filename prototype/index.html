@@ -1250,10 +1250,14 @@
 
   function compLine(o) {
     const parts = [];
-    const min = o.stipend_min !== null ? Number(o.stipend_min) : null;
-    const max = o.stipend_max !== null ? Number(o.stipend_max) : null;
-    if (min) {
+    const min = o.stipend_min != null ? Number(o.stipend_min) : null;
+    const max = o.stipend_max != null ? Number(o.stipend_max) : null;
+    if (min != null && max != null) {
       parts.push(min === max ? `${o.currency} ${min.toLocaleString()}` : `${o.currency} ${min.toLocaleString()}–${max.toLocaleString()}`);
+    } else if (min != null) {
+      parts.push(`${o.currency} ${min.toLocaleString()}+`);
+    } else if (max != null) {
+      parts.push(`up to ${o.currency} ${max.toLocaleString()}`);
     }
     const covered = [o.flight && "flight", o.lodging && "lodging", o.meals && "meals"].filter(Boolean);
     if (covered.length) parts.push(covered.join(" + ") + " covered");

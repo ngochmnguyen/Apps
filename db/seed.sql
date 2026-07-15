@@ -288,3 +288,13 @@ INSERT INTO currencies (code, name) VALUES
   ('GBP', 'British Pound'),
   ('CAD', 'Canadian Dollar')
 ON CONFLICT (code) DO NOTHING;
+
+INSERT INTO currencies (code, name) VALUES
+  ('CHF', 'Swiss Franc'),
+  ('CNY', 'Chinese Yuan'),
+  ('BRL', 'Brazilian Real'),
+  ('MXN', 'Mexican Peso'),
+  ('INR', 'Indian Rupee'),
+  ('KRW', 'South Korean Won'),
+  ('AUD', 'Australian Dollar')
+ON CONFLICT (code) DO NOTHING;

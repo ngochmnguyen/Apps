@@ -1,0 +1,454 @@
+[
+  {
+    "title": "Zayed Sustainability Prize",
+    "description": "Global sustainability award for small/medium enterprises, nonprofit organizations, and schools with impactful solutions in health, food, energy, water, and climate action; winners receive up to USD 1 million per category (USD 150,000 for the Global High Schools category). Open worldwide with no nationality restriction; applicants apply as an organization/enterprise rather than as a private individual, and the prize is administered by a UAE government-backed foundation based in Abu Dhabi.",
+    "org": "Zayed Sustainability Prize",
+    "type": "contest_competition",
+    "dest": "AE",
+    "compType": "cash",
+    "flight": false,
+    "lodging": false,
+    "meals": false,
+    "stipendMin": 150000,
+    "stipendMax": 1000000,
+    "currency": "USD",
+    "requiresWorkVisa": false,
+    "visaNote": null,
+    "minAge": 18,
+    "maxAge": null,
+    "gradOnly": false,
+    "education": [],
+    "career": [],
+    "employment": [],
+    "english": "b1",
+    "nationality": {
+      "type": null,
+      "list": []
+    },
+    "softTags": [
+      "global_open_call",
+      "uae_based_program"
+    ],
+    "deadline": null,
+    "duration": "single_day",
+    "isRecurring": true,
+    "effortLabel": "high",
+    "effortMin": 150,
+    "verification": "official_source",
+    "sourceUrl": "https://zayedsustainabilityprize.com/en/how-to-apply"
+  },
+  {
+    "title": "UAEU PhD Fellowship (All Nationalities)",
+    "description": "Fully funded PhD fellowship at United Arab Emirates University covering tuition and health insurance, with optional paid graduate teaching/administrative assistant work (up to AED 4,000/month). Explicitly open to all nationalities as direct university admission, not restricted to UAE citizens or residents; applicants apply and enroll like any international graduate student.",
+    "org": "United Arab Emirates University (UAEU)",
+    "type": "scholarship_fellowship",
+    "dest": "AE",
+    "compType": "cash_and_in_kind",
+    "flight": false,
+    "lodging": false,
+    "meals": false,
+    "stipendMin": null,
+    "stipendMax": 4000,
+    "currency": "AED",
+    "requiresWorkVisa": false,
+    "visaNote": "Student residency visa sponsored by the university; not a work visa.",
+    "minAge": 21,
+    "maxAge": null,
+    "gradOnly": true,
+    "education": [
+      "masters_completed"
+    ],
+    "career": [],
+    "employment": [],
+    "english": "b2",
+    "nationality": {
+      "type": null,
+      "list": []
+    },
+    "softTags": [
+      "uae_based_university"
+    ],
+    "deadline": null,
+    "duration": "semester_or_longer",
+    "isRecurring": true,
+    "effortLabel": "high",
+    "effortMin": 150,
+    "verification": "official_source",
+    "sourceUrl": "https://www.uaeu.ac.ae/en/cgs/phd_fellowship_all.shtml"
+  },
+  {
+    "title": "MBRU Frontliners Scholarship (Postgraduate Nursing)",
+    "description": "Mohammed Bin Rashid University of Medicine and Health Sciences (Dubai) covers 50% of tuition for its Master's in Cardiovascular Nursing or Master's in Pediatric Nursing for registered nurses. The university states the scholarship is open to all nationalities, but eligibility in practice is gated by holding a nursing license and relevant clinical experience, which effectively means applicants already working as nurses in the UAE health system rather than by passport.",
+    "org": "Mohammed Bin Rashid University of Medicine and Health Sciences (MBRU)",
+    "type": "scholarship_fellowship",
+    "dest": "AE",
+    "compType": "in_kind_only",
+    "flight": false,
+    "lodging": false,
+    "meals": false,
+    "stipendMin": null,
+    "stipendMax": null,
+    "currency": null,
+    "requiresWorkVisa": false,
+    "visaNote": "Applicants are expected to already hold UAE nursing licensure/employment status.",
+    "minAge": 21,
+    "maxAge": null,
+    "gradOnly": true,
+    "education": [
+      "bachelors_completed"
+    ],
+    "career": [
+      "early_career",
+      "mid_career"
+    ],
+    "employment": [
+      "employed_full_time"
+    ],
+    "english": "b2",
+    "nationality": {
+      "type": null,
+      "list": []
+    },
+    "softTags": [
+      "uae_resident_eligible",
+      "health_sector"
+    ],
+    "deadline": null,
+    "duration": "semester_or_longer",
+    "isRecurring": true,
+    "effortLabel": "moderate",
+    "effortMin": 90,
+    "verification": "official_source",
+    "sourceUrl": "https://www.mbru.ac.ae/scholarships/"
+  },
+  {
+    "title": "FEEL: A Disruptive Futures Programme",
+    "description": "Three-week immersive foresight and leadership programme run by Dubai Future Academy (part of Dubai Future Foundation), combining keynotes, workshops and site visits across Dubai's innovation centers. Open to applicants worldwide with at least 10 years of professional experience in leadership, entrepreneurship, government, or innovation roles; nationality is not a factor, though it is highly selective (about 30 places per cohort). It is unconfirmed from official sources whether flights/accommodation are covered for all accepted participants, so verify directly with organizers before assuming full funding.",
+    "org": "Dubai Future Foundation (Dubai Future Academy)",
+    "type": "work_study_exchange",
+    "dest": "AE",
+    "compType": "in_kind_only",
+    "flight": false,
+    "lodging": false,
+    "meals": false,
+    "stipendMin": null,
+    "stipendMax": null,
+    "currency": null,
+    "requiresWorkVisa": false,
+    "visaNote": null,
+    "minAge": 30,
+    "maxAge": null,
+    "gradOnly": false,
+    "education": [],
+    "career": [
+      "mid_career",
+      "senior_career"
+    ],
+    "employment": [
+      "employed_full_time"
+    ],
+    "english": "c1",
+    "nationality": {
+      "type": null,
+      "list": []
+    },
+    "softTags": [
+      "executive_program",
+      "uae_based_program"
+    ],
+    "deadline": null,
+    "duration": "three_to_four_weeks",
+    "isRecurring": true,
+    "effortLabel": "moderate",
+    "effortMin": 90,
+    "verification": "official_source",
+    "sourceUrl": "https://www.dubaifuture.ae/feel-2026/"
+  },
+  {
+    "title": "Rotary Peace Fellowship (Master's Degree)",
+    "description": "Fully funded master's degree in peace and development studies at a Rotary Peace Center, covering tuition, travel, and living expenses. Open to candidates of all nationalities with no residency restriction; fellows must be assigned to a center outside their home country. This entry reflects the Duke University/UNC Chapel Hill center, one of several centers worldwide (others include University of Bradford in the UK).",
+    "org": "The Rotary Foundation",
+    "type": "scholarship_fellowship",
+    "dest": "US",
+    "compType": "cash_and_in_kind",
+    "flight": true,
+    "lodging": true,
+    "meals": true,
+    "stipendMin": null,
+    "stipendMax": null,
+    "currency": "USD",
+    "requiresWorkVisa": false,
+    "visaNote": "US J-1 exchange visitor / student visa, not a work visa.",
+    "minAge": 24,
+    "maxAge": null,
+    "gradOnly": true,
+    "education": [
+      "bachelors_completed"
+    ],
+    "career": [
+      "early_career",
+      "mid_career"
+    ],
+    "employment": [],
+    "english": "c1",
+    "nationality": {
+      "type": null,
+      "list": []
+    },
+    "softTags": [],
+    "deadline": null,
+    "duration": "semester_or_longer",
+    "isRecurring": true,
+    "effortLabel": "extensive",
+    "effortMin": 240,
+    "verification": "official_source",
+    "sourceUrl": "https://www.rotary.org/en/our-programs/peace-fellowships"
+  },
+  {
+    "title": "One Young World Leading Scholarship 2026",
+    "description": "Fully funded scholarship to attend the One Young World Summit 2026 in Cape Town, South Africa (3-6 November 2026), covering delegate access, hotel accommodation, catering, and travel to/from Cape Town. Open to applicants aged 18-35 from any country; priority is given to countries historically underrepresented at past summits, but there is no nationality exclusion.",
+    "org": "One Young World",
+    "type": "conference",
+    "dest": "ZA",
+    "compType": "in_kind_only",
+    "flight": true,
+    "lodging": true,
+    "meals": true,
+    "stipendMin": null,
+    "stipendMax": null,
+    "currency": null,
+    "requiresWorkVisa": false,
+    "visaNote": null,
+    "minAge": 18,
+    "maxAge": 35,
+    "gradOnly": false,
+    "education": [],
+    "career": [],
+    "employment": [],
+    "english": "b2",
+    "nationality": {
+      "type": null,
+      "list": []
+    },
+    "softTags": [],
+    "deadline": "2026-10-31",
+    "duration": "weekend",
+    "isRecurring": true,
+    "effortLabel": "moderate",
+    "effortMin": 90,
+    "verification": "official_source",
+    "sourceUrl": "https://www.oneyoungworld.com/scholarship/leading-scholarship-2026"
+  },
+  {
+    "title": "DAAD EPOS Development-Related Postgraduate Courses",
+    "description": "German Academic Exchange Service (DAAD) scholarships for postgraduate and (in some cases) doctoral study in Germany, aimed at professionals from developing and newly industrializing countries with at least two years of relevant work experience. Eligibility is nationality-based (per the OECD DAC list of developing economies) and does not require current residence in the home country, so citizens of countries such as India, Pakistan, Egypt, the Philippines, Ghana, Kenya, Nigeria, Rwanda, South Africa, or Vietnam who are working in Dubai/UAE remain eligible.",
+    "org": "German Academic Exchange Service (DAAD)",
+    "type": "scholarship_fellowship",
+    "dest": "DE",
+    "compType": "cash_and_in_kind",
+    "flight": true,
+    "lodging": false,
+    "meals": false,
+    "stipendMin": null,
+    "stipendMax": null,
+    "currency": "EUR",
+    "requiresWorkVisa": false,
+    "visaNote": "German student visa, not a work visa.",
+    "minAge": 23,
+    "maxAge": 36,
+    "gradOnly": true,
+    "education": [
+      "bachelors_completed"
+    ],
+    "career": [
+      "early_career",
+      "mid_career"
+    ],
+    "employment": [
+      "employed_full_time"
+    ],
+    "english": "b2",
+    "nationality": {
+      "type": "include",
+      "list": [
+        "IN",
+        "PK",
+        "EG",
+        "PH",
+        "GH",
+        "KE",
+        "NG",
+        "RW",
+        "ZA",
+        "VN"
+      ]
+    },
+    "softTags": [],
+    "deadline": null,
+    "duration": "semester_or_longer",
+    "isRecurring": true,
+    "effortLabel": "high",
+    "effortMin": 150,
+    "verification": "official_source",
+    "sourceUrl": "https://www.daad.de/en/information-services-for-higher-education-institutions/further-information-on-daad-programmes/epos/"
+  },
+  {
+    "title": "Knight-Hennessy Scholars",
+    "description": "Fully funded graduate fellowship covering any Stanford graduate degree program (JD, MBA, MD, MS, PhD, etc.), including tuition, a living stipend, and travel. There are no citizenship, nationality, or age restrictions; applicants must separately apply to and be admitted into a Stanford graduate program.",
+    "org": "Knight-Hennessy Scholars, Stanford University",
+    "type": "scholarship_fellowship",
+    "dest": "US",
+    "compType": "cash_and_in_kind",
+    "flight": true,
+    "lodging": true,
+    "meals": false,
+    "stipendMin": null,
+    "stipendMax": null,
+    "currency": "USD",
+    "requiresWorkVisa": false,
+    "visaNote": "US F-1 student visa, not a work visa.",
+    "minAge": 20,
+    "maxAge": null,
+    "gradOnly": true,
+    "education": [
+      "bachelors_completed"
+    ],
+    "career": [],
+    "employment": [],
+    "english": "c1",
+    "nationality": {
+      "type": null,
+      "list": []
+    },
+    "softTags": [],
+    "deadline": "2026-10-06",
+    "duration": "semester_or_longer",
+    "isRecurring": true,
+    "effortLabel": "extensive",
+    "effortMin": 300,
+    "verification": "official_source",
+    "sourceUrl": "https://knight-hennessy.stanford.edu/admission/before-you-apply/eligibility"
+  },
+  {
+    "title": "Maurice R. Greenberg World Fellows Program",
+    "description": "Fully funded four-month residential fellowship at Yale's Jackson School of Global Affairs for mid-career leaders, covering stipend, travel, housing, and medical insurance. Open to citizens of any country other than the United States (dual US citizens are eligible but preference goes to those whose work is focused outside the US); there is no requirement to currently reside in one's home country.",
+    "org": "Yale University (Maurice R. Greenberg World Fellows Program)",
+    "type": "scholarship_fellowship",
+    "dest": "US",
+    "compType": "cash_and_in_kind",
+    "flight": true,
+    "lodging": true,
+    "meals": false,
+    "stipendMin": null,
+    "stipendMax": null,
+    "currency": "USD",
+    "requiresWorkVisa": false,
+    "visaNote": "US J-1 exchange visitor visa, not a work visa.",
+    "minAge": 27,
+    "maxAge": null,
+    "gradOnly": false,
+    "education": [],
+    "career": [
+      "mid_career",
+      "senior_career"
+    ],
+    "employment": [
+      "employed_full_time"
+    ],
+    "english": "c1",
+    "nationality": {
+      "type": "exclude",
+      "list": [
+        "US"
+      ]
+    },
+    "softTags": [],
+    "deadline": null,
+    "duration": "semester_or_longer",
+    "isRecurring": true,
+    "effortLabel": "extensive",
+    "effortMin": 240,
+    "verification": "official_source",
+    "sourceUrl": "https://worldfellows.yale.edu/the-program/application/"
+  },
+  {
+    "title": "Eisenhower Fellowships Global Program",
+    "description": "Multi-week, individually tailored leadership fellowship in the United States for accomplished mid-career professionals (roughly age 32-45), fully funded including travel and program costs. Eligibility is based on citizenship or long-term residence in the country the applicant represents rather than where they currently live; the only firm exclusion is applicants currently residing in the United States, so professionals of any nationality based in the UAE may apply representing their home country.",
+    "org": "Eisenhower Fellowships",
+    "type": "scholarship_fellowship",
+    "dest": "US",
+    "compType": "in_kind_only",
+    "flight": true,
+    "lodging": true,
+    "meals": true,
+    "stipendMin": null,
+    "stipendMax": null,
+    "currency": null,
+    "requiresWorkVisa": false,
+    "visaNote": "US J-1 exchange visitor visa, not a work visa.",
+    "minAge": 32,
+    "maxAge": 45,
+    "gradOnly": false,
+    "education": [],
+    "career": [
+      "mid_career",
+      "senior_career"
+    ],
+    "employment": [
+      "employed_full_time"
+    ],
+    "english": "c1",
+    "nationality": {
+      "type": null,
+      "list": []
+    },
+    "softTags": [],
+    "deadline": null,
+    "duration": "one_to_three_months",
+    "isRecurring": true,
+    "effortLabel": "extensive",
+    "effortMin": 240,
+    "verification": "official_source",
+    "sourceUrl": "https://www.efworld.org/2027-globalprogram-eligibilty-criteria/"
+  },
+  {
+    "title": "MBZUAI Fully Funded MSc/PhD Scholarship",
+    "description": "Mohamed bin Zayed University of Artificial Intelligence (Abu Dhabi) grants every admitted full-time graduate student a full scholarship covering tuition, on-campus accommodation, health insurance, UAE residency visa, and a monthly stipend (about AED 15,000 for MSc, AED 17,500 for PhD). Explicitly open to domestic and international students of all nationalities as ordinary university admission, not restricted to UAE citizens.",
+    "org": "Mohamed bin Zayed University of Artificial Intelligence (MBZUAI)",
+    "type": "scholarship_fellowship",
+    "dest": "AE",
+    "compType": "cash_and_in_kind",
+    "flight": false,
+    "lodging": true,
+    "meals": false,
+    "stipendMin": 15000,
+    "stipendMax": 17500,
+    "currency": "AED",
+    "requiresWorkVisa": false,
+    "visaNote": "Student residency visa sponsored by the university; not a work visa.",
+    "minAge": 21,
+    "maxAge": null,
+    "gradOnly": true,
+    "education": [
+      "bachelors_completed"
+    ],
+    "career": [],
+    "employment": [],
+    "english": "b2",
+    "nationality": {
+      "type": null,
+      "list": []
+    },
+    "softTags": [
+      "uae_based_university",
+      "stem"
+    ],
+    "deadline": null,
+    "duration": "semester_or_longer",
+    "isRecurring": true,
+    "effortLabel": "high",
+    "effortMin": 150,
+    "verification": "official_source",
+    "sourceUrl": "https://mbzuai.ac.ae/study/graduate-admission-process/"
+  }
+]

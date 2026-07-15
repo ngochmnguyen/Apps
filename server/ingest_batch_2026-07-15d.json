@@ -1,0 +1,1075 @@
+[
+  {
+    "title": "EPIK (English Program in Korea)",
+    "description": "Government-run program placing native or fluent English speakers as English teachers in South Korean public schools under one-year contracts. Administered by the National Institute for International Education (NIIED) under Korea's Ministry of Education, with placements across all 17 provinces. (This app currently supports a limited set of nationalities in its filters; the real program's eligibility is broader than what's listed here.)",
+    "org": "National Institute for International Education (NIIED), Korean Ministry of Education",
+    "type": "work_study_exchange",
+    "dest": "KR",
+    "compType": "cash_and_in_kind",
+    "flight": true,
+    "lodging": true,
+    "meals": false,
+    "stipendMin": 2100000,
+    "stipendMax": 3000000,
+    "currency": "KRW",
+    "requiresWorkVisa": true,
+    "visaNote": "E-2 foreign-language-instructor visa, sponsored by the placement school",
+    "minAge": 20,
+    "maxAge": 62,
+    "gradOnly": true,
+    "education": [
+      "bachelors_completed"
+    ],
+    "career": [],
+    "employment": [],
+    "english": "native_or_fluent",
+    "nationality": {
+      "type": "include",
+      "list": [
+        "AU",
+        "CA",
+        "GB",
+        "US",
+        "ZA",
+        "IN"
+      ]
+    },
+    "softTags": [
+      "teach_abroad",
+      "government_program"
+    ],
+    "deadline": null,
+    "duration": "semester_or_longer",
+    "isRecurring": true,
+    "effortLabel": "high",
+    "effortMin": 10,
+    "verification": "official_source",
+    "sourceUrl": "https://epik.go.kr/web/epik/main"
+  },
+  {
+    "title": "IAESTE Internship Programme – Ghana",
+    "description": "Paid technical and scientific internships (engineering, agriculture, applied sciences, social sciences) for enrolled university students and recent graduates, arranged through IAESTE's global exchange platform and the Ghana National Committee based at KNUST. Internships run from six weeks to several months and include a cost-of-living stipend.",
+    "org": "IAESTE (International Association for the Exchange of Students for Technical Experience) – Ghana",
+    "type": "internship",
+    "dest": "GH",
+    "compType": "cash",
+    "flight": false,
+    "lodging": false,
+    "meals": false,
+    "stipendMin": null,
+    "stipendMax": null,
+    "currency": null,
+    "requiresWorkVisa": true,
+    "visaNote": "Work/training permit arranged with host employer and national committee; requirements vary by placement",
+    "minAge": 19,
+    "maxAge": null,
+    "gradOnly": false,
+    "education": [],
+    "career": [
+      "grad_student",
+      "recent_grad"
+    ],
+    "employment": [
+      "student"
+    ],
+    "english": "b2",
+    "nationality": {
+      "type": null,
+      "list": []
+    },
+    "softTags": [
+      "stem_internship",
+      "non_conventional_destination"
+    ],
+    "deadline": null,
+    "duration": "one_to_three_months",
+    "isRecurring": true,
+    "effortLabel": "moderate",
+    "effortMin": 5,
+    "verification": "official_source",
+    "sourceUrl": "https://iaeste.org/member-countries/ghana"
+  },
+  {
+    "title": "German Chancellor Fellowship",
+    "description": "A one-year fellowship under the patronage of the German Chancellor, bringing early- to mid-career professionals with demonstrated leadership potential from Brazil, China, India, South Africa, and the United States to Germany to design and carry out a self-directed project with an expert host and mentor. Up to 50 fellowships are awarded annually.",
+    "org": "Alexander von Humboldt Foundation",
+    "type": "work_study_exchange",
+    "dest": "DE",
+    "compType": "cash",
+    "flight": true,
+    "lodging": false,
+    "meals": false,
+    "stipendMin": null,
+    "stipendMax": null,
+    "currency": "EUR",
+    "requiresWorkVisa": true,
+    "visaNote": "German long-stay residence permit for research fellows, sponsored by host institution",
+    "minAge": 24,
+    "maxAge": null,
+    "gradOnly": true,
+    "education": [
+      "bachelors_completed",
+      "masters_completed",
+      "professional_degree"
+    ],
+    "career": [
+      "early_career",
+      "mid_career"
+    ],
+    "employment": [
+      "employed_full_time",
+      "self_employed"
+    ],
+    "english": "c1",
+    "nationality": {
+      "type": "include",
+      "list": [
+        "BR",
+        "CN",
+        "IN",
+        "ZA",
+        "US"
+      ]
+    },
+    "softTags": [
+      "leadership_fellowship"
+    ],
+    "deadline": "2026-10-15",
+    "duration": "semester_or_longer",
+    "isRecurring": true,
+    "effortLabel": "high",
+    "effortMin": 10,
+    "verification": "official_source",
+    "sourceUrl": "https://www.humboldt-foundation.de/en/apply/sponsorship-programmes/german-chancellor-fellowship"
+  },
+  {
+    "title": "Congress-Bundestag Youth Exchange for Young Professionals (CBYX)",
+    "description": "A US Department of State and German Bundestag-funded one-year exchange for young Americans, combining two months of German language training, four months of coursework at a German university or college of applied sciences, and a five-month internship in the participant's career field, while living with a host family.",
+    "org": "U.S. Department of State (implemented by Cultural Vistas)",
+    "type": "work_study_exchange",
+    "dest": "DE",
+    "compType": "cash_and_in_kind",
+    "flight": true,
+    "lodging": true,
+    "meals": true,
+    "stipendMin": null,
+    "stipendMax": null,
+    "currency": "EUR",
+    "requiresWorkVisa": true,
+    "visaNote": "German exchange/training visa arranged by the program",
+    "minAge": 18,
+    "maxAge": 24,
+    "gradOnly": false,
+    "education": [],
+    "career": [],
+    "employment": [],
+    "english": "native_or_fluent",
+    "nationality": {
+      "type": "include",
+      "list": [
+        "US"
+      ]
+    },
+    "softTags": [
+      "young_professionals",
+      "language_immersion"
+    ],
+    "deadline": "2026-11-01",
+    "duration": "semester_or_longer",
+    "isRecurring": true,
+    "effortLabel": "high",
+    "effortMin": 10,
+    "verification": "official_source",
+    "sourceUrl": "https://exchanges.state.gov/us/program/congress-bundestag-youth-exchange-young-professionals-cbyx"
+  },
+  {
+    "title": "Mandela Washington Fellowship – Professional Development Experience",
+    "description": "Flagship program of the Young African Leaders Initiative (YALI). After a six-week Leadership Institute at a US university studying Business, Civic Engagement, or Public Management, a competitively-selected subset of Fellows completes a four-week paid Professional Development Experience placement with a US organization in their sector.",
+    "org": "U.S. Department of State (YALI) / IREX",
+    "type": "internship",
+    "dest": "US",
+    "compType": "cash_and_in_kind",
+    "flight": true,
+    "lodging": true,
+    "meals": true,
+    "stipendMin": null,
+    "stipendMax": null,
+    "currency": "USD",
+    "requiresWorkVisa": true,
+    "visaNote": "J-1 exchange visitor visa arranged by the program",
+    "minAge": 21,
+    "maxAge": 35,
+    "gradOnly": false,
+    "education": [],
+    "career": [
+      "early_career",
+      "mid_career"
+    ],
+    "employment": [],
+    "english": "b2",
+    "nationality": {
+      "type": "include",
+      "list": [
+        "GH",
+        "KE",
+        "NG",
+        "RW",
+        "ZA"
+      ]
+    },
+    "softTags": [
+      "leadership_program",
+      "sub_saharan_africa"
+    ],
+    "deadline": null,
+    "duration": "one_to_three_months",
+    "isRecurring": true,
+    "effortLabel": "extensive",
+    "effortMin": 15,
+    "verification": "official_source",
+    "sourceUrl": "https://www.mandelawashingtonfellowship.org/"
+  },
+  {
+    "title": "Fulbright Foreign Language Teaching Assistant (FLTA) Program",
+    "description": "Brings early-career language teachers from over 50 countries to US colleges and universities to serve as teaching assistants in their native language and culture for one academic year, while also taking coursework themselves. Applicants must be nominated by a US Embassy or a Fulbright Commission in their home country.",
+    "org": "U.S. Department of State / Fulbright Foreign Student Program",
+    "type": "internship",
+    "dest": "US",
+    "compType": "cash_and_in_kind",
+    "flight": true,
+    "lodging": true,
+    "meals": false,
+    "stipendMin": null,
+    "stipendMax": null,
+    "currency": "USD",
+    "requiresWorkVisa": true,
+    "visaNote": "J-1 exchange visitor visa",
+    "minAge": 20,
+    "maxAge": null,
+    "gradOnly": false,
+    "education": [
+      "bachelors_completed"
+    ],
+    "career": [
+      "early_career"
+    ],
+    "employment": [],
+    "english": "b2",
+    "nationality": {
+      "type": "exclude",
+      "list": [
+        "US"
+      ]
+    },
+    "softTags": [
+      "teaching_assistantship"
+    ],
+    "deadline": null,
+    "duration": "semester_or_longer",
+    "isRecurring": true,
+    "effortLabel": "high",
+    "effortMin": 10,
+    "verification": "official_source",
+    "sourceUrl": "https://foreign.fulbrightonline.org/about/flta-program"
+  },
+  {
+    "title": "Peace Corps – Kyrgyz Republic",
+    "description": "Two-year US government volunteer service in the Kyrgyz Republic, primarily in Education (English teaching at secondary schools and universities) and Environment sectors, preceded by three months of in-country pre-service training. Volunteers receive a monthly living allowance, housing, and full medical support.",
+    "org": "United States Peace Corps",
+    "type": "work_study_exchange",
+    "dest": "KG",
+    "compType": "cash_and_in_kind",
+    "flight": true,
+    "lodging": true,
+    "meals": false,
+    "stipendMin": null,
+    "stipendMax": null,
+    "currency": null,
+    "requiresWorkVisa": true,
+    "visaNote": "Long-term visa/registration arranged by Peace Corps with the host government",
+    "minAge": 18,
+    "maxAge": null,
+    "gradOnly": false,
+    "education": [],
+    "career": [],
+    "employment": [],
+    "english": "native_or_fluent",
+    "nationality": {
+      "type": "include",
+      "list": [
+        "US"
+      ]
+    },
+    "softTags": [
+      "volunteer_service",
+      "non_conventional_destination",
+      "central_asia"
+    ],
+    "deadline": null,
+    "duration": "semester_or_longer",
+    "isRecurring": true,
+    "effortLabel": "extensive",
+    "effortMin": 20,
+    "verification": "official_source",
+    "sourceUrl": "https://www.peacecorps.gov/kyrgyz-republic/"
+  },
+  {
+    "title": "Fulbright English Teaching Assistant (ETA) Program – Mongolia",
+    "description": "Places US citizens as English teaching assistants at Mongolian universities and colleges for one academic year (mid-August to mid-June), teaching up to 20 hours per week alongside a required TESOL training course. Housing is arranged near the host institution, typically in a teacher's dormitory.",
+    "org": "U.S. Department of State / U.S. Embassy Ulaanbaatar / Fulbright Program",
+    "type": "internship",
+    "dest": "MN",
+    "compType": "cash_and_in_kind",
+    "flight": true,
+    "lodging": true,
+    "meals": false,
+    "stipendMin": null,
+    "stipendMax": null,
+    "currency": null,
+    "requiresWorkVisa": true,
+    "visaNote": "Visa/registration arranged by the US Embassy and host institution",
+    "minAge": 20,
+    "maxAge": null,
+    "gradOnly": true,
+    "education": [
+      "bachelors_completed"
+    ],
+    "career": [
+      "recent_grad",
+      "early_career"
+    ],
+    "employment": [],
+    "english": "native_or_fluent",
+    "nationality": {
+      "type": "include",
+      "list": [
+        "US"
+      ]
+    },
+    "softTags": [
+      "teach_abroad",
+      "non_conventional_destination"
+    ],
+    "deadline": "2026-10-06",
+    "duration": "semester_or_longer",
+    "isRecurring": true,
+    "effortLabel": "high",
+    "effortMin": 10,
+    "verification": "official_source",
+    "sourceUrl": "https://mn.usembassy.gov/fulbright-english-teaching-assistant-program/"
+  },
+  {
+    "title": "Fulbright English Teaching Assistant (ETA) Program – Kazakhstan",
+    "description": "Places US citizens as English teaching assistants at regional universities across Kazakhstan for one academic year, teaching up to 20 hours per week, with a reimbursable allowance for Russian or Kazakh language lessons. The US Embassy's Public Diplomacy Section helps the grantee's host institution arrange suitable housing.",
+    "org": "U.S. Department of State / U.S. Embassy Astana / Fulbright Program",
+    "type": "internship",
+    "dest": "KZ",
+    "compType": "cash_and_in_kind",
+    "flight": true,
+    "lodging": true,
+    "meals": false,
+    "stipendMin": null,
+    "stipendMax": null,
+    "currency": null,
+    "requiresWorkVisa": true,
+    "visaNote": "Visa/registration arranged by the US Embassy and host institution",
+    "minAge": 20,
+    "maxAge": null,
+    "gradOnly": true,
+    "education": [
+      "bachelors_completed"
+    ],
+    "career": [
+      "recent_grad",
+      "early_career"
+    ],
+    "employment": [],
+    "english": "native_or_fluent",
+    "nationality": {
+      "type": "include",
+      "list": [
+        "US"
+      ]
+    },
+    "softTags": [
+      "teach_abroad",
+      "non_conventional_destination",
+      "central_asia"
+    ],
+    "deadline": "2026-10-06",
+    "duration": "semester_or_longer",
+    "isRecurring": true,
+    "effortLabel": "high",
+    "effortMin": 10,
+    "verification": "official_source",
+    "sourceUrl": "https://us.fulbrightonline.org/countries/south-and-central-asia/kazakhstan/1615"
+  },
+  {
+    "title": "Fulbright English Teaching Assistant (ETA) Program – Philippines",
+    "description": "Places US citizens as English teaching assistants in Philippine schools and universities for approximately one academic year, administered locally by the Philippine-American Educational Foundation as part of the broader Fulbright ETA network.",
+    "org": "Philippine-American Educational Foundation (PAEF) / U.S. Department of State",
+    "type": "internship",
+    "dest": "PH",
+    "compType": "cash_and_in_kind",
+    "flight": true,
+    "lodging": true,
+    "meals": false,
+    "stipendMin": null,
+    "stipendMax": null,
+    "currency": null,
+    "requiresWorkVisa": true,
+    "visaNote": "Visa/registration arranged by the US Embassy and host institution",
+    "minAge": 20,
+    "maxAge": null,
+    "gradOnly": true,
+    "education": [
+      "bachelors_completed"
+    ],
+    "career": [
+      "recent_grad",
+      "early_career"
+    ],
+    "employment": [],
+    "english": "native_or_fluent",
+    "nationality": {
+      "type": "include",
+      "list": [
+        "US"
+      ]
+    },
+    "softTags": [
+      "teach_abroad"
+    ],
+    "deadline": "2026-10-06",
+    "duration": "semester_or_longer",
+    "isRecurring": true,
+    "effortLabel": "high",
+    "effortMin": 10,
+    "verification": "official_source",
+    "sourceUrl": "https://fulbright.org.ph/"
+  },
+  {
+    "title": "AIESEC Global Talent Internship – Kenya",
+    "description": "Paid international internships (six weeks to 18 months) placing students and recent graduates with host companies in Kenya across fields such as business administration, marketing, IT, and engineering, arranged through AIESEC's global internship exchange platform and AIESEC in Kenya.",
+    "org": "AIESEC in Kenya",
+    "type": "internship",
+    "dest": "KE",
+    "compType": "cash_and_in_kind",
+    "flight": false,
+    "lodging": false,
+    "meals": false,
+    "stipendMin": null,
+    "stipendMax": null,
+    "currency": null,
+    "requiresWorkVisa": true,
+    "visaNote": "Work permit/visa arranged with support from AIESEC and the host company",
+    "minAge": 18,
+    "maxAge": 30,
+    "gradOnly": false,
+    "education": [],
+    "career": [
+      "grad_student",
+      "recent_grad"
+    ],
+    "employment": [
+      "student"
+    ],
+    "english": "b2",
+    "nationality": {
+      "type": null,
+      "list": []
+    },
+    "softTags": [
+      "stem_internship",
+      "non_conventional_destination",
+      "east_africa"
+    ],
+    "deadline": null,
+    "duration": "one_to_three_months",
+    "isRecurring": true,
+    "effortLabel": "moderate",
+    "effortMin": 5,
+    "verification": "official_source",
+    "sourceUrl": "https://aiesec.ke/"
+  },
+  {
+    "title": "AIESEC Global Talent Internship – Argentina",
+    "description": "Paid international internships (six weeks to 18 months) placing students and recent graduates with host companies in Argentina, including opportunities in Mendoza and San Miguel de Tucuman, across business, marketing, IT, and engineering fields, arranged through AIESEC's global internship exchange platform.",
+    "org": "AIESEC in Argentina",
+    "type": "internship",
+    "dest": "AR",
+    "compType": "cash_and_in_kind",
+    "flight": false,
+    "lodging": false,
+    "meals": false,
+    "stipendMin": null,
+    "stipendMax": null,
+    "currency": null,
+    "requiresWorkVisa": true,
+    "visaNote": "Work permit/visa arranged with support from AIESEC and the host company",
+    "minAge": 18,
+    "maxAge": 30,
+    "gradOnly": false,
+    "education": [],
+    "career": [
+      "grad_student",
+      "recent_grad"
+    ],
+    "employment": [
+      "student"
+    ],
+    "english": "b2",
+    "nationality": {
+      "type": null,
+      "list": []
+    },
+    "softTags": [
+      "stem_internship",
+      "non_conventional_destination"
+    ],
+    "deadline": null,
+    "duration": "one_to_three_months",
+    "isRecurring": true,
+    "effortLabel": "moderate",
+    "effortMin": 5,
+    "verification": "official_source",
+    "sourceUrl": "https://www.aiesec.org.ar/"
+  },
+  {
+    "title": "VSO Uzbekistan – English Language Education Volunteer",
+    "description": "Places experienced English-language education professionals in Uzbekistan to coach local teachers and teach secondary school students, as part of VSO's initiative (launched 2025) to strengthen English proficiency and teaching quality, running from August 2026 to June 2027.",
+    "org": "Voluntary Service Overseas (VSO)",
+    "type": "work_study_exchange",
+    "dest": "UZ",
+    "compType": "cash_and_in_kind",
+    "flight": true,
+    "lodging": true,
+    "meals": false,
+    "stipendMin": null,
+    "stipendMax": null,
+    "currency": null,
+    "requiresWorkVisa": true,
+    "visaNote": "Work/volunteer visa arranged by VSO and Uzbek host institutions",
+    "minAge": 25,
+    "maxAge": null,
+    "gradOnly": true,
+    "education": [
+      "bachelors_completed"
+    ],
+    "career": [
+      "mid_career",
+      "career_changer"
+    ],
+    "employment": [],
+    "english": "native_or_fluent",
+    "nationality": {
+      "type": null,
+      "list": []
+    },
+    "softTags": [
+      "teach_abroad",
+      "non_conventional_destination",
+      "central_asia"
+    ],
+    "deadline": null,
+    "duration": "semester_or_longer",
+    "isRecurring": true,
+    "effortLabel": "high",
+    "effortMin": 8,
+    "verification": "official_source",
+    "sourceUrl": "https://www.vsointernational.org/volunteering/strengthening-english-language-education-in-uzbekistan"
+  },
+  {
+    "title": "KAUST Visiting Student Research Program (VSRP)",
+    "description": "Fully-funded STEM research internship for third/fourth-year bachelor's and master's students at King Abdullah University of Science and Technology, lasting two to six months across more than 100 faculty-led research projects.",
+    "org": "King Abdullah University of Science and Technology (KAUST)",
+    "type": "internship",
+    "dest": "SA",
+    "compType": "cash_and_in_kind",
+    "flight": true,
+    "lodging": true,
+    "meals": false,
+    "stipendMin": 1000,
+    "stipendMax": 1000,
+    "currency": "USD",
+    "requiresWorkVisa": true,
+    "visaNote": "Saudi visit/residency visa arranged and covered by KAUST",
+    "minAge": 19,
+    "maxAge": null,
+    "gradOnly": false,
+    "education": [],
+    "career": [
+      "grad_student"
+    ],
+    "employment": [
+      "student"
+    ],
+    "english": "b2",
+    "nationality": {
+      "type": null,
+      "list": []
+    },
+    "softTags": [
+      "stem_internship"
+    ],
+    "deadline": null,
+    "duration": "one_to_three_months",
+    "isRecurring": true,
+    "effortLabel": "moderate",
+    "effortMin": 6,
+    "verification": "official_source",
+    "sourceUrl": "https://admissions.kaust.edu.sa/study/internships"
+  },
+  {
+    "title": "Peace Corps Response – Mexico",
+    "description": "Short-term (3-12 month) professional placements for experienced individuals in Mexico's Education and Environment sectors, distinct from the standard two-year Volunteer track. A current opening is for a Special Education Expert; positions rotate and are posted on Peace Corps' job board. Dual US-Mexican citizens, or those born in Mexico and naturalized after 1998, are not eligible.",
+    "org": "United States Peace Corps",
+    "type": "work_study_exchange",
+    "dest": "MX",
+    "compType": "cash_and_in_kind",
+    "flight": true,
+    "lodging": true,
+    "meals": false,
+    "stipendMin": null,
+    "stipendMax": null,
+    "currency": "USD",
+    "requiresWorkVisa": true,
+    "visaNote": "Peace Corps arranges required visas/permissions with the host government",
+    "minAge": 21,
+    "maxAge": null,
+    "gradOnly": true,
+    "education": [
+      "bachelors_completed",
+      "professional_degree"
+    ],
+    "career": [
+      "mid_career",
+      "senior_career",
+      "career_changer"
+    ],
+    "employment": [],
+    "english": "native_or_fluent",
+    "nationality": {
+      "type": "include",
+      "list": [
+        "US"
+      ]
+    },
+    "softTags": [
+      "short_term_placement",
+      "experienced_professionals"
+    ],
+    "deadline": "2026-10-15",
+    "duration": "semester_or_longer",
+    "isRecurring": true,
+    "effortLabel": "high",
+    "effortMin": 10,
+    "verification": "official_source",
+    "sourceUrl": "https://www.peacecorps.gov/mexico/"
+  },
+  {
+    "title": "DAAD WISE - Working Internships in Science and Engineering",
+    "description": "A fully-funded summer research internship placing Indian undergraduate students in science and engineering at a publicly-funded German university or research institute for 2-3 months. Covers a monthly scholarship, a one-time travel allowance, and health/accident/liability insurance; only students from DAAD-selected partner Indian institutions are eligible.",
+    "org": "German Academic Exchange Service (DAAD), India",
+    "type": "internship",
+    "dest": "DE",
+    "compType": "cash_and_in_kind",
+    "flight": true,
+    "lodging": false,
+    "meals": false,
+    "stipendMin": 831,
+    "stipendMax": 831,
+    "currency": "EUR",
+    "requiresWorkVisa": true,
+    "visaNote": "German national (long-stay) visa for the internship period; DAAD issues an invitation/confirmation letter to support the visa application.",
+    "minAge": 18,
+    "maxAge": null,
+    "gradOnly": false,
+    "education": [],
+    "career": [
+      "grad_student"
+    ],
+    "employment": [
+      "student"
+    ],
+    "english": "b2",
+    "nationality": {
+      "type": "include",
+      "list": [
+        "IN"
+      ]
+    },
+    "softTags": [
+      "research_internship",
+      "non_conventional_destination"
+    ],
+    "deadline": "2026-11-01",
+    "duration": "one_to_three_months",
+    "isRecurring": true,
+    "effortLabel": "high",
+    "effortMin": 8,
+    "verification": "official_source",
+    "sourceUrl": "https://www.daad.in/en/study-research-in-germany/studying-in-germany/internships-and-short-term-programmes/"
+  },
+  {
+    "title": "Fulbright English Teaching Assistant (ETA) Program - Mexico",
+    "description": "Places U.S. citizens as English teaching assistants in Mexican public institutions for 20-25 hours per week over roughly nine months (the 'Fulbright-Garcia Robles' grant), plus a supplementary community project. Funded by the U.S. Department of State and the Mexican government; includes a stipend, health benefits, and round-trip travel.",
+    "org": "Fulbright-Garcia Robles Commission / U.S. Department of State",
+    "type": "work_study_exchange",
+    "dest": "MX",
+    "compType": "cash_and_in_kind",
+    "flight": true,
+    "lodging": false,
+    "meals": false,
+    "stipendMin": null,
+    "stipendMax": null,
+    "currency": null,
+    "requiresWorkVisa": true,
+    "visaNote": "J-1 exchange visitor visa, sponsored by the Fulbright Commission/U.S. Department of State.",
+    "minAge": 21,
+    "maxAge": null,
+    "gradOnly": true,
+    "education": [
+      "bachelors_completed",
+      "masters_in_progress",
+      "masters_completed"
+    ],
+    "career": [
+      "grad_student",
+      "recent_grad"
+    ],
+    "employment": [],
+    "english": "native_or_fluent",
+    "nationality": {
+      "type": "include",
+      "list": [
+        "US"
+      ]
+    },
+    "softTags": [
+      "teach_abroad",
+      "government_program"
+    ],
+    "deadline": "2026-10-06",
+    "duration": "semester_or_longer",
+    "isRecurring": true,
+    "effortLabel": "extensive",
+    "effortMin": 15,
+    "verification": "official_source",
+    "sourceUrl": "https://us.fulbrightonline.org/countries/western-hemisphere/mexico/1646"
+  },
+  {
+    "title": "Fulbright English Teaching Assistant (ETA) Program - Brazil",
+    "description": "Places U.S. citizens as English teaching assistants at Brazilian institutions for the 2027-2028 grant year (Fulbright Brazil's 70th cohort), working roughly 30 hours per week including lesson planning. Funded by the U.S. Department of State and the Brazilian Fulbright Commission; includes a stipend, health benefits, and round-trip travel.",
+    "org": "Fulbright Commission Brazil / U.S. Department of State",
+    "type": "work_study_exchange",
+    "dest": "BR",
+    "compType": "cash_and_in_kind",
+    "flight": true,
+    "lodging": false,
+    "meals": false,
+    "stipendMin": null,
+    "stipendMax": null,
+    "currency": null,
+    "requiresWorkVisa": true,
+    "visaNote": "J-1 exchange visitor visa, sponsored by the Fulbright Commission/U.S. Department of State.",
+    "minAge": 21,
+    "maxAge": null,
+    "gradOnly": true,
+    "education": [
+      "bachelors_completed",
+      "masters_in_progress",
+      "masters_completed"
+    ],
+    "career": [
+      "grad_student",
+      "recent_grad"
+    ],
+    "employment": [],
+    "english": "native_or_fluent",
+    "nationality": {
+      "type": "include",
+      "list": [
+        "US"
+      ]
+    },
+    "softTags": [
+      "teach_abroad",
+      "government_program"
+    ],
+    "deadline": "2026-10-06",
+    "duration": "semester_or_longer",
+    "isRecurring": true,
+    "effortLabel": "extensive",
+    "effortMin": 15,
+    "verification": "official_source",
+    "sourceUrl": "https://us.fulbrightonline.org/countries/western-hemisphere/brazil/1628"
+  },
+  {
+    "title": "Fulbright English Teaching Assistant (ETA) Program - Argentina",
+    "description": "Places U.S. citizens as English teaching assistants at teacher-training colleges, institutes, or universities across Argentina's 24 provinces for up to 18 hours per week over the academic year, which starts in March. Funded by the U.S. Department of State and the Argentine Fulbright Commission; includes a stipend, health benefits, and round-trip travel.",
+    "org": "Fulbright Commission Argentina / U.S. Department of State",
+    "type": "work_study_exchange",
+    "dest": "AR",
+    "compType": "cash_and_in_kind",
+    "flight": true,
+    "lodging": false,
+    "meals": false,
+    "stipendMin": null,
+    "stipendMax": null,
+    "currency": null,
+    "requiresWorkVisa": true,
+    "visaNote": "J-1 exchange visitor visa, sponsored by the Fulbright Commission/U.S. Department of State.",
+    "minAge": 21,
+    "maxAge": null,
+    "gradOnly": true,
+    "education": [
+      "bachelors_completed",
+      "masters_in_progress",
+      "masters_completed"
+    ],
+    "career": [
+      "grad_student",
+      "recent_grad"
+    ],
+    "employment": [],
+    "english": "native_or_fluent",
+    "nationality": {
+      "type": "include",
+      "list": [
+        "US"
+      ]
+    },
+    "softTags": [
+      "teach_abroad",
+      "government_program"
+    ],
+    "deadline": "2026-10-06",
+    "duration": "semester_or_longer",
+    "isRecurring": true,
+    "effortLabel": "extensive",
+    "effortMin": 15,
+    "verification": "official_source",
+    "sourceUrl": "https://us.fulbrightonline.org/countries/western-hemisphere/argentina/1766"
+  },
+  {
+    "title": "CERN Summer Student Programme",
+    "description": "An 8-13 week paid research placement at CERN in Geneva for bachelor's/master's students in physics, engineering, computer science, or mathematics who have completed at least 6 semesters of study. Includes a CHF 94/day net subsistence allowance, health insurance, an extensive physics/IT lecture series, and help finding accommodation near CERN.",
+    "org": "CERN (European Organization for Nuclear Research)",
+    "type": "internship",
+    "dest": "CH",
+    "compType": "cash_and_in_kind",
+    "flight": false,
+    "lodging": false,
+    "meals": false,
+    "stipendMin": 5264,
+    "stipendMax": 8554,
+    "currency": "CHF",
+    "requiresWorkVisa": true,
+    "visaNote": "Short-stay work authorization / CERN legitimation arranged for non-EU/EFTA students; Swiss or French cross-border formalities apply depending on residence.",
+    "minAge": 19,
+    "maxAge": null,
+    "gradOnly": false,
+    "education": [],
+    "career": [
+      "grad_student"
+    ],
+    "employment": [
+      "student"
+    ],
+    "english": "b2",
+    "nationality": {
+      "type": null,
+      "list": []
+    },
+    "softTags": [
+      "research_internship",
+      "stem"
+    ],
+    "deadline": null,
+    "duration": "one_to_three_months",
+    "isRecurring": true,
+    "effortLabel": "high",
+    "effortMin": 8,
+    "verification": "official_source",
+    "sourceUrl": "https://careers.cern/programmes/summer-studentship/"
+  },
+  {
+    "title": "International Experience Canada - Working Holiday",
+    "description": "A Canadian government reciprocal youth mobility scheme granting an open work permit (12-24 months) to young people from partner countries, letting them work for almost any employer while in Canada. No stipend is provided by the program itself; participants find and are paid directly by their own employer once in Canada.",
+    "org": "Immigration, Refugees and Citizenship Canada (IRCC)",
+    "type": "work_study_exchange",
+    "dest": "CA",
+    "compType": "cash",
+    "flight": false,
+    "lodging": false,
+    "meals": false,
+    "stipendMin": null,
+    "stipendMax": null,
+    "currency": null,
+    "requiresWorkVisa": true,
+    "visaNote": "Open work permit issued directly under the International Experience Canada bilateral youth mobility agreement; age limit and permit length vary by partner country.",
+    "minAge": 18,
+    "maxAge": 35,
+    "gradOnly": false,
+    "education": [],
+    "career": [],
+    "employment": [],
+    "english": "b2",
+    "nationality": {
+      "type": "include",
+      "list": [
+        "AU",
+        "CL",
+        "CH",
+        "DE",
+        "FR",
+        "GB",
+        "KR",
+        "MX"
+      ]
+    },
+    "softTags": [
+      "government_program",
+      "working_holiday"
+    ],
+    "deadline": null,
+    "duration": "semester_or_longer",
+    "isRecurring": true,
+    "effortLabel": "moderate",
+    "effortMin": 2,
+    "verification": "official_source",
+    "sourceUrl": "https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec.html"
+  },
+  {
+    "title": "AIF Banyan Impact Fellowship (Service in India)",
+    "description": "A fully-funded 10-month fellowship (formerly the William J. Clinton Fellowship) placing young American and Indian professionals aged 21-35 with grassroots NGOs and social enterprises across India. Includes round-trip travel, insurance, and a monthly living stipend intended to match the local cost of living, not a salary.",
+    "org": "American India Foundation (AIF)",
+    "type": "work_study_exchange",
+    "dest": "IN",
+    "compType": "cash_and_in_kind",
+    "flight": true,
+    "lodging": false,
+    "meals": false,
+    "stipendMin": null,
+    "stipendMax": null,
+    "currency": null,
+    "requiresWorkVisa": true,
+    "visaNote": "Indian visa/registration arranged by AIF for the fellowship period.",
+    "minAge": 21,
+    "maxAge": 35,
+    "gradOnly": true,
+    "education": [
+      "bachelors_completed"
+    ],
+    "career": [
+      "early_career",
+      "career_changer"
+    ],
+    "employment": [],
+    "english": "b2",
+    "nationality": {
+      "type": "include",
+      "list": [
+        "US",
+        "IN"
+      ]
+    },
+    "softTags": [
+      "leadership_fellowship",
+      "non_conventional_destination"
+    ],
+    "deadline": null,
+    "duration": "semester_or_longer",
+    "isRecurring": true,
+    "effortLabel": "high",
+    "effortMin": 10,
+    "verification": "official_source",
+    "sourceUrl": "https://aif.org/fellowship/apply-for-service-in-india/"
+  },
+  {
+    "title": "Summer Work Travel Program (J-1 Visa)",
+    "description": "A U.S. State Department-regulated cultural exchange program letting full-time foreign post-secondary students work seasonal jobs (often hospitality, retail, or recreation) in the United States for up to four months during their summer break. Participants must go through a designated sponsor organization and, outside visa-waiver countries, typically need a job offer arranged before applying; wages are paid directly by the U.S. employer.",
+    "org": "U.S. Department of State (Bureau of Educational and Cultural Affairs)",
+    "type": "work_study_exchange",
+    "dest": "US",
+    "compType": "cash",
+    "flight": false,
+    "lodging": false,
+    "meals": false,
+    "stipendMin": null,
+    "stipendMax": null,
+    "currency": null,
+    "requiresWorkVisa": true,
+    "visaNote": "J-1 Exchange Visitor visa (Summer Work Travel category), sponsored by a State Department-designated sponsor organization.",
+    "minAge": 18,
+    "maxAge": null,
+    "gradOnly": false,
+    "education": [],
+    "career": [],
+    "employment": [
+      "student"
+    ],
+    "english": "b2",
+    "nationality": {
+      "type": "exclude",
+      "list": [
+        "US"
+      ]
+    },
+    "softTags": [
+      "government_program"
+    ],
+    "deadline": null,
+    "duration": "one_to_three_months",
+    "isRecurring": true,
+    "effortLabel": "high",
+    "effortMin": 8,
+    "verification": "official_source",
+    "sourceUrl": "https://j1visa.state.gov/programs/summer-work-travel"
+  },
+  {
+    "title": "Princeton in Africa Fellowship",
+    "description": "A 12-month, fully-funded fellowship placing university graduates of any nationality (up to age 35) with partner organizations across roughly 14 African countries, working on issues from public health to education to conservation. Covers a living stipend (amount varies by placement location and cost of living), medical/evacuation insurance, and pre-departure medical costs; recent placement countries have included Ghana, Kenya, Rwanda, South Africa, and Tanzania.",
+    "org": "Princeton in Africa",
+    "type": "work_study_exchange",
+    "dest": "GH",
+    "compType": "cash_and_in_kind",
+    "flight": true,
+    "lodging": false,
+    "meals": false,
+    "stipendMin": 350,
+    "stipendMax": 1000,
+    "currency": "USD",
+    "requiresWorkVisa": true,
+    "visaNote": "Work/residence permit arranged with the host organization in the assigned placement country; specific type depends on the country.",
+    "minAge": 21,
+    "maxAge": 35,
+    "gradOnly": true,
+    "education": [
+      "bachelors_completed"
+    ],
+    "career": [
+      "recent_grad",
+      "early_career"
+    ],
+    "employment": [],
+    "english": "c1",
+    "nationality": {
+      "type": null,
+      "list": []
+    },
+    "softTags": [
+      "leadership_fellowship",
+      "non_conventional_destination",
+      "placement_country_varies"
+    ],
+    "deadline": null,
+    "duration": "semester_or_longer",
+    "isRecurring": true,
+    "effortLabel": "extensive",
+    "effortMin": 15,
+    "verification": "official_source",
+    "sourceUrl": "https://www.princetoninafrica.org/applicants/how-to-apply/"
+  }
+]

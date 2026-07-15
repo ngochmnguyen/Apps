@@ -1,0 +1,634 @@
+[
+  {
+    "title": "Mandela Rhodes Scholarship",
+    "description": "A fully funded postgraduate scholarship for African citizens to complete an Honours (1 year) or Master's (2 years) degree at a South African university, paired with a mandatory leadership development programme. Covers tuition, accommodation, meals and travel costs, and is run by the Mandela Rhodes Foundation, an independent South African trust distinct from the Rhodes Trust. (This app currently supports a limited set of nationalities in its filters; the real program's eligibility is broader than what's listed here.)",
+    "org": "The Mandela Rhodes Foundation",
+    "type": "scholarship_fellowship",
+    "dest": "ZA",
+    "compType": "cash_and_in_kind",
+    "flight": true,
+    "lodging": true,
+    "meals": true,
+    "stipendMin": null,
+    "stipendMax": null,
+    "currency": null,
+    "requiresWorkVisa": false,
+    "visaNote": "Study visa for South Africa arranged by scholar with foundation support; not a work visa.",
+    "minAge": 19,
+    "maxAge": 29,
+    "gradOnly": false,
+    "education": [
+      "bachelors_completed"
+    ],
+    "career": [],
+    "employment": [],
+    "english": "b2",
+    "nationality": {
+      "type": "include",
+      "list": [
+        "EG",
+        "GH",
+        "KE",
+        "NG",
+        "RW",
+        "ZA"
+      ]
+    },
+    "softTags": [
+      "non_conventional_destination",
+      "leadership_development",
+      "africa_focused"
+    ],
+    "deadline": null,
+    "duration": "semester_or_longer",
+    "isRecurring": true,
+    "effortLabel": "high",
+    "effortMin": 180,
+    "verification": "official_source",
+    "sourceUrl": "https://www.mandelarhodes.org/scholarship/apply/"
+  },
+  {
+    "title": "Mastercard Foundation Scholars Program at CMU-Africa",
+    "description": "Fully funded Master's scholarships in Information Technology, Electrical & Computer Engineering, or AI at Carnegie Mellon University Africa in Kigali, Rwanda, for young Africans with financial need and leadership potential. Covers tuition, fees, health insurance, travel and living expenses, plus career coaching and entrepreneurship support. Applicants must indicate interest in the Mastercard Foundation Scholars Program when applying to CMU-Africa. (This app currently supports a limited set of nationalities in its filters; the real program's eligibility is broader than what's listed here.)",
+    "org": "Carnegie Mellon University Africa / Mastercard Foundation",
+    "type": "scholarship_fellowship",
+    "dest": "RW",
+    "compType": "cash_and_in_kind",
+    "flight": true,
+    "lodging": true,
+    "meals": true,
+    "stipendMin": null,
+    "stipendMax": null,
+    "currency": null,
+    "requiresWorkVisa": false,
+    "visaNote": "Rwandan student residence permit facilitated by CMU-Africa; not a work visa.",
+    "minAge": 20,
+    "maxAge": null,
+    "gradOnly": false,
+    "education": [
+      "bachelors_completed"
+    ],
+    "career": [],
+    "employment": [],
+    "english": "b2",
+    "nationality": {
+      "type": "include",
+      "list": [
+        "EG",
+        "GH",
+        "KE",
+        "NG",
+        "RW",
+        "ZA"
+      ]
+    },
+    "softTags": [
+      "non_conventional_destination",
+      "stem_focus",
+      "africa_focused"
+    ],
+    "deadline": null,
+    "duration": "semester_or_longer",
+    "isRecurring": true,
+    "effortLabel": "high",
+    "effortMin": 180,
+    "verification": "official_source",
+    "sourceUrl": "https://www.africa.engineering.cmu.edu/impact/mastercard-foundation-scholars.html"
+  },
+  {
+    "title": "Mastercard Foundation Scholars Program at Ashesi University",
+    "description": "Fully funded undergraduate scholarship at Ashesi University in Ghana for academically talented young Africans from economically disadvantaged backgrounds. Covers fees, books, transportation, accommodation and stipends; applicants are automatically considered when they apply for admission to Ashesi, with no separate scholarship form. Selection weighs academic performance, financial need, leadership potential and community service. (This app currently supports a limited set of nationalities in its filters; the real program's eligibility is broader than what's listed here.)",
+    "org": "Ashesi University / Mastercard Foundation",
+    "type": "scholarship_fellowship",
+    "dest": "GH",
+    "compType": "cash_and_in_kind",
+    "flight": true,
+    "lodging": true,
+    "meals": true,
+    "stipendMin": null,
+    "stipendMax": null,
+    "currency": null,
+    "requiresWorkVisa": false,
+    "visaNote": "Ghanaian student visa/residence permit facilitated by Ashesi; not a work visa.",
+    "minAge": 17,
+    "maxAge": null,
+    "gradOnly": false,
+    "education": [
+      "no_formal_degree"
+    ],
+    "career": [],
+    "employment": [],
+    "english": "b2",
+    "nationality": {
+      "type": "include",
+      "list": [
+        "EG",
+        "GH",
+        "KE",
+        "NG",
+        "RW",
+        "ZA"
+      ]
+    },
+    "softTags": [
+      "non_conventional_destination",
+      "africa_focused"
+    ],
+    "deadline": "2026-11-16",
+    "duration": "semester_or_longer",
+    "isRecurring": true,
+    "effortLabel": "high",
+    "effortMin": 150,
+    "verification": "official_source",
+    "sourceUrl": "https://ashesi.edu.gh/the-mastercard-foundation-scholars-program/"
+  },
+  {
+    "title": "Swiss Government Excellence Scholarships",
+    "description": "Scholarships from the Swiss Confederation (administered by the Federal Commission for Scholarships for Foreign Students, ESKAS) for early-career researchers who have completed a Master's degree to conduct research at a Swiss university under a Swiss academic supervisor, plus separate tracks for artists. Provides CHF 2,450 per month plus health insurance; applications are submitted online via country-specific windows that open in August each year.",
+    "org": "Swiss Federal Confederation (SBFI / ESKAS)",
+    "type": "scholarship_fellowship",
+    "dest": "CH",
+    "compType": "cash_and_in_kind",
+    "flight": false,
+    "lodging": false,
+    "meals": false,
+    "stipendMin": 2450,
+    "stipendMax": 2450,
+    "currency": "CHF",
+    "requiresWorkVisa": false,
+    "visaNote": "Swiss student residence permit (type Ci/B for non-EU/EFTA); not a work visa.",
+    "minAge": 20,
+    "maxAge": null,
+    "gradOnly": false,
+    "education": [
+      "masters_completed"
+    ],
+    "career": [
+      "early_career"
+    ],
+    "employment": [],
+    "english": "c1",
+    "nationality": {
+      "type": null,
+      "list": []
+    },
+    "softTags": [
+      "research_fellowship"
+    ],
+    "deadline": null,
+    "duration": "semester_or_longer",
+    "isRecurring": true,
+    "effortLabel": "extensive",
+    "effortMin": 240,
+    "verification": "official_source",
+    "sourceUrl": "https://www.sbfi.admin.ch/en/swiss-government-excellence-scholarships"
+  },
+  {
+    "title": "France Excellence Eiffel Scholarship Program",
+    "description": "Scholarship from the French Ministry for Europe and Foreign Affairs to attract top foreign students into Master's and PhD programs at French higher education institutions in priority fields. Provides a monthly stipend of 2,100 euros plus international and domestic transportation, insurance and housing search support; eligible candidates must be under 29 (Master's) or 35 (PhD). Applications are submitted only by the French institution on the student's behalf, not directly by students.",
+    "org": "French Ministry for Europe and Foreign Affairs / Campus France",
+    "type": "scholarship_fellowship",
+    "dest": "FR",
+    "compType": "cash_and_in_kind",
+    "flight": true,
+    "lodging": false,
+    "meals": false,
+    "stipendMin": 2100,
+    "stipendMax": 2100,
+    "currency": "EUR",
+    "requiresWorkVisa": false,
+    "visaNote": "French long-stay student visa (VLS-TS); not a work visa.",
+    "minAge": 18,
+    "maxAge": 35,
+    "gradOnly": false,
+    "education": [
+      "bachelors_completed",
+      "masters_completed"
+    ],
+    "career": [],
+    "employment": [],
+    "english": "b2",
+    "nationality": {
+      "type": "exclude",
+      "list": [
+        "FR"
+      ]
+    },
+    "softTags": [
+      "research_fellowship"
+    ],
+    "deadline": "2027-01-08",
+    "duration": "semester_or_longer",
+    "isRecurring": true,
+    "effortLabel": "moderate",
+    "effortMin": 90,
+    "verification": "official_source",
+    "sourceUrl": "https://www.campusfrance.org/en/france-excellence-eiffel-scholarship-program"
+  },
+  {
+    "title": "Chinese Government Scholarship (CSC)",
+    "description": "Fully funded scholarship from the China Scholarship Council covering bachelor's, master's and PhD study at more than 290 Chinese universities, administered via embassy (Type A), university-direct (Type B) or provincial (Type C) routes. Covers tuition, accommodation and basic health insurance, plus a monthly stipend of up to 3,500 yuan depending on degree level. Applications are submitted online through the Study in China / CSC portal, typically with a February deadline.",
+    "org": "China Scholarship Council",
+    "type": "scholarship_fellowship",
+    "dest": "CN",
+    "compType": "cash_and_in_kind",
+    "flight": false,
+    "lodging": true,
+    "meals": false,
+    "stipendMin": 2500,
+    "stipendMax": 3500,
+    "currency": "CNY",
+    "requiresWorkVisa": false,
+    "visaNote": "Chinese X1/X2 student visa; not a work visa.",
+    "minAge": 18,
+    "maxAge": null,
+    "gradOnly": false,
+    "education": [],
+    "career": [],
+    "employment": [],
+    "english": "b2",
+    "nationality": {
+      "type": null,
+      "list": []
+    },
+    "softTags": [],
+    "deadline": null,
+    "duration": "semester_or_longer",
+    "isRecurring": true,
+    "effortLabel": "high",
+    "effortMin": 150,
+    "verification": "official_source",
+    "sourceUrl": "https://studyinchina.csc.edu.cn/"
+  },
+  {
+    "title": "KAUST Fellowship (Graduate Scholarship)",
+    "description": "Every student admitted to a Master's or PhD program at King Abdullah University of Science and Technology (KAUST) in Saudi Arabia automatically receives full tuition coverage, an annual living allowance (USD 20,000-30,000 depending on level), on-campus housing, health/dental coverage and relocation support, with no separate scholarship application required. Open to applicants of all nationalities with a bachelor's degree (for MS entry) or master's degree (for PhD entry) in a STEM field.",
+    "org": "King Abdullah University of Science and Technology (KAUST)",
+    "type": "scholarship_fellowship",
+    "dest": "SA",
+    "compType": "cash_and_in_kind",
+    "flight": true,
+    "lodging": true,
+    "meals": false,
+    "stipendMin": 20000,
+    "stipendMax": 30000,
+    "currency": "USD",
+    "requiresWorkVisa": false,
+    "visaNote": "Saudi student visa/residence permit arranged by KAUST; not a work visa.",
+    "minAge": 18,
+    "maxAge": null,
+    "gradOnly": false,
+    "education": [
+      "bachelors_completed",
+      "masters_completed"
+    ],
+    "career": [],
+    "employment": [],
+    "english": "c1",
+    "nationality": {
+      "type": null,
+      "list": []
+    },
+    "softTags": [
+      "non_conventional_destination",
+      "stem_focus"
+    ],
+    "deadline": "2026-10-01",
+    "duration": "semester_or_longer",
+    "isRecurring": true,
+    "effortLabel": "moderate",
+    "effortMin": 120,
+    "verification": "official_source",
+    "sourceUrl": "https://admissions.kaust.edu.sa/fees-funding"
+  },
+  {
+    "title": "PEC-PG Postgraduate Student Agreement Program",
+    "description": "Brazilian government scholarship (jointly run by the Ministry of Foreign Affairs, CAPES and CNPq) funding Master's, full doctoral or sandwich-doctoral study at Brazilian universities for nationals of around 55 developing countries with bilateral cooperation agreements with Brazil, mostly in Africa, Latin America, the Caribbean and parts of Asia. Provides a monthly stipend (R$2,100 Master's / R$3,100 Doctorate), tuition waiver, health insurance and round-trip airfare; candidates must demonstrate Portuguese proficiency, typically via the CELPE-Bras exam.",
+    "org": "Brazilian Ministry of Foreign Affairs / CAPES / CNPq",
+    "type": "scholarship_fellowship",
+    "dest": "BR",
+    "compType": "cash_and_in_kind",
+    "flight": true,
+    "lodging": false,
+    "meals": false,
+    "stipendMin": 2100,
+    "stipendMax": 3100,
+    "currency": "BRL",
+    "requiresWorkVisa": false,
+    "visaNote": "Brazilian student visa (VITEM IV); not a work visa.",
+    "minAge": 21,
+    "maxAge": null,
+    "gradOnly": false,
+    "education": [
+      "bachelors_completed",
+      "masters_completed"
+    ],
+    "career": [],
+    "employment": [],
+    "english": "b1",
+    "nationality": {
+      "type": null,
+      "list": []
+    },
+    "softTags": [
+      "non_conventional_destination",
+      "language_requirement_portuguese"
+    ],
+    "deadline": null,
+    "duration": "semester_or_longer",
+    "isRecurring": true,
+    "effortLabel": "moderate",
+    "effortMin": 90,
+    "verification": "official_source",
+    "sourceUrl": "https://www.gov.br/mre/pt-br/assuntos/cultura-e-educacao/temas-educacionais/programas-de-estudo-para-estrangeiros/pec-pg-pos-graduacao-1/sobre-o-pec-pg"
+  },
+  {
+    "title": "Government of Mexico Excellence Scholarships (AMEXCID)",
+    "description": "Scholarships from Mexico's Agency for International Development Cooperation (AMEXCID) and the Ministry of Foreign Affairs, open to nationals of over 170 countries to pursue undergraduate mobility, specialization, Master's, doctoral or postgraduate research programs at around 90 Mexican higher education institutions. Covers full tuition, a monthly stipend (roughly MXN 14,265-17,831 depending on level), visa fee waiver and flights; applications run through the SIGCA online portal, typically open February-April.",
+    "org": "Agencia Mexicana de Cooperación Internacional para el Desarrollo (AMEXCID)",
+    "type": "scholarship_fellowship",
+    "dest": "MX",
+    "compType": "cash_and_in_kind",
+    "flight": true,
+    "lodging": false,
+    "meals": false,
+    "stipendMin": 14265,
+    "stipendMax": 17831,
+    "currency": "MXN",
+    "requiresWorkVisa": false,
+    "visaNote": "Mexican student visa, fee waived under this program; not a work visa.",
+    "minAge": 18,
+    "maxAge": null,
+    "gradOnly": false,
+    "education": [],
+    "career": [],
+    "employment": [],
+    "english": "b1",
+    "nationality": {
+      "type": null,
+      "list": []
+    },
+    "softTags": [
+      "non_conventional_destination"
+    ],
+    "deadline": null,
+    "duration": "semester_or_longer",
+    "isRecurring": true,
+    "effortLabel": "high",
+    "effortMin": 150,
+    "verification": "official_source",
+    "sourceUrl": "https://www.gob.mx/amexcid/acciones-y-programas/becas-para-extranjeros-29785"
+  },
+  {
+    "title": "ICCR Scholarship Schemes for Foreign Students",
+    "description": "The Indian Council for Cultural Relations (Government of India) administers multiple scholarship schemes for foreign nationals to pursue undergraduate, postgraduate and PhD study, as well as arts programs, at Indian institutions, including the general Atal Bihari Vajpayee scheme and specialized schemes such as the Dr. S. Radhakrishnan Cultural Exchange Scholarship. Benefits typically include full tuition, a monthly stipend of INR 18,000-25,000, return airfare and medical insurance; all applications go through the online A2A portal.",
+    "org": "Indian Council for Cultural Relations (ICCR), Government of India",
+    "type": "scholarship_fellowship",
+    "dest": "IN",
+    "compType": "cash_and_in_kind",
+    "flight": true,
+    "lodging": true,
+    "meals": false,
+    "stipendMin": 18000,
+    "stipendMax": 25000,
+    "currency": "INR",
+    "requiresWorkVisa": false,
+    "visaNote": "Indian student visa; not a work visa.",
+    "minAge": 18,
+    "maxAge": null,
+    "gradOnly": false,
+    "education": [],
+    "career": [],
+    "employment": [],
+    "english": "b2",
+    "nationality": {
+      "type": null,
+      "list": []
+    },
+    "softTags": [
+      "non_conventional_destination"
+    ],
+    "deadline": null,
+    "duration": "semester_or_longer",
+    "isRecurring": true,
+    "effortLabel": "moderate",
+    "effortMin": 90,
+    "verification": "official_source",
+    "sourceUrl": "https://a2ascholarships.iccr.gov.in/"
+  },
+  {
+    "title": "Australia Awards Scholarships",
+    "description": "Long-term Australian government scholarships for full-time undergraduate or postgraduate study at participating Australian universities, aimed at people from partner developing countries across the Indo-Pacific and parts of Africa who show leadership potential and a commitment to their home country's development. Covers full tuition, return airfare and a fortnightly living allowance; applications are submitted through the OASIS portal, generally opening in February and closing in April for intake the following year. (This app currently supports a limited set of nationalities in its filters; the real program's eligibility is broader than what's listed here.)",
+    "org": "Australian Government Department of Foreign Affairs and Trade (DFAT)",
+    "type": "scholarship_fellowship",
+    "dest": "AU",
+    "compType": "cash_and_in_kind",
+    "flight": true,
+    "lodging": false,
+    "meals": false,
+    "stipendMin": null,
+    "stipendMax": null,
+    "currency": null,
+    "requiresWorkVisa": false,
+    "visaNote": "Australian student visa (subclass 500); not a work visa.",
+    "minAge": 18,
+    "maxAge": null,
+    "gradOnly": false,
+    "education": [],
+    "career": [],
+    "employment": [],
+    "english": "b2",
+    "nationality": {
+      "type": "include",
+      "list": [
+        "MN",
+        "PK",
+        "PH",
+        "VN",
+        "FJ",
+        "EG",
+        "GH",
+        "KE",
+        "NG",
+        "RW",
+        "ZA"
+      ]
+    },
+    "softTags": [],
+    "deadline": null,
+    "duration": "semester_or_longer",
+    "isRecurring": true,
+    "effortLabel": "extensive",
+    "effortMin": 240,
+    "verification": "official_source",
+    "sourceUrl": "https://www.dfat.gov.au/people-to-people/australia-awards/australia-awards-scholarships"
+  },
+  {
+    "title": "Fulbright Foreign Student Program",
+    "description": "The U.S. State Department's flagship exchange program funds graduate students, young professionals and artists from outside the United States to pursue a Master's or PhD, or non-degree graduate study, at U.S. universities for one year or longer. Coverage typically includes tuition, a monthly living stipend, health insurance and round-trip airfare, though exact terms vary by country. Applications are made through the Fulbright Commission or U.S. Embassy in the applicant's home country, so deadlines vary by country.",
+    "org": "U.S. Department of State, Bureau of Educational and Cultural Affairs",
+    "type": "scholarship_fellowship",
+    "dest": "US",
+    "compType": "cash_and_in_kind",
+    "flight": true,
+    "lodging": false,
+    "meals": false,
+    "stipendMin": null,
+    "stipendMax": null,
+    "currency": null,
+    "requiresWorkVisa": false,
+    "visaNote": "U.S. J-1 exchange visitor visa; not a work visa.",
+    "minAge": 20,
+    "maxAge": null,
+    "gradOnly": false,
+    "education": [
+      "bachelors_completed"
+    ],
+    "career": [],
+    "employment": [],
+    "english": "b2",
+    "nationality": {
+      "type": "exclude",
+      "list": [
+        "US"
+      ]
+    },
+    "softTags": [],
+    "deadline": null,
+    "duration": "semester_or_longer",
+    "isRecurring": true,
+    "effortLabel": "extensive",
+    "effortMin": 300,
+    "verification": "official_source",
+    "sourceUrl": "https://exchanges.state.gov/non-us/program/fulbright-foreign-student-program"
+  },
+  {
+    "title": "SEARCA Full Master's and PhD Scholarships",
+    "description": "The Southeast Asian Regional Center for Graduate Study and Research in Agriculture (SEARCA), based in Los Baños, Philippines, offers fully funded MS and PhD scholarships in agriculture and related sciences to nationals of SEAMEO member countries who are employees of academic, research or government institutions. Covers tuition, living allowance, health insurance and travel; applicants must be under 40 (Master's) or 45 (PhD). Applications go through SEARCA's online scholarship portal, typically opening August-September for the following academic year. (This app currently supports a limited set of nationalities in its filters; the real program's eligibility is broader than what's listed here.)",
+    "org": "Southeast Asian Regional Center for Graduate Study and Research in Agriculture (SEARCA)",
+    "type": "scholarship_fellowship",
+    "dest": "PH",
+    "compType": "cash_and_in_kind",
+    "flight": true,
+    "lodging": false,
+    "meals": false,
+    "stipendMin": null,
+    "stipendMax": null,
+    "currency": null,
+    "requiresWorkVisa": false,
+    "visaNote": "Philippine student visa (9(f)); not a work visa.",
+    "minAge": 21,
+    "maxAge": 45,
+    "gradOnly": false,
+    "education": [
+      "bachelors_completed",
+      "masters_completed"
+    ],
+    "career": [
+      "early_career",
+      "mid_career"
+    ],
+    "employment": [
+      "employed_full_time"
+    ],
+    "english": "b2",
+    "nationality": {
+      "type": "include",
+      "list": [
+        "PH",
+        "VN"
+      ]
+    },
+    "softTags": [
+      "non_conventional_destination",
+      "agriculture_focus"
+    ],
+    "deadline": null,
+    "duration": "semester_or_longer",
+    "isRecurring": true,
+    "effortLabel": "moderate",
+    "effortMin": 90,
+    "verification": "official_source",
+    "sourceUrl": "https://www.searca.org/scholarships"
+  },
+  {
+    "title": "EGYAID Egyptian Government Scholarship",
+    "description": "Egypt's Ministry of Higher Education and Scientific Research funds Bachelor's, Master's and PhD study for non-Egyptian students at Egyptian public universities through the EGYAID program. Covers full tuition waiver, a monthly stipend, accommodation (dormitory or housing allowance), health coverage and round-trip airfare. All applications are made exclusively through the official EGYAID online portal, with windows typically opening March-June for October intake.",
+    "org": "Egyptian Ministry of Higher Education and Scientific Research",
+    "type": "scholarship_fellowship",
+    "dest": "EG",
+    "compType": "cash_and_in_kind",
+    "flight": true,
+    "lodging": true,
+    "meals": false,
+    "stipendMin": null,
+    "stipendMax": null,
+    "currency": null,
+    "requiresWorkVisa": false,
+    "visaNote": "Egyptian student visa/residence permit; not a work visa.",
+    "minAge": 18,
+    "maxAge": null,
+    "gradOnly": false,
+    "education": [],
+    "career": [],
+    "employment": [],
+    "english": "b1",
+    "nationality": {
+      "type": "exclude",
+      "list": [
+        "EG"
+      ]
+    },
+    "softTags": [
+      "non_conventional_destination"
+    ],
+    "deadline": null,
+    "duration": "semester_or_longer",
+    "isRecurring": true,
+    "effortLabel": "moderate",
+    "effortMin": 90,
+    "verification": "official_source",
+    "sourceUrl": "https://admission.study-in-egypt.gov.eg"
+  },
+  {
+    "title": "Khalifa University Graduate Scholarship",
+    "description": "Khalifa University in Abu Dhabi awards fully funded scholarships to qualified Master's and PhD applicants of any nationality as part of the standard admissions process, with no separate scholarship application. Covers full tuition, a monthly stipend (AED 8,000-12,000, with top-ups for exceptional candidates), free university accommodation or a housing allowance, medical insurance, textbooks, visa fees, and mobilization/demobilization flights between home country and Abu Dhabi.",
+    "org": "Khalifa University of Science and Technology",
+    "type": "scholarship_fellowship",
+    "dest": "AE",
+    "compType": "cash_and_in_kind",
+    "flight": true,
+    "lodging": true,
+    "meals": false,
+    "stipendMin": 8000,
+    "stipendMax": 12000,
+    "currency": "AED",
+    "requiresWorkVisa": false,
+    "visaNote": "UAE student residence visa arranged by the university; not a work visa.",
+    "minAge": 18,
+    "maxAge": null,
+    "gradOnly": false,
+    "education": [
+      "bachelors_completed",
+      "masters_completed"
+    ],
+    "career": [],
+    "employment": [],
+    "english": "b2",
+    "nationality": {
+      "type": null,
+      "list": []
+    },
+    "softTags": [
+      "non_conventional_destination",
+      "stem_focus"
+    ],
+    "deadline": "2026-09-15",
+    "duration": "semester_or_longer",
+    "isRecurring": true,
+    "effortLabel": "moderate",
+    "effortMin": 90,
+    "verification": "official_source",
+    "sourceUrl": "https://www.ku.ac.ae/scholarships"
+  }
+]
