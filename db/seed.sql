@@ -288,6 +288,12 @@ ON CONFLICT (code) DO NOTHING;
 -- the ~31 places this app happens to have travel opportunities to. See
 -- migrate_add_all_countries.sql for the equivalent statement run against
 -- the already-deployed database.
+--
+-- Israel is deliberately excluded -- product decision, not an oversight.
+-- Its absence from this table is also what makes it structurally impossible
+-- for any opportunity to list Israel as a destination (primary_destination_code
+-- has a FK to countries.code) -- see ingest.js's explicit rejection of dest
+-- = 'IL' for a second, self-documenting layer of the same rule.
 INSERT INTO countries (code, name, region, is_non_conventional_dest, is_gulf, latitude, longitude) VALUES
   -- Africa (48)
   ('DZ', 'Algeria', 'North Africa', TRUE, FALSE, 36.75, 3.06),
@@ -383,7 +389,6 @@ INSERT INTO countries (code, name, region, is_non_conventional_dest, is_gulf, la
   ('ID', 'Indonesia', 'Southeast Asia', TRUE, FALSE, -6.21, 106.85),
   ('IR', 'Iran', 'Middle East', TRUE, FALSE, 35.69, 51.39),
   ('IQ', 'Iraq', 'Middle East', TRUE, FALSE, 33.32, 44.37),
-  ('IL', 'Israel', 'Middle East', TRUE, FALSE, 31.77, 35.21),
   ('JP', 'Japan', 'East Asia', FALSE, FALSE, 35.68, 139.65),
   ('JO', 'Jordan', 'Middle East', TRUE, FALSE, 31.95, 35.93),
   ('KW', 'Kuwait', 'Middle East', TRUE, TRUE, 29.38, 47.98),

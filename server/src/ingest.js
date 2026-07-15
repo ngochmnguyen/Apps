@@ -40,7 +40,18 @@ import "dotenv/config";
 import fs from "node:fs";
 import { pool } from "./db.js";
 
+// Product decision, not an oversight: this app does not list opportunities
+// destined for Israel. Israel is also absent from the countries table, so
+// this would fail on the primary_destination_code FK anyway -- this check
+// just makes the rule explicit and gives a clear error instead of a raw
+// constraint violation.
+const EXCLUDED_DESTINATIONS = new Set(["IL"]);
+
 async function ingestOne(client, o) {
+  if (EXCLUDED_DESTINATIONS.has(o.dest)) {
+    throw new Error(`destination '${o.dest}' is not supported by this app`);
+  }
+
   const existing = await client.query("SELECT id FROM opportunities WHERE source_url = $1", [o.sourceUrl]);
   let id = existing.rows[0]?.id;
 
