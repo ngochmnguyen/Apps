@@ -32,7 +32,10 @@
     "effortLabel": "quick",
     "effortMin": 1,
     "verification": "official_source",
-    "sourceUrl": "https://www.worldphoto.org/sony-world-photography-awards/open"
+    "sourceUrl": "https://www.worldphoto.org/sony-world-photography-awards/open",
+    "fieldsOfWork": [
+      "arts_culture"
+    ]
   },
   {
     "title": "Hult Prize",
@@ -67,7 +70,11 @@
     "effortLabel": "extensive",
     "effortMin": 20,
     "verification": "official_source",
-    "sourceUrl": "https://www.hultprize.org/competition/global-finals"
+    "sourceUrl": "https://www.hultprize.org/competition/global-finals",
+    "fieldsOfWork": [
+      "business_entrepreneurship",
+      "social_impact_development"
+    ]
   },
   {
     "title": "MIT Solve Global Challenges",
@@ -102,7 +109,11 @@
     "effortLabel": "high",
     "effortMin": 10,
     "verification": "official_source",
-    "sourceUrl": "https://solve.mit.edu/challenges"
+    "sourceUrl": "https://solve.mit.edu/challenges",
+    "fieldsOfWork": [
+      "social_impact_development",
+      "business_entrepreneurship"
+    ]
   },
   {
     "title": "Seedstars World Competition",
@@ -137,7 +148,10 @@
     "effortLabel": "extensive",
     "effortMin": 15,
     "verification": "official_source",
-    "sourceUrl": "https://www.seedstarsworld.com/local-competitions/"
+    "sourceUrl": "https://www.seedstarsworld.com/local-competitions/",
+    "fieldsOfWork": [
+      "business_entrepreneurship"
+    ]
   },
   {
     "title": "Falling Walls Lab",
@@ -172,7 +186,11 @@
     "effortLabel": "moderate",
     "effortMin": 5,
     "verification": "official_source",
-    "sourceUrl": "https://falling-walls.com/lab"
+    "sourceUrl": "https://falling-walls.com/lab",
+    "fieldsOfWork": [
+      "science_technology",
+      "business_entrepreneurship"
+    ]
   },
   {
     "title": "Global Student Entrepreneur Awards (GSEA)",
@@ -207,7 +225,10 @@
     "effortLabel": "extensive",
     "effortMin": 20,
     "verification": "official_source",
-    "sourceUrl": "https://eonetwork.org/gsea"
+    "sourceUrl": "https://eonetwork.org/gsea",
+    "fieldsOfWork": [
+      "business_entrepreneurship"
+    ]
   },
   {
     "title": "Comedy Wildlife Photography Awards",
@@ -242,7 +263,11 @@
     "effortLabel": "quick",
     "effortMin": 1,
     "verification": "official_source",
-    "sourceUrl": "https://www.comedywildlifephoto.com/competition/prizes.php"
+    "sourceUrl": "https://www.comedywildlifephoto.com/competition/prizes.php",
+    "fieldsOfWork": [
+      "arts_culture",
+      "environment_sustainability"
+    ]
   },
   {
     "title": "Young Lions Competition",
@@ -277,7 +302,11 @@
     "effortLabel": "moderate",
     "effortMin": 10,
     "verification": "official_source",
-    "sourceUrl": "https://www.canneslions.com/learning/competitions"
+    "sourceUrl": "https://www.canneslions.com/learning/competitions",
+    "fieldsOfWork": [
+      "arts_culture",
+      "business_entrepreneurship"
+    ]
   },
   {
     "title": "St. Gallen Symposium Global Essay Competition",
@@ -312,7 +341,11 @@
     "effortLabel": "moderate",
     "effortMin": 5,
     "verification": "official_source",
-    "sourceUrl": "https://symposium.org/initiatives/global-essay-competition/"
+    "sourceUrl": "https://symposium.org/initiatives/global-essay-competition/",
+    "fieldsOfWork": [
+      "international_relations",
+      "finance_economics"
+    ]
   },
   {
     "title": "Huawei ICT Competition",
@@ -347,6 +380,9 @@
     "effortLabel": "high",
     "effortMin": 15,
     "verification": "official_source",
-    "sourceUrl": "https://www.huawei.com/en/seeds-for-the-future/competitions"
+    "sourceUrl": "https://www.huawei.com/en/seeds-for-the-future/competitions",
+    "fieldsOfWork": [
+      "science_technology"
+    ]
   }
 ]

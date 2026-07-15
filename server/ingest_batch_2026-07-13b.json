@@ -6,20 +6,42 @@
     "type": "work_study_exchange",
     "dest": "VN",
     "compType": "cash_and_in_kind",
-    "flight": true, "lodging": false, "meals": false,
-    "stipendMin": null, "stipendMax": null, "currency": "USD",
-    "requiresWorkVisa": false, "visaNote": null,
-    "minAge": 21, "maxAge": null, "gradOnly": false,
-    "education": ["bachelors_completed"], "career": [], "employment": [],
+    "flight": true,
+    "lodging": false,
+    "meals": false,
+    "stipendMin": null,
+    "stipendMax": null,
+    "currency": "USD",
+    "requiresWorkVisa": false,
+    "visaNote": null,
+    "minAge": 21,
+    "maxAge": null,
+    "gradOnly": false,
+    "education": [
+      "bachelors_completed"
+    ],
+    "career": [],
+    "employment": [],
     "english": "c1",
-    "nationality": { "type": "include", "list": ["US"] },
-    "softTags": ["non_conventional_destination"],
+    "nationality": {
+      "type": "include",
+      "list": [
+        "US"
+      ]
+    },
+    "softTags": [
+      "non_conventional_destination"
+    ],
     "deadline": "2026-10-06",
     "duration": "semester_or_longer",
     "isRecurring": true,
-    "effortLabel": "extensive", "effortMin": 240,
+    "effortLabel": "extensive",
+    "effortMin": 240,
     "verification": "official_source",
-    "sourceUrl": "https://us.fulbrightonline.org/applicants/types-of-awards/english-teaching-assistant-awards"
+    "sourceUrl": "https://us.fulbrightonline.org/applicants/types-of-awards/english-teaching-assistant-awards",
+    "fieldsOfWork": [
+      "education"
+    ]
   },
   {
     "title": "Art Omi: Artists Residency 2027",
@@ -28,19 +50,35 @@
     "type": "research_residency",
     "dest": "US",
     "compType": "cash_and_in_kind",
-    "flight": true, "lodging": true, "meals": false,
-    "stipendMin": 500, "stipendMax": 500, "currency": "USD",
-    "requiresWorkVisa": true, "visaNote": "US visa arrangements are the resident's responsibility; Art Omi provides an invitation letter to support the application.",
-    "minAge": 21, "maxAge": null, "gradOnly": false,
-    "education": [], "career": [], "employment": [],
+    "flight": true,
+    "lodging": true,
+    "meals": false,
+    "stipendMin": 500,
+    "stipendMax": 500,
+    "currency": "USD",
+    "requiresWorkVisa": true,
+    "visaNote": "US visa arrangements are the resident's responsibility; Art Omi provides an invitation letter to support the application.",
+    "minAge": 21,
+    "maxAge": null,
+    "gradOnly": false,
+    "education": [],
+    "career": [],
+    "employment": [],
     "english": "b2",
-    "nationality": { "type": null, "list": [] },
+    "nationality": {
+      "type": null,
+      "list": []
+    },
     "softTags": [],
     "deadline": "2026-09-14",
     "duration": "one_to_two_weeks",
     "isRecurring": true,
-    "effortLabel": "high", "effortMin": 120,
+    "effortLabel": "high",
+    "effortMin": 120,
     "verification": "aggregator_verified",
-    "sourceUrl": "https://artomi.org/residencies/art/"
+    "sourceUrl": "https://artomi.org/residencies/art/",
+    "fieldsOfWork": [
+      "arts_culture"
+    ]
   }
 ]

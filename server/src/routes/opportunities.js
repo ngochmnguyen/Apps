@@ -22,7 +22,8 @@ export const BASE_QUERY = `
     coalesce(emp.statuses, ARRAY[]::text[]) AS employment,
     coalesce(nat_inc.codes, ARRAY[]::text[]) AS nationality_include,
     coalesce(nat_exc.codes, ARRAY[]::text[]) AS nationality_exclude,
-    coalesce(tags.keys, ARRAY[]::text[]) AS soft_tags
+    coalesce(tags.keys, ARRAY[]::text[]) AS soft_tags,
+    coalesce(fow.fields, ARRAY[]::text[]) AS fields_of_work
   FROM opportunities o
   JOIN countries dest ON dest.code = o.primary_destination_code
   LEFT JOIN (SELECT opportunity_id, array_agg(education_level::text) levels FROM opportunity_education_levels GROUP BY opportunity_id) edu ON edu.opportunity_id = o.id
@@ -31,6 +32,7 @@ export const BASE_QUERY = `
   LEFT JOIN (SELECT opportunity_id, array_agg(country_code) codes FROM opportunity_nationality_rules WHERE rule_type = 'include' GROUP BY opportunity_id) nat_inc ON nat_inc.opportunity_id = o.id
   LEFT JOIN (SELECT opportunity_id, array_agg(country_code) codes FROM opportunity_nationality_rules WHERE rule_type = 'exclude' GROUP BY opportunity_id) nat_exc ON nat_exc.opportunity_id = o.id
   LEFT JOIN (SELECT opportunity_id, array_agg(tag_key) keys FROM opportunity_soft_tags GROUP BY opportunity_id) tags ON tags.opportunity_id = o.id
+  LEFT JOIN (SELECT opportunity_id, array_agg(field::text) fields FROM opportunity_fields_of_work GROUP BY opportunity_id) fow ON fow.opportunity_id = o.id
 `;
 
 export function urgencyOf(deadline) {
@@ -128,6 +130,7 @@ opportunitiesRouter.get("/", async (req, res) => {
   };
 
   const activeTypes = (req.query.types || "").split(",").filter(Boolean);
+  const activeFields = (req.query.fields || "").split(",").filter(Boolean);
   const region = req.query.region || "all";
   const compensation = req.query.compensation || "all";
   const urgencyFilter = req.query.urgency || "all";
@@ -144,6 +147,7 @@ opportunitiesRouter.get("/", async (req, res) => {
       if (!matches) return false;
     }
     if (activeTypes.length && !activeTypes.includes(o.type)) return false;
+    if (activeFields.length && !o.fields_of_work.some((f) => activeFields.includes(f))) return false;
     if (region === "nonconventional" && !o.dest_non_conventional) return false;
     if (region === "conventional" && o.dest_non_conventional) return false;
     if (compensation !== "all" && o.comp_type !== compensation) return false;

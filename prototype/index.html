@@ -888,6 +888,11 @@
       </div>
 
       <div class="filter-group">
+        <h2>Field of work</h2>
+        <div class="chip-row" id="f-fields-results"></div>
+      </div>
+
+      <div class="filter-group">
         <h2>Destination</h2>
         <div class="chip-row" id="f-region-results"></div>
       </div>
@@ -1061,6 +1066,22 @@
     ["volunteer_travel_stipend", "Volunteer travel"],
     ["work_stay", "Work stay"],
   ];
+  const FIELDS_OF_WORK = [
+    ["education", "Education"],
+    ["international_relations", "International Relations"],
+    ["government_public_policy", "Government & Public Policy"],
+    ["literature_writing", "Literature & Writing"],
+    ["arts_culture", "Arts & Culture"],
+    ["finance_economics", "Finance & Economics"],
+    ["business_entrepreneurship", "Business & Entrepreneurship"],
+    ["science_technology", "Science & Technology"],
+    ["health_medicine", "Health & Medicine"],
+    ["law", "Law"],
+    ["journalism_media", "Journalism & Media"],
+    ["environment_sustainability", "Environment & Sustainability"],
+    ["social_impact_development", "Social Impact & Development"],
+  ];
+  const FIELD_LABELS = Object.fromEntries(FIELDS_OF_WORK);
 
   // Generic, type-based prep steps -- never fabricated specifics about any one
   // listing, same principle as the "View source" link: point people to the
@@ -1161,7 +1182,7 @@
   // Both are driven from one shared state object rather than mirroring each other's
   // click events, which would otherwise ping-pong (a click on A re-clicks B, which
   // re-clicks A back to its original state).
-  const filterState = { types: new Set(), region: "all", compensation: "all" };
+  const filterState = { types: new Set(), fields: new Set(), region: "all", compensation: "all" };
 
   function renderTypeChips(container) {
     container.innerHTML = "";
@@ -1177,6 +1198,34 @@
     });
   }
   function renderAllTypeChips() { renderTypeChips(typeBoxWizard); renderTypeChips(typeBoxResults); }
+
+  function renderFieldChips(container) {
+    container.innerHTML = "";
+    const allChip = document.createElement("div");
+    allChip.className = "chip" + (filterState.fields.size === 0 ? " active" : "");
+    allChip.dataset.value = "all"; allChip.textContent = "All fields";
+    container.appendChild(allChip);
+    FIELDS_OF_WORK.forEach(([v, l]) => {
+      const chip = document.createElement("div");
+      chip.className = "chip" + (filterState.fields.has(v) ? " active" : "");
+      chip.dataset.value = v; chip.textContent = l;
+      container.appendChild(chip);
+    });
+  }
+
+  function onFieldChipClick(e) {
+    const chip = e.target.closest(".chip");
+    if (!chip) return;
+    if (chip.dataset.value === "all") {
+      filterState.fields.clear();
+    } else if (filterState.fields.has(chip.dataset.value)) {
+      filterState.fields.delete(chip.dataset.value);
+    } else {
+      filterState.fields.add(chip.dataset.value);
+    }
+    renderFieldChips(fieldBoxResults);
+    render();
+  }
 
   function renderRegionChips(container) {
     container.innerHTML = "";
@@ -1214,9 +1263,12 @@
   const typeBoxResults = document.getElementById("f-types-results");
   const regionBoxWizard = document.getElementById("f-region");
   const regionBoxResults = document.getElementById("f-region-results");
+  const fieldBoxResults = document.getElementById("f-fields-results");
   [typeBoxWizard, typeBoxResults].forEach((el) => el.addEventListener("click", onTypeChipClick));
   [regionBoxWizard, regionBoxResults].forEach((el) => el.addEventListener("click", onRegionChipClick));
+  fieldBoxResults.addEventListener("click", onFieldChipClick);
   renderAllTypeChips();
+  renderFieldChips(fieldBoxResults);
   renderAllRegionChips();
 
   function onCompensationChange(e) {
@@ -1293,6 +1345,7 @@
       region: filterState.region,
       compensation: filterState.compensation,
       types: [...filterState.types].join(","),
+      fields: [...filterState.fields].join(","),
     });
     if (profile.nationality !== "all") params.set("nationality", profile.nationality);
     if (profile.residence !== "all") params.set("residence", profile.residence);
@@ -1410,6 +1463,7 @@
           <dt>Minimum age</dt><dd>${o.min_age}${o.max_age ? ` – ${o.max_age}` : "+"}</dd>
           <dt>Education</dt><dd>${o.education.length ? o.education.map((e) => e.replaceAll("_", " ")).join(", ") : "Open to all levels"}</dd>
           <dt>Career stage</dt><dd>${o.career.length ? o.career.map((c) => c.replaceAll("_", " ")).join(", ") : "Open to all stages"}</dd>
+          <dt>Field of work</dt><dd>${o.fields_of_work.length ? o.fields_of_work.map((f) => FIELD_LABELS[f] || f).join(", ") : "Open to any field"}</dd>
           <dt>English required</dt><dd>${o.english.toUpperCase()}</dd>
           <dt>Nationality</dt><dd>${nationalitySummary(o)}</dd>
           <dt>Application effort</dt><dd>${EFFORT_LABELS[o.effort_label]} (~${o.effort_min} min)</dd>
@@ -1710,9 +1764,11 @@
   // ---------- hot picks (landing page) ----------
   async function jumpToOpportunity(id) {
     filterState.types.clear();
+    filterState.fields.clear();
     filterState.region = "all";
     filterState.compensation = "all";
     renderAllTypeChips();
+    renderFieldChips(fieldBoxResults);
     renderAllRegionChips();
     document.getElementById("f-compensation").value = "all";
     document.getElementById("f-compensation-results").value = "all";

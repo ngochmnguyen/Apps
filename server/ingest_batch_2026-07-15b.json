@@ -35,7 +35,11 @@
     "effortLabel": "moderate",
     "effortMin": 2,
     "verification": "official_source",
-    "sourceUrl": "https://www.iasociety.org/conferences/aids2026/take-part/scholarships"
+    "sourceUrl": "https://www.iasociety.org/conferences/aids2026/take-part/scholarships",
+    "fieldsOfWork": [
+      "health_medicine",
+      "social_impact_development"
+    ]
   },
   {
     "title": "Wikimania 2026 Travel Scholarship",
@@ -73,7 +77,11 @@
     "effortLabel": "moderate",
     "effortMin": 2,
     "verification": "official_source",
-    "sourceUrl": "https://wikimania.wikimedia.org/wiki/2026:Scholarships"
+    "sourceUrl": "https://wikimania.wikimedia.org/wiki/2026:Scholarships",
+    "fieldsOfWork": [
+      "education",
+      "journalism_media"
+    ]
   },
   {
     "title": "Deep Learning Indaba 2026 — Financial Aid (Travel & Accommodation Grants)",
@@ -111,7 +119,10 @@
     "effortLabel": "high",
     "effortMin": 5,
     "verification": "official_source",
-    "sourceUrl": "https://deeplearningindaba.com/2026/applications/"
+    "sourceUrl": "https://deeplearningindaba.com/2026/applications/",
+    "fieldsOfWork": [
+      "science_technology"
+    ]
   },
   {
     "title": "KubeCon + CloudNativeCon North America 2026 — Dan Kohn Scholarship",
@@ -149,7 +160,10 @@
     "effortLabel": "quick",
     "effortMin": 1,
     "verification": "official_source",
-    "sourceUrl": "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/attend/scholarships-travel-funding/"
+    "sourceUrl": "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/attend/scholarships-travel-funding/",
+    "fieldsOfWork": [
+      "science_technology"
+    ]
   },
   {
     "title": "Grace Hopper Celebration — AnitaB.org Advancing Inclusion Scholarship",
@@ -187,7 +201,11 @@
     "effortLabel": "moderate",
     "effortMin": 3,
     "verification": "official_source",
-    "sourceUrl": "https://ghc.anitab.org/awards-programs/scholarships"
+    "sourceUrl": "https://ghc.anitab.org/awards-programs/scholarships",
+    "fieldsOfWork": [
+      "science_technology",
+      "social_impact_development"
+    ]
   },
   {
     "title": "HPAIR Asia Conference 2026 — Delegate Scholarship",
@@ -229,7 +247,12 @@
     "effortLabel": "moderate",
     "effortMin": 3,
     "verification": "official_source",
-    "sourceUrl": "https://www.hpair.org/aconf"
+    "sourceUrl": "https://www.hpair.org/aconf",
+    "fieldsOfWork": [
+      "international_relations",
+      "government_public_policy",
+      "finance_economics"
+    ]
   },
   {
     "title": "Global Youth Summit 2026 — Fully Funded Delegate Program",
@@ -267,7 +290,11 @@
     "effortLabel": "moderate",
     "effortMin": 3,
     "verification": "official_source",
-    "sourceUrl": "https://www.global-changemakers.net/gys2026"
+    "sourceUrl": "https://www.global-changemakers.net/gys2026",
+    "fieldsOfWork": [
+      "social_impact_development",
+      "international_relations"
+    ]
   },
   {
     "title": "LACNIC 46 / LACNOG 2026 Fellowship Program",
@@ -306,7 +333,10 @@
     "effortLabel": "moderate",
     "effortMin": 45,
     "verification": "official_source",
-    "sourceUrl": "https://www.lacnic.net/3827/2/lacnic/lacnic-fellowship-program"
+    "sourceUrl": "https://www.lacnic.net/3827/2/lacnic/lacnic-fellowship-program",
+    "fieldsOfWork": [
+      "science_technology"
+    ]
   },
   {
     "title": "APNIC Fellowship Program - APNIC 62 (Mumbai)",
@@ -345,7 +375,10 @@
     "effortLabel": "high",
     "effortMin": 90,
     "verification": "official_source",
-    "sourceUrl": "https://www.apnic.net/community/fellowship/"
+    "sourceUrl": "https://www.apnic.net/community/fellowship/",
+    "fieldsOfWork": [
+      "science_technology"
+    ]
   },
   {
     "title": "Grace Hopper Celebration India (GHCI) Scholarship",
@@ -385,7 +418,11 @@
     "effortLabel": "quick",
     "effortMin": 20,
     "verification": "official_source",
-    "sourceUrl": "https://ghci.anitabindia.org/"
+    "sourceUrl": "https://ghci.anitabindia.org/",
+    "fieldsOfWork": [
+      "science_technology",
+      "social_impact_development"
+    ]
   },
   {
     "title": "NeurIPS 2026 Financial Assistance Program",
@@ -423,6 +460,9 @@
     "effortLabel": "moderate",
     "effortMin": 30,
     "verification": "official_source",
-    "sourceUrl": "https://neurips.cc/Conferences/2026"
+    "sourceUrl": "https://neurips.cc/Conferences/2026",
+    "fieldsOfWork": [
+      "science_technology"
+    ]
   }
 ]

@@ -21,15 +21,25 @@
     "career": [],
     "employment": [],
     "english": "b2",
-    "nationality": { "type": "include", "list": ["FJ"] },
-    "softTags": ["non_conventional_destination"],
+    "nationality": {
+      "type": "include",
+      "list": [
+        "FJ"
+      ]
+    },
+    "softTags": [
+      "non_conventional_destination"
+    ],
     "deadline": null,
     "duration": "semester_or_longer",
     "isRecurring": true,
     "effortLabel": "extensive",
     "effortMin": 240,
     "verification": "official_source",
-    "sourceUrl": "https://www.eastwestcenter.org/apply/us-south-pacific-scholarship-program"
+    "sourceUrl": "https://www.eastwestcenter.org/apply/us-south-pacific-scholarship-program",
+    "fieldsOfWork": [
+      "education"
+    ]
   },
   {
     "title": "Princeton in Asia (PiA) Fellowship",
@@ -49,18 +59,31 @@
     "minAge": 18,
     "maxAge": null,
     "gradOnly": true,
-    "education": ["bachelors_completed"],
-    "career": ["recent_grad"],
+    "education": [
+      "bachelors_completed"
+    ],
+    "career": [
+      "recent_grad"
+    ],
     "employment": [],
     "english": "b2",
-    "nationality": { "type": null, "list": [] },
-    "softTags": ["non_conventional_destination"],
+    "nationality": {
+      "type": null,
+      "list": []
+    },
+    "softTags": [
+      "non_conventional_destination"
+    ],
     "deadline": null,
     "duration": "semester_or_longer",
     "isRecurring": true,
     "effortLabel": "high",
     "effortMin": 180,
     "verification": "official_source",
-    "sourceUrl": "https://www.princetoninasia.org/fellowships"
+    "sourceUrl": "https://www.princetoninasia.org/fellowships",
+    "fieldsOfWork": [
+      "social_impact_development",
+      "education"
+    ]
   }
 ]

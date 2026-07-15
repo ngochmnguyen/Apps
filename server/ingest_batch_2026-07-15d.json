@@ -44,7 +44,10 @@
     "effortLabel": "high",
     "effortMin": 10,
     "verification": "official_source",
-    "sourceUrl": "https://epik.go.kr/web/epik/main"
+    "sourceUrl": "https://epik.go.kr/web/epik/main",
+    "fieldsOfWork": [
+      "education"
+    ]
   },
   {
     "title": "IAESTE Internship Programme – Ghana",
@@ -87,7 +90,10 @@
     "effortLabel": "moderate",
     "effortMin": 5,
     "verification": "official_source",
-    "sourceUrl": "https://iaeste.org/member-countries/ghana"
+    "sourceUrl": "https://iaeste.org/member-countries/ghana",
+    "fieldsOfWork": [
+      "science_technology"
+    ]
   },
   {
     "title": "German Chancellor Fellowship",
@@ -140,7 +146,10 @@
     "effortLabel": "high",
     "effortMin": 10,
     "verification": "official_source",
-    "sourceUrl": "https://www.humboldt-foundation.de/en/apply/sponsorship-programmes/german-chancellor-fellowship"
+    "sourceUrl": "https://www.humboldt-foundation.de/en/apply/sponsorship-programmes/german-chancellor-fellowship",
+    "fieldsOfWork": [
+      "international_relations"
+    ]
   },
   {
     "title": "Congress-Bundestag Youth Exchange for Young Professionals (CBYX)",
@@ -180,7 +189,11 @@
     "effortLabel": "high",
     "effortMin": 10,
     "verification": "official_source",
-    "sourceUrl": "https://exchanges.state.gov/us/program/congress-bundestag-youth-exchange-young-professionals-cbyx"
+    "sourceUrl": "https://exchanges.state.gov/us/program/congress-bundestag-youth-exchange-young-professionals-cbyx",
+    "fieldsOfWork": [
+      "education",
+      "international_relations"
+    ]
   },
   {
     "title": "Mandela Washington Fellowship – Professional Development Experience",
@@ -227,7 +240,12 @@
     "effortLabel": "extensive",
     "effortMin": 15,
     "verification": "official_source",
-    "sourceUrl": "https://www.mandelawashingtonfellowship.org/"
+    "sourceUrl": "https://www.mandelawashingtonfellowship.org/",
+    "fieldsOfWork": [
+      "business_entrepreneurship",
+      "government_public_policy",
+      "social_impact_development"
+    ]
   },
   {
     "title": "Fulbright Foreign Language Teaching Assistant (FLTA) Program",
@@ -270,7 +288,10 @@
     "effortLabel": "high",
     "effortMin": 10,
     "verification": "official_source",
-    "sourceUrl": "https://foreign.fulbrightonline.org/about/flta-program"
+    "sourceUrl": "https://foreign.fulbrightonline.org/about/flta-program",
+    "fieldsOfWork": [
+      "education"
+    ]
   },
   {
     "title": "Peace Corps – Kyrgyz Republic",
@@ -311,7 +332,11 @@
     "effortLabel": "extensive",
     "effortMin": 20,
     "verification": "official_source",
-    "sourceUrl": "https://www.peacecorps.gov/kyrgyz-republic/"
+    "sourceUrl": "https://www.peacecorps.gov/kyrgyz-republic/",
+    "fieldsOfWork": [
+      "education",
+      "social_impact_development"
+    ]
   },
   {
     "title": "Fulbright English Teaching Assistant (ETA) Program – Mongolia",
@@ -356,7 +381,10 @@
     "effortLabel": "high",
     "effortMin": 10,
     "verification": "official_source",
-    "sourceUrl": "https://mn.usembassy.gov/fulbright-english-teaching-assistant-program/"
+    "sourceUrl": "https://mn.usembassy.gov/fulbright-english-teaching-assistant-program/",
+    "fieldsOfWork": [
+      "education"
+    ]
   },
   {
     "title": "Fulbright English Teaching Assistant (ETA) Program – Kazakhstan",
@@ -402,7 +430,10 @@
     "effortLabel": "high",
     "effortMin": 10,
     "verification": "official_source",
-    "sourceUrl": "https://us.fulbrightonline.org/countries/south-and-central-asia/kazakhstan/1615"
+    "sourceUrl": "https://us.fulbrightonline.org/countries/south-and-central-asia/kazakhstan/1615",
+    "fieldsOfWork": [
+      "education"
+    ]
   },
   {
     "title": "Fulbright English Teaching Assistant (ETA) Program – Philippines",
@@ -446,7 +477,10 @@
     "effortLabel": "high",
     "effortMin": 10,
     "verification": "official_source",
-    "sourceUrl": "https://fulbright.org.ph/"
+    "sourceUrl": "https://fulbright.org.ph/",
+    "fieldsOfWork": [
+      "education"
+    ]
   },
   {
     "title": "AIESEC Global Talent Internship – Kenya",
@@ -490,7 +524,10 @@
     "effortLabel": "moderate",
     "effortMin": 5,
     "verification": "official_source",
-    "sourceUrl": "https://aiesec.ke/"
+    "sourceUrl": "https://aiesec.ke/",
+    "fieldsOfWork": [
+      "business_entrepreneurship"
+    ]
   },
   {
     "title": "AIESEC Global Talent Internship – Argentina",
@@ -533,7 +570,10 @@
     "effortLabel": "moderate",
     "effortMin": 5,
     "verification": "official_source",
-    "sourceUrl": "https://www.aiesec.org.ar/"
+    "sourceUrl": "https://www.aiesec.org.ar/",
+    "fieldsOfWork": [
+      "business_entrepreneurship"
+    ]
   },
   {
     "title": "VSO Uzbekistan – English Language Education Volunteer",
@@ -577,7 +617,10 @@
     "effortLabel": "high",
     "effortMin": 8,
     "verification": "official_source",
-    "sourceUrl": "https://www.vsointernational.org/volunteering/strengthening-english-language-education-in-uzbekistan"
+    "sourceUrl": "https://www.vsointernational.org/volunteering/strengthening-english-language-education-in-uzbekistan",
+    "fieldsOfWork": [
+      "education"
+    ]
   },
   {
     "title": "KAUST Visiting Student Research Program (VSRP)",
@@ -618,7 +661,10 @@
     "effortLabel": "moderate",
     "effortMin": 6,
     "verification": "official_source",
-    "sourceUrl": "https://admissions.kaust.edu.sa/study/internships"
+    "sourceUrl": "https://admissions.kaust.edu.sa/study/internships",
+    "fieldsOfWork": [
+      "science_technology"
+    ]
   },
   {
     "title": "Peace Corps Response – Mexico",
@@ -665,7 +711,11 @@
     "effortLabel": "high",
     "effortMin": 10,
     "verification": "official_source",
-    "sourceUrl": "https://www.peacecorps.gov/mexico/"
+    "sourceUrl": "https://www.peacecorps.gov/mexico/",
+    "fieldsOfWork": [
+      "education",
+      "environment_sustainability"
+    ]
   },
   {
     "title": "DAAD WISE - Working Internships in Science and Engineering",
@@ -709,7 +759,10 @@
     "effortLabel": "high",
     "effortMin": 8,
     "verification": "official_source",
-    "sourceUrl": "https://www.daad.in/en/study-research-in-germany/studying-in-germany/internships-and-short-term-programmes/"
+    "sourceUrl": "https://www.daad.in/en/study-research-in-germany/studying-in-germany/internships-and-short-term-programmes/",
+    "fieldsOfWork": [
+      "science_technology"
+    ]
   },
   {
     "title": "Fulbright English Teaching Assistant (ETA) Program - Mexico",
@@ -756,7 +809,10 @@
     "effortLabel": "extensive",
     "effortMin": 15,
     "verification": "official_source",
-    "sourceUrl": "https://us.fulbrightonline.org/countries/western-hemisphere/mexico/1646"
+    "sourceUrl": "https://us.fulbrightonline.org/countries/western-hemisphere/mexico/1646",
+    "fieldsOfWork": [
+      "education"
+    ]
   },
   {
     "title": "Fulbright English Teaching Assistant (ETA) Program - Brazil",
@@ -803,7 +859,10 @@
     "effortLabel": "extensive",
     "effortMin": 15,
     "verification": "official_source",
-    "sourceUrl": "https://us.fulbrightonline.org/countries/western-hemisphere/brazil/1628"
+    "sourceUrl": "https://us.fulbrightonline.org/countries/western-hemisphere/brazil/1628",
+    "fieldsOfWork": [
+      "education"
+    ]
   },
   {
     "title": "Fulbright English Teaching Assistant (ETA) Program - Argentina",
@@ -850,7 +909,10 @@
     "effortLabel": "extensive",
     "effortMin": 15,
     "verification": "official_source",
-    "sourceUrl": "https://us.fulbrightonline.org/countries/western-hemisphere/argentina/1766"
+    "sourceUrl": "https://us.fulbrightonline.org/countries/western-hemisphere/argentina/1766",
+    "fieldsOfWork": [
+      "education"
+    ]
   },
   {
     "title": "CERN Summer Student Programme",
@@ -892,7 +954,10 @@
     "effortLabel": "high",
     "effortMin": 8,
     "verification": "official_source",
-    "sourceUrl": "https://careers.cern/programmes/summer-studentship/"
+    "sourceUrl": "https://careers.cern/programmes/summer-studentship/",
+    "fieldsOfWork": [
+      "science_technology"
+    ]
   },
   {
     "title": "International Experience Canada - Working Holiday",
@@ -939,7 +1004,8 @@
     "effortLabel": "moderate",
     "effortMin": 2,
     "verification": "official_source",
-    "sourceUrl": "https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec.html"
+    "sourceUrl": "https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec.html",
+    "fieldsOfWork": []
   },
   {
     "title": "AIF Banyan Impact Fellowship (Service in India)",
@@ -985,7 +1051,10 @@
     "effortLabel": "high",
     "effortMin": 10,
     "verification": "official_source",
-    "sourceUrl": "https://aif.org/fellowship/apply-for-service-in-india/"
+    "sourceUrl": "https://aif.org/fellowship/apply-for-service-in-india/",
+    "fieldsOfWork": [
+      "social_impact_development"
+    ]
   },
   {
     "title": "Summer Work Travel Program (J-1 Visa)",
@@ -1026,7 +1095,8 @@
     "effortLabel": "high",
     "effortMin": 8,
     "verification": "official_source",
-    "sourceUrl": "https://j1visa.state.gov/programs/summer-work-travel"
+    "sourceUrl": "https://j1visa.state.gov/programs/summer-work-travel",
+    "fieldsOfWork": []
   },
   {
     "title": "Princeton in Africa Fellowship",
@@ -1070,6 +1140,10 @@
     "effortLabel": "extensive",
     "effortMin": 15,
     "verification": "official_source",
-    "sourceUrl": "https://www.princetoninafrica.org/applicants/how-to-apply/"
+    "sourceUrl": "https://www.princetoninafrica.org/applicants/how-to-apply/",
+    "fieldsOfWork": [
+      "social_impact_development",
+      "environment_sustainability"
+    ]
   }
 ]

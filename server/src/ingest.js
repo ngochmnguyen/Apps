@@ -19,6 +19,11 @@
 //   "english": "b1|b2|c1|c2|native_or_fluent",
 //   "nationality": { "type": "include"|"exclude"|null, "list": ["XX", ...] },
 //   "softTags": ["non_conventional_destination", ...],
+//   "fieldsOfWork": ["education", "international_relations", "government_public_policy",
+//                    "literature_writing", "arts_culture", "finance_economics",
+//                    "business_entrepreneurship", "science_technology", "health_medicine",
+//                    "law", "journalism_media", "environment_sustainability",
+//                    "social_impact_development"],   // [] = open to all / not domain-specific
 //   "deadline": "YYYY-MM-DD" | null,          // null = rolling admission, no fixed deadline
 //   "duration": "single_day|weekend|one_to_two_weeks|three_to_four_weeks|one_to_three_months|semester_or_longer",
 //   "isRecurring": bool,
@@ -68,6 +73,7 @@ async function ingestOne(client, o) {
     await client.query("DELETE FROM opportunity_employment_statuses WHERE opportunity_id = $1", [id]);
     await client.query("DELETE FROM opportunity_nationality_rules WHERE opportunity_id = $1", [id]);
     await client.query("DELETE FROM opportunity_soft_tags WHERE opportunity_id = $1", [id]);
+    await client.query("DELETE FROM opportunity_fields_of_work WHERE opportunity_id = $1", [id]);
   } else {
     const inserted = await client.query(
       `INSERT INTO opportunities (
@@ -105,6 +111,9 @@ async function ingestOne(client, o) {
   }
   for (const tag of o.softTags || []) {
     await client.query("INSERT INTO opportunity_soft_tags (opportunity_id, tag_key) VALUES ($1, $2)", [id, tag]);
+  }
+  for (const field of o.fieldsOfWork || []) {
+    await client.query("INSERT INTO opportunity_fields_of_work (opportunity_id, field) VALUES ($1, $2)", [id, field]);
   }
 
   return { id, wasUpdate: !!existing.rows[0] };

@@ -43,7 +43,10 @@
     "effortLabel": "extensive",
     "effortMin": 240,
     "verification": "official_source",
-    "sourceUrl": "https://cscuk.fcdo.gov.uk/scholarships/commonwealth-shared-scholarships-applications/"
+    "sourceUrl": "https://cscuk.fcdo.gov.uk/scholarships/commonwealth-shared-scholarships-applications/",
+    "fieldsOfWork": [
+      "education"
+    ]
   },
   {
     "title": "TechWomen",
@@ -95,6 +98,10 @@
     "effortLabel": "high",
     "effortMin": 150,
     "verification": "official_source",
-    "sourceUrl": "https://www.techwomen.org/faq/participants"
+    "sourceUrl": "https://www.techwomen.org/faq/participants",
+    "fieldsOfWork": [
+      "science_technology",
+      "social_impact_development"
+    ]
   }
 ]

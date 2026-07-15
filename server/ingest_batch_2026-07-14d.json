@@ -34,7 +34,10 @@
     "effortLabel": "moderate",
     "effortMin": 90,
     "verification": "aggregator_verified",
-    "sourceUrl": "https://writezakama.wordpress.com/2026/06/26/call-for-applications-ana-ken-saro-wiwa-international-writers-residency-2026-edition/"
+    "sourceUrl": "https://writezakama.wordpress.com/2026/06/26/call-for-applications-ana-ken-saro-wiwa-international-writers-residency-2026-edition/",
+    "fieldsOfWork": [
+      "literature_writing"
+    ]
   },
   {
     "title": "Mandela Washington Fellowship for Young African Leaders (YALI)",
@@ -78,7 +81,12 @@
     "effortLabel": "extensive",
     "effortMin": 240,
     "verification": "official_source",
-    "sourceUrl": "https://yali.state.gov/mwf/"
+    "sourceUrl": "https://yali.state.gov/mwf/",
+    "fieldsOfWork": [
+      "government_public_policy",
+      "business_entrepreneurship",
+      "social_impact_development"
+    ]
   },
   {
     "title": "Schwarzman Scholars",
@@ -115,7 +123,12 @@
     "effortLabel": "extensive",
     "effortMin": 300,
     "verification": "official_source",
-    "sourceUrl": "https://www.schwarzmanscholars.org/admissions/"
+    "sourceUrl": "https://www.schwarzmanscholars.org/admissions/",
+    "fieldsOfWork": [
+      "government_public_policy",
+      "international_relations",
+      "education"
+    ]
   },
   {
     "title": "Gates Cambridge Scholarship",
@@ -154,7 +167,10 @@
     "effortLabel": "extensive",
     "effortMin": 300,
     "verification": "official_source",
-    "sourceUrl": "https://www.gatescambridge.org/apply/how-to-apply/"
+    "sourceUrl": "https://www.gatescambridge.org/apply/how-to-apply/",
+    "fieldsOfWork": [
+      "education"
+    ]
   },
   {
     "title": "Audley Travel Photography Competition 2026",
@@ -189,7 +205,10 @@
     "effortLabel": "quick",
     "effortMin": 45,
     "verification": "official_source",
-    "sourceUrl": "https://www.audleytravel.com/photography-competition"
+    "sourceUrl": "https://www.audleytravel.com/photography-competition",
+    "fieldsOfWork": [
+      "arts_culture"
+    ]
   },
   {
     "title": "Global Undergraduate Exchange Program (Global UGRAD)",
@@ -232,7 +251,10 @@
     "effortLabel": "high",
     "effortMin": 180,
     "verification": "official_source",
-    "sourceUrl": "https://kz.usembassy.gov/global-undergraduate-exchange-program-global-ugrad/"
+    "sourceUrl": "https://kz.usembassy.gov/global-undergraduate-exchange-program-global-ugrad/",
+    "fieldsOfWork": [
+      "education"
+    ]
   },
   {
     "title": "YSEALI Professional Fellows Program",
@@ -273,7 +295,12 @@
     "effortLabel": "high",
     "effortMin": 150,
     "verification": "official_source",
-    "sourceUrl": "https://www.ysealipfp.org/"
+    "sourceUrl": "https://www.ysealipfp.org/",
+    "fieldsOfWork": [
+      "government_public_policy",
+      "international_relations",
+      "social_impact_development"
+    ]
   },
   {
     "title": "Global Korea Scholarship (GKS)",
@@ -308,7 +335,10 @@
     "effortLabel": "extensive",
     "effortMin": 240,
     "verification": "official_source",
-    "sourceUrl": "https://www.niied.go.kr/web/niied/contents/niiedEng/eng_gksDegree"
+    "sourceUrl": "https://www.niied.go.kr/web/niied/contents/niiedEng/eng_gksDegree",
+    "fieldsOfWork": [
+      "education"
+    ]
   },
   {
     "title": "Australia Awards Fellowships",
@@ -345,6 +375,10 @@
     "effortLabel": "high",
     "effortMin": 180,
     "verification": "official_source",
-    "sourceUrl": "https://www.dfat.gov.au/people-people/australia-awards/australia-awards-fellowships"
+    "sourceUrl": "https://www.dfat.gov.au/people-people/australia-awards/australia-awards-fellowships",
+    "fieldsOfWork": [
+      "government_public_policy",
+      "social_impact_development"
+    ]
   }
 ]

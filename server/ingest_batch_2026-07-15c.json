@@ -35,7 +35,11 @@
     "effortLabel": "high",
     "effortMin": 5,
     "verification": "official_source",
-    "sourceUrl": "https://www.stias.ac.za/fellowships/apply/"
+    "sourceUrl": "https://www.stias.ac.za/fellowships/apply/",
+    "fieldsOfWork": [
+      "arts_culture",
+      "science_technology"
+    ]
   },
   {
     "title": "Kuona Trust Sponsored Artist Residency",
@@ -73,7 +77,10 @@
     "effortLabel": "moderate",
     "effortMin": 3,
     "verification": "official_source",
-    "sourceUrl": "https://kuonatrust.org/kuona-trust-residency/"
+    "sourceUrl": "https://kuonatrust.org/kuona-trust-residency/",
+    "fieldsOfWork": [
+      "arts_culture"
+    ]
   },
   {
     "title": "dot.ateliers Artist Residency",
@@ -111,7 +118,10 @@
     "effortLabel": "moderate",
     "effortMin": 3,
     "verification": "official_source",
-    "sourceUrl": "https://www.dotateliers.space/apply"
+    "sourceUrl": "https://www.dotateliers.space/apply",
+    "fieldsOfWork": [
+      "arts_culture"
+    ]
   },
   {
     "title": "CCA Tashkent Artist and Researcher Residencies",
@@ -149,7 +159,10 @@
     "effortLabel": "moderate",
     "effortMin": 3,
     "verification": "official_source",
-    "sourceUrl": "https://ccat.uz/en/residencies"
+    "sourceUrl": "https://ccat.uz/en/residencies",
+    "fieldsOfWork": [
+      "arts_culture"
+    ]
   },
   {
     "title": "Masaha Residency",
@@ -189,7 +202,10 @@
     "effortLabel": "moderate",
     "effortMin": 3,
     "verification": "official_source",
-    "sourceUrl": "https://miskartinstitute.org/en/residencies/masaha"
+    "sourceUrl": "https://miskartinstitute.org/en/residencies/masaha",
+    "fieldsOfWork": [
+      "arts_culture"
+    ]
   },
   {
     "title": "Sharjah Art Foundation Residency Programme",
@@ -227,7 +243,11 @@
     "effortLabel": "moderate",
     "effortMin": 3,
     "verification": "official_source",
-    "sourceUrl": "https://www.sharjahart.org/en/studio-residency-programmes/"
+    "sourceUrl": "https://www.sharjahart.org/en/studio-residency-programmes/",
+    "fieldsOfWork": [
+      "arts_culture",
+      "literature_writing"
+    ]
   },
   {
     "title": "Sangam House Writers' Residency",
@@ -265,7 +285,10 @@
     "effortLabel": "moderate",
     "effortMin": 4,
     "verification": "official_source",
-    "sourceUrl": "https://www.sangamhouse.org/the-application/"
+    "sourceUrl": "https://www.sangamhouse.org/the-application/",
+    "fieldsOfWork": [
+      "literature_writing"
+    ]
   },
   {
     "title": "Vasl International Artists' Residency",
@@ -303,7 +326,10 @@
     "effortLabel": "moderate",
     "effortMin": 3,
     "verification": "official_source",
-    "sourceUrl": "https://vaslart.org/residency/international-artists-residency/"
+    "sourceUrl": "https://vaslart.org/residency/international-artists-residency/",
+    "fieldsOfWork": [
+      "arts_culture"
+    ]
   },
   {
     "title": "MMCA International Artist Residency (Changdong/Goyang)",
@@ -341,7 +367,10 @@
     "effortLabel": "moderate",
     "effortMin": 3,
     "verification": "official_source",
-    "sourceUrl": "https://www.mmca.go.kr/eng/artStudio/artStudioMain.do"
+    "sourceUrl": "https://www.mmca.go.kr/eng/artStudio/artStudioMain.do",
+    "fieldsOfWork": [
+      "arts_culture"
+    ]
   },
   {
     "title": "Jan Michalski Foundation Residency for Writers",
@@ -378,7 +407,10 @@
     "effortLabel": "moderate",
     "effortMin": 3,
     "verification": "official_source",
-    "sourceUrl": "https://fondation-janmichalski.com/en/residences"
+    "sourceUrl": "https://fondation-janmichalski.com/en/residences",
+    "fieldsOfWork": [
+      "literature_writing"
+    ]
   },
   {
     "title": "Solitude Fellowship",
@@ -416,7 +448,10 @@
     "effortLabel": "high",
     "effortMin": 5,
     "verification": "official_source",
-    "sourceUrl": "https://www.akademie-solitude.de/en/fellowship/solitude-fellowship/"
+    "sourceUrl": "https://www.akademie-solitude.de/en/fellowship/solitude-fellowship/",
+    "fieldsOfWork": [
+      "arts_culture"
+    ]
   },
   {
     "title": "Art Explora - Cité Internationale des Arts Residency",
@@ -451,7 +486,10 @@
     "effortLabel": "moderate",
     "effortMin": 3,
     "verification": "official_source",
-    "sourceUrl": "https://www.citeinternationaledesarts.fr/en/programmes-de-residence/"
+    "sourceUrl": "https://www.citeinternationaledesarts.fr/en/programmes-de-residence/",
+    "fieldsOfWork": [
+      "arts_culture"
+    ]
   },
   {
     "title": "Delfina Foundation Residency Programme",
@@ -486,7 +524,10 @@
     "effortLabel": "moderate",
     "effortMin": 3,
     "verification": "official_source",
-    "sourceUrl": "https://www.delfinafoundation.com/open-calls/current/"
+    "sourceUrl": "https://www.delfinafoundation.com/open-calls/current/",
+    "fieldsOfWork": [
+      "arts_culture"
+    ]
   },
   {
     "title": "Sacatar Institute Fellowship",
@@ -523,7 +564,10 @@
     "effortLabel": "moderate",
     "effortMin": 3,
     "verification": "official_source",
-    "sourceUrl": "https://sacatar.org/en/apply/"
+    "sourceUrl": "https://sacatar.org/en/apply/",
+    "fieldsOfWork": [
+      "arts_culture"
+    ]
   },
   {
     "title": "Fundación Casa Wabi x ArtReview Residency Prize",
@@ -560,7 +604,10 @@
     "effortLabel": "moderate",
     "effortMin": 3,
     "verification": "official_source",
-    "sourceUrl": "https://casawabi.org/en/events/fundacion-casa-wabi-artreview-prize-2026/"
+    "sourceUrl": "https://casawabi.org/en/events/fundacion-casa-wabi-artreview-prize-2026/",
+    "fieldsOfWork": [
+      "arts_culture"
+    ]
   },
   {
     "title": "Malba Writers' Residency (REM)",
@@ -602,7 +649,10 @@
     "effortLabel": "moderate",
     "effortMin": 3,
     "verification": "official_source",
-    "sourceUrl": "https://rem.malba.org.ar/en/"
+    "sourceUrl": "https://rem.malba.org.ar/en/",
+    "fieldsOfWork": [
+      "literature_writing"
+    ]
   },
   {
     "title": "VAC Residency Hanoi",
@@ -641,7 +691,10 @@
     "effortLabel": "moderate",
     "effortMin": 3,
     "verification": "official_source",
-    "sourceUrl": "https://www.vac.art/residency"
+    "sourceUrl": "https://www.vac.art/residency",
+    "fieldsOfWork": [
+      "arts_culture"
+    ]
   },
   {
     "title": "Desert 23°S Residency",
@@ -678,6 +731,9 @@
     "effortLabel": "moderate",
     "effortMin": 3,
     "verification": "official_source",
-    "sourceUrl": "https://www.lawayakacurrent.com/desert"
+    "sourceUrl": "https://www.lawayakacurrent.com/desert",
+    "fieldsOfWork": [
+      "arts_culture"
+    ]
   }
 ]

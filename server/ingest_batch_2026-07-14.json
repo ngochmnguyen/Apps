@@ -34,7 +34,11 @@
     "effortLabel": "moderate",
     "effortMin": 90,
     "verification": "official_source",
-    "sourceUrl": "https://www.oneyoungworld.com/scholarship/leading-scholarship-2026"
+    "sourceUrl": "https://www.oneyoungworld.com/scholarship/leading-scholarship-2026",
+    "fieldsOfWork": [
+      "social_impact_development",
+      "international_relations"
+    ]
   },
   {
     "title": "Karsh Journalism Fellowship (2027 Cohort)",
@@ -69,7 +73,10 @@
     "effortLabel": "moderate",
     "effortMin": 60,
     "verification": "official_source",
-    "sourceUrl": "https://karshfellowship.org/apply/"
+    "sourceUrl": "https://karshfellowship.org/apply/",
+    "fieldsOfWork": [
+      "journalism_media"
+    ]
   },
   {
     "title": "DAAD Study Scholarship (2027 Intake)",
@@ -107,6 +114,9 @@
     "effortLabel": "high",
     "effortMin": 240,
     "verification": "official_source",
-    "sourceUrl": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+    "sourceUrl": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200",
+    "fieldsOfWork": [
+      "education"
+    ]
   }
 ]

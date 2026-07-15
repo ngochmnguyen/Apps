@@ -21,15 +21,26 @@
     "career": [],
     "employment": [],
     "english": "b2",
-    "nationality": { "type": "include", "list": ["AE"] },
-    "softTags": ["non_conventional_destination"],
+    "nationality": {
+      "type": "include",
+      "list": [
+        "AE"
+      ]
+    },
+    "softTags": [
+      "non_conventional_destination"
+    ],
     "deadline": null,
     "duration": "one_to_two_weeks",
     "isRecurring": true,
     "effortLabel": "moderate",
     "effortMin": 90,
     "verification": "official_source",
-    "sourceUrl": "https://www.zayededucationfoundation.org/en/leadership/UAE-India-leaders-program"
+    "sourceUrl": "https://www.zayededucationfoundation.org/en/leadership/UAE-India-leaders-program",
+    "fieldsOfWork": [
+      "international_relations",
+      "government_public_policy"
+    ]
   },
   {
     "title": "Ahlan World Language Center Internship (Egypt)",
@@ -53,15 +64,23 @@
     "career": [],
     "employment": [],
     "english": "b1",
-    "nationality": { "type": null, "list": [] },
-    "softTags": ["non_conventional_destination"],
+    "nationality": {
+      "type": null,
+      "list": []
+    },
+    "softTags": [
+      "non_conventional_destination"
+    ],
     "deadline": null,
     "duration": "one_to_three_months",
     "isRecurring": true,
     "effortLabel": "quick",
     "effortMin": 30,
     "verification": "official_source",
-    "sourceUrl": "https://www.ahlan-world.org/internship-volunteer-financial-aid/"
+    "sourceUrl": "https://www.ahlan-world.org/internship-volunteer-financial-aid/",
+    "fieldsOfWork": [
+      "education"
+    ]
   },
   {
     "title": "KSGAAL Arabic Language Immersion Program",
@@ -85,15 +104,23 @@
     "career": [],
     "employment": [],
     "english": "b1",
-    "nationality": { "type": null, "list": [] },
-    "softTags": ["non_conventional_destination"],
+    "nationality": {
+      "type": null,
+      "list": []
+    },
+    "softTags": [
+      "non_conventional_destination"
+    ],
     "deadline": null,
     "duration": "one_to_three_months",
     "isRecurring": true,
     "effortLabel": "moderate",
     "effortMin": 60,
     "verification": "official_source",
-    "sourceUrl": "https://arabiccenter.ksaa.gov.sa"
+    "sourceUrl": "https://arabiccenter.ksaa.gov.sa",
+    "fieldsOfWork": [
+      "education"
+    ]
   },
   {
     "title": "Obama Foundation Scholars Program at Columbia University",
@@ -114,10 +141,16 @@
     "maxAge": null,
     "gradOnly": false,
     "education": [],
-    "career": ["early_career", "mid_career"],
+    "career": [
+      "early_career",
+      "mid_career"
+    ],
     "employment": [],
     "english": "native_or_fluent",
-    "nationality": { "type": null, "list": [] },
+    "nationality": {
+      "type": null,
+      "list": []
+    },
     "softTags": [],
     "deadline": null,
     "duration": "semester_or_longer",
@@ -125,6 +158,11 @@
     "effortLabel": "extensive",
     "effortMin": 300,
     "verification": "official_source",
-    "sourceUrl": "https://www.obama.org/programs/scholars/columbia-university/"
+    "sourceUrl": "https://www.obama.org/programs/scholars/columbia-university/",
+    "fieldsOfWork": [
+      "government_public_policy",
+      "international_relations",
+      "social_impact_development"
+    ]
   }
 ]

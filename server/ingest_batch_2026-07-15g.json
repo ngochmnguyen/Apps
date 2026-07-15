@@ -35,7 +35,11 @@
     "effortLabel": "high",
     "effortMin": 150,
     "verification": "official_source",
-    "sourceUrl": "https://zayedsustainabilityprize.com/en/how-to-apply"
+    "sourceUrl": "https://zayedsustainabilityprize.com/en/how-to-apply",
+    "fieldsOfWork": [
+      "environment_sustainability",
+      "social_impact_development"
+    ]
   },
   {
     "title": "UAEU PhD Fellowship (All Nationalities)",
@@ -74,7 +78,10 @@
     "effortLabel": "high",
     "effortMin": 150,
     "verification": "official_source",
-    "sourceUrl": "https://www.uaeu.ac.ae/en/cgs/phd_fellowship_all.shtml"
+    "sourceUrl": "https://www.uaeu.ac.ae/en/cgs/phd_fellowship_all.shtml",
+    "fieldsOfWork": [
+      "education"
+    ]
   },
   {
     "title": "MBRU Frontliners Scholarship (Postgraduate Nursing)",
@@ -119,7 +126,11 @@
     "effortLabel": "moderate",
     "effortMin": 90,
     "verification": "official_source",
-    "sourceUrl": "https://www.mbru.ac.ae/scholarships/"
+    "sourceUrl": "https://www.mbru.ac.ae/scholarships/",
+    "fieldsOfWork": [
+      "health_medicine",
+      "education"
+    ]
   },
   {
     "title": "FEEL: A Disruptive Futures Programme",
@@ -162,7 +173,11 @@
     "effortLabel": "moderate",
     "effortMin": 90,
     "verification": "official_source",
-    "sourceUrl": "https://www.dubaifuture.ae/feel-2026/"
+    "sourceUrl": "https://www.dubaifuture.ae/feel-2026/",
+    "fieldsOfWork": [
+      "government_public_policy",
+      "business_entrepreneurship"
+    ]
   },
   {
     "title": "Rotary Peace Fellowship (Master's Degree)",
@@ -202,7 +217,11 @@
     "effortLabel": "extensive",
     "effortMin": 240,
     "verification": "official_source",
-    "sourceUrl": "https://www.rotary.org/en/our-programs/peace-fellowships"
+    "sourceUrl": "https://www.rotary.org/en/our-programs/peace-fellowships",
+    "fieldsOfWork": [
+      "international_relations",
+      "social_impact_development"
+    ]
   },
   {
     "title": "One Young World Leading Scholarship 2026",
@@ -237,7 +256,11 @@
     "effortLabel": "moderate",
     "effortMin": 90,
     "verification": "official_source",
-    "sourceUrl": "https://www.oneyoungworld.com/scholarship/leading-scholarship-2026"
+    "sourceUrl": "https://www.oneyoungworld.com/scholarship/leading-scholarship-2026",
+    "fieldsOfWork": [
+      "social_impact_development",
+      "international_relations"
+    ]
   },
   {
     "title": "DAAD EPOS Development-Related Postgraduate Courses",
@@ -290,7 +313,11 @@
     "effortLabel": "high",
     "effortMin": 150,
     "verification": "official_source",
-    "sourceUrl": "https://www.daad.de/en/information-services-for-higher-education-institutions/further-information-on-daad-programmes/epos/"
+    "sourceUrl": "https://www.daad.de/en/information-services-for-higher-education-institutions/further-information-on-daad-programmes/epos/",
+    "fieldsOfWork": [
+      "education",
+      "social_impact_development"
+    ]
   },
   {
     "title": "Knight-Hennessy Scholars",
@@ -327,7 +354,10 @@
     "effortLabel": "extensive",
     "effortMin": 300,
     "verification": "official_source",
-    "sourceUrl": "https://knight-hennessy.stanford.edu/admission/before-you-apply/eligibility"
+    "sourceUrl": "https://knight-hennessy.stanford.edu/admission/before-you-apply/eligibility",
+    "fieldsOfWork": [
+      "education"
+    ]
   },
   {
     "title": "Maurice R. Greenberg World Fellows Program",
@@ -369,7 +399,11 @@
     "effortLabel": "extensive",
     "effortMin": 240,
     "verification": "official_source",
-    "sourceUrl": "https://worldfellows.yale.edu/the-program/application/"
+    "sourceUrl": "https://worldfellows.yale.edu/the-program/application/",
+    "fieldsOfWork": [
+      "international_relations",
+      "government_public_policy"
+    ]
   },
   {
     "title": "Eisenhower Fellowships Global Program",
@@ -409,7 +443,11 @@
     "effortLabel": "extensive",
     "effortMin": 240,
     "verification": "official_source",
-    "sourceUrl": "https://www.efworld.org/2027-globalprogram-eligibilty-criteria/"
+    "sourceUrl": "https://www.efworld.org/2027-globalprogram-eligibilty-criteria/",
+    "fieldsOfWork": [
+      "international_relations",
+      "government_public_policy"
+    ]
   },
   {
     "title": "MBZUAI Fully Funded MSc/PhD Scholarship",
@@ -449,6 +487,10 @@
     "effortLabel": "high",
     "effortMin": 150,
     "verification": "official_source",
-    "sourceUrl": "https://mbzuai.ac.ae/study/graduate-admission-process/"
+    "sourceUrl": "https://mbzuai.ac.ae/study/graduate-admission-process/",
+    "fieldsOfWork": [
+      "science_technology",
+      "education"
+    ]
   }
 ]

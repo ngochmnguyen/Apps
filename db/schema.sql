@@ -34,6 +34,24 @@ CREATE TYPE employment_status AS ENUM (
   'student'
 );
 
+-- High-level professional domain -- deliberately coarse (per product decision)
+-- rather than a detailed academic-discipline taxonomy like fields_of_study.
+CREATE TYPE field_of_work AS ENUM (
+  'education',
+  'international_relations',
+  'government_public_policy',
+  'literature_writing',
+  'arts_culture',
+  'finance_economics',
+  'business_entrepreneurship',
+  'science_technology',
+  'health_medicine',
+  'law',
+  'journalism_media',
+  'environment_sustainability',
+  'social_impact_development'
+);
+
 CREATE TYPE english_level AS ENUM ('b1', 'b2', 'c1', 'c2', 'native_or_fluent');
 
 CREATE TYPE opportunity_type AS ENUM (
@@ -239,6 +257,12 @@ CREATE TABLE opportunity_employment_statuses (
   PRIMARY KEY (opportunity_id, employment_status)
 );
 
+CREATE TABLE opportunity_fields_of_work (
+  opportunity_id  UUID NOT NULL REFERENCES opportunities(id) ON DELETE CASCADE,
+  field           field_of_work NOT NULL,
+  PRIMARY KEY (opportunity_id, field)
+);
+
 CREATE TABLE opportunity_fields_of_study (
   opportunity_id    UUID NOT NULL REFERENCES opportunities(id) ON DELETE CASCADE,
   field_of_study_id  INTEGER NOT NULL REFERENCES fields_of_study(id),
@@ -349,6 +373,7 @@ CREATE INDEX idx_opportunity_reports_status ON opportunity_reports (status);
 CREATE INDEX idx_saved_opportunities_opportunity ON saved_opportunities (opportunity_id);
 CREATE INDEX idx_todo_items_user ON todo_items (user_id);
 CREATE INDEX idx_todo_items_opportunity ON todo_items (opportunity_id);
+CREATE INDEX idx_opportunity_fields_of_work_field ON opportunity_fields_of_work (field);
 
 -- =========================================================
 -- DEADLINE URGENCY (derived, not stored — recompute on read so it never goes stale)

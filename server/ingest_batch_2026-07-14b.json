@@ -34,7 +34,10 @@
     "effortLabel": "extensive",
     "effortMin": 300,
     "verification": "official_source",
-    "sourceUrl": "https://startupchile.org/en/apply/"
+    "sourceUrl": "https://startupchile.org/en/apply/",
+    "fieldsOfWork": [
+      "business_entrepreneurship"
+    ]
   },
   {
     "title": "K3 Choreography Residency 2027-28",
@@ -69,7 +72,10 @@
     "effortLabel": "high",
     "effortMin": 180,
     "verification": "official_source",
-    "sourceUrl": "https://k3-hamburg.de/en/professionals/residencyapplicationform"
+    "sourceUrl": "https://k3-hamburg.de/en/professionals/residencyapplicationform",
+    "fieldsOfWork": [
+      "arts_culture"
+    ]
   },
   {
     "title": "Kota Residency Programme for Indonesia-Based Artists",
@@ -104,7 +110,10 @@
     "effortLabel": "moderate",
     "effortMin": 120,
     "verification": "official_source",
-    "sourceUrl": "https://www.citeinternationaledesarts.fr/en/programme-de-residence/kota/"
+    "sourceUrl": "https://www.citeinternationaledesarts.fr/en/programme-de-residence/kota/",
+    "fieldsOfWork": [
+      "arts_culture"
+    ]
   },
   {
     "title": "Camargo Fellowship 2027-28",
@@ -139,7 +148,11 @@
     "effortLabel": "high",
     "effortMin": 180,
     "verification": "official_source",
-    "sourceUrl": "https://camargofoundation.org/current-calls/camargo-fellowship/"
+    "sourceUrl": "https://camargofoundation.org/current-calls/camargo-fellowship/",
+    "fieldsOfWork": [
+      "arts_culture",
+      "literature_writing"
+    ]
   },
   {
     "title": "VCCA Fellowships (October Cycle)",
@@ -174,6 +187,10 @@
     "effortLabel": "moderate",
     "effortMin": 90,
     "verification": "official_source",
-    "sourceUrl": "https://www.vcca.com/apply/fully-funded-fellowships/"
+    "sourceUrl": "https://www.vcca.com/apply/fully-funded-fellowships/",
+    "fieldsOfWork": [
+      "arts_culture",
+      "literature_writing"
+    ]
   }
 ]

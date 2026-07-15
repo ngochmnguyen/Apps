@@ -6,20 +6,38 @@
     "type": "research_residency",
     "dest": "ZA",
     "compType": "cash_and_in_kind",
-    "flight": true, "lodging": true, "meals": false,
-    "stipendMin": 3000, "stipendMax": 3000, "currency": "USD",
-    "requiresWorkVisa": false, "visaNote": null,
-    "minAge": 21, "maxAge": null, "gradOnly": false,
-    "education": [], "career": [], "employment": [],
+    "flight": true,
+    "lodging": true,
+    "meals": false,
+    "stipendMin": 3000,
+    "stipendMax": 3000,
+    "currency": "USD",
+    "requiresWorkVisa": false,
+    "visaNote": null,
+    "minAge": 21,
+    "maxAge": null,
+    "gradOnly": false,
+    "education": [],
+    "career": [],
+    "employment": [],
     "english": "c1",
-    "nationality": { "type": null, "list": [] },
-    "softTags": ["non_conventional_destination"],
+    "nationality": {
+      "type": null,
+      "list": []
+    },
+    "softTags": [
+      "non_conventional_destination"
+    ],
     "deadline": "2026-07-20",
     "duration": "one_to_three_months",
     "isRecurring": true,
-    "effortLabel": "high", "effortMin": 120,
+    "effortLabel": "high",
+    "effortMin": 120,
     "verification": "official_source",
-    "sourceUrl": "https://princint.ai/programs/fellowship/"
+    "sourceUrl": "https://princint.ai/programs/fellowship/",
+    "fieldsOfWork": [
+      "science_technology"
+    ]
   },
   {
     "title": "IOM Internship Programme",
@@ -28,20 +46,41 @@
     "type": "internship",
     "dest": "KZ",
     "compType": "cash",
-    "flight": false, "lodging": false, "meals": false,
-    "stipendMin": 967, "stipendMax": 1693, "currency": "USD",
-    "requiresWorkVisa": false, "visaNote": null,
-    "minAge": 20, "maxAge": 36, "gradOnly": false,
-    "education": [], "career": ["recent_grad"], "employment": [],
+    "flight": false,
+    "lodging": false,
+    "meals": false,
+    "stipendMin": 967,
+    "stipendMax": 1693,
+    "currency": "USD",
+    "requiresWorkVisa": false,
+    "visaNote": null,
+    "minAge": 20,
+    "maxAge": 36,
+    "gradOnly": false,
+    "education": [],
+    "career": [
+      "recent_grad"
+    ],
+    "employment": [],
     "english": "b2",
-    "nationality": { "type": null, "list": [] },
-    "softTags": ["non_conventional_destination"],
+    "nationality": {
+      "type": null,
+      "list": []
+    },
+    "softTags": [
+      "non_conventional_destination"
+    ],
     "deadline": "2026-12-31",
     "duration": "semester_or_longer",
     "isRecurring": true,
-    "effortLabel": "high", "effortMin": 90,
+    "effortLabel": "high",
+    "effortMin": 90,
     "verification": "official_source",
-    "sourceUrl": "https://www.iom.int/internship-programme"
+    "sourceUrl": "https://www.iom.int/internship-programme",
+    "fieldsOfWork": [
+      "international_relations",
+      "social_impact_development"
+    ]
   },
   {
     "title": "Chevening Scholarship 2027/2028",
@@ -50,20 +89,43 @@
     "type": "scholarship_fellowship",
     "dest": "GB",
     "compType": "cash_and_in_kind",
-    "flight": true, "lodging": true, "meals": false,
-    "stipendMin": null, "stipendMax": null, "currency": "GBP",
-    "requiresWorkVisa": false, "visaNote": null,
-    "minAge": 21, "maxAge": null, "gradOnly": false,
-    "education": ["bachelors_completed"], "career": ["early_career", "mid_career"], "employment": [],
+    "flight": true,
+    "lodging": true,
+    "meals": false,
+    "stipendMin": null,
+    "stipendMax": null,
+    "currency": "GBP",
+    "requiresWorkVisa": false,
+    "visaNote": null,
+    "minAge": 21,
+    "maxAge": null,
+    "gradOnly": false,
+    "education": [
+      "bachelors_completed"
+    ],
+    "career": [
+      "early_career",
+      "mid_career"
+    ],
+    "employment": [],
     "english": "c1",
-    "nationality": { "type": null, "list": [] },
+    "nationality": {
+      "type": null,
+      "list": []
+    },
     "softTags": [],
     "deadline": "2026-10-06",
     "duration": "semester_or_longer",
     "isRecurring": true,
-    "effortLabel": "extensive", "effortMin": 240,
+    "effortLabel": "extensive",
+    "effortMin": 240,
     "verification": "official_source",
-    "sourceUrl": "https://www.chevening.org/apply/"
+    "sourceUrl": "https://www.chevening.org/apply/",
+    "fieldsOfWork": [
+      "education",
+      "international_relations",
+      "government_public_policy"
+    ]
   },
   {
     "title": "Sunwing Canada's Next Top Creators Contest",
@@ -72,20 +134,39 @@
     "type": "contest_competition",
     "dest": "MX",
     "compType": "cash_and_in_kind",
-    "flight": true, "lodging": true, "meals": true,
-    "stipendMin": 10000, "stipendMax": 10000, "currency": "CAD",
-    "requiresWorkVisa": false, "visaNote": null,
-    "minAge": 18, "maxAge": null, "gradOnly": false,
-    "education": [], "career": [], "employment": [],
+    "flight": true,
+    "lodging": true,
+    "meals": true,
+    "stipendMin": 10000,
+    "stipendMax": 10000,
+    "currency": "CAD",
+    "requiresWorkVisa": false,
+    "visaNote": null,
+    "minAge": 18,
+    "maxAge": null,
+    "gradOnly": false,
+    "education": [],
+    "career": [],
+    "employment": [],
     "english": "b2",
-    "nationality": { "type": "include", "list": ["CA"] },
+    "nationality": {
+      "type": "include",
+      "list": [
+        "CA"
+      ]
+    },
     "softTags": [],
     "deadline": "2026-08-07",
     "duration": "weekend",
     "isRecurring": true,
-    "effortLabel": "quick", "effortMin": 20,
+    "effortLabel": "quick",
+    "effortMin": 20,
     "verification": "aggregator_verified",
-    "sourceUrl": "https://www.sunwing.ca/en/canadas-next-top-creators"
+    "sourceUrl": "https://www.sunwing.ca/en/canadas-next-top-creators",
+    "fieldsOfWork": [
+      "arts_culture",
+      "journalism_media"
+    ]
   },
   {
     "title": "421 Arts Campus Residency Program",
@@ -94,20 +175,38 @@
     "type": "research_residency",
     "dest": "AE",
     "compType": "cash_and_in_kind",
-    "flight": true, "lodging": true, "meals": false,
-    "stipendMin": null, "stipendMax": null, "currency": "AED",
-    "requiresWorkVisa": false, "visaNote": null,
-    "minAge": 21, "maxAge": null, "gradOnly": false,
-    "education": [], "career": [], "employment": [],
+    "flight": true,
+    "lodging": true,
+    "meals": false,
+    "stipendMin": null,
+    "stipendMax": null,
+    "currency": "AED",
+    "requiresWorkVisa": false,
+    "visaNote": null,
+    "minAge": 21,
+    "maxAge": null,
+    "gradOnly": false,
+    "education": [],
+    "career": [],
+    "employment": [],
     "english": "b2",
-    "nationality": { "type": null, "list": [] },
-    "softTags": ["menasa_region_priority"],
+    "nationality": {
+      "type": null,
+      "list": []
+    },
+    "softTags": [
+      "menasa_region_priority"
+    ],
     "deadline": "2026-01-04",
     "duration": "semester_or_longer",
     "isRecurring": true,
-    "effortLabel": "high", "effortMin": 150,
+    "effortLabel": "high",
+    "effortMin": 150,
     "verification": "official_source",
-    "sourceUrl": "https://www.421.online/opportunities/residency-program-2026/"
+    "sourceUrl": "https://www.421.online/opportunities/residency-program-2026/",
+    "fieldsOfWork": [
+      "arts_culture"
+    ]
   },
   {
     "title": "OHCHR Fellowship Programme for People of African Descent",
@@ -116,19 +215,39 @@
     "type": "scholarship_fellowship",
     "dest": "CH",
     "compType": "cash_and_in_kind",
-    "flight": true, "lodging": true, "meals": false,
-    "stipendMin": null, "stipendMax": null, "currency": null,
-    "requiresWorkVisa": false, "visaNote": null,
-    "minAge": 21, "maxAge": null, "gradOnly": false,
-    "education": [], "career": [], "employment": [],
+    "flight": true,
+    "lodging": true,
+    "meals": false,
+    "stipendMin": null,
+    "stipendMax": null,
+    "currency": null,
+    "requiresWorkVisa": false,
+    "visaNote": null,
+    "minAge": 21,
+    "maxAge": null,
+    "gradOnly": false,
+    "education": [],
+    "career": [],
+    "employment": [],
     "english": "c1",
-    "nationality": { "type": null, "list": [] },
-    "softTags": ["african_descent_priority"],
+    "nationality": {
+      "type": null,
+      "list": []
+    },
+    "softTags": [
+      "african_descent_priority"
+    ],
     "deadline": "2026-05-15",
     "duration": "three_to_four_weeks",
     "isRecurring": true,
-    "effortLabel": "high", "effortMin": 90,
+    "effortLabel": "high",
+    "effortMin": 90,
     "verification": "official_source",
-    "sourceUrl": "https://www.ohchr.org/en/about-us/fellowship-programmes/fellowship-programme-people-african-descent"
+    "sourceUrl": "https://www.ohchr.org/en/about-us/fellowship-programmes/fellowship-programme-people-african-descent",
+    "fieldsOfWork": [
+      "international_relations",
+      "law",
+      "social_impact_development"
+    ]
   }
 ]

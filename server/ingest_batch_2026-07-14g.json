@@ -19,9 +19,20 @@
     "gradOnly": false,
     "education": [],
     "career": [],
-    "employment": ["student"],
+    "employment": [
+      "student"
+    ],
     "english": "b2",
-    "nationality": { "type": "include", "list": ["AR", "BO", "BR", "CL", "MX"] },
+    "nationality": {
+      "type": "include",
+      "list": [
+        "AR",
+        "BO",
+        "BR",
+        "CL",
+        "MX"
+      ]
+    },
     "softTags": [],
     "deadline": null,
     "duration": "one_to_three_months",
@@ -29,7 +40,11 @@
     "effortLabel": "high",
     "effortMin": 150,
     "verification": "official_source",
-    "sourceUrl": "https://www.educanada.ca/scholarships-bourses/can/institutions/elap-pfla.aspx?lang=eng"
+    "sourceUrl": "https://www.educanada.ca/scholarships-bourses/can/institutions/elap-pfla.aspx?lang=eng",
+    "fieldsOfWork": [
+      "education",
+      "international_relations"
+    ]
   },
   {
     "title": "Young Leaders of the Americas Initiative (YLAI) Fellowship",
@@ -50,10 +65,25 @@
     "maxAge": 35,
     "gradOnly": false,
     "education": [],
-    "career": ["early_career", "mid_career"],
-    "employment": ["self_employed"],
+    "career": [
+      "early_career",
+      "mid_career"
+    ],
+    "employment": [
+      "self_employed"
+    ],
     "english": "b2",
-    "nationality": { "type": "include", "list": ["AR", "BO", "BR", "CA", "CL", "MX"] },
+    "nationality": {
+      "type": "include",
+      "list": [
+        "AR",
+        "BO",
+        "BR",
+        "CA",
+        "CL",
+        "MX"
+      ]
+    },
     "softTags": [],
     "deadline": null,
     "duration": "one_to_three_months",
@@ -61,6 +91,10 @@
     "effortLabel": "high",
     "effortMin": 150,
     "verification": "official_source",
-    "sourceUrl": "https://ylai.state.gov/fellowship/"
+    "sourceUrl": "https://ylai.state.gov/fellowship/",
+    "fieldsOfWork": [
+      "business_entrepreneurship",
+      "international_relations"
+    ]
   }
 ]

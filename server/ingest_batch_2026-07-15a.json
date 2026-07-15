@@ -45,7 +45,12 @@
     "effortLabel": "high",
     "effortMin": 180,
     "verification": "official_source",
-    "sourceUrl": "https://www.mandelarhodes.org/scholarship/apply/"
+    "sourceUrl": "https://www.mandelarhodes.org/scholarship/apply/",
+    "fieldsOfWork": [
+      "education",
+      "social_impact_development",
+      "government_public_policy"
+    ]
   },
   {
     "title": "Mastercard Foundation Scholars Program at CMU-Africa",
@@ -93,7 +98,11 @@
     "effortLabel": "high",
     "effortMin": 180,
     "verification": "official_source",
-    "sourceUrl": "https://www.africa.engineering.cmu.edu/impact/mastercard-foundation-scholars.html"
+    "sourceUrl": "https://www.africa.engineering.cmu.edu/impact/mastercard-foundation-scholars.html",
+    "fieldsOfWork": [
+      "science_technology",
+      "education"
+    ]
   },
   {
     "title": "Mastercard Foundation Scholars Program at Ashesi University",
@@ -140,7 +149,11 @@
     "effortLabel": "high",
     "effortMin": 150,
     "verification": "official_source",
-    "sourceUrl": "https://ashesi.edu.gh/the-mastercard-foundation-scholars-program/"
+    "sourceUrl": "https://ashesi.edu.gh/the-mastercard-foundation-scholars-program/",
+    "fieldsOfWork": [
+      "education",
+      "social_impact_development"
+    ]
   },
   {
     "title": "Swiss Government Excellence Scholarships",
@@ -181,7 +194,10 @@
     "effortLabel": "extensive",
     "effortMin": 240,
     "verification": "official_source",
-    "sourceUrl": "https://www.sbfi.admin.ch/en/swiss-government-excellence-scholarships"
+    "sourceUrl": "https://www.sbfi.admin.ch/en/swiss-government-excellence-scholarships",
+    "fieldsOfWork": [
+      "education"
+    ]
   },
   {
     "title": "France Excellence Eiffel Scholarship Program",
@@ -223,7 +239,10 @@
     "effortLabel": "moderate",
     "effortMin": 90,
     "verification": "official_source",
-    "sourceUrl": "https://www.campusfrance.org/en/france-excellence-eiffel-scholarship-program"
+    "sourceUrl": "https://www.campusfrance.org/en/france-excellence-eiffel-scholarship-program",
+    "fieldsOfWork": [
+      "education"
+    ]
   },
   {
     "title": "Chinese Government Scholarship (CSC)",
@@ -258,7 +277,10 @@
     "effortLabel": "high",
     "effortMin": 150,
     "verification": "official_source",
-    "sourceUrl": "https://studyinchina.csc.edu.cn/"
+    "sourceUrl": "https://studyinchina.csc.edu.cn/",
+    "fieldsOfWork": [
+      "education"
+    ]
   },
   {
     "title": "KAUST Fellowship (Graduate Scholarship)",
@@ -299,7 +321,11 @@
     "effortLabel": "moderate",
     "effortMin": 120,
     "verification": "official_source",
-    "sourceUrl": "https://admissions.kaust.edu.sa/fees-funding"
+    "sourceUrl": "https://admissions.kaust.edu.sa/fees-funding",
+    "fieldsOfWork": [
+      "science_technology",
+      "education"
+    ]
   },
   {
     "title": "PEC-PG Postgraduate Student Agreement Program",
@@ -340,7 +366,10 @@
     "effortLabel": "moderate",
     "effortMin": 90,
     "verification": "official_source",
-    "sourceUrl": "https://www.gov.br/mre/pt-br/assuntos/cultura-e-educacao/temas-educacionais/programas-de-estudo-para-estrangeiros/pec-pg-pos-graduacao-1/sobre-o-pec-pg"
+    "sourceUrl": "https://www.gov.br/mre/pt-br/assuntos/cultura-e-educacao/temas-educacionais/programas-de-estudo-para-estrangeiros/pec-pg-pos-graduacao-1/sobre-o-pec-pg",
+    "fieldsOfWork": [
+      "education"
+    ]
   },
   {
     "title": "Government of Mexico Excellence Scholarships (AMEXCID)",
@@ -377,7 +406,10 @@
     "effortLabel": "high",
     "effortMin": 150,
     "verification": "official_source",
-    "sourceUrl": "https://www.gob.mx/amexcid/acciones-y-programas/becas-para-extranjeros-29785"
+    "sourceUrl": "https://www.gob.mx/amexcid/acciones-y-programas/becas-para-extranjeros-29785",
+    "fieldsOfWork": [
+      "education"
+    ]
   },
   {
     "title": "ICCR Scholarship Schemes for Foreign Students",
@@ -414,7 +446,10 @@
     "effortLabel": "moderate",
     "effortMin": 90,
     "verification": "official_source",
-    "sourceUrl": "https://a2ascholarships.iccr.gov.in/"
+    "sourceUrl": "https://a2ascholarships.iccr.gov.in/",
+    "fieldsOfWork": [
+      "education"
+    ]
   },
   {
     "title": "Australia Awards Scholarships",
@@ -461,7 +496,10 @@
     "effortLabel": "extensive",
     "effortMin": 240,
     "verification": "official_source",
-    "sourceUrl": "https://www.dfat.gov.au/people-to-people/australia-awards/australia-awards-scholarships"
+    "sourceUrl": "https://www.dfat.gov.au/people-to-people/australia-awards/australia-awards-scholarships",
+    "fieldsOfWork": [
+      "education"
+    ]
   },
   {
     "title": "Fulbright Foreign Student Program",
@@ -500,7 +538,11 @@
     "effortLabel": "extensive",
     "effortMin": 300,
     "verification": "official_source",
-    "sourceUrl": "https://exchanges.state.gov/non-us/program/fulbright-foreign-student-program"
+    "sourceUrl": "https://exchanges.state.gov/non-us/program/fulbright-foreign-student-program",
+    "fieldsOfWork": [
+      "education",
+      "international_relations"
+    ]
   },
   {
     "title": "SEARCA Full Master's and PhD Scholarships",
@@ -549,7 +591,11 @@
     "effortLabel": "moderate",
     "effortMin": 90,
     "verification": "official_source",
-    "sourceUrl": "https://www.searca.org/scholarships"
+    "sourceUrl": "https://www.searca.org/scholarships",
+    "fieldsOfWork": [
+      "science_technology",
+      "environment_sustainability"
+    ]
   },
   {
     "title": "EGYAID Egyptian Government Scholarship",
@@ -588,7 +634,10 @@
     "effortLabel": "moderate",
     "effortMin": 90,
     "verification": "official_source",
-    "sourceUrl": "https://admission.study-in-egypt.gov.eg"
+    "sourceUrl": "https://admission.study-in-egypt.gov.eg",
+    "fieldsOfWork": [
+      "education"
+    ]
   },
   {
     "title": "Khalifa University Graduate Scholarship",
@@ -629,6 +678,10 @@
     "effortLabel": "moderate",
     "effortMin": 90,
     "verification": "official_source",
-    "sourceUrl": "https://www.ku.ac.ae/scholarships"
+    "sourceUrl": "https://www.ku.ac.ae/scholarships",
+    "fieldsOfWork": [
+      "education",
+      "science_technology"
+    ]
   }
 ]

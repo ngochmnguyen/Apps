@@ -34,7 +34,11 @@
     "effortLabel": "extensive",
     "effortMin": 10,
     "verification": "official_source",
-    "sourceUrl": "https://www.peacecorps.gov/ghana/"
+    "sourceUrl": "https://www.peacecorps.gov/ghana/",
+    "fieldsOfWork": [
+      "education",
+      "social_impact_development"
+    ]
   },
   {
     "title": "Peace Corps Volunteer — Vietnam",
@@ -71,7 +75,10 @@
     "effortLabel": "extensive",
     "effortMin": 10,
     "verification": "official_source",
-    "sourceUrl": "https://www.peacecorps.gov/viet-nam/"
+    "sourceUrl": "https://www.peacecorps.gov/viet-nam/",
+    "fieldsOfWork": [
+      "education"
+    ]
   },
   {
     "title": "Peace Corps Volunteer — Fiji",
@@ -108,7 +115,10 @@
     "effortLabel": "extensive",
     "effortMin": 10,
     "verification": "official_source",
-    "sourceUrl": "https://www.peacecorps.gov/fiji/"
+    "sourceUrl": "https://www.peacecorps.gov/fiji/",
+    "fieldsOfWork": [
+      "social_impact_development"
+    ]
   },
   {
     "title": "Peace Corps Volunteer — Mongolia",
@@ -145,7 +155,11 @@
     "effortLabel": "extensive",
     "effortMin": 10,
     "verification": "official_source",
-    "sourceUrl": "https://www.peacecorps.gov/mongolia/"
+    "sourceUrl": "https://www.peacecorps.gov/mongolia/",
+    "fieldsOfWork": [
+      "education",
+      "social_impact_development"
+    ]
   },
   {
     "title": "Australian Volunteers Program — South Africa",
@@ -182,7 +196,10 @@
     "effortLabel": "extensive",
     "effortMin": 10,
     "verification": "official_source",
-    "sourceUrl": "https://www.australianvolunteers.com/volunteering/"
+    "sourceUrl": "https://www.australianvolunteers.com/volunteering/",
+    "fieldsOfWork": [
+      "social_impact_development"
+    ]
   },
   {
     "title": "PALM Scheme — Seasonal & Long-Term Work in Australia",
@@ -219,7 +236,8 @@
     "effortLabel": "high",
     "effortMin": 6,
     "verification": "official_source",
-    "sourceUrl": "https://www.palmscheme.gov.au/workers"
+    "sourceUrl": "https://www.palmscheme.gov.au/workers",
+    "fieldsOfWork": []
   },
   {
     "title": "VSO International Volunteer — Kenya",
@@ -254,7 +272,11 @@
     "effortLabel": "extensive",
     "effortMin": 10,
     "verification": "official_source",
-    "sourceUrl": "https://www.vsointernational.org/our-work/where-we-work/kenya/volunteering-in-kenya"
+    "sourceUrl": "https://www.vsointernational.org/our-work/where-we-work/kenya/volunteering-in-kenya",
+    "fieldsOfWork": [
+      "social_impact_development",
+      "health_medicine"
+    ]
   },
   {
     "title": "Camphill Village South Africa — Young Co-Worker Program",
@@ -289,7 +311,11 @@
     "effortLabel": "moderate",
     "effortMin": 3,
     "verification": "official_source",
-    "sourceUrl": "https://www.camphill.org.za/volunteer"
+    "sourceUrl": "https://www.camphill.org.za/volunteer",
+    "fieldsOfWork": [
+      "social_impact_development",
+      "health_medicine"
+    ]
   },
   {
     "title": "weltwärts Süd-Nord — Volunteer Service in Germany",
@@ -324,7 +350,10 @@
     "effortLabel": "high",
     "effortMin": 6,
     "verification": "official_source",
-    "sourceUrl": "https://www.weltwaerts.de/en/requirements-volunteers.html"
+    "sourceUrl": "https://www.weltwaerts.de/en/requirements-volunteers.html",
+    "fieldsOfWork": [
+      "social_impact_development"
+    ]
   },
   {
     "title": "AmeriCorps NCCC — Team-Based National Service",
@@ -361,7 +390,10 @@
     "effortLabel": "high",
     "effortMin": 6,
     "verification": "official_source",
-    "sourceUrl": "https://www.americorps.gov/serve/americorps/americorps-nccc"
+    "sourceUrl": "https://www.americorps.gov/serve/americorps/americorps-nccc",
+    "fieldsOfWork": [
+      "social_impact_development"
+    ]
   },
   {
     "title": "UN Volunteer Assignments — Uzbekistan",
@@ -396,6 +428,10 @@
     "effortLabel": "extensive",
     "effortMin": 10,
     "verification": "official_source",
-    "sourceUrl": "https://www.unv.org/unv-countries/uzbekistan"
+    "sourceUrl": "https://www.unv.org/unv-countries/uzbekistan",
+    "fieldsOfWork": [
+      "international_relations",
+      "social_impact_development"
+    ]
   }
 ]
