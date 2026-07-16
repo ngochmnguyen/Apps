@@ -158,6 +158,7 @@ CREATE TABLE user_profiles (
   english_level             english_level NOT NULL,
   disability_status          BOOLEAN NOT NULL DEFAULT FALSE,
   gender                    TEXT,  -- optional, used only for soft-tag matching, never a hard gate
+  newsletter_opt_out        BOOLEAN NOT NULL DEFAULT FALSE,  -- one-click unsubscribe from the monthly newsletter, not a settings toggle
   updated_at                TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
@@ -355,6 +356,17 @@ CREATE TABLE sent_reminders (
   reminder_type   TEXT NOT NULL,
   sent_at         TIMESTAMPTZ NOT NULL DEFAULT now(),
   PRIMARY KEY (user_id, opportunity_id, reminder_type)
+);
+
+-- One row per monthly newsletter send. send-newsletter.js reads max(sent_at)
+-- to find its own "what's new since last time" window, instead of tracking
+-- per-user per-opportunity state the way sent_reminders does -- the
+-- newsletter is a single generic broadcast, not personalized.
+CREATE TABLE newsletter_sends (
+  id                 UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  sent_at            TIMESTAMPTZ NOT NULL DEFAULT now(),
+  opportunity_count  INTEGER NOT NULL,
+  recipient_count    INTEGER NOT NULL
 );
 
 -- =========================================================

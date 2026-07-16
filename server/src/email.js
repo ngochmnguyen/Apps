@@ -28,6 +28,42 @@ export async function sendWelcomeEmail(to) {
   }
 }
 
+export async function sendNewsletterEmail(to, unsubscribeUserId, opportunities, featuredReads) {
+  if (!resend) {
+    console.log(`[email] RESEND_API_KEY not set -- skipping newsletter to ${to}`);
+    return;
+  }
+  if (!process.env.APP_URL) {
+    console.log(`[email] APP_URL not set -- skipping newsletter to ${to} (unsubscribe link needs a real URL)`);
+    return;
+  }
+  const appUrl = process.env.APP_URL;
+  const oppRows = opportunities
+    .map((o) => `<li><a href="${o.source_url}">${o.title}</a> -- ${o.org}, ${o.dest_name}</li>`)
+    .join("");
+  const readRows = (featuredReads || [])
+    .map((r) => `<li><a href="${r.url}">${r.title}</a></li>`)
+    .join("");
+  try {
+    await resend.emails.send({
+      from: FROM,
+      to,
+      subject: "This month on Voya: new opportunities",
+      html: `
+        <p>Here's what's new on Voya this month:</p>
+        <ul>${oppRows}</ul>
+        ${readRows ? `<p>A few reads:</p><ul>${readRows}</ul>` : ""}
+        <p><a href="${appUrl}">Browse all opportunities on Voya</a></p>
+        <p style="font-size:12px;color:#888;">
+          <a href="${appUrl}/api/newsletter/unsubscribe/${unsubscribeUserId}">Unsubscribe from this newsletter</a>
+        </p>
+      `,
+    });
+  } catch (err) {
+    console.error(`Newsletter email to ${to} failed:`, err);
+  }
+}
+
 export async function sendDeadlineReminder(to, opportunityTitle, daysLeft) {
   if (!resend) {
     console.log(`[email] RESEND_API_KEY not set -- skipping ${daysLeft}-day reminder to ${to}`);

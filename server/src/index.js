@@ -11,6 +11,7 @@ import { metaRouter } from "./routes/meta.js";
 import { opportunitiesRouter } from "./routes/opportunities.js";
 import { savedRouter } from "./routes/saved.js";
 import { todosRouter } from "./routes/todos.js";
+import { newsletterRouter } from "./routes/newsletter.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
@@ -37,6 +38,7 @@ app.use("/api", metaRouter);
 app.use("/api/opportunities", opportunitiesRouter);
 app.use("/api/saved", savedRouter);
 app.use("/api/todos", todosRouter);
+app.use("/api/newsletter", newsletterRouter);
 
 app.use(express.static(path.join(__dirname, "../../prototype")));
 

@@ -1,0 +1,32 @@
+name: Send monthly newsletter
+
+# Monthly digest of new opportunities since the last send, plus optional
+# featured reads (see server/newsletter_features.json). newsletter_sends
+# tracks the last send date, so this is safe to re-run the same month --
+# it'll just find few or no new opportunities and skip.
+on:
+  schedule:
+    - cron: "0 9 1 * *" # 09:00 UTC on the 1st of each month
+  workflow_dispatch: {} # allow manual runs from the Actions tab too
+
+jobs:
+  send-newsletter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install server dependencies
+        working-directory: server
+        run: npm install
+
+      - name: Send newsletter
+        working-directory: server
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          APP_URL: ${{ secrets.APP_URL }}
+        run: node src/send-newsletter.js
