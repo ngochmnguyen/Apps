@@ -1,71 +1,5 @@
 [
   {
-    "title": "Peace Corps Volunteer – Zambia",
-    "description": "U.S. Peace Corps Volunteers serve a 27-month assignment in Zambia working on locally prioritized community projects in agriculture/aquaculture, education, environment, or health (HIV/AIDS and maternal health). The Peace Corps covers transportation to and from Zambia, provides housing and a monthly living allowance set to match the local cost of living, full medical and dental care during service, and a $10,000 (pre-tax) readjustment allowance paid in USD upon completion of service.",
-    "org": "U.S. Peace Corps",
-    "type": "work_study_exchange",
-    "dest": "ZM",
-    "compType": "cash_and_in_kind",
-    "flight": true,
-    "lodging": true,
-    "meals": false,
-    "stipendMin": null,
-    "stipendMax": null,
-    "currency": null,
-    "requiresWorkVisa": false,
-    "visaNote": "Peace Corps arranges the necessary residency/status with the Zambian government as part of a bilateral agreement; volunteers do not independently apply for a work visa.",
-    "minAge": 18,
-    "maxAge": null,
-    "gradOnly": true,
-    "education": [],
-    "career": [],
-    "employment": [],
-    "english": "native_or_fluent",
-    "nationality": { "type": "include", "list": ["US"] },
-    "softTags": ["non_conventional_destination"],
-    "fieldsOfWork": ["education", "health_medicine", "environment_sustainability"],
-    "deadline": null,
-    "duration": "semester_or_longer",
-    "isRecurring": true,
-    "effortLabel": "extensive",
-    "effortMin": 10,
-    "verification": "official_source",
-    "sourceUrl": "https://www.peacecorps.gov/zambia/"
-  },
-  {
-    "title": "Peace Corps Volunteer – Namibia",
-    "description": "U.S. Peace Corps Volunteers serve a 27-month assignment in Namibia in the Education, Community Health/HIV-AIDS, or Community Economic Development sectors. The Peace Corps covers round-trip transportation, provides housing and a monthly living allowance calibrated to local cost of living, full medical/dental coverage during service, and a $10,000 (pre-tax) USD readjustment allowance paid upon completing the 27-month term.",
-    "org": "U.S. Peace Corps",
-    "type": "work_study_exchange",
-    "dest": "NA",
-    "compType": "cash_and_in_kind",
-    "flight": true,
-    "lodging": true,
-    "meals": false,
-    "stipendMin": null,
-    "stipendMax": null,
-    "currency": null,
-    "requiresWorkVisa": false,
-    "visaNote": "Peace Corps arranges the necessary residency/status with the Namibian government as part of a bilateral agreement; volunteers do not independently apply for a work visa.",
-    "minAge": 18,
-    "maxAge": null,
-    "gradOnly": true,
-    "education": [],
-    "career": [],
-    "employment": [],
-    "english": "native_or_fluent",
-    "nationality": { "type": "include", "list": ["US"] },
-    "softTags": ["non_conventional_destination"],
-    "fieldsOfWork": ["education", "health_medicine", "business_entrepreneurship"],
-    "deadline": null,
-    "duration": "semester_or_longer",
-    "isRecurring": true,
-    "effortLabel": "extensive",
-    "effortMin": 10,
-    "verification": "official_source",
-    "sourceUrl": "https://www.peacecorps.gov/namibia/"
-  },
-  {
     "title": "SADC Secretariat Internship Programme",
     "description": "The Southern African Development Community (SADC) Secretariat, headquartered in Gaborone, Botswana, runs a six-month internship program placing university students and recent graduates in its various directorates and units to gain practical policy and administrative experience. SADC pays interns a monthly living allowance of US$250, while the intern's home Member State government covers relocation, insurance, and related travel costs.",
     "org": "Southern African Development Community (SADC) Secretariat",
@@ -87,9 +21,34 @@
     "career": [],
     "employment": [],
     "english": "b2",
-    "nationality": { "type": "include", "list": ["AO", "BW", "KM", "CD", "SZ", "LS", "MG", "MW", "MU", "MZ", "NA", "SC", "ZA", "TZ", "ZM", "ZW"] },
-    "softTags": ["non_conventional_destination"],
-    "fieldsOfWork": ["government_public_policy", "international_relations"],
+    "nationality": {
+      "type": "include",
+      "list": [
+        "AO",
+        "BW",
+        "KM",
+        "CD",
+        "SZ",
+        "LS",
+        "MG",
+        "MW",
+        "MU",
+        "MZ",
+        "NA",
+        "SC",
+        "ZA",
+        "TZ",
+        "ZM",
+        "ZW"
+      ]
+    },
+    "softTags": [
+      "non_conventional_destination"
+    ],
+    "fieldsOfWork": [
+      "government_public_policy",
+      "international_relations"
+    ],
     "deadline": null,
     "duration": "semester_or_longer",
     "isRecurring": true,
@@ -120,9 +79,17 @@
     "career": [],
     "employment": [],
     "english": "b2",
-    "nationality": { "type": null, "list": [] },
-    "softTags": ["non_conventional_destination"],
-    "fieldsOfWork": ["science_technology", "environment_sustainability"],
+    "nationality": {
+      "type": null,
+      "list": []
+    },
+    "softTags": [
+      "non_conventional_destination"
+    ],
+    "fieldsOfWork": [
+      "science_technology",
+      "environment_sustainability"
+    ],
     "deadline": null,
     "duration": "one_to_three_months",
     "isRecurring": true,
@@ -153,8 +120,13 @@
     "career": [],
     "employment": [],
     "english": "c1",
-    "nationality": { "type": null, "list": [] },
-    "softTags": ["non_conventional_destination"],
+    "nationality": {
+      "type": null,
+      "list": []
+    },
+    "softTags": [
+      "non_conventional_destination"
+    ],
     "fieldsOfWork": [],
     "deadline": "2027-02-15",
     "duration": "semester_or_longer",
@@ -186,8 +158,13 @@
     "career": [],
     "employment": [],
     "english": "c1",
-    "nationality": { "type": null, "list": [] },
-    "softTags": ["non_conventional_destination"],
+    "nationality": {
+      "type": null,
+      "list": []
+    },
+    "softTags": [
+      "non_conventional_destination"
+    ],
     "fieldsOfWork": [],
     "deadline": null,
     "duration": "semester_or_longer",
@@ -219,9 +196,18 @@
     "career": [],
     "employment": [],
     "english": "native_or_fluent",
-    "nationality": { "type": "include", "list": ["US"] },
-    "softTags": ["non_conventional_destination"],
-    "fieldsOfWork": ["education"],
+    "nationality": {
+      "type": "include",
+      "list": [
+        "US"
+      ]
+    },
+    "softTags": [
+      "non_conventional_destination"
+    ],
+    "fieldsOfWork": [
+      "education"
+    ],
     "deadline": null,
     "duration": "one_to_three_months",
     "isRecurring": true,
@@ -252,9 +238,16 @@
     "career": [],
     "employment": [],
     "english": "c1",
-    "nationality": { "type": null, "list": [] },
-    "softTags": ["non_conventional_destination"],
-    "fieldsOfWork": ["journalism_media"],
+    "nationality": {
+      "type": null,
+      "list": []
+    },
+    "softTags": [
+      "non_conventional_destination"
+    ],
+    "fieldsOfWork": [
+      "journalism_media"
+    ],
     "deadline": null,
     "duration": "one_to_three_months",
     "isRecurring": true,

@@ -1,38 +1,5 @@
 [
   {
-    "title": "Fulbright English Teaching Assistant Award to Bahrain",
-    "description": "U.S. citizens with a bachelor's degree teach English 20-25 hours per week alongside faculty at Bahraini universities for an academic-year grant (September-June), while serving as cultural ambassadors. The award is part of the U.S. Department of State's Fulbright U.S. Student Program, administered with Bahraini host institutions and the U.S. Embassy in Manama. Benefits include a monthly living stipend, health insurance, and round-trip travel to Bahrain. (No other real, verifiable, non-aggregator opportunity into Bahrain for this audience could be confirmed after extensive search, so this is used as a last resort for this one country.)",
-    "org": "Fulbright U.S. Student Program (U.S. Department of State, Bureau of Educational and Cultural Affairs)",
-    "type": "work_study_exchange",
-    "dest": "BH",
-    "compType": "cash_and_in_kind",
-    "flight": true,
-    "lodging": false,
-    "meals": false,
-    "stipendMin": null,
-    "stipendMax": null,
-    "currency": null,
-    "requiresWorkVisa": false,
-    "visaNote": "Grantees receive a Bahraini residence/exchange status arranged with Fulbright Commission and host-institution support; this is not an independent work visa.",
-    "minAge": 21,
-    "maxAge": null,
-    "gradOnly": true,
-    "education": [],
-    "career": [],
-    "employment": [],
-    "english": "native_or_fluent",
-    "nationality": { "type": "include", "list": ["US"] },
-    "softTags": ["non_conventional_destination"],
-    "fieldsOfWork": ["education"],
-    "deadline": "2026-10-06",
-    "duration": "semester_or_longer",
-    "isRecurring": true,
-    "effortLabel": "extensive",
-    "effortMin": 20,
-    "verification": "official_source",
-    "sourceUrl": "https://us.fulbrightonline.org/countries/middle-east-and-north-africa/bahrain/1602"
-  },
-  {
     "title": "Critical Language Scholarship - Persian Program in Dushanbe, Tajikistan",
     "description": "A fully funded, roughly eight-week intensive Persian-language and cultural immersion summer institute held in Dushanbe, Tajikistan, hosted by American Councils for International Education since 2010. Participants complete about one academic year of Persian coursework, take introductory Tajik and Cyrillic-script lessons, and live with host families. The program covers international airfare, tuition, housing, and meals for U.S. undergraduate and graduate students; roughly 500 are selected annually from over 5,000 applicants.",
     "org": "U.S. Department of State Critical Language Scholarship (CLS) Program",
@@ -54,8 +21,15 @@
     "career": [],
     "employment": [],
     "english": "native_or_fluent",
-    "nationality": { "type": "include", "list": ["US"] },
-    "softTags": ["non_conventional_destination"],
+    "nationality": {
+      "type": "include",
+      "list": [
+        "US"
+      ]
+    },
+    "softTags": [
+      "non_conventional_destination"
+    ],
     "fieldsOfWork": [],
     "deadline": null,
     "duration": "one_to_three_months",
@@ -87,7 +61,10 @@
     "career": [],
     "employment": [],
     "english": "b2",
-    "nationality": { "type": null, "list": [] },
+    "nationality": {
+      "type": null,
+      "list": []
+    },
     "softTags": [],
     "fieldsOfWork": [],
     "deadline": null,
@@ -120,9 +97,16 @@
     "career": [],
     "employment": [],
     "english": "b2",
-    "nationality": { "type": "exclude", "list": ["SG"] },
+    "nationality": {
+      "type": "exclude",
+      "list": [
+        "SG"
+      ]
+    },
     "softTags": [],
-    "fieldsOfWork": ["science_technology"],
+    "fieldsOfWork": [
+      "science_technology"
+    ],
     "deadline": null,
     "duration": "semester_or_longer",
     "isRecurring": true,
@@ -153,9 +137,17 @@
     "career": [],
     "employment": [],
     "english": "b2",
-    "nationality": { "type": null, "list": [] },
-    "softTags": ["non_conventional_destination"],
-    "fieldsOfWork": ["environment_sustainability", "health_medicine"],
+    "nationality": {
+      "type": null,
+      "list": []
+    },
+    "softTags": [
+      "non_conventional_destination"
+    ],
+    "fieldsOfWork": [
+      "environment_sustainability",
+      "health_medicine"
+    ],
     "deadline": null,
     "duration": "semester_or_longer",
     "isRecurring": true,
@@ -186,8 +178,15 @@
     "career": [],
     "employment": [],
     "english": "b2",
-    "nationality": { "type": "exclude", "list": ["MY"] },
-    "softTags": ["non_conventional_destination"],
+    "nationality": {
+      "type": "exclude",
+      "list": [
+        "MY"
+      ]
+    },
+    "softTags": [
+      "non_conventional_destination"
+    ],
     "fieldsOfWork": [],
     "deadline": null,
     "duration": "semester_or_longer",
@@ -219,9 +218,17 @@
     "career": [],
     "employment": [],
     "english": "b1",
-    "nationality": { "type": null, "list": [] },
-    "softTags": ["non_conventional_destination"],
-    "fieldsOfWork": ["arts_culture", "education"],
+    "nationality": {
+      "type": null,
+      "list": []
+    },
+    "softTags": [
+      "non_conventional_destination"
+    ],
+    "fieldsOfWork": [
+      "arts_culture",
+      "education"
+    ],
     "deadline": null,
     "duration": "semester_or_longer",
     "isRecurring": true,
@@ -252,9 +259,16 @@
     "career": [],
     "employment": [],
     "english": "b2",
-    "nationality": { "type": null, "list": [] },
-    "softTags": ["non_conventional_destination"],
-    "fieldsOfWork": ["social_impact_development"],
+    "nationality": {
+      "type": null,
+      "list": []
+    },
+    "softTags": [
+      "non_conventional_destination"
+    ],
+    "fieldsOfWork": [
+      "social_impact_development"
+    ],
     "deadline": null,
     "duration": "semester_or_longer",
     "isRecurring": true,
@@ -285,8 +299,13 @@
     "career": [],
     "employment": [],
     "english": "b2",
-    "nationality": { "type": null, "list": [] },
-    "softTags": ["non_conventional_destination"],
+    "nationality": {
+      "type": null,
+      "list": []
+    },
+    "softTags": [
+      "non_conventional_destination"
+    ],
     "fieldsOfWork": [],
     "deadline": null,
     "duration": "one_to_three_months",
