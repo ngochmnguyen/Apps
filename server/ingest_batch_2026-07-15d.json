@@ -294,51 +294,6 @@
     ]
   },
   {
-    "title": "Peace Corps – Kyrgyz Republic",
-    "description": "Two-year US government volunteer service in the Kyrgyz Republic, primarily in Education (English teaching at secondary schools and universities) and Environment sectors, preceded by three months of in-country pre-service training. Volunteers receive a monthly living allowance, housing, and full medical support.",
-    "org": "United States Peace Corps",
-    "type": "work_study_exchange",
-    "dest": "KG",
-    "compType": "cash_and_in_kind",
-    "flight": true,
-    "lodging": true,
-    "meals": false,
-    "stipendMin": null,
-    "stipendMax": null,
-    "currency": null,
-    "requiresWorkVisa": true,
-    "visaNote": "Long-term visa/registration arranged by Peace Corps with the host government",
-    "minAge": 18,
-    "maxAge": null,
-    "gradOnly": false,
-    "education": [],
-    "career": [],
-    "employment": [],
-    "english": "native_or_fluent",
-    "nationality": {
-      "type": "include",
-      "list": [
-        "US"
-      ]
-    },
-    "softTags": [
-      "volunteer_service",
-      "non_conventional_destination",
-      "central_asia"
-    ],
-    "deadline": null,
-    "duration": "semester_or_longer",
-    "isRecurring": true,
-    "effortLabel": "extensive",
-    "effortMin": 20,
-    "verification": "official_source",
-    "sourceUrl": "https://www.peacecorps.gov/kyrgyz-republic/",
-    "fieldsOfWork": [
-      "education",
-      "social_impact_development"
-    ]
-  },
-  {
     "title": "AIESEC Global Talent Internship – Kenya",
     "description": "Paid international internships (six weeks to 18 months) placing students and recent graduates with host companies in Kenya across fields such as business administration, marketing, IT, and engineering, arranged through AIESEC's global internship exchange platform and AIESEC in Kenya.",
     "org": "AIESEC in Kenya",

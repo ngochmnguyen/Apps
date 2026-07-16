@@ -1,7 +1,7 @@
 [
   {
-    "title": "Peace Corps Volunteer — Ghana",
-    "description": "Two-year U.S. government volunteer assignment in agriculture, education, or health projects in Ghana, the first country to host Peace Corps Volunteers (since 1961). Peace Corps books flights, provides housing and a monthly living allowance, full medical/dental coverage, and a readjustment allowance (currently $10,000 pre-tax for a full 27-month term) paid at the end of service.",
+    "title": "Peace Corps Volunteer",
+    "description": "Two-year U.S. government volunteer assignment in agriculture, education, health, or community development projects, currently posted in roughly 60 countries worldwide -- including Ghana (the first country to host Peace Corps Volunteers, since 1961), Vietnam, Fiji, Mongolia, and the Kyrgyz Republic among many others. Country placement is assigned by Peace Corps based on program needs and applicant background, not chosen upfront by the applicant. Peace Corps books flights, provides housing and a monthly living allowance, full medical/dental coverage, and a readjustment allowance (currently $10,000 pre-tax for a full 27-month term) paid at the end of service.",
     "org": "Peace Corps",
     "type": "volunteer_travel_stipend",
     "dest": "GH",
@@ -35,127 +35,6 @@
     "effortMin": 10,
     "verification": "official_source",
     "sourceUrl": "https://www.peacecorps.gov/ghana/",
-    "fieldsOfWork": [
-      "education",
-      "social_impact_development"
-    ]
-  },
-  {
-    "title": "Peace Corps Volunteer — Vietnam",
-    "description": "Peace Corps' newest program (first cohort arrived October 2024) places volunteers as English co-teachers in high schools in Hanoi and Ho Chi Minh City under an agreement with Vietnam's Ministry of Education and Training. Volunteers receive a 10-week in-country training, flights, housing, a monthly living allowance, full medical coverage, and a readjustment allowance at the end of the 27-month term.",
-    "org": "Peace Corps",
-    "type": "volunteer_travel_stipend",
-    "dest": "VN",
-    "compType": "cash_and_in_kind",
-    "flight": true,
-    "lodging": true,
-    "meals": true,
-    "stipendMin": null,
-    "stipendMax": null,
-    "currency": null,
-    "requiresWorkVisa": false,
-    "visaNote": "Peace Corps arranges necessary legal status/visa with the Vietnamese government as part of placement; volunteers do not apply independently.",
-    "minAge": 18,
-    "maxAge": null,
-    "gradOnly": false,
-    "education": [],
-    "career": [],
-    "employment": [],
-    "english": "native_or_fluent",
-    "nationality": {
-      "type": "include",
-      "list": [
-        "US"
-      ]
-    },
-    "softTags": [],
-    "deadline": null,
-    "duration": "semester_or_longer",
-    "isRecurring": true,
-    "effortLabel": "extensive",
-    "effortMin": 10,
-    "verification": "official_source",
-    "sourceUrl": "https://www.peacecorps.gov/viet-nam/",
-    "fieldsOfWork": [
-      "education"
-    ]
-  },
-  {
-    "title": "Peace Corps Volunteer — Fiji",
-    "description": "Two-year U.S. government volunteer assignment working alongside Fijian communities, part of Peace Corps' long-running Pacific Islands program. Peace Corps books flights, provides housing, a monthly living allowance, full medical/dental coverage, and a readjustment allowance at the end of service.",
-    "org": "Peace Corps",
-    "type": "volunteer_travel_stipend",
-    "dest": "FJ",
-    "compType": "cash_and_in_kind",
-    "flight": true,
-    "lodging": true,
-    "meals": true,
-    "stipendMin": null,
-    "stipendMax": null,
-    "currency": null,
-    "requiresWorkVisa": false,
-    "visaNote": "Peace Corps arranges necessary legal status/visa with the Fijian government as part of placement; volunteers do not apply independently.",
-    "minAge": 18,
-    "maxAge": null,
-    "gradOnly": false,
-    "education": [],
-    "career": [],
-    "employment": [],
-    "english": "native_or_fluent",
-    "nationality": {
-      "type": "include",
-      "list": [
-        "US"
-      ]
-    },
-    "softTags": [],
-    "deadline": null,
-    "duration": "semester_or_longer",
-    "isRecurring": true,
-    "effortLabel": "extensive",
-    "effortMin": 10,
-    "verification": "official_source",
-    "sourceUrl": "https://www.peacecorps.gov/fiji/",
-    "fieldsOfWork": [
-      "social_impact_development"
-    ]
-  },
-  {
-    "title": "Peace Corps Volunteer — Mongolia",
-    "description": "Two-year U.S. government volunteer assignment supporting English education and community development projects in Mongolia, a program running continuously since 1991. Peace Corps books flights, provides housing, a monthly living allowance, full medical/dental coverage, and a readjustment allowance at the end of service.",
-    "org": "Peace Corps",
-    "type": "volunteer_travel_stipend",
-    "dest": "MN",
-    "compType": "cash_and_in_kind",
-    "flight": true,
-    "lodging": true,
-    "meals": true,
-    "stipendMin": null,
-    "stipendMax": null,
-    "currency": null,
-    "requiresWorkVisa": false,
-    "visaNote": "Peace Corps arranges necessary legal status/visa with the Mongolian government as part of placement; volunteers do not apply independently.",
-    "minAge": 18,
-    "maxAge": null,
-    "gradOnly": false,
-    "education": [],
-    "career": [],
-    "employment": [],
-    "english": "native_or_fluent",
-    "nationality": {
-      "type": "include",
-      "list": [
-        "US"
-      ]
-    },
-    "softTags": [],
-    "deadline": null,
-    "duration": "semester_or_longer",
-    "isRecurring": true,
-    "effortLabel": "extensive",
-    "effortMin": 10,
-    "verification": "official_source",
-    "sourceUrl": "https://www.peacecorps.gov/mongolia/",
     "fieldsOfWork": [
       "education",
       "social_impact_development"

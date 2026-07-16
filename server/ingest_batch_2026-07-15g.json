@@ -133,53 +133,6 @@
     ]
   },
   {
-    "title": "FEEL: A Disruptive Futures Programme",
-    "description": "Three-week immersive foresight and leadership programme run by Dubai Future Academy (part of Dubai Future Foundation), combining keynotes, workshops and site visits across Dubai's innovation centers. Open to applicants worldwide with at least 10 years of professional experience in leadership, entrepreneurship, government, or innovation roles; nationality is not a factor, though it is highly selective (about 30 places per cohort). It is unconfirmed from official sources whether flights/accommodation are covered for all accepted participants, so verify directly with organizers before assuming full funding.",
-    "org": "Dubai Future Foundation (Dubai Future Academy)",
-    "type": "work_study_exchange",
-    "dest": "AE",
-    "compType": "in_kind_only",
-    "flight": false,
-    "lodging": false,
-    "meals": false,
-    "stipendMin": null,
-    "stipendMax": null,
-    "currency": null,
-    "requiresWorkVisa": false,
-    "visaNote": null,
-    "minAge": 30,
-    "maxAge": null,
-    "gradOnly": false,
-    "education": [],
-    "career": [
-      "mid_career",
-      "senior_career"
-    ],
-    "employment": [
-      "employed_full_time"
-    ],
-    "english": "c1",
-    "nationality": {
-      "type": null,
-      "list": []
-    },
-    "softTags": [
-      "executive_program",
-      "uae_based_program"
-    ],
-    "deadline": null,
-    "duration": "three_to_four_weeks",
-    "isRecurring": true,
-    "effortLabel": "moderate",
-    "effortMin": 90,
-    "verification": "official_source",
-    "sourceUrl": "https://www.dubaifuture.ae/feel-2026/",
-    "fieldsOfWork": [
-      "government_public_policy",
-      "business_entrepreneurship"
-    ]
-  },
-  {
     "title": "Rotary Peace Fellowship (Master's Degree)",
     "description": "Fully funded master's degree in peace and development studies at a Rotary Peace Center, covering tuition, travel, and living expenses. Open to candidates of all nationalities with no residency restriction; fellows must be assigned to a center outside their home country. This entry reflects the Duke University/UNC Chapel Hill center, one of several centers worldwide (others include University of Bradford in the UK).",
     "org": "The Rotary Foundation",
