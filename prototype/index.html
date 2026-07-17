@@ -40,11 +40,12 @@
     --magenta: #e0447b;
     --magenta-tint: #fbdde8;
     --magenta-ink: #7a1f42;
-    --chartreuse: #7f9a2e;
+    --chartreuse: #5c8a2e;
     --chartreuse-tint: #e7efd2;
     --chartreuse-ink: #435414;
     --gold: #f2b33d;
     --gold-tint: #fdefd2;
+    --gold-ink: #7a4f0a;
     --cream: #fff3ed;
     --twilight: #1e2a4a;
 
@@ -53,16 +54,16 @@
     --bg-sunken: #ffe4d8;
     --ink: var(--twilight);
     --ink-soft: #5c6a86;
-    --ink-faint: #8b96ac;
+    --ink-faint: #6b6459;
     --border: #f2ded4;
     --accent: var(--magenta);
     --accent-tint: var(--magenta-tint);
     --accent-on-tint: var(--magenta-ink);
     --focus: #3d5170;
 
-    --state-open: #1f8a63;
+    --state-open: #106e4d;
     --state-open-tint: #dcefe4;
-    --state-soon: #c1631b;
+    --state-soon: #a34f14;
     --state-soon-tint: #f6e2ce;
     --state-closed: #a23b34;
     --state-closed-tint: #f2dcda;
@@ -90,6 +91,7 @@
       --chartreuse-ink: #d8e8a8;
       --gold: #f5c563;
       --gold-tint: #3a2f16;
+      --gold-ink: #ffcf70;
       --twilight: #141b2e;
 
       --bg: var(--twilight);
@@ -97,7 +99,7 @@
       --bg-sunken: #0f1420;
       --ink: #f5ece4;
       --ink-soft: #b9ada0;
-      --ink-faint: #8a8072;
+      --ink-faint: #9c9080;
       --border: #2c3550;
       --accent: var(--magenta);
       --accent-tint: var(--magenta-tint);
@@ -117,9 +119,9 @@
   :root[data-theme="dark"] {
     --magenta: #ff7fa8; --magenta-tint: #4a1f30; --magenta-ink: #ffd0e0;
     --chartreuse: #a8c94a; --chartreuse-tint: #2f3a1a; --chartreuse-ink: #d8e8a8;
-    --gold: #f5c563; --gold-tint: #3a2f16; --twilight: #141b2e;
+    --gold: #f5c563; --gold-tint: #3a2f16; --gold-ink: #ffcf70; --twilight: #141b2e;
     --bg: var(--twilight); --bg-raised: #1f2940; --bg-sunken: #0f1420;
-    --ink: #f5ece4; --ink-soft: #b9ada0; --ink-faint: #8a8072; --border: #2c3550;
+    --ink: #f5ece4; --ink-soft: #b9ada0; --ink-faint: #9c9080; --border: #2c3550;
     --accent: var(--magenta); --accent-tint: var(--magenta-tint); --accent-on-tint: var(--magenta-ink); --focus: #8fa3c2;
     --state-open: #4bbd8a; --state-open-tint: #16332a;
     --state-soon: #e8944a; --state-soon-tint: #3a2a15;
@@ -128,12 +130,12 @@
   }
   :root[data-theme="light"] {
     --magenta: #e0447b; --magenta-tint: #fbdde8; --magenta-ink: #7a1f42;
-    --chartreuse: #7f9a2e; --chartreuse-tint: #e7efd2; --chartreuse-ink: #435414; --gold: #f2b33d; --gold-tint: #fdefd2; --twilight: #1e2a4a;
+    --chartreuse: #5c8a2e; --chartreuse-tint: #e7efd2; --chartreuse-ink: #435414; --gold: #f2b33d; --gold-tint: #fdefd2; --gold-ink: #7a4f0a; --twilight: #1e2a4a;
     --bg: var(--cream); --bg-raised: #ffffff; --bg-sunken: #ffe4d8;
-    --ink: var(--twilight); --ink-soft: #5c6a86; --ink-faint: #8b96ac; --border: #f2ded4;
+    --ink: var(--twilight); --ink-soft: #5c6a86; --ink-faint: #6b6459; --border: #f2ded4;
     --accent: var(--magenta); --accent-tint: var(--magenta-tint); --accent-on-tint: var(--magenta-ink); --focus: #3d5170;
-    --state-open: #1f8a63; --state-open-tint: #dcefe4;
-    --state-soon: #c1631b; --state-soon-tint: #f6e2ce;
+    --state-open: #106e4d; --state-open-tint: #dcefe4;
+    --state-soon: #a34f14; --state-soon-tint: #f6e2ce;
     --state-closed: #a23b34; --state-closed-tint: #f2dcda;
     --state-unverified: #5c6b63; --state-unverified-tint: #e4e6df;
   }
@@ -176,7 +178,7 @@
     font-size: 12px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--chartreuse);
+    color: var(--chartreuse-ink);
     background: var(--chartreuse-tint);
     padding: 5px 12px;
     border-radius: var(--radius-pill);
@@ -298,7 +300,7 @@
     font-family: var(--font-display);
     font-weight: 800;
     font-size: 20px;
-    color: var(--gold);
+    color: var(--gold-ink);
     margin-bottom: 6px;
   }
   .feature-card p { margin: 0; font-size: 14.5px; color: var(--ink-soft); }
@@ -651,8 +653,8 @@
     padding: 5px 8px; border-radius: var(--radius-sm); border: 1px solid var(--border);
     background: var(--bg); color: var(--ink); font-family: inherit; font-size: 12.5px;
   }
-  .todo-item.status-started .todo-title { color: var(--gold); }
-  .todo-item.status-submitted .todo-title { color: var(--magenta); }
+  .todo-item.status-started .todo-title { color: var(--gold-ink); }
+  .todo-item.status-submitted .todo-title { color: var(--magenta-ink); }
   .todo-item.status-accepted .todo-title { color: var(--state-open); font-weight: 700; }
   .todo-item.status-rejected .todo-title { text-decoration: line-through; color: var(--state-closed); }
   .todo-due { font-size: 11.5px; color: var(--ink-soft); white-space: nowrap; }
