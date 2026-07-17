@@ -1,0 +1,29 @@
+name: Archive expired opportunities
+
+# Daily pass: soft-deletes (is_archived = TRUE) any opportunity whose
+# application_deadline is in the past. Rolling-admission listings
+# (application_deadline IS NULL) are never touched.
+on:
+  schedule:
+    - cron: "0 5 * * *" # 05:00 UTC daily, ahead of the admin digest at 06:00
+  workflow_dispatch: {} # allow manual runs from the Actions tab too
+
+jobs:
+  expire-deadlines:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install server dependencies
+        working-directory: server
+        run: npm install
+
+      - name: Archive expired opportunities
+        working-directory: server
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: node src/expire-deadlines.js

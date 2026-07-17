@@ -1,0 +1,33 @@
+name: Send admin review digest
+
+# Daily summary emailed to ADMIN_EMAIL: open "report a problem" flags, new
+# "suggest an opportunity" submissions, and whatever got auto-archived for
+# an expired deadline in the last day. Nothing here is auto-actioned --
+# review and update status directly in Neon.
+on:
+  schedule:
+    - cron: "0 6 * * *" # 06:00 UTC daily, after expire-deadlines.yml at 05:00
+  workflow_dispatch: {} # allow manual runs from the Actions tab too
+
+jobs:
+  send-admin-digest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install server dependencies
+        working-directory: server
+        run: npm install
+
+      - name: Send admin digest
+        working-directory: server
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          ADMIN_EMAIL: ${{ secrets.ADMIN_EMAIL }}
+          APP_URL: ${{ secrets.APP_URL }}
+        run: node src/send-admin-digest.js

@@ -33,6 +33,7 @@ export const BASE_QUERY = `
   LEFT JOIN (SELECT opportunity_id, array_agg(country_code) codes FROM opportunity_nationality_rules WHERE rule_type = 'exclude' GROUP BY opportunity_id) nat_exc ON nat_exc.opportunity_id = o.id
   LEFT JOIN (SELECT opportunity_id, array_agg(tag_key) keys FROM opportunity_soft_tags GROUP BY opportunity_id) tags ON tags.opportunity_id = o.id
   LEFT JOIN (SELECT opportunity_id, array_agg(field::text) fields FROM opportunity_fields_of_work GROUP BY opportunity_id) fow ON fow.opportunity_id = o.id
+  WHERE NOT o.is_archived
 `;
 
 export function urgencyOf(deadline) {

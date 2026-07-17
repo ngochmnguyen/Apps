@@ -221,6 +221,11 @@ CREATE TABLE opportunities (
   -- NULL means never checked. See .github/workflows/link-check.yml
   last_verified_at                TIMESTAMPTZ,
   link_broken                     BOOLEAN NOT NULL DEFAULT FALSE,
+  -- soft-deleted once application_deadline is in the past; see
+  -- server/expire-deadlines.js (daily). Archived rows are excluded from
+  -- BASE_QUERY entirely rather than hard-deleted, so a mistake is reversible.
+  is_archived                     BOOLEAN NOT NULL DEFAULT FALSE,
+  archived_at                     TIMESTAMPTZ,
 
   created_at                     TIMESTAMPTZ NOT NULL DEFAULT now(),
   updated_at                     TIMESTAMPTZ NOT NULL DEFAULT now(),
@@ -323,6 +328,21 @@ CREATE TABLE opportunity_reports (
   created_at           TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
+-- Public "suggest an opportunity" submissions. Deliberately unstructured
+-- (free-text org/title/url/notes) since anonymous submitters don't know the
+-- app's internal schema -- a human reviews these and, if legitimate, adds
+-- them properly via the normal ingest.js pipeline. Never auto-published.
+CREATE TABLE opportunity_submissions (
+  id                UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  title              TEXT NOT NULL,
+  organization_name   TEXT,
+  source_url          TEXT,
+  notes                TEXT,
+  submitter_email      TEXT, -- optional, for follow-up questions
+  status               TEXT NOT NULL DEFAULT 'open' CHECK (status IN ('open', 'reviewed', 'dismissed')),
+  created_at            TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
 -- Pure toggle, so a composite PK is the right shape (unlike opportunity_reports,
 -- which needs a surrogate key for its review workflow).
 CREATE TABLE saved_opportunities (
@@ -386,6 +406,8 @@ CREATE INDEX idx_saved_opportunities_opportunity ON saved_opportunities (opportu
 CREATE INDEX idx_todo_items_user ON todo_items (user_id);
 CREATE INDEX idx_todo_items_opportunity ON todo_items (opportunity_id);
 CREATE INDEX idx_opportunity_fields_of_work_field ON opportunity_fields_of_work (field);
+CREATE INDEX idx_opportunities_archived ON opportunities (is_archived);
+CREATE INDEX idx_opportunity_submissions_status ON opportunity_submissions (status);
 
 -- =========================================================
 -- DEADLINE URGENCY (derived, not stored — recompute on read so it never goes stale)

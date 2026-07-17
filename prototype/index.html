@@ -433,7 +433,7 @@
   .field label {
     display: block; font-size: 13px; font-weight: 700; color: var(--ink-soft); margin-bottom: 5px;
   }
-  select, input[type="number"], input[type="text"] {
+  select, input[type="number"], input[type="text"], input[type="email"], input[type="url"], textarea {
     width: 100%;
     background: var(--bg);
     border: 2px solid var(--border);
@@ -443,6 +443,7 @@
     font-size: 14.5px;
     font-family: inherit;
   }
+  textarea { resize: vertical; }
   select:focus, input:focus { border-color: var(--magenta); }
   .checkline {
     display: flex; align-items: center; gap: 8px;
@@ -753,9 +754,10 @@
     </div>
 
     <footer class="landing-footer">
-      <div class="footer-brand"><span aria-hidden="true">🧭</span> Voya</div>
+      <div class="footer-brand">Voya</div>
       <p class="footer-tagline">Every listing is checked by hand against its official source — no invented deadlines, no fabricated stipends. See something off? Tell us and we'll dig in.</p>
       <p class="footer-meta">Built for the routes the big job boards skip.</p>
+      <p class="footer-meta"><button class="link-btn" data-action="open-suggest">Know of an opportunity we're missing? Suggest it</button></p>
     </footer>
   </div>
 </section>
@@ -782,6 +784,54 @@
       <span id="auth-switch-to-signup">New here? <button class="link-btn" id="btn-switch-signup">Save your profile</button></span>
       <span id="auth-switch-to-login" hidden>Already have an account? <button class="link-btn" id="btn-switch-login">Log in</button></span>
     </p>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="suggest-modal" hidden>
+  <div class="modal-card">
+    <button class="modal-close" id="btn-close-suggest" aria-label="Close">×</button>
+    <h2>Suggest an opportunity</h2>
+    <p class="auth-modal-sub">We check every submission by hand before it goes live -- nothing is auto-published.</p>
+    <form id="suggest-form">
+      <div class="field">
+        <label for="suggest-title">Title / program name</label>
+        <input type="text" id="suggest-title" required maxlength="300" />
+      </div>
+      <div class="field">
+        <label for="suggest-org">Organization</label>
+        <input type="text" id="suggest-org" maxlength="300" />
+      </div>
+      <div class="field">
+        <label for="suggest-url">Link to the official page</label>
+        <input type="url" id="suggest-url" placeholder="https://" />
+      </div>
+      <div class="field">
+        <label for="suggest-notes">Anything else we should know</label>
+        <textarea id="suggest-notes" rows="3" maxlength="3000"></textarea>
+      </div>
+      <div class="field">
+        <label for="suggest-email">Your email (optional, in case we have questions)</label>
+        <input type="email" id="suggest-email" />
+      </div>
+      <p class="auth-error" id="suggest-error" hidden></p>
+      <button type="submit" class="btn btn-primary auth-submit" id="suggest-submit">Send suggestion</button>
+    </form>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="report-modal" hidden>
+  <div class="modal-card">
+    <button class="modal-close" id="btn-close-report" aria-label="Close">×</button>
+    <h2>Report a problem</h2>
+    <p class="auth-modal-sub" id="report-modal-sub"></p>
+    <form id="report-form">
+      <div class="field">
+        <label for="report-reason">What's wrong with this listing?</label>
+        <textarea id="report-reason" rows="3" maxlength="2000" placeholder="e.g. &quot;this organization doesn't seem to exist&quot;, &quot;the deadline is wrong&quot;, &quot;this asks for payment&quot;" required></textarea>
+      </div>
+      <p class="auth-error" id="report-error" hidden></p>
+      <button type="submit" class="btn btn-primary auth-submit" id="report-submit">Submit report</button>
+    </form>
   </div>
 </div>
 
@@ -1545,22 +1595,9 @@
     });
     wireSaveButtons(container, rerender);
     container.querySelectorAll(".report-btn").forEach((btn) => {
-      btn.addEventListener("click", async (e) => {
+      btn.addEventListener("click", (e) => {
         e.stopPropagation();
-        const reason = prompt("What's wrong with this listing? (e.g. \"this organization doesn't seem to exist\", \"the deadline is wrong\", \"this asks for payment\")");
-        if (!reason || !reason.trim()) return;
-        btn.disabled = true;
-        try {
-          const res = await fetch(`/api/opportunities/${btn.dataset.id}/report`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ reason: reason.trim() }),
-          });
-          btn.textContent = res.ok ? "Reported — thank you" : "Couldn't submit, try again";
-        } catch {
-          btn.textContent = "Couldn't submit, try again";
-          btn.disabled = false;
-        }
+        openReportModal(btn.dataset.id, btn);
       });
     });
     container.querySelectorAll(".add-todo-btn").forEach((btn) => {
@@ -1976,6 +2013,114 @@
   document.getElementById("btn-switch-signup").addEventListener("click", () => openAuthModal("signup"));
   document.getElementById("btn-switch-login").addEventListener("click", () => openAuthModal("login"));
 
+  function openSuggestModal() {
+    document.getElementById("suggest-error").hidden = true;
+    document.getElementById("suggest-form").reset();
+    document.getElementById("suggest-submit").disabled = false;
+    document.getElementById("suggest-submit").textContent = "Send suggestion";
+    document.getElementById("suggest-modal").hidden = false;
+    document.getElementById("suggest-title").focus();
+  }
+  function closeSuggestModal() {
+    document.getElementById("suggest-modal").hidden = true;
+  }
+  document.getElementById("btn-close-suggest").addEventListener("click", closeSuggestModal);
+  document.getElementById("suggest-modal").addEventListener("click", (e) => {
+    if (e.target.id === "suggest-modal") closeSuggestModal();
+  });
+  document.getElementById("suggest-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const errorEl = document.getElementById("suggest-error");
+    const submitBtn = document.getElementById("suggest-submit");
+    errorEl.hidden = true;
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Sending…";
+    try {
+      const res = await fetch("/api/submissions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          title: document.getElementById("suggest-title").value,
+          organizationName: document.getElementById("suggest-org").value,
+          sourceUrl: document.getElementById("suggest-url").value,
+          notes: document.getElementById("suggest-notes").value,
+          submitterEmail: document.getElementById("suggest-email").value,
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        errorEl.textContent = data.error || "Couldn't send that, try again.";
+        errorEl.hidden = false;
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Send suggestion";
+        return;
+      }
+      submitBtn.textContent = "Sent — thank you!";
+      setTimeout(closeSuggestModal, 1400);
+    } catch {
+      errorEl.textContent = "Couldn't send that, try again.";
+      errorEl.hidden = false;
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Send suggestion";
+    }
+  });
+
+  let reportingOpportunityId = null;
+  let reportingButton = null;
+  function openReportModal(opportunityId, triggerBtn) {
+    reportingOpportunityId = opportunityId;
+    reportingButton = triggerBtn || null;
+    document.getElementById("report-modal-sub").textContent = "";
+    document.getElementById("report-error").hidden = true;
+    document.getElementById("report-form").reset();
+    document.getElementById("report-submit").disabled = false;
+    document.getElementById("report-submit").textContent = "Submit report";
+    document.getElementById("report-modal").hidden = false;
+    document.getElementById("report-reason").focus();
+  }
+  function closeReportModal() {
+    document.getElementById("report-modal").hidden = true;
+  }
+  document.getElementById("btn-close-report").addEventListener("click", closeReportModal);
+  document.getElementById("report-modal").addEventListener("click", (e) => {
+    if (e.target.id === "report-modal") closeReportModal();
+  });
+  document.getElementById("report-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const errorEl = document.getElementById("report-error");
+    const submitBtn = document.getElementById("report-submit");
+    const reason = document.getElementById("report-reason").value;
+    errorEl.hidden = true;
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Sending…";
+    try {
+      const res = await fetch(`/api/opportunities/${reportingOpportunityId}/report`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ reason }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        errorEl.textContent = data.error || "Couldn't submit, try again.";
+        errorEl.hidden = false;
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Submit report";
+        return;
+      }
+      if (reportingButton) {
+        reportingButton.textContent = "Reported — thank you";
+        reportingButton.disabled = true;
+      }
+      submitBtn.textContent = "Reported — thank you";
+      setTimeout(closeReportModal, 1000);
+    } catch {
+      errorEl.textContent = "Couldn't submit, try again.";
+      errorEl.hidden = false;
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Submit report";
+    }
+  });
+
   async function logout() {
     await fetch("/api/auth/logout", { method: "POST" });
     currentUser = null;
@@ -1990,6 +2135,7 @@
     else if (el.dataset.action === "open-signup") openAuthModal("signup");
     else if (el.dataset.action === "logout") logout();
     else if (el.dataset.action === "open-mytrips") { showView("mytrips"); renderMyTrips(); }
+    else if (el.dataset.action === "open-suggest") openSuggestModal();
   });
 
   document.getElementById("btn-see-matches").addEventListener("click", async () => {

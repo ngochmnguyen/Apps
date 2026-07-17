@@ -64,6 +64,43 @@ export async function sendNewsletterEmail(to, unsubscribeUserId, opportunities, 
   }
 }
 
+export async function sendAdminDigest(to, { reports, submissions, archived }) {
+  if (!resend) {
+    console.log(`[email] RESEND_API_KEY not set -- skipping admin digest to ${to}`);
+    return;
+  }
+  if (!reports.length && !submissions.length && !archived.length) {
+    console.log("[email] Nothing to report -- skipping today's admin digest.");
+    return;
+  }
+  const appUrl = process.env.APP_URL;
+  const reportRows = reports
+    .map((r) => `<li><strong>${r.opportunity_title}</strong> (id ${r.opportunity_id}) -- "${r.reason}"${r.reporter_email ? ` -- from ${r.reporter_email}` : " -- anonymous"}<br><span style="color:#888;font-size:12px;">report id ${r.id}, filed ${new Date(r.created_at).toISOString().slice(0, 10)}</span></li>`)
+    .join("");
+  const submissionRows = submissions
+    .map((s) => `<li><strong>${s.title}</strong>${s.organization_name ? ` -- ${s.organization_name}` : ""}${s.source_url ? ` -- <a href="${s.source_url}">${s.source_url}</a>` : ""}${s.notes ? `<br>${s.notes}` : ""}${s.submitter_email ? `<br><span style="color:#888;font-size:12px;">from ${s.submitter_email}</span>` : ""}<br><span style="color:#888;font-size:12px;">submission id ${s.id}, sent ${new Date(s.created_at).toISOString().slice(0, 10)}</span></li>`)
+    .join("");
+  const archivedRows = archived
+    .map((o) => `<li>${o.title} -- deadline was ${new Date(o.archived_deadline).toISOString().slice(0, 10)}</li>`)
+    .join("");
+  try {
+    await resend.emails.send({
+      from: FROM,
+      to,
+      subject: `Voya admin digest: ${reports.length} report${reports.length === 1 ? "" : "s"}, ${submissions.length} submission${submissions.length === 1 ? "" : "s"}`,
+      html: `
+        <p>Daily summary of open items to review${appUrl ? ` on <a href="${appUrl}">Voya</a>` : ""}.</p>
+        ${reports.length ? `<h3>Open reports (${reports.length})</h3><ul>${reportRows}</ul>` : ""}
+        ${submissions.length ? `<h3>New submissions (${submissions.length})</h3><ul>${submissionRows}</ul>` : ""}
+        ${archived.length ? `<h3>Auto-archived for expired deadline (${archived.length})</h3><ul>${archivedRows}</ul><p style="font-size:12px;color:#888;">These are soft-deleted (is_archived = TRUE), not gone -- flip the flag back in Neon if one shouldn't have been archived.</p>` : ""}
+        <p style="font-size:12px;color:#888;">Act on these directly in Neon's SQL editor -- update opportunity_reports.status / opportunity_submissions.status to 'reviewed' or 'dismissed' once handled.</p>
+      `,
+    });
+  } catch (err) {
+    console.error("Admin digest email failed:", err);
+  }
+}
+
 export async function sendDeadlineReminder(to, opportunityTitle, daysLeft) {
   if (!resend) {
     console.log(`[email] RESEND_API_KEY not set -- skipping ${daysLeft}-day reminder to ${to}`);
