@@ -11,7 +11,7 @@ const deadlineMs = (d) => (d ? new Date(d).getTime() : Number.MAX_SAFE_INTEGER);
 
 savedRouter.get("/", async (req, res) => {
   const [{ rows }, profile] = await Promise.all([
-    pool.query(`${BASE_QUERY} JOIN saved_opportunities so ON so.opportunity_id = o.id WHERE so.user_id = $1`, [req.userId]),
+    pool.query(`${BASE_QUERY} AND o.id IN (SELECT opportunity_id FROM saved_opportunities WHERE user_id = $1)`, [req.userId]),
     fetchProfile(pool, req.userId),
   ]);
   const results = rows

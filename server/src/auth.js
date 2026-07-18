@@ -21,19 +21,28 @@ const COOKIE_OPTIONS = {
   secure: process.env.NODE_ENV === "production",
 };
 
+export function signToken(userId) {
+  return jwt.sign({ sub: userId }, process.env.JWT_SECRET, { expiresIn: TOKEN_TTL });
+}
+
 export function issueSessionCookie(res, userId) {
-  const token = jwt.sign({ sub: userId }, process.env.JWT_SECRET, { expiresIn: TOKEN_TTL });
+  const token = signToken(userId);
   res.cookie(COOKIE_NAME, token, { ...COOKIE_OPTIONS, maxAge: 30 * 24 * 60 * 60 * 1000 });
+  return token;
 }
 
 export function clearSessionCookie(res) {
   res.clearCookie(COOKIE_NAME, COOKIE_OPTIONS);
 }
 
-// Attaches req.userId when a valid session cookie is present; never rejects the
-// request, since most routes (browsing opportunities) work the same either way.
+// Attaches req.userId when a valid session cookie or Authorization: Bearer
+// token is present; never rejects the request, since most routes (browsing
+// opportunities) work the same either way. Cookie takes precedence since it's
+// the primary path for the web client; the bearer header is what lets a
+// native client (no cookie jar, can't read httpOnly cookies) authenticate.
 export function attachUser(req, _res, next) {
-  const token = req.cookies?.[COOKIE_NAME];
+  const bearer = req.headers.authorization?.match(/^Bearer (.+)$/)?.[1];
+  const token = req.cookies?.[COOKIE_NAME] || bearer;
   if (token) {
     try {
       req.userId = jwt.verify(token, process.env.JWT_SECRET).sub;

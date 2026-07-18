@@ -74,9 +74,9 @@ authRouter.post("/signup", authAttemptLimiter, async (req, res) => {
     );
     await client.query("COMMIT");
 
-    issueSessionCookie(res, userId);
+    const token = issueSessionCookie(res, userId);
     sendWelcomeEmail(email); // fire-and-forget -- must never delay or fail signup
-    res.status(201).json({ user: { id: userId, email }, profile: await fetchProfile(client, userId) });
+    res.status(201).json({ user: { id: userId, email }, profile: await fetchProfile(client, userId), token });
   } catch (err) {
     await client.query("ROLLBACK");
     console.error(err);
@@ -96,8 +96,8 @@ authRouter.post("/login", authAttemptLimiter, async (req, res) => {
     return res.status(401).json({ error: "Incorrect email or password." });
   }
 
-  issueSessionCookie(res, user.id);
-  res.json({ user: { id: user.id, email }, profile: await fetchProfile(pool, user.id) });
+  const token = issueSessionCookie(res, user.id);
+  res.json({ user: { id: user.id, email }, profile: await fetchProfile(pool, user.id), token });
 });
 
 authRouter.post("/logout", (req, res) => {
