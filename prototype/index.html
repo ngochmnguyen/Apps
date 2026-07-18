@@ -89,14 +89,17 @@
     --navbar-faint: #9fb3a6;
     --navbar-link: #bfe3d2;
 
+    --cta: #bd5330;
+    --cta-ink: #7a3018;
+
     --radius-lg: 0;
     --radius-md: 0;
     --radius-sm: 0;
     --radius-pill: 999px;
 
-    --font-display: "Open Sans", -apple-system, "Segoe UI", sans-serif;
-    --font-heading: "Open Sans", -apple-system, "Segoe UI", sans-serif;
-    --font-body: "Merriweather", Georgia, serif;
+    --font-display: "Merriweather", Georgia, serif;
+    --font-heading: "Merriweather", Georgia, serif;
+    --font-body: "Open Sans", -apple-system, "Segoe UI", sans-serif;
     --font-mono: ui-monospace, "SF Mono", "Cascadia Code", "Roboto Mono", Menlo, Consolas, monospace;
   }
 
@@ -133,6 +136,9 @@
       --state-closed-tint: #3a201e;
       --state-unverified: #a3ac9f;
       --state-unverified-tint: #262a24;
+
+      --cta: #cc6a3e;
+      --cta-ink: #ffdccb;
     }
   }
   :root[data-theme="dark"] {
@@ -146,6 +152,7 @@
     --state-soon: #e8944a; --state-soon-tint: #3a2a15;
     --state-closed: #d9736a; --state-closed-tint: #3a201e;
     --state-unverified: #a3ac9f; --state-unverified-tint: #262a24;
+    --cta: #cc6a3e; --cta-ink: #ffdccb;
   }
   :root[data-theme="light"] {
     --magenta: #155c38; --magenta-tint: #d9ede3; --magenta-ink: #0d3d26;
@@ -157,6 +164,7 @@
     --state-soon: #a34f14; --state-soon-tint: #f6e2ce;
     --state-closed: #a23b34; --state-closed-tint: #f2dcda;
     --state-unverified: #5c6b63; --state-unverified-tint: #e4e6df;
+    --cta: #bd5330; --cta-ink: #7a3018;
   }
 
   * { box-sizing: border-box; }
@@ -172,7 +180,7 @@
   .tabular { font-variant-numeric: tabular-nums; font-family: var(--font-mono); }
   button { font-family: inherit; }
   h1, h2 { font-family: var(--font-display); text-wrap: balance; margin: 0; }
-  h3 { font-family: var(--font-heading); font-weight: 600; text-wrap: balance; margin: 0; }
+  h3 { font-family: var(--font-heading); font-weight: 700; text-wrap: balance; margin: 0; }
 
   .view { display: block; }
   .view[hidden] { display: none; }
@@ -205,11 +213,11 @@
   }
   .landing h1 {
     font-size: 46px;
-    font-weight: 800;
+    font-weight: 700;
     line-height: 1.08;
     margin-bottom: 16px;
   }
-  .landing h1 .accent-word { color: var(--magenta); }
+  .landing h1 .accent-word { color: inherit; }
   .landing .sub {
     font-size: 17px;
     color: var(--ink-soft);
@@ -222,24 +230,31 @@
     font-size: 13px;
     color: var(--ink-soft);
   }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
   .cta-btn {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: var(--magenta);
+    background: var(--cta);
     color: #fffaf3;
     border: none;
-    font-family: var(--font-display);
+    font-family: var(--font-body);
     font-weight: 700;
     font-size: 17px;
     padding: 14px 24px;
     border-radius: var(--radius-pill);
     cursor: pointer;
-    box-shadow: 0 3px 0 var(--magenta-ink);
+    box-shadow: 0 3px 0 var(--cta-ink);
   }
   .cta-btn:hover { transform: translateY(-1px); }
-  .cta-btn:active { box-shadow: 0 1px 0 var(--magenta-ink); transform: translateY(2px); }
-  .cta-btn-small { padding: 8px 14px; font-size: 14px; box-shadow: 0 2px 0 var(--magenta-ink); white-space: nowrap; }
+  .cta-btn:active { box-shadow: 0 1px 0 var(--cta-ink); transform: translateY(2px); }
+  .cta-btn-small { padding: 8px 14px; font-size: 14px; box-shadow: 0 2px 0 var(--cta-ink); white-space: nowrap; }
+  .cta-btn-outline {
+    background: transparent; color: var(--ink); border: 2px solid var(--border);
+    box-shadow: none;
+  }
+  .cta-btn-outline:hover { border-color: var(--ink-faint); transform: none; }
+  .cta-btn-outline:active { box-shadow: none; transform: none; }
 
   .link-btn {
     background: none; border: none; color: var(--focus); font-family: inherit;
@@ -252,21 +267,25 @@
     background: var(--navbar-bg); color: var(--navbar-ink);
     padding: 20px 28px;
   }
-  .brand-mark { display: flex; align-items: center; gap: 8px; }
+  .brand-mark { display: flex; align-items: center; gap: 10px; }
+  .brand-icon {
+    width: 32px; height: 32px; border-radius: 50%; border: 1.5px solid currentColor;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
   .brand-name {
-    font-family: var(--font-display); font-weight: 700; font-size: 20px;
-    color: var(--navbar-ink); letter-spacing: 0.2px;
+    font-family: var(--font-body); font-weight: 700; font-size: 14px;
+    color: var(--navbar-ink); letter-spacing: 0.14em; text-transform: uppercase;
   }
 
   .account-bar {
     display: flex; justify-content: flex-end; align-items: center; gap: 8px;
     font-size: 13px; color: var(--navbar-faint); margin-bottom: 18px;
-    font-family: var(--font-display);
+    font-family: var(--font-body);
   }
   .account-bar > div { display: flex; align-items: center; gap: 8px; }
   .account-bar > div[hidden] { display: none; }
   .account-email { color: var(--navbar-ink); }
-  .landing-header .link-btn, .masthead .link-btn, .masthead .edit-link { color: var(--navbar-link); font-family: var(--font-display); }
+  .landing-header .link-btn, .masthead .link-btn, .masthead .edit-link { color: var(--navbar-link); font-family: var(--font-body); }
 
   .welcome-banner {
     display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap;
@@ -319,7 +338,7 @@
     padding: 18px 20px;
   }
   .feature-card .fc-mark {
-    font-family: var(--font-display);
+    font-family: var(--font-body);
     font-weight: 800;
     font-size: 20px;
     color: var(--gold-ink);
@@ -341,7 +360,7 @@
     text-align: center;
   }
   .footer-brand {
-    font-family: var(--font-display); font-weight: 700; font-size: 16px;
+    font-family: var(--font-body); font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;
     color: var(--ink-soft); margin-bottom: 10px;
   }
   .footer-tagline { font-size: 13px; color: var(--ink-faint); max-width: 54ch; margin: 0 auto 6px; }
@@ -477,7 +496,7 @@
     margin-top: 26px;
   }
   .btn {
-    font-family: var(--font-display);
+    font-family: var(--font-body);
     font-weight: 700;
     font-size: 15px;
     padding: 11px 20px;
@@ -485,8 +504,8 @@
     cursor: pointer;
     border: 2px solid transparent;
   }
-  .btn-primary { background: var(--magenta); color: #fffaf3; border: none; box-shadow: 0 3px 0 var(--magenta-ink); }
-  .btn-primary:active { box-shadow: 0 1px 0 var(--magenta-ink); transform: translateY(2px); }
+  .btn-primary { background: var(--cta); color: #fffaf3; border: none; box-shadow: 0 3px 0 var(--cta-ink); }
+  .btn-primary:active { box-shadow: 0 1px 0 var(--cta-ink); transform: translateY(2px); }
   .btn-ghost { background: transparent; color: var(--ink-soft); border-color: var(--border); }
   .btn-ghost:hover { border-color: var(--ink-faint); }
   .btn[disabled] { opacity: 0.35; cursor: default; }
@@ -502,7 +521,10 @@
     gap: 16px;
     flex-wrap: wrap;
   }
-  .masthead h1 { font-size: 26px; }
+  .masthead h1 {
+    font-family: var(--font-body); font-weight: 700; font-size: 14px;
+    letter-spacing: 0.14em; text-transform: uppercase;
+  }
   .masthead .tagline { font-size: 13px; color: var(--navbar-faint); margin-top: 3px; }
   .masthead-right { display: flex; align-items: center; gap: 22px; }
   .edit-link {
@@ -630,8 +652,8 @@
     background: var(--bg-sunken); padding: 10px 12px; border-radius: var(--radius-sm); font-size: 12.5px; margin-top: 10px;
   }
   .apply-btn {
-    display: inline-block; margin-top: 12px; background: var(--magenta); color: #fffaf3; border: none;
-    padding: 9px 16px; border-radius: var(--radius-pill); font-weight: 700; font-family: var(--font-display);
+    display: inline-block; margin-top: 12px; background: var(--cta); color: #fffaf3; border: none;
+    padding: 9px 16px; border-radius: var(--radius-pill); font-weight: 700; font-family: var(--font-body);
     font-size: 13.5px; cursor: pointer; text-decoration: none;
   }
   .detail-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
@@ -697,6 +719,11 @@
 <section id="view-landing" class="view">
   <header class="landing-header">
     <div class="brand-mark">
+      <span class="brand-icon" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 15 L11 4 L10 12 L21 9 L13 14 L14 20 Z" />
+        </svg>
+      </span>
       <span class="brand-name">Voya</span>
     </div>
     <div class="account-bar" style="margin-bottom: 0;">
@@ -723,8 +750,11 @@
         <span class="eyebrow">Paid travel, for real</span>
         <h1>Let's fill the empty <span class="accent-word">pages</span> in your passport!</h1>
         <p class="sub">Fully funded travel, worldwide — for post-grads at every career stage.</p>
-        <button class="cta-btn" id="btn-start">Find my trip <span aria-hidden="true">→</span></button>
-        <p class="growing-note">🌱 Early access — new opportunities added every day as we keep researching.</p>
+        <div class="hero-actions">
+          <button class="cta-btn" id="btn-start">Find my trip <span aria-hidden="true">→</span></button>
+          <button class="cta-btn cta-btn-outline" id="btn-see-open">See open listings</button>
+        </div>
+        <p class="growing-note">Early access — new opportunities added every day as we keep researching.</p>
       </div>
       <div class="hero-canvas-wrap">
         <canvas id="hero-canvas" width="440" height="220"></canvas>
@@ -1823,6 +1853,11 @@
   }
 
   document.getElementById("btn-start").addEventListener("click", () => { showView("wizard"); showStep(1); });
+  document.getElementById("btn-see-open").addEventListener("click", async () => {
+    document.getElementById("f-eligible-only").checked = false;
+    showView("results");
+    await render();
+  });
   document.getElementById("btn-back").addEventListener("click", () => { if (currentStep > 1) showStep(currentStep - 1); });
   document.getElementById("btn-next").addEventListener("click", () => {
     if (currentStep < totalSteps) { showStep(currentStep + 1); }
