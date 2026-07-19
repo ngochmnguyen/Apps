@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://minhngocn.com/sitemap-index.xml

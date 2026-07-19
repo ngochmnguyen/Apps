@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const projects = [
+  {
+    title: 'Project One',
+    description: 'A one-line description of what this project is and the problem it solves.',
+    href: '#',
+    source: '#',
+    tags: ['TypeScript', 'React'],
+  },
+  {
+    title: 'Project Two',
+    description: 'Replace with your own project. Link to a live demo and/or the source.',
+    href: '#',
+    source: '#',
+    tags: ['Python'],
+  },
+  {
+    title: 'Project Three',
+    description: 'A third project card — delete or duplicate this block as needed.',
+    href: '#',
+    source: '#',
+    tags: ['Astro'],
+  },
+];
+---
+<BaseLayout title="Projects" description="Things I've built.">
+  <h1>Projects</h1>
+  <p class="lede">A selection of things I've built. Edit these in <code>src/pages/projects.astro</code>.</p>
+
+  <div class="card-grid">
+    {projects.map((project) => (
+      <div class="card">
+        <h3>{project.title}</h3>
+        <p>{project.description}</p>
+        <ul class="tag-list">
+          {project.tags.map((tag) => <li class="tag">{tag}</li>)}
+        </ul>
+        <div class="card-links">
+          <a href={project.href}>Live</a>
+          <a href={project.source}>Source</a>
+        </div>
+      </div>
+    ))}
+  </div>
+</BaseLayout>
