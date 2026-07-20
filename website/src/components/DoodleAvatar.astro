@@ -1,0 +1,28 @@
+---
+interface Props {
+  size?: number;
+}
+const { size = 72 } = Astro.props;
+---
+<svg
+  class="doodle-avatar"
+  width={size}
+  height={size}
+  viewBox="0 0 100 100"
+  xmlns="http://www.w3.org/2000/svg"
+  role="img"
+  aria-label="A hand-drawn smiling face"
+>
+  <defs>
+    <filter id="sketch" x="-30%" y="-30%" width="160%" height="160%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012 0.09" numOctaves="2" seed="7" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="5" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+  </defs>
+  <g filter="url(#sketch)">
+    <circle cx="50" cy="50" r="41" style="fill: var(--color-accent-soft); stroke: var(--color-text); stroke-width: 2.5;" />
+    <path d="M32 44 Q36 39 40 44" style="fill: none; stroke: var(--color-text); stroke-width: 2.5; stroke-linecap: round;" />
+    <path d="M60 44 Q64 39 68 44" style="fill: none; stroke: var(--color-text); stroke-width: 2.5; stroke-linecap: round;" />
+    <path d="M33 61 Q50 76 67 61" style="fill: none; stroke: var(--color-text); stroke-width: 2.5; stroke-linecap: round;" />
+  </g>
+</svg>

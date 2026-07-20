@@ -6,10 +6,11 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description?: string;
+  bare?: boolean;
 }
 
-const { title, description = 'Personal site of Minh Ngoc Nguyen.' } = Astro.props;
-const pageTitle = title === 'Minh Ngoc Nguyen' ? title : `${title} · Minh Ngoc Nguyen`;
+const { title, description = 'Personal site of Minh-Ngoc.', bare = false } = Astro.props;
+const pageTitle = title === 'Minh-Ngoc' ? title : `${title} · Minh-Ngoc`;
 ---
 <!doctype html>
 <html lang="en">
@@ -22,11 +23,17 @@ const pageTitle = title === 'Minh Ngoc Nguyen' ? title : `${title} · Minh Ngoc 
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
   </head>
-  <body>
-    <Header />
-    <main>
+  <body class={bare ? 'bare' : undefined}>
+    {bare ? (
       <slot />
-    </main>
-    <Footer />
+    ) : (
+      <>
+        <Header />
+        <main>
+          <slot />
+        </main>
+        <Footer />
+      </>
+    )}
   </body>
 </html>

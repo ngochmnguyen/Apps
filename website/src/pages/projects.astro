@@ -8,6 +8,7 @@ const projects = [
     href: '#',
     source: '#',
     tags: ['TypeScript', 'React'],
+    gradient: ['#f9d4e0', '#f296bb'],
   },
   {
     title: 'Project Two',
@@ -15,6 +16,7 @@ const projects = [
     href: '#',
     source: '#',
     tags: ['Python'],
+    gradient: ['#fbe3c8', '#f4b177'],
   },
   {
     title: 'Project Three',
@@ -22,24 +24,29 @@ const projects = [
     href: '#',
     source: '#',
     tags: ['Astro'],
+    gradient: ['#e0d9fb', '#b6a3f0'],
   },
 ];
 ---
 <BaseLayout title="Projects" description="Things I've built.">
+  <span class="eyebrow">Selected work</span>
   <h1>Projects</h1>
-  <p class="lede">A selection of things I've built. Edit these in <code>src/pages/projects.astro</code>.</p>
+  <p class="lede">A few things I've built. Edit these in <code>src/pages/projects.astro</code>.</p>
 
-  <div class="card-grid">
+  <div class="card-grid" style="margin-top: 2rem;">
     {projects.map((project) => (
       <div class="card">
-        <h3>{project.title}</h3>
-        <p>{project.description}</p>
-        <ul class="tag-list">
-          {project.tags.map((tag) => <li class="tag">{tag}</li>)}
-        </ul>
-        <div class="card-links">
-          <a href={project.href}>Live</a>
-          <a href={project.source}>Source</a>
+        <div class="card-thumb" style={`--thumb-a: ${project.gradient[0]}; --thumb-b: ${project.gradient[1]}`}></div>
+        <div class="card-body">
+          <h3>{project.title}</h3>
+          <p>{project.description}</p>
+          <ul class="tag-list">
+            {project.tags.map((tag) => <li class="tag">{tag}</li>)}
+          </ul>
+          <div class="card-links">
+            <a href={project.href}>Live ↗</a>
+            <a href={project.source}>Source ↗</a>
+          </div>
         </div>
       </div>
     ))}
