@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Contact" description="How to get in touch.">
+  <h1>Contact</h1>
+  <p class="lede">
+    The easiest way to reach me is email: <a href="mailto:hello@minhngocn.com">hello@minhngocn.com</a>.
+  </p>
+  <p>
+    You can also find me on <a href="https://github.com/" rel="me">GitHub</a> and <a href="https://www.linkedin.com/" rel="me">LinkedIn</a> — update these links in <code>src/components/Footer.astro</code> and <code>src/pages/contact.astro</code>.
+  </p>
+  <p>
+    If you'd rather use a contact form instead of email, this site is static (hosted on GitHub Pages), so a form needs a third-party form handler such as <a href="https://formspree.io/">Formspree</a> — drop in a <code>&lt;form action="https://formspree.io/f/YOUR_ID" method="POST"&gt;</code> here and it'll work without any backend code.
+  </p>
+</BaseLayout>
