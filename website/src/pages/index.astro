@@ -2,12 +2,21 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 <BaseLayout title="Minh Ngoc Nguyen">
-  <h1>Hi, I'm Minh Ngoc.</h1>
-  <p class="lede">
-    Replace this paragraph with a short bio — who you are, what you work on,
-    and what you're currently interested in. Two or three sentences is plenty.
-  </p>
-  <p>
-    You can link out to a <a href="/projects">few projects</a>, your <a href="/blog">writing</a>, or how to <a href="/contact">get in touch</a>.
-  </p>
+  <section class="hero">
+    <span class="eyebrow">Hello, I'm</span>
+    <h1>Minh Ngoc Nguyen,<br /><em>builder of small, useful things.</em></h1>
+    <p class="lede">
+      Replace this paragraph with a short bio — who you are, what you work on,
+      and what you're currently curious about. Two or three sentences is plenty.
+    </p>
+    <ul class="pill-row">
+      <li class="pill">Software</li>
+      <li class="pill">Writing</li>
+      <li class="pill">Open to opportunities</li>
+    </ul>
+    <div class="cta-row">
+      <a class="button" href="/projects">See my work →</a>
+      <a class="button secondary" href="/contact">Get in touch</a>
+    </div>
+  </section>
 </BaseLayout>
