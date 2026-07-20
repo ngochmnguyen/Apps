@@ -1,22 +1,49 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import DoodleAvatar from '../components/DoodleAvatar.astro';
+
+const experience = [
+  { role: 'Placeholder role', org: 'Company / project', years: '20XX — Present' },
+  { role: 'Another role', org: 'Somewhere else', years: '20XX — 20XX' },
+  { role: 'Studied something', org: 'Your school', years: '20XX' },
+];
 ---
 <BaseLayout title="Minh Ngoc Nguyen">
   <section class="hero">
+    <DoodleAvatar />
     <span class="eyebrow">Hello, I'm</span>
-    <h1>Minh Ngoc Nguyen,<br /><em>builder of small, useful things.</em></h1>
+    <h1>
+      Minh Ngoc Nguyen — <em>builder</em> of <span class="highlight">small, useful things</span> that feel <em>thoughtful</em>.
+    </h1>
     <p class="lede">
-      Replace this paragraph with a short bio — who you are, what you work on,
+      Replace this paragraph with a short bio — what you work on day to day,
       and what you're currently curious about. Two or three sentences is plenty.
     </p>
-    <ul class="pill-row">
-      <li class="pill">Software</li>
-      <li class="pill">Writing</li>
-      <li class="pill">Open to opportunities</li>
-    </ul>
     <div class="cta-row">
-      <a class="button" href="/projects">See my work →</a>
-      <a class="button secondary" href="/contact">Get in touch</a>
+      <a class="button" href="/contact">Get in touch</a>
+      <a class="button secondary" href="/projects">See my work</a>
     </div>
   </section>
+
+  <h2 class="section-title">Recent experience</h2>
+  <ul class="timeline">
+    {experience.map((item) => (
+      <li>
+        <span class="role">{item.role}</span>
+        <span class="org">{item.org}</span>
+        <span class="years">{item.years}</span>
+      </li>
+    ))}
+  </ul>
+
+  <h2 class="section-title">A little more</h2>
+  <p style="font-family: var(--font-mono); font-size: 0.95rem; color: var(--color-text-muted); max-width: 36rem;">
+    Add a couple of paragraphs here about where you're from, how you got into
+    what you do, or what you care about. This block uses a monospace font on
+    purpose — it's a nice contrast to the serif headline above. Edit it in <code>src/pages/index.astro</code>.
+  </p>
+
+  <div class="statement">
+    <p>Build things with <em>intention</em>.</p>
+  </div>
 </BaseLayout>

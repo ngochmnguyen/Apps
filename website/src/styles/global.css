@@ -6,14 +6,14 @@
 @import '@fontsource/inter/700.css';
 
 :root {
-  --color-bg: #fbf6f0;
-  --color-bg-alt: #f3ebe0;
-  --color-text: #1d1a17;
-  --color-text-muted: #6f665c;
-  --color-accent: #d21f63;
+  --color-bg: #fdfbf8;
+  --color-bg-alt: #f4efe7;
+  --color-text: #17140f;
+  --color-text-muted: #726a5f;
+  --color-accent: #c81457;
   --color-accent-ink: #fffbf8;
   --color-accent-soft: #fbdde7;
-  --color-border: #e7dcce;
+  --color-border: #e7e0d3;
   --shadow-color: 220 30% 10%;
   --max-width: 46rem;
   --font-display: 'Fraunces Variable', 'Fraunces', Georgia, serif;
@@ -23,14 +23,14 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-bg: #16120f;
-    --color-bg-alt: #1e1812;
-    --color-text: #f6efe6;
-    --color-text-muted: #b3a89b;
-    --color-accent: #ff5c8d;
+    --color-bg: #15120e;
+    --color-bg-alt: #1d1811;
+    --color-text: #f5efe6;
+    --color-text-muted: #ab9f90;
+    --color-accent: #ff6d9e;
     --color-accent-ink: #1d0a11;
     --color-accent-soft: #3a1c28;
-    --color-border: #2c251d;
+    --color-border: #2b2419;
   }
 }
 
@@ -140,7 +140,7 @@ blockquote {
 .site-header .brand {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   text-decoration: none;
   color: var(--color-text);
 }
@@ -148,7 +148,8 @@ blockquote {
 .site-header ul {
   list-style: none;
   display: flex;
-  gap: 0.35rem;
+  align-items: center;
+  gap: 1.5rem;
   margin: 0;
   padding: 0;
 }
@@ -158,44 +159,58 @@ blockquote {
   text-decoration: none;
   font-size: 0.92rem;
   font-weight: 500;
-  padding: 0.4rem 0.85rem;
-  border-radius: 999px;
-  transition: background 0.2s ease, color 0.2s ease;
+  transition: color 0.2s ease;
 }
 
 .site-header a.nav-link:hover {
   color: var(--color-text);
-  background: var(--color-bg-alt);
 }
 
 .site-header a.nav-link[aria-current="page"] {
-  color: var(--color-accent-ink);
-  background: var(--color-accent);
+  color: var(--color-text);
+}
+
+.site-header a.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5em 1.1em;
+  border-radius: 999px;
+  background: var(--color-text);
+  color: var(--color-bg);
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.15s ease;
+}
+
+.site-header a.nav-cta:hover {
+  transform: translateY(-1px);
+  text-decoration: none;
 }
 
 /* ---------- footer ---------- */
 
 .site-footer {
   border-top: 1px solid var(--color-border);
-  margin-top: 3rem;
+  margin-top: 2rem;
 }
 
 .site-footer .footer-inner {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 1.75rem 1.5rem;
+  padding: 1.5rem 1.5rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem 1.5rem;
   align-items: center;
   justify-content: space-between;
   color: var(--color-text-muted);
-  font-size: 0.88rem;
+  font-size: 0.85rem;
 }
 
 .site-footer .footer-links {
   display: flex;
-  gap: 1.25rem;
+  gap: 1.5rem;
 }
 
 .site-footer a {
@@ -204,28 +219,18 @@ blockquote {
 }
 
 .site-footer a:hover {
-  color: var(--color-accent);
+  color: var(--color-text);
+  text-decoration: underline;
 }
 
 /* ---------- hero ---------- */
 
 .hero {
-  position: relative;
-  padding: 2rem 0 1rem;
+  padding: 1.5rem 0 1rem;
 }
 
-.hero::before {
-  content: '';
-  position: absolute;
-  top: -6rem;
-  right: -8rem;
-  width: 26rem;
-  height: 26rem;
-  background: radial-gradient(circle, var(--color-accent) 0%, transparent 70%);
-  opacity: 0.22;
-  filter: blur(10px);
-  z-index: -1;
-  pointer-events: none;
+.doodle-avatar {
+  margin-bottom: 1.75rem;
 }
 
 .eyebrow {
@@ -239,13 +244,22 @@ blockquote {
 }
 
 .hero h1 {
-  font-size: clamp(2.6rem, 6vw, 4.2rem);
-  margin: 0 0 1.1rem;
+  font-weight: 400;
+  font-size: clamp(2.2rem, 5.4vw, 3.4rem);
+  margin: 0 0 1.4rem;
 }
 
 .hero h1 em {
   font-style: italic;
-  font-weight: 500;
+  font-weight: 400;
+  color: var(--color-text);
+}
+
+.highlight {
+  background: var(--color-accent-soft);
+  border-radius: 0.2em;
+  padding: 0 0.2em;
+  font-style: normal;
 }
 
 .pill-row {
@@ -280,8 +294,8 @@ blockquote {
   gap: 0.4em;
   padding: 0.7em 1.4em;
   border-radius: 999px;
-  background: var(--color-accent);
-  color: var(--color-accent-ink);
+  background: var(--color-text);
+  color: var(--color-bg);
   text-decoration: none;
   font-weight: 600;
   font-size: 0.95rem;
@@ -449,6 +463,65 @@ blockquote {
 
 .card .card-links a:hover {
   text-decoration: underline;
+}
+
+/* ---------- timeline ---------- */
+
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.timeline li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 1rem;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 1.1rem 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.timeline li:last-child {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.timeline .role {
+  font-weight: 500;
+  flex: 1 1 14rem;
+}
+
+.timeline .org {
+  color: var(--color-text-muted);
+  flex: 1 1 10rem;
+}
+
+.timeline .years {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* ---------- closing statement ---------- */
+
+.statement {
+  margin: 4rem 0 3rem;
+  padding-top: 3rem;
+  border-top: 1px dashed var(--color-border);
+}
+
+.statement p {
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
+  font-weight: 400;
+  line-height: 1.25;
+  margin: 0;
+}
+
+.statement em {
+  color: var(--color-text);
 }
 
 /* ---------- article ---------- */
