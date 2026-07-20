@@ -12,11 +12,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </p>
 
     <ul class="landing-list">
-      <li><a href="/aerial-dancer">An aerial dancer</a></li>
-      <li><a href="/multi-disciplinary-artist">A multi-disciplinary artist (this one is on-going)</a></li>
+      <li>An aerial dancer</li>
+      <li>A multi-disciplinary artist (this one is on-going)</li>
       <li><a href="/app-developer">An app developer</a></li>
-      <li><a href="/reader">An avid reader and book club attendee</a></li>
-      <li><a href="/writer">A writer</a></li>
+      <li>An avid reader and book club attendee</li>
+      <li>A writer</li>
     </ul>
 
     <hr class="divider" />
@@ -25,5 +25,24 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <a href="https://www.linkedin.com/" rel="me">My LinkedIn</a>
     </div>
     <hr class="divider" />
+
+    <a class="scroll-cue" href="#selected-works">
+      Scroll down for Selected Works <span class="scroll-cue-arrow" aria-hidden="true">↓</span>
+    </a>
   </div>
+
+  <section id="selected-works" class="works-section">
+    <h2 class="works-heading">App(s) I Built</h2>
+
+    <div class="shot-grid">
+      <div class="shot-placeholder"></div>
+      <div class="shot-placeholder shot-placeholder--small"></div>
+    </div>
+
+    <p class="works-label">VOYA</p>
+    <p class="works-description">
+      A paid travel opportunities directory for over-achievers like you and I. Upfront disclosure of support provided and no pay-to-apply BS.
+    </p>
+    <a class="button" href="https://apps-2347.onrender.com/" target="_blank" rel="noopener">Demo Voya</a>
+  </section>
 </BaseLayout>

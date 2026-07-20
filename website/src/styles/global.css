@@ -40,6 +40,7 @@
 
 html {
   color-scheme: light dark;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -572,14 +573,11 @@ body.bare {
 
 .landing-list a {
   color: inherit;
-  text-decoration: underline;
-  text-decoration-color: #d8d2c8;
-  text-underline-offset: 3px;
+  text-decoration: none;
 }
 
 .landing-list a:hover {
   color: #17140f;
-  text-decoration-color: currentColor;
 }
 
 .divider {
@@ -602,6 +600,89 @@ body.bare {
 
 .link-row a:hover {
   text-decoration: underline;
+}
+
+.scroll-cue {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 4.5rem;
+  padding-top: 3rem;
+  color: #55504a;
+  font-size: 0.92rem;
+  text-decoration: none;
+}
+
+.scroll-cue::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0.4rem;
+  width: 0;
+  height: 2.75rem;
+  border-left: 2px dotted #9a9488;
+}
+
+.scroll-cue:hover {
+  color: #17140f;
+}
+
+.scroll-cue-arrow {
+  display: inline-block;
+}
+
+/* ---------- selected works ---------- */
+
+.works-section {
+  box-sizing: border-box;
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 4rem 3rem 6rem;
+  background: #ffffff;
+  color: #17140f;
+}
+
+@media (max-width: 40rem) {
+  .works-section {
+    padding: 3rem 1.25rem 4rem;
+  }
+}
+
+.works-heading {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin: 0 0 2rem;
+}
+
+.shot-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.shot-placeholder {
+  flex: 2 1 20rem;
+  aspect-ratio: 16 / 10;
+  border-radius: 0.4rem;
+  background: linear-gradient(180deg, #bfe3fb 0%, #eaf6fd 55%, #d9edb0 100%);
+}
+
+.shot-placeholder--small {
+  flex: 1 1 12rem;
+}
+
+.works-label {
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+}
+
+.works-description {
+  color: #55504a;
+  max-width: 40rem;
+  margin: 0 0 1.75rem;
 }
 
 /* ---------- article ---------- */
