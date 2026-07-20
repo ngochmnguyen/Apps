@@ -25,5 +25,24 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <a href="https://www.linkedin.com/" rel="me">My LinkedIn</a>
     </div>
     <hr class="divider" />
+
+    <a class="scroll-cue" href="#selected-works">
+      Scroll down for Selected Works <span class="scroll-cue-arrow" aria-hidden="true">↓</span>
+    </a>
   </div>
+
+  <section id="selected-works" class="works-section">
+    <h2 class="works-heading">App(s) I Built</h2>
+
+    <div class="shot-grid">
+      <div class="shot-placeholder"></div>
+      <div class="shot-placeholder shot-placeholder--small"></div>
+    </div>
+
+    <p class="works-label">VOYA</p>
+    <p class="works-description">
+      A paid travel opportunities directory for over-achievers like you and I. Upfront disclosure of support provided and no pay-to-apply BS.
+    </p>
+    <a class="button" href="#">Demo Voya</a>
+  </section>
 </BaseLayout>
