@@ -663,14 +663,18 @@ body.bare {
   margin-bottom: 1.5rem;
 }
 
-.shot-placeholder {
+.shot-img {
   flex: 2 1 20rem;
+  min-width: 0;
   aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top;
   border-radius: 0.4rem;
-  background: linear-gradient(180deg, #bfe3fb 0%, #eaf6fd 55%, #d9edb0 100%);
+  border: 1px solid #e7e0d3;
+  width: 100%;
 }
 
-.shot-placeholder--small {
+.shot-img--small {
   flex: 1 1 12rem;
 }
 
