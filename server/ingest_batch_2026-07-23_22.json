@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Court of Justice of the European Union (CJEU) Traineeship",
+    "description": "A five-month paid traineeship at the Court of Justice of the European Union in Luxembourg, working either in the Court's services or in a Member's Chambers. Around 200 places are available each year. Trainees receive a monthly grant of roughly EUR 2,400 (75% of the minimum social wage for a skilled worker in Luxembourg) -- among the highest-paid traineeships of any EU institution. Trainees living 200km or more from Luxembourg receive a one-time travel contribution of EUR 150 toward their trip; this is modest and won't cover long-haul travel, so the monthly grant is the main source of support for living costs. Open to nationals of an EU Member State (with duly justified exceptions considered on a case-by-case basis) who hold a university degree in law, political science, economics, or a related field. This entry covers the March-July 2027 session: applications are open now, with a deadline of September 15, 2026.",
+    "org": "Court of Justice of the European Union",
+    "type": "internship",
+    "dest": "LU",
+    "compType": "cash",
+    "flight": false,
+    "lodging": false,
+    "meals": false,
+    "stipendMin": 2400,
+    "stipendMax": 2400,
+    "currency": "EUR",
+    "requiresWorkVisa": false,
+    "visaNote": "Primarily restricted to EU nationals, with limited exceptions considered case-by-case; non-EU citizens should confirm current eligibility before applying.",
+    "minAge": 18,
+    "maxAge": null,
+    "gradOnly": false,
+    "education": ["bachelors_completed"],
+    "career": ["recent_grad"],
+    "employment": [],
+    "english": "b2",
+    "nationality": {
+      "type": "include",
+      "list": ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IE", "IT", "LV", "LT", "LU", "MT", "NL", "PL", "PT", "RO", "SK", "SI", "ES", "SE"]
+    },
+    "softTags": [],
+    "fieldsOfWork": ["law"],
+    "deadline": "2026-09-15",
+    "duration": "semester_or_longer",
+    "isRecurring": true,
+    "effortLabel": "moderate",
+    "effortMin": 60,
+    "verification": "official_source",
+    "sourceUrl": "https://curia.europa.eu/jcms/jcms/Jo2_7008/en/"
+  }
+]
