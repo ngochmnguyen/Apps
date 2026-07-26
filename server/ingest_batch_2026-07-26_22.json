@@ -1,0 +1,38 @@
+[
+  {
+    "title": "IJP German-Northern European Programme",
+    "description": "A journalist exchange fellowship run by IJP (Internationale Journalisten-Programme), open to working print, radio, and TV journalists -- staff or freelance -- aged 18 to 45 from Denmark, Iceland, Norway, Sweden, Finland, Estonia, Latvia, and Lithuania. The 2026 programme opens with a multi-day introductory meeting in a Nordic capital or Berlin, followed by a six- to eight-week placement at a German host media outlet chosen by IJP based on each participant's interests and preferences. Each fellow receives a single stipend payment of EUR 3,800 intended to cover travel, accommodation, and living costs during the exchange; it is a lump sum rather than separately booked flights or lodging, so participants arrange and manage their own travel and housing with it. Only a workable knowledge of English is required, not German. Applicants submit a CV with photo, a letter of recommendation from an editor, and four writing samples (or a broadcast contributions list for TV/radio journalists). Application deadline for the 2026 cohort is August 1, 2026.",
+    "org": "IJP - Internationale Journalisten-Programme",
+    "type": "work_study_exchange",
+    "dest": "DE",
+    "compType": "cash",
+    "flight": false,
+    "lodging": false,
+    "meals": false,
+    "stipendMin": 3800,
+    "stipendMax": 3800,
+    "currency": "EUR",
+    "requiresWorkVisa": false,
+    "visaNote": "This is a short-term journalist exchange placement, not local employment; participants from Nordic/Baltic EU and EEA countries typically do not need a separate work visa for a stay of this length in Germany.",
+    "minAge": 18,
+    "maxAge": 45,
+    "gradOnly": false,
+    "education": [],
+    "career": ["early_career", "mid_career"],
+    "employment": ["employed_full_time", "self_employed"],
+    "english": "b2",
+    "nationality": {
+      "type": "include",
+      "list": ["DK", "IS", "NO", "SE", "FI", "EE", "LV", "LT"]
+    },
+    "softTags": [],
+    "fieldsOfWork": ["journalism_media"],
+    "deadline": "2026-08-01",
+    "duration": "one_to_three_months",
+    "isRecurring": true,
+    "effortLabel": "moderate",
+    "effortMin": 60,
+    "verification": "official_source",
+    "sourceUrl": "https://ijp.org/en/programmes/northerneurope/"
+  }
+]
