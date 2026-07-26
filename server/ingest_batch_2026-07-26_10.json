@@ -1,0 +1,38 @@
+[
+  {
+    "title": "CaribOx Visiting Fellowship Scheme",
+    "description": "A fully funded visiting fellowship connecting researchers based at Caribbean academic institutions with collaborators at the University of Oxford, run by TORCH (The Oxford Research Centre in the Humanities) as part of the Caribbean Oxford Initiative. Open to researchers across all disciplines who hold a PhD or equivalent and are employed full-time by an academic institution in the Caribbean (including the Windward and Leeward Islands). The 2027 fellowship runs twelve months from January 2027: ten months of virtual collaboration with an Oxford-based researcher, followed by a two-month in-person residency at Oxford from 25 April to 19 June 2027 (Trinity Term). Oxford covers the full cost of return economy-class flights to/from the UK, a per-diem for subsistence, and accommodation and association through All Souls College during the in-person residency. Applicants must secure a statement of support from an Oxford-based collaborator before applying -- applications without one are disqualified. Deadline to submit the application, research proposal, CV, and statement of support is 15 September 2026, 17:00 UK time.",
+    "org": "University of Oxford (TORCH / Caribbean Oxford Initiative)",
+    "type": "research_residency",
+    "dest": "GB",
+    "compType": "cash_and_in_kind",
+    "flight": true,
+    "lodging": true,
+    "meals": true,
+    "stipendMin": null,
+    "stipendMax": null,
+    "currency": null,
+    "requiresWorkVisa": false,
+    "visaNote": "This is an academic visiting fellowship, not employment; Oxford's Caribbean partner arranges the residency, and fellows should confirm visitor-visa requirements based on their nationality.",
+    "minAge": 18,
+    "maxAge": null,
+    "gradOnly": false,
+    "education": ["phd_completed"],
+    "career": ["early_career", "mid_career", "senior_career"],
+    "employment": ["employed_full_time"],
+    "english": "c1",
+    "nationality": {
+      "type": "include",
+      "list": ["AG", "BS", "BB", "BZ", "CU", "DM", "DO", "GD", "GY", "HT", "JM", "KN", "LC", "VC", "SR", "TT"]
+    },
+    "softTags": [],
+    "fieldsOfWork": [],
+    "deadline": "2026-09-15",
+    "duration": "one_to_three_months",
+    "isRecurring": true,
+    "effortLabel": "high",
+    "effortMin": 90,
+    "verification": "official_source",
+    "sourceUrl": "https://www.torch.ox.ac.uk/caribox-the-caribbean-oxford-initiative"
+  }
+]
