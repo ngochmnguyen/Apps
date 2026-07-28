@@ -1895,7 +1895,7 @@
   document.getElementById("btn-back").addEventListener("click", () => { if (currentStep > 1) showStep(currentStep - 1); });
   document.getElementById("btn-next").addEventListener("click", () => {
     if (currentStep < totalSteps) { showStep(currentStep + 1); }
-    else { showView("results"); render(); }
+    else { showView("results"); render(); maybeNudgeAccountCreation(); }
   });
   document.getElementById("btn-edit-answers").addEventListener("click", () => { showView("wizard"); showStep(1); });
 
@@ -2109,7 +2109,7 @@
     document.getElementById("auth-modal-title").textContent = mode === "login" ? "Log in" : "Save my profile";
     document.getElementById("auth-modal-sub").textContent = mode === "login"
       ? "Log in to load your saved profile."
-      : "Creates an account from your current wizard answers, so you don't have to redo them next time.";
+      : "Creates an account from your current wizard answers, so you can save opportunities and track applications from My Trips instead of losing them when you close the tab.";
     document.getElementById("auth-submit").textContent = mode === "login" ? "Log in" : "Create account";
     document.getElementById("auth-switch-to-signup").hidden = mode !== "login";
     document.getElementById("auth-switch-to-login").hidden = mode !== "signup";
@@ -2135,6 +2135,17 @@
   document.getElementById("auth-modal").addEventListener("click", (e) => {
     if (e.target.id === "auth-modal") closeAuthModal();
   });
+
+  // Nudge toward creating an account right after finishing the filter wizard
+  // -- dismissible (it's the same closeable signup modal, not a hard gate),
+  // and only once per browser so it doesn't re-nag every time someone tweaks
+  // their answers and re-finishes the wizard in the same session.
+  const ACCOUNT_NUDGE_KEY = "voya_account_nudge_shown";
+  function maybeNudgeAccountCreation() {
+    if (currentUser || localStorage.getItem(ACCOUNT_NUDGE_KEY)) return;
+    localStorage.setItem(ACCOUNT_NUDGE_KEY, "1");
+    openAuthModal("signup");
+  }
   document.getElementById("btn-switch-signup").addEventListener("click", () => openAuthModal("signup"));
   document.getElementById("btn-switch-login").addEventListener("click", () => openAuthModal("login"));
 
