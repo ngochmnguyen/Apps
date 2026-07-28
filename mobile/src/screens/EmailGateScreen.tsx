@@ -28,7 +28,7 @@ export function EmailGateScreen() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Voya</Text>
-      <Text style={styles.subtitle}>Pop in your email to get started. No password needed yet -- you can create a full account later.</Text>
+      <Text style={styles.subtitle}>Pop in your email so I know who's here. I won't email you unless it's something important, promised.{"\n"}-Ngoc</Text>
 
       {error && <Text style={styles.error}>{error}</Text>}
 
