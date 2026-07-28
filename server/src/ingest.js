@@ -47,13 +47,23 @@ import { pool } from "./db.js";
 // constraint violation.
 const EXCLUDED_DESTINATIONS = new Set(["IL"]);
 
-async function ingestOne(client, o) {
+// Shared by the CLI ingest pipeline below and the admin dashboard's edit
+// endpoint. `existingId`, when passed, forces an update of that specific row
+// regardless of source_url (an admin edit may itself be changing the URL);
+// omitted (the CLI path), it falls back to the original dedupe-by-source_url
+// lookup so re-running a research batch stays idempotent.
+export async function upsertOpportunity(client, o, existingId = null) {
   if (EXCLUDED_DESTINATIONS.has(o.dest)) {
     throw new Error(`destination '${o.dest}' is not supported by this app`);
   }
 
-  const existing = await client.query("SELECT id FROM opportunities WHERE source_url = $1", [o.sourceUrl]);
-  let id = existing.rows[0]?.id;
+  let id = existingId;
+  let wasUpdate = !!existingId;
+  if (!id) {
+    const existing = await client.query("SELECT id FROM opportunities WHERE source_url = $1", [o.sourceUrl]);
+    id = existing.rows[0]?.id;
+    wasUpdate = !!id;
+  }
 
   const values = [
     o.title, o.description, o.org, o.type, o.dest,
@@ -127,7 +137,7 @@ async function ingestOne(client, o) {
     await client.query("INSERT INTO opportunity_fields_of_work (opportunity_id, field) VALUES ($1, $2)", [id, field]);
   }
 
-  return { id, wasUpdate: !!existing.rows[0] };
+  return { id, wasUpdate };
 }
 
 async function main() {
@@ -143,7 +153,7 @@ async function main() {
     for (const o of items) {
       await client.query("BEGIN");
       try {
-        const { wasUpdate } = await ingestOne(client, o);
+        const { wasUpdate } = await upsertOpportunity(client, o);
         await client.query("COMMIT");
         wasUpdate ? updated++ : created++;
         console.log(`${wasUpdate ? "updated" : "created"}: ${o.title}`);
@@ -159,4 +169,11 @@ async function main() {
   console.log(`\nDone. ${created} created, ${updated} updated.`);
 }
 
-main();
+// Only run the CLI entrypoint when this file is executed directly (`node
+// src/ingest.js ...`) -- routes/admin.js imports upsertOpportunity from here
+// too, and that import must not trigger main() (which expects a CLI arg and
+// calls pool.end(), which would kill the shared pool out from under the
+// running server).
+if (import.meta.url === `file://${process.argv[1]}`) {
+  main();
+}
