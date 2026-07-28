@@ -7,6 +7,31 @@ import { Resend } from "resend";
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 const FROM = "Voya <onboarding@resend.dev>";
 
+// Sent right when someone passes the pre-browsing email gate (POST
+// /capture-email), before they've created a real account -- distinct from
+// sendWelcomeEmail below, which fires once signup actually completes.
+export async function sendEmailCaptureWelcome(to) {
+  if (!resend) {
+    console.log(`[email] RESEND_API_KEY not set -- skipping capture-welcome email to ${to}`);
+    return;
+  }
+  const appUrl = process.env.APP_URL;
+  try {
+    await resend.emails.send({
+      from: FROM,
+      to,
+      subject: "Welcome to Voya",
+      html: `
+        <p>Welcome to Voya!</p>
+        <p>Thanks for stopping by -- when you're ready, head back${appUrl ? ` to <a href="${appUrl}">${appUrl}</a>` : " to the site"} and finish setting up your profile so we can start filtering paid travel opportunities to you.</p>
+        <p>Good luck out there.<br>-Ngoc</p>
+      `,
+    });
+  } catch (err) {
+    console.error("Capture-welcome email failed:", err);
+  }
+}
+
 export async function sendWelcomeEmail(to) {
   if (!resend) {
     console.log(`[email] RESEND_API_KEY not set -- skipping welcome email to ${to}`);

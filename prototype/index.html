@@ -808,6 +808,7 @@
       <p class="auth-error" id="email-gate-error" hidden></p>
       <button type="submit" class="btn btn-primary auth-submit" id="email-gate-submit">Continue</button>
     </form>
+    <p class="auth-switch"><button class="link-btn" id="btn-gate-already-have">You already have my email</button></p>
   </div>
 </div>
 
@@ -2081,6 +2082,13 @@
     }
   });
 
+  // Lets someone who's been here before skip straight to logging in, rather
+  // than re-submitting their email through the gate.
+  document.getElementById("btn-gate-already-have").addEventListener("click", () => {
+    document.getElementById("email-gate-modal").hidden = true;
+    openAuthModal("login");
+  });
+
   let authMode = "login";
   function openAuthModal(mode) {
     authMode = mode;
@@ -2102,6 +2110,11 @@
   }
   function closeAuthModal() {
     document.getElementById("auth-modal").hidden = true;
+    // If this was reached via the email gate's "You already have my email"
+    // link and they close without logging in, the gate still hasn't been
+    // satisfied -- maybeShowEmailGate is a no-op otherwise (already signed in
+    // or already passed it), so this is safe to call unconditionally.
+    maybeShowEmailGate();
   }
 
   document.getElementById("btn-close-auth").addEventListener("click", closeAuthModal);

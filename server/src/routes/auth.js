@@ -2,7 +2,7 @@ import { Router } from "express";
 import rateLimit from "express-rate-limit";
 import { pool } from "../db.js";
 import { hashPassword, verifyPassword, issueSessionCookie, clearSessionCookie, requireAuth } from "../auth.js";
-import { sendWelcomeEmail } from "../email.js";
+import { sendWelcomeEmail, sendEmailCaptureWelcome } from "../email.js";
 
 export const authRouter = Router();
 
@@ -52,10 +52,13 @@ authRouter.post("/capture-email", authAttemptLimiter, async (req, res) => {
   const email = (req.body.email || "").trim();
   if (!EMAIL_RE.test(email)) return res.status(400).json({ error: "Please enter a valid email address." });
 
-  await pool.query(
-    "INSERT INTO users (email, password_hash) VALUES ($1, NULL) ON CONFLICT (email) DO NOTHING",
+  const { rows } = await pool.query(
+    "INSERT INTO users (email, password_hash) VALUES ($1, NULL) ON CONFLICT (email) DO NOTHING RETURNING id",
     [email]
   );
+  // rows.length is empty on a repeat submission (ON CONFLICT DO NOTHING) --
+  // only send the welcome email the first time this address is captured.
+  if (rows.length) sendEmailCaptureWelcome(email); // fire-and-forget, must never delay or fail this request
   res.status(201).json({ ok: true });
 });
 
