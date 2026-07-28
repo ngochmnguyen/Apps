@@ -246,6 +246,7 @@
     cursor: pointer;
     box-shadow: 0 3px 0 var(--cta-ink);
   }
+  .cta-btn[hidden] { display: none; }
   .cta-btn:hover { transform: translateY(-1px); }
   .cta-btn:active { box-shadow: 0 1px 0 var(--cta-ink); transform: translateY(2px); }
   .cta-btn-small { padding: 8px 14px; font-size: 14px; box-shadow: 0 2px 0 var(--cta-ink); white-space: nowrap; }
@@ -752,7 +753,7 @@
         <p class="sub">Fully funded travel, worldwide — for post-grads at every career stage.</p>
         <div class="hero-actions">
           <button class="cta-btn" id="btn-start">Find my trip <span aria-hidden="true">→</span></button>
-          <button class="cta-btn cta-btn-outline" id="btn-see-open">See open listings</button>
+          <button class="cta-btn cta-btn-outline account-user" id="btn-see-open" hidden>See open listings</button>
         </div>
         <p class="growing-note">Early access — new opportunities added every day as we keep researching.</p>
       </div>
