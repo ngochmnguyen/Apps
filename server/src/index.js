@@ -13,6 +13,7 @@ import { savedRouter } from "./routes/saved.js";
 import { todosRouter } from "./routes/todos.js";
 import { newsletterRouter } from "./routes/newsletter.js";
 import { submissionsRouter } from "./routes/submissions.js";
+import { adminRouter } from "./routes/admin.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
@@ -41,6 +42,7 @@ app.use("/api/saved", savedRouter);
 app.use("/api/todos", todosRouter);
 app.use("/api/newsletter", newsletterRouter);
 app.use("/api/submissions", submissionsRouter);
+app.use("/api/admin", adminRouter);
 
 app.use(express.static(path.join(__dirname, "../../prototype")));
 

@@ -40,6 +40,25 @@ export async function fetchProfile(client, userId) {
   return rows[0] || null;
 }
 
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+// The pre-browsing email gate: just an email address, no password or profile
+// yet. Creates a `users` row with a NULL password_hash if one doesn't already
+// exist for this address -- POST /signup later completes it. Idempotent and
+// silent on repeat/duplicate submission (including for addresses that already
+// have a full account) so this can't be used to probe which emails are
+// registered.
+authRouter.post("/capture-email", authAttemptLimiter, async (req, res) => {
+  const email = (req.body.email || "").trim();
+  if (!EMAIL_RE.test(email)) return res.status(400).json({ error: "Please enter a valid email address." });
+
+  await pool.query(
+    "INSERT INTO users (email, password_hash) VALUES ($1, NULL) ON CONFLICT (email) DO NOTHING",
+    [email]
+  );
+  res.status(201).json({ ok: true });
+});
+
 authRouter.post("/signup", authAttemptLimiter, async (req, res) => {
   const { email, password, ...profile } = req.body;
   if (!email || !password) return res.status(400).json({ error: "Email and password are required." });
@@ -49,16 +68,28 @@ authRouter.post("/signup", authAttemptLimiter, async (req, res) => {
 
   const client = await pool.connect();
   try {
-    const existing = await client.query("SELECT id FROM users WHERE email = $1", [email]);
-    if (existing.rows.length) return res.status(409).json({ error: "An account with that email already exists." });
+    const existing = await client.query("SELECT id, password_hash FROM users WHERE email = $1", [email]);
+    // A row with a NULL password_hash was created by the pre-signup email
+    // gate (POST /capture-email) -- not a real account yet, so this signup
+    // completes it in place instead of bouncing as a duplicate.
+    const capturedRow = existing.rows[0] && !existing.rows[0].password_hash ? existing.rows[0] : null;
+    if (existing.rows.length && !capturedRow) {
+      return res.status(409).json({ error: "An account with that email already exists." });
+    }
 
     await client.query("BEGIN");
     const passwordHash = await hashPassword(password);
-    const userResult = await client.query(
-      "INSERT INTO users (email, password_hash) VALUES ($1, $2) RETURNING id",
-      [email, passwordHash]
-    );
-    const userId = userResult.rows[0].id;
+    let userId;
+    if (capturedRow) {
+      userId = capturedRow.id;
+      await client.query("UPDATE users SET password_hash = $2 WHERE id = $1", [userId, passwordHash]);
+    } else {
+      const userResult = await client.query(
+        "INSERT INTO users (email, password_hash) VALUES ($1, $2) RETURNING id",
+        [email, passwordHash]
+      );
+      userId = userResult.rows[0].id;
+    }
 
     await client.query(
       `INSERT INTO user_profiles
@@ -92,7 +123,9 @@ authRouter.post("/login", authAttemptLimiter, async (req, res) => {
 
   const { rows } = await pool.query("SELECT id, password_hash FROM users WHERE email = $1", [email]);
   const user = rows[0];
-  if (!user || !(await verifyPassword(password, user.password_hash))) {
+  // A NULL password_hash means only the pre-signup email gate has run for
+  // this address -- there's no account to log into yet, same as not found.
+  if (!user || !user.password_hash || !(await verifyPassword(password, user.password_hash))) {
     return res.status(401).json({ error: "Incorrect email or password." });
   }
 
