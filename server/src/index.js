@@ -46,5 +46,16 @@ app.use("/api/admin", adminRouter);
 
 app.use(express.static(path.join(__dirname, "../../prototype")));
 
+// Safety net: any error a route handler passes to next(err), or that Express
+// itself catches from a rejected async handler, lands here instead of
+// Express's default HTML error page -- which the frontend's `await
+// res.json()` calls can't parse ("Unexpected token '<', "<!DOCTYPE ..."").
+// Individual routes should still catch and report their own specific errors
+// where they can say something more useful than this generic fallback.
+app.use((err, _req, res, _next) => {
+  console.error("Unhandled error:", err);
+  res.status(500).json({ error: "Something went wrong. Please try again." });
+});
+
 const port = process.env.PORT || 3001;
 app.listen(port, () => console.log(`Voya server listening on http://localhost:${port}`));

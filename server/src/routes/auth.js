@@ -52,14 +52,25 @@ authRouter.post("/capture-email", authAttemptLimiter, async (req, res) => {
   const email = (req.body.email || "").trim();
   if (!EMAIL_RE.test(email)) return res.status(400).json({ error: "Please enter a valid email address." });
 
-  const { rows } = await pool.query(
-    "INSERT INTO users (email, password_hash) VALUES ($1, NULL) ON CONFLICT (email) DO NOTHING RETURNING id",
-    [email]
-  );
-  // rows.length is empty on a repeat submission (ON CONFLICT DO NOTHING) --
-  // only send the welcome email the first time this address is captured.
-  if (rows.length) sendEmailCaptureWelcome(email); // fire-and-forget, must never delay or fail this request
-  res.status(201).json({ ok: true });
+  try {
+    const { rows } = await pool.query(
+      "INSERT INTO users (email, password_hash) VALUES ($1, NULL) ON CONFLICT (email) DO NOTHING RETURNING id",
+      [email]
+    );
+    // rows.length is empty on a repeat submission (ON CONFLICT DO NOTHING) --
+    // only send the welcome email the first time this address is captured.
+    if (rows.length) sendEmailCaptureWelcome(email); // fire-and-forget, must never delay or fail this request
+    res.status(201).json({ ok: true });
+  } catch (err) {
+    // Most likely cause: db/migrate_add_email_capture.sql (which makes
+    // password_hash nullable) hasn't been run against this database yet, so
+    // the NULL insert above violates the old NOT NULL constraint. Surfacing
+    // that as JSON here (instead of letting it fall through to Express's
+    // default HTML error page) is what stops the frontend from choking on
+    // "<!DOCTYPE..." when it tries to JSON.parse the response.
+    console.error("capture-email failed:", err);
+    res.status(500).json({ error: "Something went wrong. Please try again." });
+  }
 });
 
 authRouter.post("/signup", authAttemptLimiter, async (req, res) => {
