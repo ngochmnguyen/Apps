@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Voya Admin</title>
+<style>
+  :root {
+    --bg: #faf7f2; --bg-raised: #fff; --ink: #221a12; --ink-faint: #7a6f60;
+    --border: #e4dccd; --radius-md: 10px; --radius-lg: 14px; --radius-sm: 6px;
+    --accent: #3f6b4a; --accent-tint: #e7efe8;
+    --danger: #a3402f; --danger-tint: #f6e6e2;
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: var(--font); background: var(--bg); color: var(--ink); }
+  .wrap { max-width: 1000px; margin: 0 auto; padding: 28px 20px 80px; }
+  h1 { font-size: 22px; margin: 0 0 4px; }
+  h2 { font-size: 16px; margin: 0 0 12px; }
+  .sub { color: var(--ink-faint); font-size: 13px; margin: 0 0 24px; }
+  .card { background: var(--bg-raised); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 20px; margin-bottom: 20px; }
+  .field { margin-bottom: 12px; display: flex; flex-direction: column; gap: 4px; }
+  .field label { font-size: 12px; color: var(--ink-faint); }
+  input, select, textarea { font: inherit; padding: 8px 10px; border: 1px solid var(--border); border-radius: var(--radius-sm); background: #fff; color: var(--ink); }
+  textarea { resize: vertical; }
+  .row { display: flex; gap: 14px; flex-wrap: wrap; }
+  .row > .field { flex: 1; min-width: 160px; }
+  .checkbox-field { flex-direction: row; align-items: center; gap: 6px; }
+  .checkbox-field label { font-size: 13px; color: var(--ink); }
+  button { font: inherit; cursor: pointer; border-radius: var(--radius-sm); border: 1px solid var(--border); background: #fff; padding: 8px 14px; }
+  .btn-primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .btn-danger { background: var(--danger-tint); border-color: var(--danger); color: var(--danger); }
+  .btn-sm { padding: 4px 10px; font-size: 12px; }
+  .error { font-size: 13px; color: var(--danger); background: var(--danger-tint); padding: 8px 10px; border-radius: var(--radius-sm); margin: 0 0 12px; }
+  .error[hidden] { display: none; }
+  .tabs { display: flex; gap: 4px; margin-bottom: 20px; border-bottom: 1px solid var(--border); }
+  .tab-btn { border: none; border-bottom: 2px solid transparent; border-radius: 0; background: none; padding: 10px 14px; color: var(--ink-faint); }
+  .tab-btn.active { color: var(--ink); border-bottom-color: var(--accent); font-weight: 600; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--ink-faint); font-weight: 600; font-size: 12px; }
+  .pill { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 999px; background: var(--accent-tint); color: var(--accent); }
+  .pill-archived { background: var(--danger-tint); color: var(--danger); }
+  .actions { display: flex; gap: 6px; flex-wrap: wrap; }
+  .hint { font-size: 11px; color: var(--ink-faint); margin: -2px 0 0; }
+  [hidden] { display: none !important; }
+  #login-screen { max-width: 360px; margin: 80px auto; }
+  .status-filter { margin-bottom: 14px; display: flex; gap: 8px; align-items: center; }
+  .empty { color: var(--ink-faint); font-size: 13px; padding: 12px 0; }
+</style>
+</head>
+<body>
+
+<div id="login-screen" class="wrap">
+  <div class="card">
+    <h1>Voya Admin</h1>
+    <p class="sub">Enter the admin password to continue.</p>
+    <p class="error" id="login-error" hidden></p>
+    <form id="login-form">
+      <div class="field">
+        <label for="login-password">Password</label>
+        <input type="password" id="login-password" required autofocus />
+      </div>
+      <button type="submit" class="btn-primary">Log in</button>
+    </form>
+  </div>
+</div>
+
+<div id="dashboard" class="wrap" hidden>
+  <h1>Voya Admin</h1>
+  <p class="sub">Review reports and submissions, and edit or archive any listing.
+    <button class="btn-sm" id="btn-logout" style="float:right">Log out</button>
+  </p>
+
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="reports">Reports</button>
+    <button class="tab-btn" data-tab="submissions">Submissions</button>
+    <button class="tab-btn" data-tab="opportunities">Opportunities</button>
+  </div>
+
+  <!-- ---------------- REPORTS ---------------- -->
+  <section id="tab-reports">
+    <div class="card">
+      <div class="status-filter">
+        <label for="reports-status">Status</label>
+        <select id="reports-status">
+          <option value="open">Open</option>
+          <option value="reviewed">Reviewed</option>
+          <option value="dismissed">Dismissed</option>
+        </select>
+      </div>
+      <table id="reports-table">
+        <thead><tr><th>Reported</th><th>Listing</th><th>Reason</th><th>Actions</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <p class="empty" id="reports-empty" hidden>Nothing here.</p>
+    </div>
+  </section>
+
+  <!-- ---------------- SUBMISSIONS ---------------- -->
+  <section id="tab-submissions" hidden>
+    <div class="card">
+      <div class="status-filter">
+        <label for="submissions-status">Status</label>
+        <select id="submissions-status">
+          <option value="open">Open</option>
+          <option value="reviewed">Reviewed</option>
+          <option value="dismissed">Dismissed</option>
+        </select>
+      </div>
+      <table id="submissions-table">
+        <thead><tr><th>Submitted</th><th>Title / org</th><th>Link</th><th>Notes</th><th>Actions</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <p class="empty" id="submissions-empty" hidden>Nothing here.</p>
+    </div>
+  </section>
+
+  <!-- ---------------- OPPORTUNITIES ---------------- -->
+  <section id="tab-opportunities" hidden>
+    <div class="card">
+      <h2>Find a listing</h2>
+      <div class="row">
+        <div class="field">
+          <label for="opp-search">Search title / org</label>
+          <input type="text" id="opp-search" placeholder="Start typing..." />
+        </div>
+        <div class="field">
+          <label for="opp-archived-filter">Show</label>
+          <select id="opp-archived-filter">
+            <option value="false">Active only</option>
+            <option value="true">Archived only</option>
+            <option value="">All</option>
+          </select>
+        </div>
+      </div>
+      <table id="opp-list-table">
+        <thead><tr><th>Title</th><th>Org</th><th>Dest</th><th>Deadline</th><th>Status</th><th></th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <p class="empty" id="opp-list-empty" hidden>No matches.</p>
+    </div>
+
+    <div class="card" id="opp-edit-card" hidden>
+      <h2 id="opp-edit-title">Edit listing</h2>
+      <p class="error" id="opp-edit-error" hidden></p>
+      <form id="opp-edit-form">
+        <div class="field">
+          <label for="f-title">Title</label>
+          <input type="text" id="f-title" required />
+        </div>
+        <div class="field">
+          <label for="f-org">Organization</label>
+          <input type="text" id="f-org" required />
+        </div>
+        <div class="field">
+          <label for="f-description">Description</label>
+          <textarea id="f-description" rows="6" required></textarea>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="f-type">Type</label>
+            <select id="f-type"></select>
+          </div>
+          <div class="field">
+            <label for="f-dest">Destination country code</label>
+            <input type="text" id="f-dest" maxlength="2" required />
+          </div>
+          <div class="field">
+            <label for="f-deadline">Deadline (blank = rolling)</label>
+            <input type="date" id="f-deadline" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="f-comptype">Compensation type</label>
+            <select id="f-comptype"></select>
+          </div>
+          <div class="field checkbox-field"><input type="checkbox" id="f-flight" /><label for="f-flight">Covers flight</label></div>
+          <div class="field checkbox-field"><input type="checkbox" id="f-lodging" /><label for="f-lodging">Covers lodging</label></div>
+          <div class="field checkbox-field"><input type="checkbox" id="f-meals" /><label for="f-meals">Covers meals</label></div>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="f-stipend-min">Stipend min</label>
+            <input type="number" id="f-stipend-min" step="0.01" />
+          </div>
+          <div class="field">
+            <label for="f-stipend-max">Stipend max</label>
+            <input type="number" id="f-stipend-max" step="0.01" />
+          </div>
+          <div class="field">
+            <label for="f-currency">Currency code</label>
+            <select id="f-currency"></select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="field checkbox-field"><input type="checkbox" id="f-requires-visa" /><label for="f-requires-visa">Requires work visa for payment</label></div>
+        </div>
+        <div class="field">
+          <label for="f-visa-note">Visa note</label>
+          <textarea id="f-visa-note" rows="2"></textarea>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="f-min-age">Min age</label>
+            <input type="number" id="f-min-age" required />
+          </div>
+          <div class="field">
+            <label for="f-max-age">Max age (blank = none)</label>
+            <input type="number" id="f-max-age" />
+          </div>
+          <div class="field checkbox-field"><input type="checkbox" id="f-grad-only" /><label for="f-grad-only">Grad students only</label></div>
+          <div class="field">
+            <label for="f-english">English level required</label>
+            <select id="f-english"></select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="f-education">Education levels (comma-separated, blank = all)</label>
+            <input type="text" id="f-education" />
+            <p class="hint">bachelors_completed, masters_in_progress, masters_completed, phd_in_progress, phd_completed, professional_degree, no_formal_degree</p>
+          </div>
+          <div class="field">
+            <label for="f-career">Career stages (comma-separated, blank = all)</label>
+            <input type="text" id="f-career" />
+            <p class="hint">grad_student, recent_grad, early_career, mid_career, senior_career, career_changer</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="f-employment">Employment statuses (comma-separated, blank = all)</label>
+            <input type="text" id="f-employment" />
+            <p class="hint">unemployed, employed_full_time, employed_part_time, self_employed, between_jobs, student</p>
+          </div>
+          <div class="field">
+            <label for="f-fields">Fields of work (comma-separated, blank = all)</label>
+            <input type="text" id="f-fields" />
+            <p class="hint">education, international_relations, government_public_policy, literature_writing, arts_culture, finance_economics, business_entrepreneurship, science_technology, health_medicine, law, journalism_media, environment_sustainability, social_impact_development</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="f-nat-type">Nationality rule</label>
+            <select id="f-nat-type">
+              <option value="">Open to all</option>
+              <option value="include">Restricted to (include list)</option>
+              <option value="exclude">Excludes (exclude list)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-nat-list">Country codes (comma-separated)</label>
+            <input type="text" id="f-nat-list" placeholder="US, CA, GB" />
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-soft-tags">Soft tags (comma-separated, freeform)</label>
+          <input type="text" id="f-soft-tags" />
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="f-duration">Duration</label>
+            <select id="f-duration"></select>
+          </div>
+          <div class="field checkbox-field"><input type="checkbox" id="f-recurring" /><label for="f-recurring">Recurring annually</label></div>
+          <div class="field">
+            <label for="f-effort-label">Application effort</label>
+            <select id="f-effort-label"></select>
+          </div>
+          <div class="field">
+            <label for="f-effort-min">Estimated minutes</label>
+            <input type="number" id="f-effort-min" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="f-verification">Verification status</label>
+            <select id="f-verification"></select>
+          </div>
+          <div class="field">
+            <label for="f-source-url">Source URL</label>
+            <input type="url" id="f-source-url" required />
+          </div>
+        </div>
+        <div class="actions" style="margin-top:16px">
+          <button type="submit" class="btn-primary">Save changes</button>
+          <button type="button" id="btn-opp-archive" class="btn-danger">Archive (soft-delete)</button>
+          <button type="button" id="btn-opp-restore" class="btn-danger" hidden>Restore</button>
+          <button type="button" id="btn-opp-cancel">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </section>
+</div>
+
+<script>
+(() => {
+  const ENUMS = {
+    type: ["conference", "contest_competition", "scholarship_fellowship", "internship", "work_study_exchange", "research_residency", "volunteer_travel_stipend", "work_stay"],
+    comptype: ["cash", "in_kind_only", "cash_and_in_kind"],
+    english: ["b1", "b2", "c1", "c2", "native_or_fluent"],
+    duration: ["single_day", "weekend", "one_to_two_weeks", "three_to_four_weeks", "one_to_three_months", "semester_or_longer"],
+    effortLabel: ["quick", "moderate", "high", "extensive"],
+    verification: ["official_source", "aggregator_verified", "user_submitted_unverified"],
+  };
+
+  function fillSelect(id, values) {
+    document.getElementById(id).innerHTML = values.map((v) => `<option value="${v}">${v}</option>`).join("");
+  }
+  fillSelect("f-type", ENUMS.type);
+  fillSelect("f-comptype", ENUMS.comptype);
+  fillSelect("f-english", ENUMS.english);
+  fillSelect("f-duration", ENUMS.duration);
+  fillSelect("f-effort-label", ENUMS.effortLabel);
+  fillSelect("f-verification", ENUMS.verification);
+
+  async function api(path, options = {}) {
+    const res = await fetch(`/api/admin${path}`, {
+      ...options,
+      headers: { "Content-Type": "application/json", ...(options.headers || {}) },
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(data.error || "Request failed.");
+    return data;
+  }
+
+  function showDashboard() {
+    document.getElementById("login-screen").hidden = true;
+    document.getElementById("dashboard").hidden = false;
+    loadCurrencies();
+    loadReports();
+    loadSubmissions();
+    loadOpportunities();
+  }
+
+  async function checkSession() {
+    try {
+      await api("/session");
+      showDashboard();
+    } catch {
+      document.getElementById("login-screen").hidden = false;
+      document.getElementById("dashboard").hidden = true;
+    }
+  }
+
+  document.getElementById("login-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const errorEl = document.getElementById("login-error");
+    errorEl.hidden = true;
+    try {
+      await api("/login", { method: "POST", body: JSON.stringify({ password: document.getElementById("login-password").value }) });
+      document.getElementById("login-password").value = "";
+      showDashboard();
+    } catch (err) {
+      errorEl.textContent = err.message;
+      errorEl.hidden = false;
+    }
+  });
+
+  document.getElementById("btn-logout").addEventListener("click", async () => {
+    await api("/logout", { method: "POST" });
+    document.getElementById("login-screen").hidden = false;
+    document.getElementById("dashboard").hidden = true;
+  });
+
+  // ---------- tabs ----------
+  document.querySelectorAll(".tab-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".tab-btn").forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+      ["reports", "submissions", "opportunities"].forEach((t) => {
+        document.getElementById(`tab-${t}`).hidden = t !== btn.dataset.tab;
+      });
+    });
+  });
+
+  function fmtDate(iso) {
+    if (!iso) return "--";
+    return new Date(iso).toLocaleDateString();
+  }
+
+  // ---------- reports ----------
+  async function loadReports() {
+    const status = document.getElementById("reports-status").value;
+    const { results } = await api(`/reports?status=${status}`);
+    const tbody = document.querySelector("#reports-table tbody");
+    tbody.innerHTML = results.map((r) => `
+      <tr>
+        <td>${fmtDate(r.created_at)}</td>
+        <td>${r.opportunity_title}<br><span class="hint">${r.opportunity_org}${r.opportunity_archived ? ' <span class="pill pill-archived">archived</span>' : ""}</span></td>
+        <td>${r.reason}</td>
+        <td class="actions">
+          ${r.status === "open" ? `
+            <button class="btn-sm" data-action="review" data-id="${r.id}">Mark reviewed</button>
+            <button class="btn-sm" data-action="dismiss" data-id="${r.id}">Dismiss</button>
+          ` : ""}
+          <button class="btn-sm" data-action="edit-opp" data-id="${r.opportunity_id}">Edit listing</button>
+        </td>
+      </tr>
+    `).join("");
+    document.getElementById("reports-empty").hidden = results.length > 0;
+
+    tbody.querySelectorAll("[data-action='review']").forEach((b) => b.addEventListener("click", () => resolveReport(b.dataset.id, "reviewed")));
+    tbody.querySelectorAll("[data-action='dismiss']").forEach((b) => b.addEventListener("click", () => resolveReport(b.dataset.id, "dismissed")));
+    tbody.querySelectorAll("[data-action='edit-opp']").forEach((b) => b.addEventListener("click", () => jumpToOpportunity(b.dataset.id)));
+  }
+  async function resolveReport(id, status) {
+    await api(`/reports/${id}`, { method: "PATCH", body: JSON.stringify({ status }) });
+    loadReports();
+  }
+  document.getElementById("reports-status").addEventListener("change", loadReports);
+
+  // ---------- submissions ----------
+  async function loadSubmissions() {
+    const status = document.getElementById("submissions-status").value;
+    const { results } = await api(`/submissions?status=${status}`);
+    const tbody = document.querySelector("#submissions-table tbody");
+    tbody.innerHTML = results.map((s) => `
+      <tr>
+        <td>${fmtDate(s.created_at)}</td>
+        <td>${s.title}<br><span class="hint">${s.org || ""}</span></td>
+        <td>${s.source_url ? `<a href="${s.source_url}" target="_blank" rel="noopener">link</a>` : "--"}</td>
+        <td>${s.notes || ""}${s.submitter_email ? `<br><span class="hint">from ${s.submitter_email}</span>` : ""}</td>
+        <td class="actions">
+          ${s.status === "open" ? `
+            <button class="btn-sm" data-action="review" data-id="${s.id}">Mark reviewed</button>
+            <button class="btn-sm" data-action="dismiss" data-id="${s.id}">Dismiss</button>
+          ` : ""}
+        </td>
+      </tr>
+    `).join("");
+    document.getElementById("submissions-empty").hidden = results.length > 0;
+
+    tbody.querySelectorAll("[data-action='review']").forEach((b) => b.addEventListener("click", () => resolveSubmission(b.dataset.id, "reviewed")));
+    tbody.querySelectorAll("[data-action='dismiss']").forEach((b) => b.addEventListener("click", () => resolveSubmission(b.dataset.id, "dismissed")));
+  }
+  async function resolveSubmission(id, status) {
+    await api(`/submissions/${id}`, { method: "PATCH", body: JSON.stringify({ status }) });
+    loadSubmissions();
+  }
+  document.getElementById("submissions-status").addEventListener("change", loadSubmissions);
+
+  // ---------- opportunities ----------
+  let currenciesLoaded = false;
+  async function loadCurrencies() {
+    if (currenciesLoaded) return;
+    const res = await fetch("/api/currencies");
+    const { currencies } = await res.json();
+    document.getElementById("f-currency").innerHTML =
+      `<option value="">None</option>` + currencies.map((c) => `<option value="${c.code}">${c.code} -- ${c.name}</option>`).join("");
+    currenciesLoaded = true;
+  }
+
+  let oppSearchTimer;
+  document.getElementById("opp-search").addEventListener("input", () => {
+    clearTimeout(oppSearchTimer);
+    oppSearchTimer = setTimeout(loadOpportunities, 250);
+  });
+  document.getElementById("opp-archived-filter").addEventListener("change", loadOpportunities);
+
+  async function loadOpportunities() {
+    const search = document.getElementById("opp-search").value.trim();
+    const archived = document.getElementById("opp-archived-filter").value;
+    const params = new URLSearchParams();
+    if (search) params.set("search", search);
+    if (archived !== "") params.set("archived", archived);
+    const { results } = await api(`/opportunities?${params.toString()}`);
+    const tbody = document.querySelector("#opp-list-table tbody");
+    tbody.innerHTML = results.map((o) => `
+      <tr>
+        <td>${o.title}</td>
+        <td>${o.org}</td>
+        <td>${o.dest}</td>
+        <td>${o.deadline ? fmtDate(o.deadline) : "rolling"}</td>
+        <td>${o.is_archived ? '<span class="pill pill-archived">archived</span>' : '<span class="pill">active</span>'}</td>
+        <td><button class="btn-sm" data-action="edit-opp" data-id="${o.id}">Edit</button></td>
+      </tr>
+    `).join("");
+    document.getElementById("opp-list-empty").hidden = results.length > 0;
+    tbody.querySelectorAll("[data-action='edit-opp']").forEach((b) => b.addEventListener("click", () => jumpToOpportunity(b.dataset.id)));
+  }
+
+  function jumpToOpportunity(id) {
+    document.querySelector('.tab-btn[data-tab="opportunities"]').click();
+    loadOpportunityIntoForm(id);
+  }
+
+  let editingId = null;
+  async function loadOpportunityIntoForm(id) {
+    const { opportunity: o } = await api(`/opportunities/${id}`);
+    editingId = id;
+    document.getElementById("opp-edit-error").hidden = true;
+    document.getElementById("opp-edit-title").textContent = `Edit: ${o.title}`;
+    document.getElementById("f-title").value = o.title;
+    document.getElementById("f-org").value = o.org;
+    document.getElementById("f-description").value = o.description;
+    document.getElementById("f-type").value = o.type;
+    document.getElementById("f-dest").value = o.dest;
+    document.getElementById("f-deadline").value = o.deadline || "";
+    document.getElementById("f-comptype").value = o.compType;
+    document.getElementById("f-flight").checked = o.flight;
+    document.getElementById("f-lodging").checked = o.lodging;
+    document.getElementById("f-meals").checked = o.meals;
+    document.getElementById("f-stipend-min").value = o.stipendMin ?? "";
+    document.getElementById("f-stipend-max").value = o.stipendMax ?? "";
+    document.getElementById("f-currency").value = o.currency || "";
+    document.getElementById("f-requires-visa").checked = o.requiresWorkVisa;
+    document.getElementById("f-visa-note").value = o.visaNote || "";
+    document.getElementById("f-min-age").value = o.minAge;
+    document.getElementById("f-max-age").value = o.maxAge ?? "";
+    document.getElementById("f-grad-only").checked = o.gradOnly;
+    document.getElementById("f-english").value = o.english;
+    document.getElementById("f-education").value = (o.education || []).join(", ");
+    document.getElementById("f-career").value = (o.career || []).join(", ");
+    document.getElementById("f-employment").value = (o.employment || []).join(", ");
+    document.getElementById("f-fields").value = (o.fieldsOfWork || []).join(", ");
+    document.getElementById("f-nat-type").value = o.nationality?.type || "";
+    document.getElementById("f-nat-list").value = (o.nationality?.list || []).join(", ");
+    document.getElementById("f-soft-tags").value = (o.softTags || []).join(", ");
+    document.getElementById("f-duration").value = o.duration;
+    document.getElementById("f-recurring").checked = o.isRecurring;
+    document.getElementById("f-effort-label").value = o.effortLabel;
+    document.getElementById("f-effort-min").value = o.effortMin ?? "";
+    document.getElementById("f-verification").value = o.verification;
+    document.getElementById("f-source-url").value = o.sourceUrl;
+    document.getElementById("btn-opp-archive").hidden = o.is_archived;
+    document.getElementById("btn-opp-restore").hidden = !o.is_archived;
+    document.getElementById("opp-edit-card").hidden = false;
+    document.getElementById("opp-edit-card").scrollIntoView({ behavior: "smooth" });
+  }
+
+  function csvToList(value) {
+    return value.split(",").map((s) => s.trim()).filter(Boolean);
+  }
+
+  document.getElementById("opp-edit-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const errorEl = document.getElementById("opp-edit-error");
+    errorEl.hidden = true;
+    const natType = document.getElementById("f-nat-type").value || null;
+    const body = {
+      title: document.getElementById("f-title").value.trim(),
+      org: document.getElementById("f-org").value.trim(),
+      description: document.getElementById("f-description").value.trim(),
+      type: document.getElementById("f-type").value,
+      dest: document.getElementById("f-dest").value.trim().toUpperCase(),
+      deadline: document.getElementById("f-deadline").value || null,
+      compType: document.getElementById("f-comptype").value,
+      flight: document.getElementById("f-flight").checked,
+      lodging: document.getElementById("f-lodging").checked,
+      meals: document.getElementById("f-meals").checked,
+      stipendMin: document.getElementById("f-stipend-min").value === "" ? null : Number(document.getElementById("f-stipend-min").value),
+      stipendMax: document.getElementById("f-stipend-max").value === "" ? null : Number(document.getElementById("f-stipend-max").value),
+      currency: document.getElementById("f-currency").value || null,
+      requiresWorkVisa: document.getElementById("f-requires-visa").checked,
+      visaNote: document.getElementById("f-visa-note").value.trim() || null,
+      minAge: Number(document.getElementById("f-min-age").value),
+      maxAge: document.getElementById("f-max-age").value === "" ? null : Number(document.getElementById("f-max-age").value),
+      gradOnly: document.getElementById("f-grad-only").checked,
+      education: csvToList(document.getElementById("f-education").value),
+      career: csvToList(document.getElementById("f-career").value),
+      employment: csvToList(document.getElementById("f-employment").value),
+      english: document.getElementById("f-english").value,
+      nationality: { type: natType, list: natType ? csvToList(document.getElementById("f-nat-list").value) : [] },
+      softTags: csvToList(document.getElementById("f-soft-tags").value),
+      fieldsOfWork: csvToList(document.getElementById("f-fields").value),
+      duration: document.getElementById("f-duration").value,
+      isRecurring: document.getElementById("f-recurring").checked,
+      effortLabel: document.getElementById("f-effort-label").value,
+      effortMin: document.getElementById("f-effort-min").value === "" ? null : Number(document.getElementById("f-effort-min").value),
+      verification: document.getElementById("f-verification").value,
+      sourceUrl: document.getElementById("f-source-url").value.trim(),
+    };
+    try {
+      await api(`/opportunities/${editingId}`, { method: "PATCH", body: JSON.stringify(body) });
+      await loadOpportunities();
+      await loadOpportunityIntoForm(editingId);
+    } catch (err) {
+      errorEl.textContent = err.message;
+      errorEl.hidden = false;
+    }
+  });
+
+  document.getElementById("btn-opp-archive").addEventListener("click", async () => {
+    if (!confirm("Archive this listing? It'll disappear from the public site but can be restored here.")) return;
+    await api(`/opportunities/${editingId}`, { method: "DELETE" });
+    await loadOpportunities();
+    await loadOpportunityIntoForm(editingId);
+  });
+  document.getElementById("btn-opp-restore").addEventListener("click", async () => {
+    await api(`/opportunities/${editingId}/restore`, { method: "POST" });
+    await loadOpportunities();
+    await loadOpportunityIntoForm(editingId);
+  });
+  document.getElementById("btn-opp-cancel").addEventListener("click", () => {
+    document.getElementById("opp-edit-card").hidden = true;
+    editingId = null;
+  });
+
+  checkSession();
+})();
+</script>
+</body>
+</html>
