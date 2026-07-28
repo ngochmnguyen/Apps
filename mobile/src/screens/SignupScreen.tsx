@@ -11,8 +11,8 @@ import type { AuthStackParamList } from "../navigation/types";
 type Props = NativeStackScreenProps<AuthStackParamList, "Signup">;
 
 export function SignupScreen({ navigation }: Props) {
-  const { signup } = useAuth();
-  const [email, setEmail] = useState("");
+  const { signup, capturedEmail } = useAuth();
+  const [email, setEmail] = useState(capturedEmail ?? "");
   const [password, setPassword] = useState("");
   const [nationality, setNationality] = useState("");
   const [residence, setResidence] = useState("");

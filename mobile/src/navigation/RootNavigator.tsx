@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { ActivityIndicator, View } from "react-native";
 import { useAuth } from "../context/AuthContext";
 import { BrowseScreen } from "../screens/BrowseScreen";
+import { EmailGateScreen } from "../screens/EmailGateScreen";
 import { LoginScreen } from "../screens/LoginScreen";
 import { MyTripsScreen } from "../screens/MyTripsScreen";
 import { OpportunityDetailScreen } from "../screens/OpportunityDetailScreen";
@@ -54,7 +55,7 @@ function AppTabs() {
 }
 
 export function RootNavigator() {
-  const { ready, user } = useAuth();
+  const { ready, user, capturedEmail } = useAuth();
 
   if (!ready) {
     return (
@@ -62,6 +63,13 @@ export function RootNavigator() {
         <ActivityIndicator size="large" color="#1a4d2e" />
       </View>
     );
+  }
+
+  // Email-first gate, shown once on a fresh install before Login/Signup even
+  // becomes reachable -- being logged in already implies an email was given.
+  // No NavigationContainer needed here since this screen doesn't navigate.
+  if (!user && !capturedEmail) {
+    return <EmailGateScreen />;
   }
 
   return <NavigationContainer>{user ? <AppTabs /> : <AuthNavigator />}</NavigationContainer>;

@@ -4,11 +4,14 @@ import { auth, setAuthToken, type SignupPayload } from "../api";
 import type { Profile, User } from "../types";
 
 const TOKEN_KEY = "voya_token";
+const CAPTURED_EMAIL_KEY = "voya_captured_email";
 
 interface AuthContextValue {
   ready: boolean;
   user: User | null;
   profile: Profile | null;
+  capturedEmail: string | null;
+  captureEmail: (email: string) => Promise<void>;
   login: (email: string, password: string) => Promise<void>;
   signup: (payload: SignupPayload) => Promise<void>;
   logout: () => Promise<void>;
@@ -21,10 +24,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [ready, setReady] = useState(false);
   const [user, setUser] = useState<User | null>(null);
   const [profile, setProfile] = useState<Profile | null>(null);
+  const [capturedEmail, setCapturedEmail] = useState<string | null>(null);
 
   useEffect(() => {
     (async () => {
-      const stored = await SecureStore.getItemAsync(TOKEN_KEY);
+      const [stored, storedEmail] = await Promise.all([
+        SecureStore.getItemAsync(TOKEN_KEY),
+        SecureStore.getItemAsync(CAPTURED_EMAIL_KEY),
+      ]);
+      if (storedEmail) setCapturedEmail(storedEmail);
       if (stored) {
         setAuthToken(stored);
         try {
@@ -40,6 +48,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setReady(true);
     })();
   }, []);
+
+  // The pre-signup email gate: captures just an email (no password/profile
+  // yet -- see server/src/routes/auth.js POST /capture-email) so the app is
+  // usable past the gate before a full account exists. A real signup later
+  // completes the same server-side row.
+  async function captureEmail(email: string) {
+    await auth.captureEmail(email);
+    await SecureStore.setItemAsync(CAPTURED_EMAIL_KEY, email);
+    setCapturedEmail(email);
+  }
 
   async function persistSession(token: string, sessionUser: User, sessionProfile: Profile) {
     setAuthToken(token);
@@ -71,7 +89,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }
 
   return (
-    <AuthContext.Provider value={{ ready, user, profile, login, signup, logout, updateProfile }}>
+    <AuthContext.Provider value={{ ready, user, profile, capturedEmail, captureEmail, login, signup, logout, updateProfile }}>
       {children}
     </AuthContext.Provider>
   );

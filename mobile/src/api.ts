@@ -71,6 +71,8 @@ export const meta = {
 };
 
 export const auth = {
+  captureEmail: (email: string) =>
+    request<{ ok: true }>("/api/auth/capture-email", { method: "POST", body: JSON.stringify({ email }) }),
   signup: (payload: SignupPayload) =>
     request<AuthResponse>("/api/auth/signup", { method: "POST", body: JSON.stringify(payload) }),
   login: (email: string, password: string) =>
