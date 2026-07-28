@@ -5,7 +5,7 @@
 import { Resend } from "resend";
 
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
-const FROM = "Voya <onboarding@resend.dev>";
+const FROM = "Voya <voya@minhngocn.com>";
 
 // Sent right when someone passes the pre-browsing email gate (POST
 // /capture-email), before they've created a real account -- distinct from
