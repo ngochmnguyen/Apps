@@ -894,10 +894,11 @@
         <div class="dot" data-step="2"></div>
         <div class="dot" data-step="3"></div>
         <div class="dot" data-step="4"></div>
+        <div class="dot" data-step="5"></div>
       </div>
 
       <div class="step" id="step-1">
-        <div class="step-eyebrow">Step 1 of 4</div>
+        <div class="step-eyebrow">Step 1 of 5</div>
         <h2>First, the basics</h2>
         <div class="field">
           <label for="f-nationality">Nationality</label>
@@ -914,7 +915,7 @@
       </div>
 
       <div class="step" id="step-2" hidden>
-        <div class="step-eyebrow">Step 2 of 4</div>
+        <div class="step-eyebrow">Step 2 of 5</div>
         <h2>Where you're at</h2>
         <div class="field">
           <label for="f-education">Education level</label>
@@ -931,7 +932,7 @@
       </div>
 
       <div class="step" id="step-3" hidden>
-        <div class="step-eyebrow">Step 3 of 4</div>
+        <div class="step-eyebrow">Step 3 of 5</div>
         <h2>Anything else we should know</h2>
         <div class="field">
           <label for="f-english">English proficiency</label>
@@ -941,7 +942,7 @@
       </div>
 
       <div class="step" id="step-4" hidden>
-        <div class="step-eyebrow">Step 4 of 4</div>
+        <div class="step-eyebrow">Step 4 of 5</div>
         <h2>What are you hoping to find</h2>
         <div class="field">
           <label>Opportunity type</label>
@@ -954,6 +955,15 @@
         <div class="field">
           <label for="f-compensation">Compensation</label>
           <select id="f-compensation"></select>
+        </div>
+      </div>
+
+      <div class="step" id="step-5" hidden>
+        <div class="step-eyebrow">Step 5 of 5</div>
+        <h2>What fields interest you</h2>
+        <div class="field">
+          <label>Field of work (pick as many as apply)</label>
+          <div class="chip-row" id="f-fields"></div>
         </div>
       </div>
 
@@ -1310,10 +1320,11 @@
   fill(document.getElementById("f-compensation"), compensationOptions, true);
   fill(document.getElementById("f-compensation-results"), compensationOptions, true);
 
-  // Type and region chip rows are rendered twice (wizard step 4 + results sidebar).
-  // Both are driven from one shared state object rather than mirroring each other's
-  // click events, which would otherwise ping-pong (a click on A re-clicks B, which
-  // re-clicks A back to its original state).
+  // Type, field-of-work, and region chip rows are each rendered twice (once in the
+  // wizard, once in the results sidebar). All three are driven from one shared
+  // state object rather than mirroring each other's click events, which would
+  // otherwise ping-pong (a click on A re-clicks B, which re-clicks A back to its
+  // original state).
   const filterState = { types: new Set(), fields: new Set(), region: "all", compensation: "all" };
 
   function renderTypeChips(container) {
@@ -1344,6 +1355,7 @@
       container.appendChild(chip);
     });
   }
+  function renderAllFieldChips() { renderFieldChips(fieldBoxWizard); renderFieldChips(fieldBoxResults); }
 
   function onFieldChipClick(e) {
     const chip = e.target.closest(".chip");
@@ -1355,7 +1367,7 @@
     } else {
       filterState.fields.add(chip.dataset.value);
     }
-    renderFieldChips(fieldBoxResults);
+    renderAllFieldChips();
     render();
   }
 
@@ -1395,12 +1407,13 @@
   const typeBoxResults = document.getElementById("f-types-results");
   const regionBoxWizard = document.getElementById("f-region");
   const regionBoxResults = document.getElementById("f-region-results");
+  const fieldBoxWizard = document.getElementById("f-fields");
   const fieldBoxResults = document.getElementById("f-fields-results");
   [typeBoxWizard, typeBoxResults].forEach((el) => el.addEventListener("click", onTypeChipClick));
   [regionBoxWizard, regionBoxResults].forEach((el) => el.addEventListener("click", onRegionChipClick));
-  fieldBoxResults.addEventListener("click", onFieldChipClick);
+  [fieldBoxWizard, fieldBoxResults].forEach((el) => el.addEventListener("click", onFieldChipClick));
   renderAllTypeChips();
-  renderFieldChips(fieldBoxResults);
+  renderAllFieldChips();
   renderAllRegionChips();
 
   function onCompensationChange(e) {
@@ -1859,7 +1872,7 @@
   }
 
   let currentStep = 1;
-  const totalSteps = 4;
+  const totalSteps = 5;
   function showStep(n) {
     currentStep = n;
     for (let i = 1; i <= totalSteps; i++) {
@@ -1892,7 +1905,7 @@
     filterState.region = "all";
     filterState.compensation = "all";
     renderAllTypeChips();
-    renderFieldChips(fieldBoxResults);
+    renderAllFieldChips();
     renderAllRegionChips();
     document.getElementById("f-compensation").value = "all";
     document.getElementById("f-compensation-results").value = "all";
