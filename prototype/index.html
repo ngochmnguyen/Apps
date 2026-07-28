@@ -792,6 +792,25 @@
   </div>
 </section>
 
+<!-- ================= EMAIL GATE ================= -->
+<!-- No close button on purpose -- this is a hard gate shown before any
+     browsing, dismissed only by a successful email submission (or by already
+     being signed in / having passed it on a prior visit, see maybeShowEmailGate). -->
+<div class="modal-backdrop" id="email-gate-modal" hidden>
+  <div class="modal-card">
+    <h2>Welcome to Voya</h2>
+    <p class="auth-modal-sub">Pop in your email to start browsing paid travel opportunities. No password needed yet -- you can create a full account later.</p>
+    <form id="email-gate-form">
+      <div class="field">
+        <label for="email-gate-input">Email</label>
+        <input type="email" id="email-gate-input" required autocomplete="email" autofocus />
+      </div>
+      <p class="auth-error" id="email-gate-error" hidden></p>
+      <button type="submit" class="btn btn-primary auth-submit" id="email-gate-submit">Continue</button>
+    </form>
+  </div>
+</div>
+
 <!-- ================= AUTH MODAL ================= -->
 <div class="modal-backdrop" id="auth-modal" hidden>
   <div class="modal-card">
@@ -2022,6 +2041,46 @@
     if (currentProfile) applyProfileToForm(currentProfile);
   }
 
+  // ---------- email gate ----------
+  // Shown once, before browsing, unless the visitor already passed it (or is
+  // already signed in, which implies they gave an email already). The email
+  // itself is stashed too so the later "Save my profile" signup form can
+  // prefill it instead of asking twice.
+  const EMAIL_GATE_KEY = "voya_email_captured";
+  const EMAIL_GATE_ADDR_KEY = "voya_captured_email";
+
+  function maybeShowEmailGate() {
+    if (currentUser || localStorage.getItem(EMAIL_GATE_KEY)) return;
+    document.getElementById("email-gate-modal").hidden = false;
+    document.getElementById("email-gate-input").focus();
+  }
+
+  document.getElementById("email-gate-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const email = document.getElementById("email-gate-input").value.trim();
+    const errorEl = document.getElementById("email-gate-error");
+    const btn = document.getElementById("email-gate-submit");
+    errorEl.hidden = true;
+    btn.disabled = true;
+    try {
+      const res = await fetch("/api/auth/capture-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Something went wrong. Please try again.");
+      localStorage.setItem(EMAIL_GATE_KEY, "1");
+      localStorage.setItem(EMAIL_GATE_ADDR_KEY, email);
+      document.getElementById("email-gate-modal").hidden = true;
+    } catch (err) {
+      errorEl.textContent = err.message;
+      errorEl.hidden = false;
+    } finally {
+      btn.disabled = false;
+    }
+  });
+
   let authMode = "login";
   function openAuthModal(mode) {
     authMode = mode;
@@ -2034,6 +2093,10 @@
     document.getElementById("auth-switch-to-login").hidden = mode !== "signup";
     document.getElementById("auth-error").hidden = true;
     document.getElementById("auth-form").reset();
+    if (mode === "signup") {
+      const captured = localStorage.getItem(EMAIL_GATE_ADDR_KEY);
+      if (captured) document.getElementById("auth-email").value = captured;
+    }
     document.getElementById("auth-modal").hidden = false;
     document.getElementById("auth-email").focus();
   }
@@ -2325,6 +2388,7 @@
     showStep(1);
     await loadCountries();
     await checkSession();
+    maybeShowEmailGate();
     await renderHotPicks();
     await render();
   }
