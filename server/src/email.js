@@ -17,7 +17,7 @@ export async function sendEmailCaptureWelcome(to) {
   }
   const appUrl = process.env.APP_URL;
   try {
-    await resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from: FROM,
       to,
       subject: "Welcome to Voya",
@@ -27,6 +27,11 @@ export async function sendEmailCaptureWelcome(to) {
         <p>Good luck out there.<br>-Ngoc</p>
       `,
     });
+    // The SDK resolves normally (no throw) even on an API-level rejection --
+    // it reports that via `error` on the resolved value instead, so a bare
+    // try/catch here would silently swallow it with no log line at all.
+    if (error) console.error("Capture-welcome email rejected by Resend:", error);
+    else console.log(`[email] capture-welcome sent to ${to} (id ${data.id})`);
   } catch (err) {
     console.error("Capture-welcome email failed:", err);
   }
@@ -38,7 +43,7 @@ export async function sendWelcomeEmail(to) {
     return;
   }
   try {
-    await resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from: FROM,
       to,
       subject: 'Welcome to Voya',
@@ -48,6 +53,8 @@ export async function sendWelcomeEmail(to) {
         <p>Good luck out there.</p>
       `,
     });
+    if (error) console.error("Welcome email rejected by Resend:", error);
+    else console.log(`[email] welcome email sent to ${to} (id ${data.id})`);
   } catch (err) {
     console.error("Welcome email failed:", err);
   }
@@ -70,7 +77,7 @@ export async function sendNewsletterEmail(to, unsubscribeUserId, opportunities, 
     .map((r) => `<li><a href="${r.url}">${r.title}</a></li>`)
     .join("");
   try {
-    await resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from: FROM,
       to,
       subject: "This month on Voya: new opportunities",
@@ -84,6 +91,8 @@ export async function sendNewsletterEmail(to, unsubscribeUserId, opportunities, 
         </p>
       `,
     });
+    if (error) console.error(`Newsletter email to ${to} rejected by Resend:`, error);
+    else console.log(`[email] newsletter sent to ${to} (id ${data.id})`);
   } catch (err) {
     console.error(`Newsletter email to ${to} failed:`, err);
   }
@@ -109,7 +118,7 @@ export async function sendAdminDigest(to, { reports, submissions, archived }) {
     .map((o) => `<li>${o.title} -- deadline was ${new Date(o.archived_deadline).toISOString().slice(0, 10)}</li>`)
     .join("");
   try {
-    await resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from: FROM,
       to,
       subject: `Voya admin digest: ${reports.length} report${reports.length === 1 ? "" : "s"}, ${submissions.length} submission${submissions.length === 1 ? "" : "s"}`,
@@ -121,6 +130,8 @@ export async function sendAdminDigest(to, { reports, submissions, archived }) {
         <p style="font-size:12px;color:#888;">Act on these directly in Neon's SQL editor -- update opportunity_reports.status / opportunity_submissions.status to 'reviewed' or 'dismissed' once handled.</p>
       `,
     });
+    if (error) console.error("Admin digest email rejected by Resend:", error);
+    else console.log(`[email] admin digest sent to ${to} (id ${data.id})`);
   } catch (err) {
     console.error("Admin digest email failed:", err);
   }
@@ -132,7 +143,7 @@ export async function sendDeadlineReminder(to, opportunityTitle, daysLeft) {
     return;
   }
   try {
-    await resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from: FROM,
       to,
       subject: `${daysLeft} day${daysLeft === 1 ? "" : "s"} left to apply: ${opportunityTitle}`,
@@ -141,6 +152,8 @@ export async function sendDeadlineReminder(to, opportunityTitle, daysLeft) {
         <p>Log in to Voya and check your My Trips page for the details and your checklist.</p>
       `,
     });
+    if (error) console.error("Deadline reminder email rejected by Resend:", error);
+    else console.log(`[email] deadline reminder sent to ${to} (id ${data.id})`);
   } catch (err) {
     console.error("Deadline reminder email failed:", err);
   }
