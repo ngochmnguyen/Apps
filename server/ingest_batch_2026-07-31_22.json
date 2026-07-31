@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Council of the European Union (Consilium) Traineeship",
+    "description": "A five-month paid traineeship at the General Secretariat of the Council of the European Union in Brussels, giving EU graduates hands-on exposure to the EU's legislative and policy-making process. Around 110 places are available each year. Trainees receive a monthly grant of EUR 1,538.16, a canteen card for the Council's restaurant, and discounted access to the on-site fitness centre; those recruited from more than 50km outside Brussels also receive a contribution toward travel expenses at the start and end of the traineeship (conditional on completing at least half the traineeship), though trainees arrange and pay for their own accommodation. A dedicated Positive Action Programme adds up to a 50% top-up to the grant for EU nationals with a recognised disability. Applicants must be EU citizens holding at least a Bachelor's degree, with C1-level English or French plus working knowledge of one other EU official language. This entry covers the session running 1 February to 30 June 2027: applications are open now, with a deadline of 15 September 2026, 12:00 Brussels time.",
+    "org": "Council of the European Union (General Secretariat)",
+    "type": "internship",
+    "dest": "BE",
+    "compType": "cash_and_in_kind",
+    "flight": true,
+    "lodging": false,
+    "meals": false,
+    "stipendMin": 1538.16,
+    "stipendMax": 1538.16,
+    "currency": "EUR",
+    "requiresWorkVisa": false,
+    "visaNote": "Restricted to EU citizens, who do not need a separate work visa to intern in Belgium.",
+    "minAge": 18,
+    "maxAge": null,
+    "gradOnly": false,
+    "education": ["bachelors_completed"],
+    "career": ["recent_grad"],
+    "employment": [],
+    "english": "c1",
+    "nationality": {
+      "type": "include",
+      "list": ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IE", "IT", "LV", "LT", "LU", "MT", "NL", "PL", "PT", "RO", "SK", "SI", "ES", "SE"]
+    },
+    "softTags": [],
+    "fieldsOfWork": ["government_public_policy", "international_relations"],
+    "deadline": "2026-09-15",
+    "duration": "semester_or_longer",
+    "isRecurring": true,
+    "effortLabel": "moderate",
+    "effortMin": 60,
+    "verification": "official_source",
+    "sourceUrl": "https://www.consilium.europa.eu/en/general-secretariat/careers/traineeships/"
+  }
+]
