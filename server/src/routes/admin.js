@@ -196,3 +196,30 @@ adminRouter.post("/opportunities/:id/restore", async (req, res) => {
   if (!rows.length) return res.status(404).json({ error: "Opportunity not found." });
   res.json({ ok: true });
 });
+
+// Counts only, computed on read -- no separate rollup table to keep in sync.
+// DISTINCT session_id under pageview approximates unique visitors without
+// needing real user accounts (most visitors haven't signed up yet).
+adminRouter.get("/analytics/summary", async (req, res) => {
+  const [totals, daily] = await Promise.all([
+    pool.query(`
+      SELECT
+        event_type,
+        COUNT(*) FILTER (WHERE created_at >= now() - INTERVAL '7 days') AS last_7d,
+        COUNT(*) FILTER (WHERE created_at >= now() - INTERVAL '30 days') AS last_30d,
+        COUNT(DISTINCT session_id) FILTER (WHERE created_at >= now() - INTERVAL '7 days') AS unique_sessions_7d,
+        COUNT(DISTINCT session_id) FILTER (WHERE created_at >= now() - INTERVAL '30 days') AS unique_sessions_30d
+      FROM analytics_events
+      GROUP BY event_type
+      ORDER BY event_type
+    `),
+    pool.query(`
+      SELECT date_trunc('day', created_at)::date AS day, event_type, COUNT(*) AS count
+      FROM analytics_events
+      WHERE created_at >= now() - INTERVAL '14 days'
+      GROUP BY 1, 2
+      ORDER BY 1 DESC, 2
+    `),
+  ]);
+  res.json({ totals: totals.rows, daily: daily.rows });
+});

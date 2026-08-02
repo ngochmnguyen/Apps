@@ -391,6 +391,19 @@ CREATE TABLE newsletter_sends (
   recipient_count    INTEGER NOT NULL
 );
 
+-- First-party, self-hosted product analytics -- no third-party script, no
+-- cookie banner needed since session_id is a random client-generated id,
+-- not tied to a person unless they're signed in. See routes/analytics.js.
+CREATE TABLE analytics_events (
+  id            UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  event_type    TEXT NOT NULL,
+  session_id    TEXT NOT NULL,
+  user_id       UUID REFERENCES users(id) ON DELETE SET NULL,
+  path          TEXT,
+  meta          JSONB,
+  created_at    TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
 -- =========================================================
 -- INDEXES
 -- =========================================================
@@ -410,6 +423,7 @@ CREATE INDEX idx_todo_items_opportunity ON todo_items (opportunity_id);
 CREATE INDEX idx_opportunity_fields_of_work_field ON opportunity_fields_of_work (field);
 CREATE INDEX idx_opportunities_archived ON opportunities (is_archived);
 CREATE INDEX idx_opportunity_submissions_status ON opportunity_submissions (status);
+CREATE INDEX idx_analytics_events_type_created ON analytics_events (event_type, created_at);
 
 -- =========================================================
 -- DEADLINE URGENCY (derived, not stored — recompute on read so it never goes stale)

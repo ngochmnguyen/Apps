@@ -1144,6 +1144,31 @@
 
 <script>
 (function () {
+  // First-party, self-hosted product analytics -- no third-party script, no
+  // cookie banner needed. ANALYTICS_SESSION_ID is a random id kept in
+  // localStorage purely to distinguish browsers for "unique" counts in the
+  // admin dashboard; it's never linked to an email/account except via
+  // req.userId server-side, and only when the visitor is actually signed in.
+  const ANALYTICS_SESSION_KEY = "voya_analytics_session";
+  let ANALYTICS_SESSION_ID = localStorage.getItem(ANALYTICS_SESSION_KEY);
+  if (!ANALYTICS_SESSION_ID) {
+    ANALYTICS_SESSION_ID = (crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`);
+    localStorage.setItem(ANALYTICS_SESSION_KEY, ANALYTICS_SESSION_ID);
+  }
+  // Fire-and-forget: a dropped or slow analytics call should never block or
+  // affect anything the visitor is doing. sendBeacon survives page unload;
+  // fetch(keepalive) is the fallback for browsers without it.
+  function track(event, meta) {
+    const payload = JSON.stringify({ event, sessionId: ANALYTICS_SESSION_ID, path: location.pathname, meta });
+    try {
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon("/api/analytics/event", new Blob([payload], { type: "application/json" }));
+        return;
+      }
+    } catch {}
+    fetch("/api/analytics/event", { method: "POST", headers: { "Content-Type": "application/json" }, body: payload, keepalive: true }).catch(() => {});
+  }
+
   // Populated from GET /api/countries on load — see loadCountries() below.
   // Real data now lives in Postgres (db/schema.sql + db/seed.sql); nothing
   // here is hardcoded mock data anymore.
@@ -1562,6 +1587,7 @@
             btn.textContent = nowSaved ? "☆" : "★";
             btn.setAttribute("aria-label", nowSaved ? "Save this opportunity" : "Remove from saved");
             btn.setAttribute("aria-pressed", String(!nowSaved));
+            if (!nowSaved) track("opportunity_saved", { opportunityId: btn.dataset.id });
             if (rerender && nowSaved) rerender(); // e.g. My Trips: unsaving should drop the card entirely
           }
         } finally {
@@ -1650,7 +1676,7 @@
     container.querySelectorAll(".card-head").forEach((head) => {
       head.addEventListener("click", () => {
         const id = head.parentElement.dataset.id;
-        if (openIds.has(id)) openIds.delete(id); else openIds.add(id);
+        if (openIds.has(id)) { openIds.delete(id); } else { openIds.add(id); track("opportunity_detail_viewed", { opportunityId: id }); }
         rerender();
       });
       head.addEventListener("keydown", (e) => {
@@ -1894,8 +1920,13 @@
   });
   document.getElementById("btn-back").addEventListener("click", () => { if (currentStep > 1) showStep(currentStep - 1); });
   document.getElementById("btn-next").addEventListener("click", () => {
-    if (currentStep < totalSteps) { showStep(currentStep + 1); }
-    else { showView("results"); render(); maybeNudgeAccountCreation(); }
+    if (currentStep < totalSteps) {
+      track("wizard_step_completed", { step: currentStep });
+      showStep(currentStep + 1);
+    } else {
+      track("filters_submitted", { step: currentStep });
+      showView("results"); render(); maybeNudgeAccountCreation();
+    }
   });
   document.getElementById("btn-edit-answers").addEventListener("click", () => { showView("wizard"); showStep(1); });
 
@@ -2088,6 +2119,7 @@
       localStorage.setItem(EMAIL_GATE_KEY, "1");
       localStorage.setItem(EMAIL_GATE_ADDR_KEY, email);
       document.getElementById("email-gate-modal").hidden = true;
+      track("email_captured");
     } catch (err) {
       errorEl.textContent = err.message;
       errorEl.hidden = false;
@@ -2144,6 +2176,7 @@
   function maybeNudgeAccountCreation() {
     if (currentUser || localStorage.getItem(ACCOUNT_NUDGE_KEY)) return;
     localStorage.setItem(ACCOUNT_NUDGE_KEY, "1");
+    track("account_nudge_shown");
     openAuthModal("signup");
   }
   document.getElementById("btn-switch-signup").addEventListener("click", () => openAuthModal("signup"));
@@ -2312,6 +2345,7 @@
     currentProfile = data.profile;
     setAccountUI(currentUser);
     applyProfileToForm(currentProfile);
+    track(authMode === "signup" ? "signup_completed" : "login_completed");
     closeAuthModal();
     render();
   });
@@ -2423,6 +2457,7 @@
   document.getElementById("btn-mytrips-back").addEventListener("click", () => showView("results"));
 
   async function init() {
+    track("pageview");
     showStep(1);
     await loadCountries();
     await checkSession();
