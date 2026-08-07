@@ -1,0 +1,38 @@
+[
+  {
+    "title": "ECOWAS Young Graduates' Professional Immersion Programme (2027 Cohort)",
+    "description": "A one-year, fully paid professional placement for young graduates from ECOWAS (Economic Community of West African States) member states, giving hands-on exposure to regional integration work across ECOWAS institutions and agencies (roles span areas like project management, accounting, and policy support). Selected participants receive a monthly stipend, health insurance, mentorship, and -- where applicable -- round-trip airfare to their placement. The exact monthly stipend amount is not published in ECOWAS's own materials as of this writing, though Nigerian press coverage has reported a figure of roughly USD 800/month; treat that as unconfirmed until stated officially. Applicants can select up to two preferred positions from those listed on the application portal, with placements located at various ECOWAS institutions across West Africa rather than a single fixed site -- this listing uses Nigeria (home to the ECOWAS Commission headquarters in Abuja) as a representative destination. Applicants must be citizens of an ECOWAS member state, aged 18-32, and hold at least a Bachelor's degree. Applications opened 31 July 2026 and close 31 August 2026, 23:59 Nigerian time (GMT+1); ECOWAS runs a new cohort of this programme annually.",
+    "org": "Economic Community of West African States (ECOWAS)",
+    "type": "internship",
+    "dest": "NG",
+    "compType": "cash_and_in_kind",
+    "flight": true,
+    "lodging": false,
+    "meals": false,
+    "stipendMin": null,
+    "stipendMax": null,
+    "currency": null,
+    "requiresWorkVisa": false,
+    "visaNote": "This is a paid placement within a regional intergovernmental organisation, not standard private employment; ECOWAS citizens generally have free movement rights across member states, so a separate work visa is not expected to apply.",
+    "minAge": 18,
+    "maxAge": 32,
+    "gradOnly": false,
+    "education": ["bachelors_completed"],
+    "career": ["recent_grad", "early_career"],
+    "employment": [],
+    "english": "b2",
+    "nationality": {
+      "type": "include",
+      "list": ["NG", "GH", "SN", "CI", "BJ", "TG", "SL", "LR", "GN", "GW", "GM", "BF", "ML", "NE", "CV"]
+    },
+    "softTags": [],
+    "fieldsOfWork": ["government_public_policy", "international_relations"],
+    "deadline": "2026-08-31",
+    "duration": "semester_or_longer",
+    "isRecurring": true,
+    "effortLabel": "moderate",
+    "effortMin": 60,
+    "verification": "official_source",
+    "sourceUrl": "https://www.ecowas.int/nwp_events/call-for-applications-for-ecowas-immersion-program-2027/"
+  }
+]
