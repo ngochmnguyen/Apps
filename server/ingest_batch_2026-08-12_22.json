@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Chevening Oxford Centre for Islamic Studies (OCIS) Fellowship (2027-28)",
+    "description": "A five-month, UK-government-funded research fellowship at the Oxford Centre for Islamic Studies (OCIS) in Oxford, for mid-career professionals and academics dedicated to promoting a more informed understanding of the culture and civilisation of Islam and contemporary Muslim societies. A collaboration between the UK Foreign, Commonwealth and Development Office (which runs the wider Chevening programme) and OCIS. Fellows receive return economy airfare from their home country to the UK, an allowance package for research-related activities, and living expenses for the fellowship's duration; a related track, the OCIS Abdullah Gul Fellowship, is restricted to applicants from Turkiye and applied for separately. Eligible countries for the main OCIS Fellowship: Afghanistan, Algeria, Azerbaijan, Bangladesh, Egypt, Indonesia, Iraq, Jordan, Kazakhstan, Kyrgyzstan, Lebanon, Libya, Malaysia, Morocco, Nigeria, Pakistan, Palestine, the Philippines, Senegal, Sudan, Syria, Tajikistan, Tunisia, Turkmenistan, and Uzbekistan. This is the call for the 2027-28 fellowship cycle (the 2026-27 cycle's application window closed on 7 October 2025); applications for 2027-28 are open now, with a deadline of 6 October 2026.",
+    "org": "UK Foreign, Commonwealth & Development Office / Oxford Centre for Islamic Studies (OCIS)",
+    "type": "research_residency",
+    "dest": "GB",
+    "compType": "cash_and_in_kind",
+    "flight": true,
+    "lodging": false,
+    "meals": false,
+    "stipendMin": null,
+    "stipendMax": null,
+    "currency": "GBP",
+    "requiresWorkVisa": false,
+    "visaNote": "This is a short-term research fellowship, not employment; UK visa/entry arrangements are typically supported as part of the Chevening award.",
+    "minAge": 21,
+    "maxAge": null,
+    "gradOnly": false,
+    "education": [],
+    "career": ["mid_career"],
+    "employment": [],
+    "english": "c1",
+    "nationality": {
+      "type": "include",
+      "list": ["AF", "DZ", "AZ", "BD", "EG", "ID", "IQ", "JO", "KZ", "KG", "LB", "LY", "MY", "MA", "NG", "PK", "PS", "PH", "SN", "SD", "SY", "TJ", "TN", "TM", "UZ"]
+    },
+    "softTags": [],
+    "fieldsOfWork": ["education", "international_relations"],
+    "deadline": "2026-10-06",
+    "duration": "semester_or_longer",
+    "isRecurring": true,
+    "effortLabel": "high",
+    "effortMin": 180,
+    "verification": "official_source",
+    "sourceUrl": "https://www.chevening.org/scholarships/application-timeline/"
+  }
+]
