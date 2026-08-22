@@ -1,0 +1,38 @@
+[
+  {
+    "title": "European Central Bank (ECB) Traineeship Programme",
+    "description": "A paid traineeship at the European Central Bank's headquarters in Frankfurt am Main, Germany, open to nationals of EU member states or an EU acceding country who hold at least a bachelor's degree. Traineeships run 3-6 months initially and can be extended once, up to a total of 12 months, with placements across the ECB's economics, banking supervision, IT, legal, communications, and administrative functions depending on the specific vacancy. Trainees receive a monthly grant (published at EUR 1,170 as a base rate, with some vacancies listing up to EUR 2,120 depending on the role and the trainee's qualifications) plus an accommodation allowance. Vacancies are posted on a rolling basis throughout the year rather than against a single annual deadline -- candidates should monitor the ECB's official careers portal for open traineeship vacancy notices.",
+    "org": "European Central Bank (ECB)",
+    "type": "internship",
+    "dest": "DE",
+    "compType": "cash_and_in_kind",
+    "flight": false,
+    "lodging": false,
+    "meals": false,
+    "stipendMin": 1170,
+    "stipendMax": 2120,
+    "currency": "EUR",
+    "requiresWorkVisa": false,
+    "visaNote": "EU nationals do not need a separate work visa for this German-based traineeship; nationals of acceding countries should confirm their own entry requirements.",
+    "minAge": 18,
+    "maxAge": null,
+    "gradOnly": false,
+    "education": ["bachelors_completed"],
+    "career": [],
+    "employment": [],
+    "english": "c1",
+    "nationality": {
+      "type": "include",
+      "list": ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IE", "IT", "LV", "LT", "LU", "MT", "NL", "PL", "PT", "RO", "SK", "SI", "ES", "SE"]
+    },
+    "softTags": [],
+    "fieldsOfWork": ["finance_economics"],
+    "deadline": null,
+    "duration": "semester_or_longer",
+    "isRecurring": true,
+    "effortLabel": "moderate",
+    "effortMin": 60,
+    "verification": "official_source",
+    "sourceUrl": "https://www.ecb.europa.eu/careers/what-we-offer/traineeship/html/index.en.html"
+  }
+]
