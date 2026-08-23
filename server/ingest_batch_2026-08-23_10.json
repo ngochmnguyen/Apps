@@ -1,0 +1,38 @@
+[
+  {
+    "title": "European Investment Bank (EIB) Traineeship",
+    "description": "A paid traineeship at the European Investment Bank's headquarters in Luxembourg, the EU's lending institution. Traineeships run for 6 months, with the possibility of extension up to 12 months. Trainees receive a flat-rate monthly allowance of EUR 1,500 to help with living costs (adjusted for placements outside Luxembourg using European Commission cost-of-living weightings) plus reimbursement of one round-trip from the trainee's point of origin. Open to candidates in their final year of university or recent graduates with less than one year of work experience (not counting prior internships/traineeships under nine months), who are nationals of an EU member state or EU candidate country and proficient in English and/or French. Vacancies for different departments and teams are posted year-round with their own individual closing dates rather than one fixed annual deadline.",
+    "org": "European Investment Bank (EIB)",
+    "type": "internship",
+    "dest": "LU",
+    "compType": "cash_and_in_kind",
+    "flight": true,
+    "lodging": false,
+    "meals": false,
+    "stipendMin": 1500,
+    "stipendMax": 1500,
+    "currency": "EUR",
+    "requiresWorkVisa": false,
+    "visaNote": "EU nationals do not need a separate work visa for this Luxembourg-based traineeship; nationals of candidate countries should confirm their own entry requirements.",
+    "minAge": 18,
+    "maxAge": null,
+    "gradOnly": false,
+    "education": ["bachelors_completed"],
+    "career": ["recent_grad"],
+    "employment": [],
+    "english": "c1",
+    "nationality": {
+      "type": "include",
+      "list": ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IE", "IT", "LV", "LT", "LU", "MT", "NL", "PL", "PT", "RO", "SK", "SI", "ES", "SE"]
+    },
+    "softTags": [],
+    "fieldsOfWork": ["finance_economics"],
+    "deadline": null,
+    "duration": "semester_or_longer",
+    "isRecurring": true,
+    "effortLabel": "moderate",
+    "effortMin": 60,
+    "verification": "official_source",
+    "sourceUrl": "https://www.eib.org/en/about/careers/categories/traineeships/index"
+  }
+]
